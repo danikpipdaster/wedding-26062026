@@ -454,7 +454,6 @@
             text-align: left;
         }
 
-        /* Стеклянные блоки с вертикальными линиями */
         .glass-box {
             position: relative;
             max-width: 580px;
@@ -489,7 +488,6 @@
             right: 22px;
         }
 
-        /* Дресс-код: палитра с тонкой окантовкой */
         .dresscode-palette {
             display: flex;
             justify-content: center;
@@ -653,17 +651,11 @@
         }
     </style>
 </head>
-
 <body>
-
     <div class="decor-branch-left">❦</div>
     <div class="decor-branch-right">❦</div>
-
     <div class="coin" id="coin"></div>
-
     <div class="container">
-
-        <!-- Hero -->
         <div class="hero fade-in">
             <div class="hero-top-decor">
                 <svg viewBox="0 0 80 40" fill="none">
@@ -671,7 +663,6 @@
                     <circle cx="40" cy="25" r="2" fill="#c9a87c" opacity="0.5"/>
                 </svg>
             </div>
-
             <div class="names-wrapper">
                 <h1 class="names">
                     Данил<br><span class="and">&</span>Юлия
@@ -689,15 +680,10 @@
                                     <stop offset="100%" stop-color="#d8a7a0"/>
                                 </linearGradient>
                             </defs>
-
                             <circle cx="43" cy="62" r="24" stroke="url(#ringGradient)" stroke-width="5" fill="none"/>
                             <circle cx="70" cy="62" r="24" stroke="url(#ringGradient)" stroke-width="5" fill="none"/>
-
                             <g class="diamond">
-                                <polygon points="70,20 82,34 70,48 58,34"
-                                    fill="url(#diamondGradient)"
-                                    stroke="#d8a7a0"
-                                    stroke-width="2"/>
+                                <polygon points="70,20 82,34 70,48 58,34" fill="url(#diamondGradient)" stroke="#d8a7a0" stroke-width="2"/>
                                 <line x1="58" y1="34" x2="82" y2="34" stroke="#d8a7a0" stroke-width="1.5"/>
                                 <line x1="70" y1="20" x2="70" y2="48" stroke="#d8a7a0" stroke-width="1.2"/>
                                 <line x1="64" y1="27" x2="70" y2="48" stroke="#d8a7a0" stroke-width="1"/>
@@ -707,9 +693,7 @@
                     </span>
                 </h1>
             </div>
-
             <p class="hero-subtitle">приглашение на свадьбу</p>
-
             <div class="date-container">
                 <div class="scratch-hint">Сотри монеткой дату ✨</div>
                 <div class="scratch-area">
@@ -717,13 +701,10 @@
                     <canvas id="scratch"></canvas>
                 </div>
             </div>
-
             <div class="timer" id="timer"></div>
-
             <div class="divider gold" style="margin-top: 30px;"></div>
         </div>
 
-        <!-- Приветствие -->
         <div class="section fade-in">
             <h2 class="section-title">Дорогие гости!</h2>
             <p class="welcome-text">
@@ -734,107 +715,67 @@
             <div class="divider"></div>
         </div>
 
-        <!-- Фото -->
         <div class="section fade-in">
             <div class="photo-hint">Нажми на фото, чтобы перевернуть ✨</div>
-
             <div class="photo-collage">
                 <div class="flip-card front" id="card1">
                     <div class="flip-inner">
-                        <div class="flip-front">
-                            <img src="photo1.jpg" alt="Фото пары 1">
-                        </div>
-                        <div class="flip-back">
-                            <img src="photo2.jpg" alt="Фото пары 2">
-                        </div>
+                        <div class="flip-front"><img src="photo1.jpg" alt="Фото 1"></div>
+                        <div class="flip-back"><img src="photo2.jpg" alt="Фото 2"></div>
                     </div>
                 </div>
-
                 <div class="flip-card back" id="card2">
                     <div class="flip-inner">
-                        <div class="flip-front">
-                            <img src="photo3.jpg" alt="Фото пары 3">
-                        </div>
-                        <div class="flip-back">
-                            <img src="photo4.jpg" alt="Фото пары 4">
-                        </div>
+                        <div class="flip-front"><img src="photo3.jpg" alt="Фото 3"></div>
+                        <div class="flip-back"><img src="photo4.jpg" alt="Фото 4"></div>
                     </div>
                 </div>
             </div>
-
             <div class="divider"></div>
         </div>
 
-        <!-- Места -->
         <div class="section fade-in">
             <h2 class="section-title">Места проведения</h2>
             <p class="section-subtitle">где это случится</p>
-
             <div class="places">
                 <div class="place-card">
-                    <img src="zags.jpg" alt="Место проведения">
+                    <img src="zags.jpg" alt="ЗАГС">
                     <div class="place-info">
                         <strong>Церемония</strong>
-                        г. Надым<br>
-                        Парковый пр., 4<br>
+                        г. Надым<br>Парковый пр., 4<br>
                         <a class="map-button" href="https://maps.google.com/?q=Надым+Парковый+4" target="_blank">Открыть карту</a>
                     </div>
                 </div>
-
                 <div class="place-card">
-                    <img src="nedoma.jpg" alt="НеДома Семейный лофт">
+                    <img src="nedoma.jpg" alt="НеДома">
                     <div class="place-info">
                         <strong>НеДома</strong>
-                        Семейный лофт<br>
-                        г. Надым<br>
-                        13 проезд, строение 11<br>
+                        Семейный лофт<br>г. Надым<br>13 проезд, строение 11<br>
                         <a class="map-button" href="https://maps.google.com/?q=НеДома+Семейный+лофт+13+проезд+строение+11+Надым" target="_blank">Открыть карту</a>
                     </div>
                 </div>
             </div>
-
             <div class="divider"></div>
         </div>
 
-        <!-- Программа -->
         <div class="section fade-in">
             <h2 class="section-title">Программа дня</h2>
             <p class="section-subtitle">26 июня 2026</p>
-
             <div class="schedule">
-                <div class="schedule-item">
-                    <span class="schedule-time">15:00</span>
-                    <span class="schedule-text">Сбор гостей</span>
-                </div>
-                <div class="schedule-item">
-                    <span class="schedule-time">16:00</span>
-                    <span class="schedule-text">Церемония</span>
-                </div>
-                <div class="schedule-item">
-                    <span class="schedule-time">17:00</span>
-                    <span class="schedule-text">Банкет</span>
-                </div>
-                <div class="schedule-item">
-                    <span class="schedule-time">22:00</span>
-                    <span class="schedule-text">Танцы и праздник</span>
-                </div>
+                <div class="schedule-item"><span class="schedule-time">15:00</span><span class="schedule-text">Сбор гостей</span></div>
+                <div class="schedule-item"><span class="schedule-time">16:00</span><span class="schedule-text">Церемония</span></div>
+                <div class="schedule-item"><span class="schedule-time">17:00</span><span class="schedule-text">Банкет</span></div>
+                <div class="schedule-item"><span class="schedule-time">22:00</span><span class="schedule-text">Танцы и праздник</span></div>
             </div>
-
             <div class="divider"></div>
         </div>
 
-        <!-- Дресс-код -->
         <div class="section fade-in">
             <h2 class="section-title">Дресс-код</h2>
             <p class="section-subtitle">пастельная нежность</p>
-
             <div class="glass-box">
-                <p>
-                    Мы будем очень рады, если вы поддержите<br>
-                    цветовую гамму нашего праздника 🤍<br><br>
-                    <span style="font-size: 16px; opacity: 0.7;">Оттенки пастельных тонов —<br>то, что делает этот день ещё нежнее.</span>
-                </p>
-
+                <p>Мы будем очень рады, если вы поддержите<br>цветовую гамму нашего праздника 🤍<br><br>
+                <span style="font-size: 16px; opacity: 0.7;">Оттенки пастельных тонов —<br>то, что делает этот день ещё нежнее.</span></p>
                 <div class="dresscode-palette">
                     <div class="dresscode-circle" style="background: #e8cec4;"></div>
                     <div class="dresscode-circle" style="background: #f0d5c1;"></div>
@@ -844,69 +785,41 @@
                     <div class="dresscode-circle" style="background: #cddfe8;"></div>
                 </div>
             </div>
-
             <div class="divider"></div>
         </div>
 
-        <!-- Важно -->
         <div class="section fade-in">
             <h2 class="section-title">Важно для гостей</h2>
             <p class="section-subtitle">вайб нашего дня</p>
-
             <div class="glass-box">
-                <p>
-                    📸 Телефоны не прячем —<br>
-                    снимаем, ловим моменты и кайфуем ✨
-                </p>
-                <p style="margin-top: 14px;">
-                    🎤 Если вдруг появится идея для тоста<br>
-                    или перформанса — обязательно воплощайте её в жизнь 😄
-                </p>
-                <p style="margin-top: 14px;">
-                    Мы только за любую движуху 💛
-                </p>
+                <p>📸 Телефоны не прячем —<br>снимаем, ловим моменты и кайфуем ✨</p>
+                <p style="margin-top: 14px;">🎤 Если вдруг появится идея для тоста<br>или перформанса — обязательно воплощайте её в жизнь 😄</p>
+                <p style="margin-top: 14px;">Мы только за любую движуху 💛</p>
             </div>
-
             <div class="divider"></div>
         </div>
 
-        <!-- Подарки -->
         <div class="section fade-in">
             <h2 class="section-title">Подарки</h2>
-
             <div class="glass-box">
-                <p>
-                    Честно — нам ничего не нужно 😄
-                </p>
-                <p style="margin-top: 10px;">
-                    Просто приходите и разделите этот день с нами 💛
-                </p>
-                <p style="margin-top: 10px;">
-                    Но если вдруг очень захочется что-то подарить —<br>
-                    пусть это будет удобно положить в конверт 😉
-                </p>
-
-                <div style="margin-top: 18px; font-size: 14px; opacity: 0.6; font-style: italic; color: #9a8a7a;">
-                    *обещаем потратить с умом
-                </div>
+                <p>Честно — нам ничего не нужно 😄</p>
+                <p style="margin-top: 10px;">Просто приходите и разделите этот день с нами 💛</p>
+                <p style="margin-top: 10px;">Но если вдруг очень захочется что-то подарить —<br>пусть это будет удобно положить в конверт 😉</p>
+                <div style="margin-top: 18px; font-size: 14px; opacity: 0.6; font-style: italic; color: #9a8a7a;">*обещаем потратить с умом</div>
             </div>
-
             <div class="divider"></div>
         </div>
 
-        <!-- Финал -->
         <div class="final fade-in">
             <p>С любовью и нетерпением ждём вас 🤍</p>
             <p style="font-size: 16px; margin-top: 8px; opacity: 0.7;">Данил & Юлия</p>
             <div class="heart">💛</div>
         </div>
-
     </div>
 
     <script>
         window.onload = function() {
             const weddingDate = new Date("June 26, 2026 00:00:00").getTime();
-
             function updateTimer() {
                 const now = new Date().getTime();
                 const distance = weddingDate - now;
@@ -917,9 +830,7 @@
                 const days = Math.floor(distance / (1000 * 60 * 60 * 24));
                 const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
                 const minutes = Math.floor((distance / (1000 * 60)) % 60);
-
-                document.getElementById("timer").innerHTML =
-                    '<span>' + days + '</span> дней &nbsp;<span>' + hours + '</span> часов &nbsp;<span>' + minutes + '</span> минут';
+                document.getElementById("timer").innerHTML = '<span>' + days + '</span> дней &nbsp;<span>' + hours + '</span> часов &nbsp;<span>' + minutes + '</span> минут';
             }
             updateTimer();
             setInterval(updateTimer, 1000);
@@ -929,105 +840,37 @@
             const date = document.querySelector(".date");
             const hint = document.querySelector(".scratch-hint");
             const coin = document.getElementById("coin");
-
             canvas.width = date.offsetWidth;
             canvas.height = date.offsetHeight;
-
             ctx.fillStyle = "#c9a7a0";
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             ctx.globalCompositeOperation = "destination-out";
-
             let drawing = false;
-
-            function moveCoin(e) {
-                coin.style.display = "block";
-                coin.style.left = e.clientX + "px";
-                coin.style.top = e.clientY + "px";
-            }
-            function hideCoin() {
-                coin.style.display = "none";
-            }
-            function scratch(x, y) {
-                hint.style.opacity = "0";
-                ctx.beginPath();
-                ctx.arc(x, y, 14, 0, Math.PI * 2);
-                ctx.fill();
-            }
-
+            function moveCoin(e) { coin.style.display = "block"; coin.style.left = e.clientX + "px"; coin.style.top = e.clientY + "px"; }
+            function hideCoin() { coin.style.display = "none"; }
+            function scratch(x, y) { hint.style.opacity = "0"; ctx.beginPath(); ctx.arc(x, y, 14, 0, Math.PI * 2); ctx.fill(); }
             canvas.addEventListener("mouseenter", moveCoin);
-            canvas.addEventListener("mousemove", e => {
-                moveCoin(e);
-                if (!drawing) return;
-                const rect = canvas.getBoundingClientRect();
-                scratch(e.clientX - rect.left, e.clientY - rect.top);
-            });
-            canvas.addEventListener("mouseleave", () => {
-                drawing = false;
-                hideCoin();
-            });
-            canvas.addEventListener("mousedown", e => {
-                drawing = true;
-                const rect = canvas.getBoundingClientRect();
-                scratch(e.clientX - rect.left, e.clientY - rect.top);
-            });
+            canvas.addEventListener("mousemove", e => { moveCoin(e); if (!drawing) return; const rect = canvas.getBoundingClientRect(); scratch(e.clientX - rect.left, e.clientY - rect.top); });
+            canvas.addEventListener("mouseleave", () => { drawing = false; hideCoin(); });
+            canvas.addEventListener("mousedown", e => { drawing = true; const rect = canvas.getBoundingClientRect(); scratch(e.clientX - rect.left, e.clientY - rect.top); });
             window.addEventListener("mouseup", () => drawing = false);
-            canvas.addEventListener("touchstart", e => {
-                e.preventDefault();
-                const rect = canvas.getBoundingClientRect();
-                scratch(e.touches[0].clientX - rect.left, e.touches[0].clientY - rect.top);
-            });
-            canvas.addEventListener("touchmove", e => {
-                e.preventDefault();
-                const rect = canvas.getBoundingClientRect();
-                scratch(e.touches[0].clientX - rect.left, e.touches[0].clientY - rect.top);
-            });
+            canvas.addEventListener("touchstart", e => { e.preventDefault(); const rect = canvas.getBoundingClientRect(); scratch(e.touches[0].clientX - rect.left, e.touches[0].clientY - rect.top); });
+            canvas.addEventListener("touchmove", e => { e.preventDefault(); const rect = canvas.getBoundingClientRect(); scratch(e.touches[0].clientX - rect.left, e.touches[0].clientY - rect.top); });
 
             const card1 = document.getElementById("card1");
             const card2 = document.getElementById("card2");
             let activeCard = card1;
             let locked = false;
-
-            function bringToFront(card) {
-                if (locked || card === activeCard) return;
-                const oldFront = activeCard;
-                oldFront.classList.remove("front");
-                oldFront.classList.add("back");
-                card.classList.remove("back");
-                card.classList.add("front");
-                activeCard = card;
-            }
-            function flipCard(card) {
-                if (locked || card !== activeCard) return;
-                locked = true;
-                card.classList.toggle("flipped");
-                setTimeout(() => { locked = false; }, 950);
-            }
-
-            card1.addEventListener("click", () => {
-                if (card1 === activeCard) { flipCard(card1); }
-                else { bringToFront(card1); }
-            });
-            card2.addEventListener("click", () => {
-                if (card2 === activeCard) { flipCard(card2); }
-                else { bringToFront(card2); }
-            });
+            function bringToFront(card) { if (locked || card === activeCard) return; const oldFront = activeCard; oldFront.classList.remove("front"); oldFront.classList.add("back"); card.classList.remove("back"); card.classList.add("front"); activeCard = card; }
+            function flipCard(card) { if (locked || card !== activeCard) return; locked = true; card.classList.toggle("flipped"); setTimeout(() => { locked = false; }, 950); }
+            card1.addEventListener("click", () => { if (card1 === activeCard) { flipCard(card1); } else { bringToFront(card1); } });
+            card2.addEventListener("click", () => { if (card2 === activeCard) { flipCard(card2); } else { bringToFront(card2); } });
 
             const fadeEls = document.querySelectorAll('.fade-in');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-
+            const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); }); }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
             fadeEls.forEach(el => observer.observe(el));
-
-            setTimeout(() => {
-                document.querySelector('.hero.fade-in')?.classList.add('visible');
-            }, 100);
+            setTimeout(() => { document.querySelector('.hero.fade-in')?.classList.add('visible'); }, 100);
         };
     </script>
-
 </body>
 </html>
