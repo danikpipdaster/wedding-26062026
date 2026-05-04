@@ -112,7 +112,7 @@
         }
         .divider.gold { background: linear-gradient(to right, transparent, #c9a87c, transparent); }
 
-        /* ОБЩИЙ ФОН ДЛЯ ВСЕХ СЕКЦИЙ ПОСЛЕ ЗАСТАВКИ — seryzadnik.jpg */
+        /* ОБЩИЙ ФОН ДЛЯ ДЕСКТОПА — seryzadnik.jpg */
         #invitation {
             position: relative;
             z-index: 1;
@@ -239,15 +239,18 @@
         .fade-in { opacity: 0; transform: translateY(25px); transition: opacity 1s ease, transform 1s ease; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-        /* Мобильная версия */
+        /* Мобильная версия — contain, чтобы картинка не растягивалась */
         @media (max-width: 768px) {
             #invitation {
-                background: linear-gradient(rgba(250,247,244,0.45), rgba(250,247,244,0.45)),
-                            url('seryzadnik.jpg') center / cover no-repeat;
+                background: #4a4a4a; /* темно-серый, близкий к твоему фото */
+                background-image: url('seryzadnik.jpg');
+                background-size: contain;         /* вписываем, не обрезаем и не растягиваем */
+                background-repeat: no-repeat;
+                background-position: center top;
                 background-attachment: scroll;
             }
 
-            /* Делаем весь текст в секциях белым */
+            /* Текст остаётся белым */
             .section-title,
             .section-subtitle,
             .welcome-text,
@@ -344,7 +347,7 @@
         <a href="#invitation" class="scroll-arrow" aria-label="К приглашению">↓</a>
     </div>
 
-    <!-- БЛОКИ 2–8 с общим фоном seryzadnik.jpg -->
+    <!-- БЛОКИ 2–8 -->
     <div id="invitation">
         <div class="container">
             <div class="section fade-in">
