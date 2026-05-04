@@ -67,8 +67,8 @@
         }
         .initial-line.line-amp {
             text-align: center;
-            font-size: 80px;
-            margin: -30px 0;
+            font-size: 60px;   /* уменьшенный амперсанд */
+            margin: -25px 0;
         }
         .initial-line.line-yu {
             text-align: right;
@@ -82,11 +82,14 @@
             line-height: 1.4;
         }
         .handwritten-signature .heart-icon {
-            color: #c9a87c;
             font-style: normal;
             margin: 0 4px;
-            font-size: 10px;
+            font-size: 14px;  /* чуть крупнее для читаемости обводки */
             vertical-align: middle;
+            /* прозрачная заливка, чёрная окантовка */
+            color: transparent;
+            -webkit-text-stroke: 1.5px #4a3f3f;
+            text-stroke: 1.5px #4a3f3f;
             position: relative;
             top: -1px;
         }
@@ -249,7 +252,7 @@
         /* Мобильная версия */
         @media (max-width: 768px) {
             .initial-line { font-size: 110px; }
-            .initial-line.line-amp { font-size: 60px; margin: -20px 0; }
+            .initial-line.line-amp { font-size: 50px; margin: -20px 0; }
             .initial-line.line-d { transform: translateX(-30px); }
             .initial-line.line-yu { transform: translateX(30px); }
             .handwritten-signature { font-size: 24px; }
@@ -272,7 +275,7 @@
         }
         @media (max-width: 400px) {
             .initial-line { font-size: 85px; }
-            .initial-line.line-amp { font-size: 45px; margin: -15px 0; }
+            .initial-line.line-amp { font-size: 40px; margin: -15px 0; }
             .initial-line.line-d { transform: translateX(-20px); }
             .initial-line.line-yu { transform: translateX(20px); }
             .handwritten-signature { font-size: 20px; }
@@ -291,19 +294,15 @@
 
     <!-- ══════ БЛОК 1 — ЗАСТАВКА ══════ -->
     <div class="splash" id="splash">
-        <!-- Инициалы по трём строкам -->
         <div class="initials-block">
             <span class="initial-line line-d">Д</span>
             <span class="initial-line line-amp">&</span>
             <span class="initial-line line-yu">Ю</span>
         </div>
-        <!-- Рукописная подпись -->
         <p class="handwritten-signature">Данил <span class="heart-icon">♥</span> Юлия</p>
-        <!-- Подзаголовок -->
         <p class="hero-subtitle">приглашение на свадьбу</p>
-        <!-- Дата, скретч-слой, таймер, стрелка -->
         <div class="date-container">
-            <div class="scratch-hint">Сотри монеткой дату ✨</div>
+            <div class="scratch-hint">Сотри меня скорей ✨</div>
             <div class="scratch-area"><div class="date">26.06.2026</div><canvas id="scratch"></canvas></div>
         </div>
         <div class="timer" id="timer"></div>
