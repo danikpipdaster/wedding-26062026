@@ -9,7 +9,7 @@
     <link rel="preload" as="image" href="photo3.jpg">
     <link rel="preload" as="image" href="photo4.jpg">
     <link rel="preload" as="image" href="ryki.jpg">
-    <link rel="preload" as="image" href="raspisanie.jpg">
+    <link rel="preload" as="image" href="seryzadnik.jpg">
     <link rel="preload" as="image" href="monetka.jpg">
     <link rel="preload" as="image" href="serdecko.jpg">
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
@@ -44,7 +44,7 @@
         .decor-branch-right { bottom: -40px; right: -60px; transform: rotate(165deg); }
         .container { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; padding: 0 20px; }
 
-        /* БЛОК 1 — ЗАСТАВКА */
+        /* БЛОК 1 — ЗАСТАВКА (ryki.jpg) */
         .splash {
             position: relative; z-index: 1;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -112,11 +112,11 @@
         }
         .divider.gold { background: linear-gradient(to right, transparent, #c9a87c, transparent); }
 
-        /* ОБЩИЙ ФОН ДЛЯ СЕКЦИЙ ПОСЛЕ ЗАСТАВКИ */
+        /* ОБЩИЙ ФОН ДЛЯ ВСЕХ СЕКЦИЙ ПОСЛЕ ЗАСТАВКИ — seryzadnik.jpg */
         #invitation {
             position: relative;
             z-index: 1;
-            background: linear-gradient(rgba(250,247,244,0.65), rgba(250,247,244,0.65)), url('raspisanie.jpg') center/cover no-repeat;
+            background: linear-gradient(rgba(250,247,244,0.65), rgba(250,247,244,0.65)), url('seryzadnik.jpg') center/cover no-repeat;
             background-attachment: fixed;
             background-color: #faf7f4;
             padding-top: 30px;
@@ -214,12 +214,8 @@
             align-items: center;
             gap: 5px;
         }
-        .schedule-item-text {
-            margin: 0;
-        }
-        .schedule-item-text.hidden {
-            display: none;
-        }
+        .schedule-item-text { margin: 0; }
+        .schedule-item-text.hidden { display: none; }
 
         .glass-box {
             position: relative; max-width: 580px; margin: 25px auto 0; padding: 36px 40px;
@@ -249,7 +245,7 @@
         @media (max-width: 768px) {
             #invitation {
                 background: linear-gradient(rgba(250,247,244,0.65), rgba(250,247,244,0.65)),
-                            url('raspisanie.jpg') center top / contain no-repeat;
+                            url('seryzadnik.jpg') center top / contain no-repeat;
                 background-attachment: scroll;
             }
             .section { background: transparent; border-radius: 0; box-shadow: none; margin: 0; padding: 50px 15px; }
@@ -316,7 +312,7 @@
         <a href="#invitation" class="scroll-arrow" aria-label="К приглашению">↓</a>
     </div>
 
-    <!-- БЛОКИ 2–8 с общим фоном -->
+    <!-- БЛОКИ 2–8 с общим фоном seryzadnik.jpg -->
     <div id="invitation">
         <div class="container">
             <!-- БЛОК 2 — ГОСТИ + ФОТО -->
