@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Данил & Юлия — Приглашение на свадьбу</title>
 
+    <!-- Предзагрузка всех фото, чтобы не было задержки при перевороте -->
+    <link rel="preload" as="image" href="photo1.jpg">
+    <link rel="preload" as="image" href="photo2.jpg">
+    <link rel="preload" as="image" href="photo3.jpg">
+    <link rel="preload" as="image" href="photo4.jpg">
+
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
 
     <style>
@@ -284,7 +290,7 @@
             100% { opacity: 0.45; }
         }
 
-        /* === БЛОК С ФОТО (улучшенная мобильная версия) === */
+        /* === ИСПРАВЛЕННЫЙ БЛОК С ФОТО === */
         .photo-collage {
             position: relative;
             width: 500px;
@@ -300,7 +306,7 @@
             height: 470px;
             cursor: pointer;
             transform-style: preserve-3d;
-            /* transition ТОЛЬКО для позиции (top, left, opacity), но НЕ transform */
+            -webkit-transform-style: preserve-3d; /* Safari */
             transition: top 0.5s cubic-bezier(.22,.61,.36,1),
                         left 0.5s cubic-bezier(.22,.61,.36,1),
                         opacity 0.3s ease;
@@ -327,6 +333,7 @@
             height: 100%;
             transition: transform 0.8s cubic-bezier(.22,.61,.36,1);
             transform-style: preserve-3d;
+            -webkit-transform-style: preserve-3d;
         }
 
         .flip-card.flipped .flip-inner {
@@ -339,10 +346,13 @@
             inset: 0;
             backface-visibility: hidden;
             -webkit-backface-visibility: hidden;
+            background-color: #ffffff;  /* белый фон, чтобы не просвечивало */
+            border-radius: 22px;
+            overflow: hidden;
         }
 
         .flip-back {
-            transform: rotateY(180deg);
+            transform: rotateY(-180deg);  /* -180 для симметричной анимации */
         }
 
         .flip-card img {
@@ -354,6 +364,11 @@
             padding: 8px;
             box-shadow: 0 18px 40px rgba(90, 74, 74, 0.15);
             box-sizing: border-box;
+            /* Фикс для iOS: принудительно оставляем картинку в плоскости без поворота */
+            transform: rotateY(0deg);
+            -webkit-transform: rotateY(0deg);
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
         }
 
         .flip-card.front img {
@@ -366,9 +381,9 @@
         }
 
         @keyframes photoPulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.022); }
-            100% { transform: scale(1); }
+            0% { transform: scale(1) rotateY(0deg); }
+            50% { transform: scale(1.022) rotateY(0deg); }
+            100% { transform: scale(1) rotateY(0deg); }
         }
         /* === КОНЕЦ БЛОКА С ФОТО === */
 
@@ -472,7 +487,6 @@
             line-height: 1.8;
             color: #5a4a4a;
         }
-
         .glass-box::before,
         .glass-box::after {
             content: '';
@@ -494,7 +508,6 @@
             flex-wrap: wrap;
             margin-top: 24px;
         }
-
         .dresscode-circle {
             width: 56px;
             height: 56px;
@@ -744,8 +757,10 @@
             <div class="divider"></div>
         </div>
 
-        <!-- Остальные секции (без изменений) -->
-        <!-- ... -->
+        <!-- Остальные секции... -->
+        <!-- Дресс-код, Важно, Подарки, Финал -->
+        <!-- Я их не повторяю для экономии места, они такие же как в предыдущей полной версии -->
+        <!-- Ты можешь скопировать полный HTML из предыдущего ответа и заменить только блок стилей и скрипт -->
     </div>
 
     <script>
@@ -788,10 +803,10 @@
             canvas.addEventListener("touchstart", e => { e.preventDefault(); const rect = canvas.getBoundingClientRect(); scratch(e.touches[0].clientX - rect.left, e.touches[0].clientY - rect.top); });
             canvas.addEventListener("touchmove", e => { e.preventDefault(); const rect = canvas.getBoundingClientRect(); scratch(e.touches[0].clientX - rect.left, e.touches[0].clientY - rect.top); });
 
-            // === НОВАЯ ЛОГИКА КАРТОЧЕК (без переворота при смене) ===
+            // === ЛОГИКА КАРТОЧЕК ===
             const card1 = document.getElementById("card1");
             const card2 = document.getElementById("card2");
-            let activeCard = card1;   // card1 на переднем плане
+            let activeCard = card1;
             let locked = false;
 
             function bringToFront(card) {
@@ -803,7 +818,6 @@
                 card.classList.remove("back");
                 card.classList.add("front");
                 activeCard = card;
-                // Разблокируем после завершения перемещения (длительность transition 0.5s)
                 setTimeout(() => { locked = false; }, 600);
             }
 
@@ -811,19 +825,16 @@
                 if (locked || card !== activeCard) return;
                 locked = true;
                 card.classList.toggle("flipped");
-                setTimeout(() => { locked = false; }, 800); // время переворота
+                setTimeout(() => { locked = false; }, 800);
             }
 
             card1.addEventListener("click", () => {
                 if (card1 === activeCard) {
-                    // Карточка уже на переднем плане — переворачиваем
                     flipCard(card1);
                 } else {
-                    // Карточка на заднем плане — выводим вперёд (без переворота)
                     bringToFront(card1);
                 }
             });
-
             card2.addEventListener("click", () => {
                 if (card2 === activeCard) {
                     flipCard(card2);
@@ -832,7 +843,6 @@
                 }
             });
 
-            // Плавное появление
             const fadeEls = document.querySelectorAll('.fade-in');
             const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); }); }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
             fadeEls.forEach(el => observer.observe(el));
