@@ -9,8 +9,7 @@
     <link rel="preload" as="image" href="photo3.jpg">
     <link rel="preload" as="image" href="photo4.jpg">
     <link rel="preload" as="image" href="ryki.jpg">
-    <link rel="preload" as="image" href="zadnifonkarta.jpg">
-    <link rel="preload" as="image" href="zadnifonkras.jpg">
+    <link rel="preload" as="image" href="raspisanie.jpg">
     <link rel="preload" as="image" href="monetka.jpg">
     <link rel="preload" as="image" href="serdecko.jpg">
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
@@ -113,11 +112,13 @@
         }
         .divider.gold { background: linear-gradient(to right, transparent, #c9a87c, transparent); }
 
-        /* ОБЩИЙ КОНТЕЙНЕР */
+        /* ОБЩИЙ ФОН ДЛЯ СЕКЦИЙ ПОСЛЕ ЗАСТАВКИ */
         #invitation {
             position: relative;
             z-index: 1;
-            background: transparent;
+            background: linear-gradient(rgba(250,247,244,0.65), rgba(250,247,244,0.65)), url('raspisanie.jpg') center/cover no-repeat;
+            background-attachment: fixed;
+            background-color: #faf7f4;
             padding-top: 30px;
             padding-bottom: 30px;
         }
@@ -173,26 +174,13 @@
         .flip-card.front img { box-shadow: 0 26px 58px rgba(90,74,74,0.35); }
         .flip-card.back img { filter: brightness(0.96); }
 
-        #photo-section {
+        /* Места и подарки без фонов */
+        #places-section, #gifts-section {
             background: transparent;
             border-radius: 0;
             box-shadow: none;
             margin: 30px 0;
-            padding: 20px 20px 40px;
-        }
-        #places-section {
-            background: linear-gradient(rgba(250,247,244,0.7), rgba(250,247,244,0.7)), url('zadnifonkarta.jpg') center/cover no-repeat;
-            border-radius: 28px;
-            margin: 30px 0;
             padding: 40px 20px;
-            box-shadow: 0 8px 24px rgba(90,74,74,0.08);
-        }
-        #gifts-section {
-            background: linear-gradient(rgba(250,247,244,0.7), rgba(250,247,244,0.7)), url('zadnifonkras.jpg') center/cover no-repeat;
-            border-radius: 28px;
-            margin: 30px 0;
-            padding: 40px 20px;
-            box-shadow: 0 8px 24px rgba(90,74,74,0.08);
         }
 
         .places { display: flex; justify-content: center; gap: 35px; flex-wrap: wrap; }
@@ -211,39 +199,28 @@
             transition: all 0.3s ease;
         }
         .map-button:hover { background: #b8976e; box-shadow: 0 6px 20px rgba(180,140,100,0.3); }
-        .cork-board {
-            background: #b48b5a;
-            background-image: radial-gradient(circle, #a07840 1px, transparent 1px);
-            background-size: 12px 12px;
-            border-radius: 28px;
-            box-shadow: 0 12px 30px rgba(0,0,0,0.15), inset 0 2px 6px rgba(0,0,0,0.2);
-            padding: 30px 20px;
-            margin: 30px auto 0;
-            max-width: 480px;
-            position: relative;
-            color: #2e241a;
-            font-family: 'Cormorant Garamond', serif;
+
+        /* РАСПИСАНИЕ В СТИЛЕ ЗАГЛАВНЫХ БУКВ */
+        .schedule-big {
+            font-family: 'Great Vibes', cursive;
+            font-size: 72px;
+            font-weight: 400;
+            color: #4a3f3f;
+            text-shadow: 0 6px 18px rgba(0,0,0,0.1);
+            line-height: 1.2;
+            margin: 30px 0 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
         }
-        .timeline {
-            position: relative;
-            padding-left: 40px;
-            border-left: 3px dashed #c44b4b;
-            margin: 0 10px;
+        .schedule-item-text {
+            margin: 0;
         }
-        .timeline::before { content: '🧷'; position: absolute; left: -13px; top: -25px; font-size: 24px; color: #c44b4b; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
-        .timeline-item {
-            position: relative; margin-bottom: 28px; padding: 12px 18px;
-            background: rgba(255,248,240,0.9); border-radius: 16px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        .schedule-item-text.hidden {
+            display: none;
         }
-        .timeline-item::before {
-            content: ''; position: absolute; left: -48px; top: 50%; transform: translateY(-50%);
-            width: 14px; height: 14px; background: #c44b4b; border-radius: 50%;
-            box-shadow: 0 0 0 4px #b48b5a, 0 0 0 6px rgba(0,0,0,0.2); z-index: 2;
-        }
-        .timeline-item.hidden { display: none; }
-        .item-icon { font-size: 28px; margin-bottom: 6px; }
-        .item-title { font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 16px; letter-spacing: 2px; text-transform: uppercase; color: #4a3f3f; }
-        .item-desc { font-size: 16px; color: #5a4a4a; margin-top: 4px; }
+
         .glass-box {
             position: relative; max-width: 580px; margin: 25px auto 0; padding: 36px 40px;
             background: rgba(255,255,255,0.35); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
@@ -270,27 +247,17 @@
 
         /* Мобильная версия */
         @media (max-width: 768px) {
-            #photo-section { background: transparent; }
-            #places-section, #gifts-section {
-                background: #faf7f4;
-                border-radius: 0;
-                box-shadow: none;
-                margin: 20px 0;
-                padding: 30px 15px;
-                position: relative; overflow: hidden; z-index: 0;
+            #invitation {
+                background: linear-gradient(rgba(250,247,244,0.65), rgba(250,247,244,0.65)), url('raspisanie.jpg') center/cover no-repeat;
+                background-attachment: scroll;
             }
-            #places-section::before, #gifts-section::before {
-                content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
-                background-position: center; background-size: cover; background-repeat: no-repeat; opacity: 0.3;
-            }
-            #places-section::before { background-image: url('zadnifonkarta.jpg'); }
-            #gifts-section::before { background-image: url('zadnifonkras.jpg'); }
             .section { background: transparent; border-radius: 0; box-shadow: none; margin: 0; padding: 50px 15px; }
             .photo-collage { width: 320px; height: 440px; }
             .flip-card { width: 230px; height: 320px; transition: transform 0.9s ease, opacity 0.5s; }
             .flip-card.front { transform: translate(75px, 88px) rotate(0deg) scale(1.04); }
             .flip-card.back { transform: translate(5px, 5px) rotate(-7deg) scale(0.92); }
             .flip-card img { border-radius: 18px; }
+            .schedule-big { font-size: 48px; }
             .initial-line { font-size: 110px; }
             .initial-line.line-amp { font-size: 50px; margin: -10px 0; }
             .initial-line.line-d { transform: translateX(-30px); }
@@ -320,6 +287,7 @@
             .flip-card { width: 190px; height: 270px; }
             .flip-card.front { transform: translate(60px, 72px) rotate(0deg) scale(1.04); }
             .flip-card.back { transform: translate(5px, 5px) rotate(-7deg) scale(0.92); }
+            .schedule-big { font-size: 36px; }
         }
     </style>
 </head>
@@ -347,7 +315,7 @@
         <a href="#invitation" class="scroll-arrow" aria-label="К приглашению">↓</a>
     </div>
 
-    <!-- БЛОКИ 2–8 -->
+    <!-- БЛОКИ 2–8 с общим фоном -->
     <div id="invitation">
         <div class="container">
             <!-- БЛОК 2 — ГОСТИ + ФОТО -->
@@ -379,7 +347,7 @@
                 <div class="divider"></div>
             </div>
 
-            <!-- БЛОК 3 — Места -->
+            <!-- БЛОК 3 — Места (без фона) -->
             <div class="section fade-in" id="places-section">
                 <h2 class="section-title">Места проведения</h2>
                 <p class="section-subtitle">где это случится</p>
@@ -402,33 +370,15 @@
                 <div class="divider"></div>
             </div>
 
-            <!-- БЛОК 4 — ПРОГРАММА -->
+            <!-- БЛОК 4 — ПРОГРАММА (заглавные буквы) -->
             <div class="section fade-in" id="schedule-section">
                 <h2 class="section-title">Программа дня</h2>
                 <p class="section-subtitle">26 июня 2026</p>
-                <div class="cork-board">
-                    <div class="timeline" id="timeline">
-                        <div class="timeline-item" id="item-meet">
-                            <div class="item-icon">🌸</div>
-                            <div class="item-title">Встреча гостей</div>
-                            <div class="item-desc">Объятия, бокалы и первые кадры</div>
-                        </div>
-                        <div class="timeline-item" id="item-ceremony">
-                            <div class="item-icon">💍</div>
-                            <div class="item-title">Церемония</div>
-                            <div class="item-desc">Мгновение, когда мир становится чуть добрее</div>
-                        </div>
-                        <div class="timeline-item" id="item-feast">
-                            <div class="item-icon">🍽️</div>
-                            <div class="item-title">Банкет</div>
-                            <div class="item-desc">Вкус, смех и первые тосты</div>
-                        </div>
-                        <div class="timeline-item" id="item-dance">
-                            <div class="item-icon">🕺</div>
-                            <div class="item-title">Танцы</div>
-                            <div class="item-desc">Ночь, которую невозможно забыть</div>
-                        </div>
-                    </div>
+                <div class="schedule-big">
+                    <span class="schedule-item-text" id="item-meet">🌸 Встреча гостей</span>
+                    <span class="schedule-item-text" id="item-ceremony">💍 Церемония</span>
+                    <span class="schedule-item-text" id="item-feast">🍽️ Банкет</span>
+                    <span class="schedule-item-text" id="item-dance">🕺 Танцы</span>
                 </div>
                 <div class="divider"></div>
             </div>
@@ -464,7 +414,7 @@
                 <div class="divider"></div>
             </div>
 
-            <!-- БЛОК 7 — Подарки -->
+            <!-- БЛОК 7 — Подарки (без фона) -->
             <div class="section fade-in" id="gifts-section">
                 <h2 class="section-title">Подарки</h2>
                 <div class="glass-box">
@@ -487,19 +437,15 @@
 
     <script>
         (function() {
-            // Дожидаемся загрузки DOM
             window.addEventListener('DOMContentLoaded', function() {
-                // --------------- ТАЙМЕР ---------------
+                // Таймер
                 const timerEl = document.getElementById("timer");
                 if (timerEl) {
                     const weddingDate = new Date("June 26, 2026 00:00:00").getTime();
                     function updateTimer() {
                         const now = new Date().getTime();
                         const distance = weddingDate - now;
-                        if (distance < 0) {
-                            timerEl.innerHTML = '<span>💛 Этот день настал!</span>';
-                            return;
-                        }
+                        if (distance < 0) { timerEl.innerHTML = '<span>💛 Этот день настал!</span>'; return; }
                         const days = Math.floor(distance / (1000 * 60 * 60 * 24));
                         const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
                         const minutes = Math.floor((distance / (1000 * 60)) % 60);
@@ -509,7 +455,7 @@
                     setInterval(updateTimer, 1000);
                 }
 
-                // --------------- СКРЕТЧ-СЛОЙ ---------------
+                // Скретч-слой
                 const canvas = document.getElementById("scratch");
                 if (canvas) {
                     const ctx = canvas.getContext("2d");
@@ -536,20 +482,17 @@
                     }
                 }
 
-                // --------------- КАРТОЧКИ ---------------
+                // Карточки
                 const card1 = document.getElementById("card1");
                 const card2 = document.getElementById("card2");
                 if (card1 && card2) {
-                    let activeCard = card1;
-                    let locked = false;
+                    let activeCard = card1, locked = false;
                     function bringToFront(card) {
                         if (locked || card === activeCard) return;
                         locked = true;
                         const oldFront = activeCard;
-                        oldFront.classList.remove("front");
-                        oldFront.classList.add("back");
-                        card.classList.remove("back");
-                        card.classList.add("front");
+                        oldFront.classList.remove("front"); oldFront.classList.add("back");
+                        card.classList.remove("back"); card.classList.add("front");
                         activeCard = card;
                         setTimeout(() => { locked = false; }, 1600);
                     }
@@ -559,26 +502,19 @@
                         card.classList.toggle("flipped");
                         setTimeout(() => { locked = false; }, 950);
                     }
-                    card1.addEventListener("click", () => {
-                        if (card1 === activeCard) { flipCard(card1); }
-                        else { bringToFront(card1); }
-                    });
-                    card2.addEventListener("click", () => {
-                        if (card2 === activeCard) { flipCard(card2); }
-                        else { bringToFront(card2); }
-                    });
+                    card1.addEventListener("click", () => { if (card1 === activeCard) flipCard(card1); else bringToFront(card1); });
+                    card2.addEventListener("click", () => { if (card2 === activeCard) flipCard(card2); else bringToFront(card2); });
                 }
 
-                // --------------- ПЛАВНОЕ ПОЯВЛЕНИЕ ---------------
-                const fadeEls = document.querySelectorAll('.fade-in');
-                if (fadeEls.length > 0) {
+                // Плавное появление
+                document.querySelectorAll('.fade-in').forEach(el => {
                     const observer = new IntersectionObserver((entries) => {
                         entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
-                    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-                    fadeEls.forEach(el => observer.observe(el));
-                }
+                    }, { threshold: 0.15 });
+                    observer.observe(el);
+                });
 
-                // --------------- ПЕРСОНАЛИЗАЦИЯ ---------------
+                // Персонализация
                 const urlParams = new URLSearchParams(window.location.search);
                 const namesParam = urlParams.get('names');
                 const guestGreeting = document.getElementById('guest-greeting');
@@ -589,40 +525,31 @@
                         const last = namesArray.pop();
                         const greeting = 'Дорогие ' + (namesArray.length > 0 ? namesArray.join(', ') + ' и ' : '') + last + '!';
                         guestGreeting.textContent = greeting;
-
                         if (namesParam === 'Ирина,Владислав,Руслан' || namesParam === 'Ирина, Владислав, Руслан') {
-                            guestMessage.innerHTML =
-                                '<p>Мы строим самый важный день в нашей жизни — и поняли, что он просто не сможет быть идеальным без вас. Будет красиво, душевно и немножко громко. Обещаем тёплые объятия, вкусный торт и пару сюрпризов (хороших, честно 😄).</p>' +
-                                '<p style="margin-top:14px;">🌸 <strong>Ирина</strong>, мы помним, что настоящий праздник начинается только тогда, когда звучит «Вдоль ночных дорог». Так что обязательно поставим эту песню — и пусть весь зал вспомнит, что такое душа.</p>' +
-                                '<p style="margin-top:14px;">⚽ <strong>Владислав</strong>, твоё присутствие — наш талисман. Мы официально заявляем: если ты придёшь на свадьбу, «Спартак» в этом сезоне возьмёт чемпионство. Не лишай страну праздника!</p>' +
-                                '<p style="margin-top:14px;">💪 <strong>Руслан</strong>, без тебя этот день был бы слишком спокойным. Будет борьба… возможно. Но мы верим, что ты направишь свою энергию в правильное русло — например, в танцы или в борьбу с тортом. Кто победит — увидим 😉</p>' +
-                                '<p style="margin-top:18px;">Ждём вас с нетерпением, чтобы разделить счастье и создать воспоминания, которые останутся с нами на всю жизнь. Приходите — без вас свадьба не начнётся! 🤍</p>';
+                            guestMessage.innerHTML = '<p>Мы строим самый важный день в нашей жизни — и поняли, что он просто не сможет быть идеальным без вас. Будет красиво, душевно и немножко громко. Обещаем тёплые объятия, вкусный торт и пару сюрпризов (хороших, честно 😄).</p>' + '<p style="margin-top:14px;">🌸 <strong>Ирина</strong>, мы помним, что настоящий праздник начинается только тогда, когда звучит «Вдоль ночных дорог». Так что обязательно поставим эту песню — и пусть весь зал вспомнит, что такое душа.</p>' + '<p style="margin-top:14px;">⚽ <strong>Владислав</strong>, твоё присутствие — наш талисман. Мы официально заявляем: если ты придёшь на свадьбу, «Спартак» в этом сезоне возьмёт чемпионство. Не лишай страну праздника!</p>' + '<p style="margin-top:14px;">💪 <strong>Руслан</strong>, без тебя этот день был бы слишком спокойным. Будет борьба… возможно. Но мы верим, что ты направишь свою энергию в правильное русло — например, в танцы или в борьбу с тортом. Кто победит — увидим 😉</p>' + '<p style="margin-top:18px;">Ждём вас с нетерпением, чтобы разделить счастье и создать воспоминания, которые останутся с нами на всю жизнь. Приходите — без вас свадьба не начнётся! 🤍</p>';
                         } else {
                             const namesString = namesArray.length > 0 ? namesArray.join(', ') + ' и ' + last : last;
-                            guestMessage.innerHTML =
-                                'С огромной радостью и трепетом в сердце<br>' +
-                                'мы приглашаем вас, <strong>' + namesString + '</strong>, разделить с нами<br>' +
-                                '<strong>самый важный день нашей жизни</strong> 🤍';
+                            guestMessage.innerHTML = 'С огромной радостью и трепетом в сердце<br>мы приглашаем вас, <strong>' + namesString + '</strong>, разделить с нами<br><strong>самый важный день нашей жизни</strong> 🤍';
                         }
                     }
                 }
 
-                // --------------- НАСТРОЙКА МЕСТ ---------------
+                // Управление карточками мест
                 const placesParam = urlParams.get('places');
-                const zagsCard = document.getElementById('place-zags');
-                const nedomaCard = document.getElementById('place-nedoma');
                 if (placesParam) {
                     const wantedPlaces = placesParam.split(',').map(p => p.trim().toLowerCase());
+                    const zagsCard = document.getElementById('place-zags');
+                    const nedomaCard = document.getElementById('place-nedoma');
                     if (zagsCard) zagsCard.style.display = wantedPlaces.includes('zags') ? '' : 'none';
                     if (nedomaCard) nedomaCard.style.display = wantedPlaces.includes('nedoma') ? '' : 'none';
-                }
-                const container = document.getElementById('places-container');
-                if (container) {
-                    const visibleCards = container.querySelectorAll('.place-card[style*="display:""], .place-card:not([style*="display: none"])');
-                    container.style.justifyContent = visibleCards.length === 1 ? 'center' : '';
+                    const container = document.getElementById('places-container');
+                    if (container) {
+                        const visibleCards = container.querySelectorAll('.place-card[style*="display:""], .place-card:not([style*="display: none"])');
+                        container.style.justifyContent = visibleCards.length === 1 ? 'center' : '';
+                    }
                 }
 
-                // --------------- СКРЫТИЕ ЦЕРЕМОНИИ ---------------
+                // Скрытие церемонии в расписании
                 const ceremonyItem = document.getElementById('item-ceremony');
                 if (ceremonyItem && placesParam) {
                     const wantedPlaces = placesParam.split(',').map(p => p.trim().toLowerCase());
