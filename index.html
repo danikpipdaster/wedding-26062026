@@ -8,7 +8,7 @@
     <link rel="preload" as="image" href="photo2.jpg">
     <link rel="preload" as="image" href="photo3.jpg">
     <link rel="preload" as="image" href="photo4.jpg">
-    <link rel="preload" as="image" href="zadnyfon1.jpg">
+    <link rel="preload" as="image" href="zadnifon1.jpg">
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -46,7 +46,7 @@
             position: relative; z-index: 1;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
             min-height: 100vh; padding: 40px 20px; text-align: center;
-            background: linear-gradient(rgba(250,247,244,0.75), rgba(250,247,244,0.75)), url('zadnyfon1.jpg') center/cover no-repeat;
+            background: linear-gradient(rgba(250,247,244,0.75), rgba(250,247,244,0.75)), url('zadnifon1.jpg') center/cover no-repeat;
             background-color: #faf7f4;
         }
         .initials {
@@ -64,12 +64,12 @@
         }
         .initial-left {
             display: inline-block;
-            transform: translateX(12px); /* Д чуть правее */
+            transform: translateX(12px);
         }
         .initial-amp {
             display: inline-block;
             margin: 0 8px;
-            font-size: 80px; /* & немного меньше букв */
+            font-size: 80px;
             font-family: 'Cormorant Garamond', serif;
             font-weight: 300;
             color: #4a3f3f;
@@ -78,7 +78,7 @@
         }
         .initial-right {
             display: inline-block;
-            transform: translateX(-12px); /* Ю чуть левее */
+            transform: translateX(-12px);
         }
         .handwritten-signature {
             font-family: 'Caveat', cursive;
@@ -91,7 +91,7 @@
             color: #c9a87c;
             font-style: normal;
             margin: 0 4px;
-            font-size: 10px;  /* уменьшено в 2.5 раза (было 26px) */
+            font-size: 10px;
             vertical-align: middle;
             position: relative;
             top: -1px;
@@ -299,17 +299,13 @@
 
     <!-- ══════ БЛОК 1 — ЗАСТАВКА ══════ -->
     <div class="splash" id="splash">
-        <!-- Несимметричные инициалы -->
         <div class="initials">
             <span class="initial-left">Д</span>
             <span class="initial-amp">&</span>
             <span class="initial-right">Ю</span>
         </div>
-        <!-- Рукописная подпись с мелким сердечком -->
         <p class="handwritten-signature">Данил <span class="heart-icon">♥</span> Юлия</p>
-        <!-- Подзаголовок -->
         <p class="hero-subtitle">приглашение на свадьбу</p>
-        <!-- Дата, скретч-слой, таймер, стрелка -->
         <div class="date-container">
             <div class="scratch-hint">Сотри монеткой дату ✨</div>
             <div class="scratch-area"><div class="date">26.06.2026</div><canvas id="scratch"></canvas></div>
@@ -320,7 +316,6 @@
 
     <!-- ══════ БЛОКИ 2–8 ══════ -->
     <div id="invitation" class="container">
-        <!-- БЛОК 2 — Гости + Фото -->
         <div class="section fade-in">
             <h2 class="section-title">Дорогие гости!</h2>
             <p class="welcome-text">
@@ -349,7 +344,6 @@
             <div class="divider"></div>
         </div>
 
-        <!-- БЛОК 3 — Места -->
         <div class="section fade-in">
             <h2 class="section-title">Места проведения</h2>
             <p class="section-subtitle">где это случится</p>
@@ -372,7 +366,6 @@
             <div class="divider"></div>
         </div>
 
-        <!-- БЛОК 4 — Программа -->
         <div class="section fade-in">
             <h2 class="section-title">Программа дня</h2>
             <p class="section-subtitle">26 июня 2026</p>
@@ -385,7 +378,6 @@
             <div class="divider"></div>
         </div>
 
-        <!-- БЛОК 5 — Дресс-код -->
         <div class="section fade-in">
             <h2 class="section-title">Дресс-код</h2>
             <p class="section-subtitle">пастельная нежность</p>
@@ -404,7 +396,6 @@
             <div class="divider"></div>
         </div>
 
-        <!-- БЛОК 6 — Важно -->
         <div class="section fade-in">
             <h2 class="section-title">Важно для гостей</h2>
             <p class="section-subtitle">вайб нашего дня</p>
@@ -416,7 +407,6 @@
             <div class="divider"></div>
         </div>
 
-        <!-- БЛОК 7 — Подарки -->
         <div class="section fade-in">
             <h2 class="section-title">Подарки</h2>
             <div class="glass-box">
@@ -428,7 +418,6 @@
             <div class="divider"></div>
         </div>
 
-        <!-- БЛОК 8 — Финал -->
         <div class="final fade-in">
             <p>С любовью и нетерпением ждём вас 🤍</p>
             <p style="font-size:16px;margin-top:8px;opacity:0.7;">Данил & Юлия</p>
