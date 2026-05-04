@@ -9,6 +9,7 @@
     <link rel="preload" as="image" href="photo3.jpg">
     <link rel="preload" as="image" href="photo4.jpg">
     <link rel="preload" as="image" href="zadnifon1.jpg">
+    <link rel="preload" as="image" href="serdecko.jpg">
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -67,12 +68,13 @@
         }
         .initial-line.line-amp {
             text-align: center;
-            font-size: 60px;   /* уменьшенный амперсанд */
-            margin: -25px 0;
+            font-size: 60px;
+            margin: -15px 0;   /* увеличен отступ, чтобы не слипалось с Ю */
         }
         .initial-line.line-yu {
             text-align: right;
             transform: translateX(45px);
+            margin-top: 0;
         }
         .handwritten-signature {
             font-family: 'Caveat', cursive;
@@ -81,17 +83,15 @@
             margin-top: 5px;
             line-height: 1.4;
         }
-        .handwritten-signature .heart-icon {
-            font-style: normal;
-            margin: 0 4px;
-            font-size: 14px;  /* чуть крупнее для читаемости обводки */
+        /* Картинка-сердечко вместо текстового */
+        .heart-img {
+            height: 14px;          /* тот же размер, что был */
+            width: auto;
             vertical-align: middle;
-            /* прозрачная заливка, чёрная окантовка */
-            color: transparent;
-            -webkit-text-stroke: 1.5px #4a3f3f;
-            text-stroke: 1.5px #4a3f3f;
+            margin: 0 4px;
             position: relative;
             top: -1px;
+            display: inline-block;
         }
         .hero-subtitle {
             font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 14px;
@@ -252,10 +252,11 @@
         /* Мобильная версия */
         @media (max-width: 768px) {
             .initial-line { font-size: 110px; }
-            .initial-line.line-amp { font-size: 50px; margin: -20px 0; }
+            .initial-line.line-amp { font-size: 50px; margin: -10px 0; }  /* ещё чуть-чуть отодвинули */
             .initial-line.line-d { transform: translateX(-30px); }
             .initial-line.line-yu { transform: translateX(30px); }
             .handwritten-signature { font-size: 24px; }
+            .heart-img { height: 12px; }
             .date { font-size: 34px; letter-spacing: 4px; }
             .splash { padding: 20px 15px; }
             .photo-collage { width: 320px; height: 470px; }
@@ -275,10 +276,11 @@
         }
         @media (max-width: 400px) {
             .initial-line { font-size: 85px; }
-            .initial-line.line-amp { font-size: 40px; margin: -15px 0; }
+            .initial-line.line-amp { font-size: 40px; margin: -5px 0; }
             .initial-line.line-d { transform: translateX(-20px); }
             .initial-line.line-yu { transform: translateX(20px); }
             .handwritten-signature { font-size: 20px; }
+            .heart-img { height: 10px; }
             .date { font-size: 28px; letter-spacing: 3px; }
             .photo-collage { width: 270px; height: 400px; }
             .flip-card { width: 190px; height: 270px; }
@@ -299,7 +301,11 @@
             <span class="initial-line line-amp">&</span>
             <span class="initial-line line-yu">Ю</span>
         </div>
-        <p class="handwritten-signature">Данил <span class="heart-icon">♥</span> Юлия</p>
+        <p class="handwritten-signature">
+            Данил
+            <img src="serdecko.jpg" alt="♥" class="heart-img">
+            Юлия
+        </p>
         <p class="hero-subtitle">приглашение на свадьбу</p>
         <div class="date-container">
             <div class="scratch-hint">Сотри меня скорей ✨</div>
