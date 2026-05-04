@@ -185,16 +185,24 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            margin-top: 270px;
+            margin-top: 260px; /* выровнено по фото */
             color: #4a3f3f;
             font-family: 'Montserrat', sans-serif;
-            font-size: 12px;
+            font-size: 13px;
             letter-spacing: 2px;
-            opacity: 0.8;
+            opacity: 0.9;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            padding: 10px 14px;
+            border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
         .arrow-icon {
-            font-size: 28px;
+            font-size: 26px;
             animation: arrowRight 1.5s infinite;
+            display: block;
+            margin-bottom: 4px;
         }
         @keyframes arrowRight {
             0%, 100% { transform: translateX(0); }
@@ -203,10 +211,10 @@
 
         /* ФОНЫ СЕКЦИЙ */
         #photo-section {
-            background: linear-gradient(rgba(250,247,244,0.7), rgba(250,247,244,0.7)), url('zadnikinsta.jpg') center/cover no-repeat;
+            background: linear-gradient(rgba(250,247,244,0.55), rgba(250,247,244,0.55)), url('zadnikinsta.jpg') center/cover no-repeat;
             border-radius: 28px;
             margin: 30px 0;
-            padding: 20px 20px 40px;
+            padding: 25px 25px 45px;
             box-shadow: 0 8px 24px rgba(90,74,74,0.08);
         }
         #places-section {
@@ -336,10 +344,19 @@
         .fade-in { opacity: 0; transform: translateY(25px); transition: opacity 1s ease, transform 1s ease; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
 
+        /* Мобильная версия */
         @media (max-width: 768px) {
             .photo-wrapper { flex-direction: column; align-items: center; }
-            .photo-arrow-hint { margin-top: 0; flex-direction: row; gap: 8px; }
-            .arrow-icon { animation: arrowRight 1.5s infinite; }
+            .photo-arrow-hint {
+                margin-top: 10px;
+                flex-direction: row;
+                gap: 8px;
+                background: rgba(255, 255, 255, 0.8);
+                padding: 6px 14px;
+                border-radius: 20px;
+                font-size: 12px;
+            }
+            .arrow-icon { font-size: 22px; animation: arrowRight 1.5s infinite; margin-bottom: 0; }
             #photo-section {
                 background: #faf7f4;
                 border-radius: 0;
@@ -360,7 +377,7 @@
                 background-position: center;
                 background-size: cover;
                 background-repeat: no-repeat;
-                opacity: 0.3;
+                opacity: 0.35;
             }
             #places-section, #gifts-section {
                 background: #faf7f4;
@@ -383,7 +400,7 @@
                 background-position: center;
                 background-size: cover;
                 background-repeat: no-repeat;
-                opacity: 0.3;
+                opacity: 0.35;
             }
             .section {
                 background: transparent;
