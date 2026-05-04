@@ -284,14 +284,14 @@
             100% { opacity: 0.45; }
         }
 
-        /* === ОБНОВЛЁННЫЙ БЛОК С ФОТО === */
+        /* === БЛОК С ФОТО (улучшенная мобильная версия) === */
         .photo-collage {
             position: relative;
             width: 500px;
             height: 630px;
             margin: 25px auto 10px;
             perspective: 1400px;
-            overflow: hidden; /* обрезаем края при перевороте */
+            overflow: hidden;
         }
 
         .flip-card {
@@ -300,12 +300,11 @@
             height: 470px;
             cursor: pointer;
             transform-style: preserve-3d;
-            transition:
-                top 0.5s cubic-bezier(.22,.61,.36,1),  /* было 0.8s — стало 0.5s */
-                left 0.5s cubic-bezier(.22,.61,.36,1),
-                transform 0.5s cubic-bezier(.22,.61,.36,1),
-                opacity 0.3s ease;
-            will-change: top, left, transform; /* помогает плавности на мобильных */
+            /* transition ТОЛЬКО для позиции (top, left, opacity), но НЕ transform */
+            transition: top 0.5s cubic-bezier(.22,.61,.36,1),
+                        left 0.5s cubic-bezier(.22,.61,.36,1),
+                        opacity 0.3s ease;
+            will-change: top, left;
         }
 
         .flip-card.front {
@@ -326,7 +325,7 @@
             position: relative;
             width: 100%;
             height: 100%;
-            transition: transform 0.95s cubic-bezier(.22,.61,.36,1);
+            transition: transform 0.8s cubic-bezier(.22,.61,.36,1);
             transform-style: preserve-3d;
         }
 
@@ -539,7 +538,7 @@
             transform: translateY(0);
         }
 
-        /* === МОБИЛЬНАЯ ВЕРСИЯ (обновлена) === */
+        /* Мобильная версия */
         @media (max-width: 768px) {
             .names {
                 font-size: 52px;
@@ -563,28 +562,25 @@
                 padding: 50px 15px 40px;
             }
 
-            /* Блок с фото */
             .photo-collage {
-                width: 300px;   /* чуть уменьшил для надёжности */
-                height: 420px;
+                width: 320px;
+                height: 470px;
             }
             .flip-card {
-                width: 210px;
-                height: 300px;
-                transition: top 0.4s ease, left 0.4s ease, transform 0.4s ease; /* ещё быстрее на мобильном */
+                width: 230px;
+                height: 320px;
+                transition: top 0.4s ease, left 0.4s ease;
             }
             .flip-card.front {
-                top: 75px;
-                left: 65px;
-                transform: rotate(0deg) scale(1.04);
+                top: 88px;
+                left: 75px;
             }
             .flip-card.back {
                 top: 5px;
                 left: 5px;
-                transform: rotate(-7deg) scale(0.92);
             }
             .flip-card img {
-                border-radius: 18px; /* немного меньше скругление */
+                border-radius: 18px;
             }
 
             .place-card {
@@ -643,16 +639,16 @@
                 letter-spacing: 3px;
             }
             .photo-collage {
-                width: 260px;
-                height: 370px;
+                width: 270px;
+                height: 400px;
             }
             .flip-card {
-                width: 180px;
-                height: 250px;
+                width: 190px;
+                height: 270px;
             }
             .flip-card.front {
-                top: 65px;
-                left: 55px;
+                top: 72px;
+                left: 60px;
             }
             .flip-card.back {
                 top: 5px;
@@ -728,7 +724,7 @@
             <div class="divider"></div>
         </div>
 
-        <!-- Фото (с обновлёнными размерами/переходами) -->
+        <!-- Фото -->
         <div class="section fade-in">
             <div class="photo-hint">Нажми на фото, чтобы перевернуть ✨</div>
             <div class="photo-collage">
@@ -748,7 +744,7 @@
             <div class="divider"></div>
         </div>
 
-        <!-- Остальные секции без изменений -->
+        <!-- Остальные секции (без изменений) -->
         <!-- ... -->
     </div>
 
@@ -792,39 +788,51 @@
             canvas.addEventListener("touchstart", e => { e.preventDefault(); const rect = canvas.getBoundingClientRect(); scratch(e.touches[0].clientX - rect.left, e.touches[0].clientY - rect.top); });
             canvas.addEventListener("touchmove", e => { e.preventDefault(); const rect = canvas.getBoundingClientRect(); scratch(e.touches[0].clientX - rect.left, e.touches[0].clientY - rect.top); });
 
-            // Карточки с улучшенной блокировкой
+            // === НОВАЯ ЛОГИКА КАРТОЧЕК (без переворота при смене) ===
             const card1 = document.getElementById("card1");
             const card2 = document.getElementById("card2");
-            let activeCard = card1;
+            let activeCard = card1;   // card1 на переднем плане
             let locked = false;
 
             function bringToFront(card) {
                 if (locked || card === activeCard) return;
-                locked = true; // блокируем до окончания перемещения
+                locked = true;
                 const oldFront = activeCard;
                 oldFront.classList.remove("front");
                 oldFront.classList.add("back");
                 card.classList.remove("back");
                 card.classList.add("front");
                 activeCard = card;
-                setTimeout(() => { locked = false; }, 600); // чуть больше длительности transition
+                // Разблокируем после завершения перемещения (длительность transition 0.5s)
+                setTimeout(() => { locked = false; }, 600);
             }
+
             function flipCard(card) {
                 if (locked || card !== activeCard) return;
                 locked = true;
                 card.classList.toggle("flipped");
-                setTimeout(() => { locked = false; }, 950);
+                setTimeout(() => { locked = false; }, 800); // время переворота
             }
 
             card1.addEventListener("click", () => {
-                if (card1 === activeCard) { flipCard(card1); }
-                else { bringToFront(card1); }
-            });
-            card2.addEventListener("click", () => {
-                if (card2 === activeCard) { flipCard(card2); }
-                else { bringToFront(card2); }
+                if (card1 === activeCard) {
+                    // Карточка уже на переднем плане — переворачиваем
+                    flipCard(card1);
+                } else {
+                    // Карточка на заднем плане — выводим вперёд (без переворота)
+                    bringToFront(card1);
+                }
             });
 
+            card2.addEventListener("click", () => {
+                if (card2 === activeCard) {
+                    flipCard(card2);
+                } else {
+                    bringToFront(card2);
+                }
+            });
+
+            // Плавное появление
             const fadeEls = document.querySelectorAll('.fade-in');
             const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); }); }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
             fadeEls.forEach(el => observer.observe(el));
