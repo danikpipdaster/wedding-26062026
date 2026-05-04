@@ -19,6 +19,10 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth; /* плавный скролл */
+        }
+
         body {
             background: #faf7f4;
             font-family: 'Cormorant Garamond', serif;
@@ -75,9 +79,17 @@
             padding: 0 20px;
         }
 
-        .hero {
-            padding: 80px 20px 60px;
+        /* ===== ЗАСТАВКА (полноэкранная) ===== */
+        .splash {
             position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 40px 20px;
+            text-align: center;
         }
 
         .hero-top-decor {
@@ -90,12 +102,10 @@
             height: auto;
         }
 
-        /* === ИМЕНА ПО ЦЕНТРУ === */
         .names-wrapper {
-            position: relative;  /* для позиционирования колец */
+            position: relative;
             display: block;
             margin: 0 auto;
-            text-align: center;
         }
 
         .names {
@@ -108,11 +118,11 @@
             line-height: 1.2;
             color: #4a3f3f;
             text-shadow: 0 1px 2px rgba(0,0,0,0.05);
-            white-space: nowrap; /* чтобы никогда не переносилось */
+            white-space: nowrap;
         }
 
         .names .and {
-            font-size: 50px;       /* чуть поменьше, чем имена */
+            font-size: 50px;
             margin: 0 0.1em;
             opacity: 0.8;
             font-style: italic;
@@ -122,7 +132,7 @@
         .rings {
             position: absolute;
             top: -35px;
-            right: -40px;         /* немного ближе к тексту */
+            right: -40px;
             animation: ringFloat 3s ease-in-out infinite;
             filter: drop-shadow(0 4px 8px rgba(180, 150, 130, 0.25));
             pointer-events: none;
@@ -133,8 +143,6 @@
             height: 60px;
             overflow: visible;
         }
-
-        /* ====================== */
 
         @keyframes ringFloat {
             0% { transform: translateY(0); }
@@ -232,6 +240,27 @@
             font-weight: 400;
         }
 
+        /* Стрелка вниз */
+        .scroll-arrow {
+            display: inline-block;
+            margin-top: 40px;
+            font-size: 32px;
+            color: #b8977e;
+            text-decoration: none;
+            animation: arrowBounce 2s infinite;
+            cursor: pointer;
+            transition: opacity 0.3s;
+            opacity: 0.7;
+        }
+        .scroll-arrow:hover {
+            opacity: 1;
+        }
+
+        @keyframes arrowBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
+        }
+
         .divider {
             width: 60px;
             height: 2px;
@@ -243,6 +272,7 @@
             background: linear-gradient(to right, transparent, #c9a87c, transparent);
         }
 
+        /* ===== СЕКЦИЯ ПРИГЛАШЕНИЯ ===== */
         .section {
             padding: 70px 20px;
             position: relative;
@@ -295,7 +325,7 @@
             100% { opacity: 0.45; }
         }
 
-        /* Фото-коллаж (медленная смена) */
+        /* Фото-коллаж */
         .photo-collage {
             position: relative;
             width: 500px;
@@ -383,7 +413,6 @@
             filter: brightness(0.96);
         }
 
-        /* Места, программа, дресс-код и т.д. (все стили без изменений) */
         .places {
             display: flex;
             justify-content: center;
@@ -550,22 +579,13 @@
 
         /* Мобильная версия */
         @media (max-width: 768px) {
-            .names {
-                font-size: 52px;
-            }
-            .names .and {
-                font-size: 36px;
-            }
-            .rings {
-                top: -25px;
-                right: -30px;
-            }
-            .rings svg {
-                width: 48px;
-                height: 48px;
-            }
+            .names { font-size: 52px; }
+            .names .and { font-size: 36px; }
+            .rings { top: -25px; right: -30px; }
+            .rings svg { width: 48px; height: 48px; }
             .date { font-size: 34px; letter-spacing: 4px; }
-            .hero { padding: 50px 15px 40px; }
+
+            .splash { padding: 20px 15px; }
 
             .photo-collage { width: 320px; height: 470px; }
             .flip-card { width: 230px; height: 320px; transition: top 1.2s ease, left 1.2s ease, opacity 0.7s; }
@@ -586,16 +606,9 @@
         }
 
         @media (max-width: 400px) {
-            .names {
-                font-size: 40px;
-            }
-            .names .and {
-                font-size: 28px;
-            }
-            .rings {
-                top: -20px;
-                right: -25px;
-            }
+            .names { font-size: 40px; }
+            .names .and { font-size: 28px; }
+            .rings { top: -20px; right: -25px; }
             .rings svg { width: 40px; height: 40px; }
             .date { font-size: 28px; letter-spacing: 3px; }
             .photo-collage { width: 270px; height: 400px; }
@@ -609,62 +622,65 @@
     <div class="decor-branch-left">❦</div>
     <div class="decor-branch-right">❦</div>
     <div class="coin" id="coin"></div>
-    <div class="container">
 
-        <!-- Hero -->
-        <div class="hero fade-in">
-            <div class="hero-top-decor">
-                <svg viewBox="0 0 80 40" fill="none">
-                    <path d="M10 25 Q25 5 40 25 Q55 5 70 25" stroke="#c9a87c" stroke-width="1.2" fill="none" opacity="0.6"/>
-                    <circle cx="40" cy="25" r="2" fill="#c9a87c" opacity="0.5"/>
-                </svg>
-            </div>
-
-            <!-- 🆕 Имена в одну строку по центру -->
-            <div class="names-wrapper">
-                <h1 class="names">
-                    Данил <span class="and">&</span> Юлия
-                    <span class="rings">
-                        <svg viewBox="0 0 110 110">
-                            <defs>
-                                <linearGradient id="ringGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" stop-color="#f2d3ce"/>
-                                    <stop offset="45%" stop-color="#d8a7a0"/>
-                                    <stop offset="100%" stop-color="#b9827a"/>
-                                </linearGradient>
-                                <linearGradient id="diamondGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" stop-color="#ffffff"/>
-                                    <stop offset="50%" stop-color="#f8eeee"/>
-                                    <stop offset="100%" stop-color="#d8a7a0"/>
-                                </linearGradient>
-                            </defs>
-                            <circle cx="43" cy="62" r="24" stroke="url(#ringGradient)" stroke-width="5" fill="none"/>
-                            <circle cx="70" cy="62" r="24" stroke="url(#ringGradient)" stroke-width="5" fill="none"/>
-                            <g class="diamond">
-                                <polygon points="70,20 82,34 70,48 58,34" fill="url(#diamondGradient)" stroke="#d8a7a0" stroke-width="2"/>
-                                <line x1="58" y1="34" x2="82" y2="34" stroke="#d8a7a0" stroke-width="1.5"/>
-                                <line x1="70" y1="20" x2="70" y2="48" stroke="#d8a7a0" stroke-width="1.2"/>
-                                <line x1="64" y1="27" x2="70" y2="48" stroke="#d8a7a0" stroke-width="1"/>
-                                <line x1="76" y1="27" x2="70" y2="48" stroke="#d8a7a0" stroke-width="1"/>
-                            </g>
-                        </svg>
-                    </span>
-                </h1>
-            </div>
-
-            <p class="hero-subtitle">приглашение на свадьбу</p>
-
-            <div class="date-container">
-                <div class="scratch-hint">Сотри монеткой дату ✨</div>
-                <div class="scratch-area">
-                    <div class="date">26.06.2026</div>
-                    <canvas id="scratch"></canvas>
-                </div>
-            </div>
-            <div class="timer" id="timer"></div>
-            <div class="divider gold" style="margin-top: 30px;"></div>
+    <!-- ===== ЗАСТАВКА ===== -->
+    <div class="splash" id="splash">
+        <div class="hero-top-decor">
+            <svg viewBox="0 0 80 40" fill="none">
+                <path d="M10 25 Q25 5 40 25 Q55 5 70 25" stroke="#c9a87c" stroke-width="1.2" fill="none" opacity="0.6"/>
+                <circle cx="40" cy="25" r="2" fill="#c9a87c" opacity="0.5"/>
+            </svg>
         </div>
 
+        <div class="names-wrapper">
+            <h1 class="names">
+                Данил <span class="and">&</span> Юлия
+                <span class="rings">
+                    <svg viewBox="0 0 110 110">
+                        <defs>
+                            <linearGradient id="ringGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#f2d3ce"/>
+                                <stop offset="45%" stop-color="#d8a7a0"/>
+                                <stop offset="100%" stop-color="#b9827a"/>
+                            </linearGradient>
+                            <linearGradient id="diamondGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#ffffff"/>
+                                <stop offset="50%" stop-color="#f8eeee"/>
+                                <stop offset="100%" stop-color="#d8a7a0"/>
+                            </linearGradient>
+                        </defs>
+                        <circle cx="43" cy="62" r="24" stroke="url(#ringGradient)" stroke-width="5" fill="none"/>
+                        <circle cx="70" cy="62" r="24" stroke="url(#ringGradient)" stroke-width="5" fill="none"/>
+                        <g class="diamond">
+                            <polygon points="70,20 82,34 70,48 58,34" fill="url(#diamondGradient)" stroke="#d8a7a0" stroke-width="2"/>
+                            <line x1="58" y1="34" x2="82" y2="34" stroke="#d8a7a0" stroke-width="1.5"/>
+                            <line x1="70" y1="20" x2="70" y2="48" stroke="#d8a7a0" stroke-width="1.2"/>
+                            <line x1="64" y1="27" x2="70" y2="48" stroke="#d8a7a0" stroke-width="1"/>
+                            <line x1="76" y1="27" x2="70" y2="48" stroke="#d8a7a0" stroke-width="1"/>
+                        </g>
+                    </svg>
+                </span>
+            </h1>
+        </div>
+
+        <p class="hero-subtitle">приглашение на свадьбу</p>
+
+        <div class="date-container">
+            <div class="scratch-hint">Сотри монеткой дату ✨</div>
+            <div class="scratch-area">
+                <div class="date">26.06.2026</div>
+                <canvas id="scratch"></canvas>
+            </div>
+        </div>
+
+        <div class="timer" id="timer"></div>
+
+        <!-- Стрелка вниз к приглашению -->
+        <a href="#invitation" class="scroll-arrow" aria-label="К приглашению">↓</a>
+    </div>
+
+    <!-- ===== ОСНОВНОЕ ПРИГЛАШЕНИЕ ===== -->
+    <div id="invitation" class="container">
         <!-- Приветствие -->
         <div class="section fade-in">
             <h2 class="section-title">Дорогие гости!</h2>
@@ -783,11 +799,11 @@
             <p style="font-size: 16px; margin-top: 8px; opacity: 0.7;">Данил & Юлия</p>
             <div class="heart">💛</div>
         </div>
-
     </div>
 
     <script>
         window.onload = function() {
+            // Таймер
             const weddingDate = new Date("June 26, 2026 00:00:00").getTime();
             function updateTimer() {
                 const now = new Date().getTime();
@@ -804,6 +820,7 @@
             updateTimer();
             setInterval(updateTimer, 1000);
 
+            // Скретч-слой
             const canvas = document.getElementById("scratch");
             const ctx = canvas.getContext("2d");
             const date = document.querySelector(".date");
@@ -826,6 +843,7 @@
             canvas.addEventListener("touchstart", e => { e.preventDefault(); const rect = canvas.getBoundingClientRect(); scratch(e.touches[0].clientX - rect.left, e.touches[0].clientY - rect.top); });
             canvas.addEventListener("touchmove", e => { e.preventDefault(); const rect = canvas.getBoundingClientRect(); scratch(e.touches[0].clientX - rect.left, e.touches[0].clientY - rect.top); });
 
+            // Карточки
             const card1 = document.getElementById("card1");
             const card2 = document.getElementById("card2");
             let activeCard = card1;
@@ -865,10 +883,10 @@
                 }
             });
 
+            // Плавное появление секций
             const fadeEls = document.querySelectorAll('.fade-in');
             const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); }); }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
             fadeEls.forEach(el => observer.observe(el));
-            setTimeout(() => { document.querySelector('.hero.fade-in')?.classList.add('visible'); }, 100);
         };
     </script>
 </body>
