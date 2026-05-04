@@ -46,9 +46,8 @@
             position: relative; z-index: 1;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
             min-height: 100vh; padding: 40px 20px; text-align: center;
-            /* фон с изображением + молочное наложение для читаемости */
             background: linear-gradient(rgba(250,247,244,0.75), rgba(250,247,244,0.75)), url('zadnyfon1.jpg') center/cover no-repeat;
-            background-color: #faf7f4; /* fallback */
+            background-color: #faf7f4;
         }
         .initials {
             font-family: 'Cormorant Garamond', serif;
@@ -57,9 +56,29 @@
             color: #4a3f3f;
             text-shadow: 0 6px 18px rgba(0,0,0,0.1);
             line-height: 1;
-            letter-spacing: 15px;
             margin-bottom: 0.2em;
             white-space: nowrap;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .initial-left {
+            display: inline-block;
+            transform: translateX(12px); /* Д чуть правее */
+        }
+        .initial-amp {
+            display: inline-block;
+            margin: 0 8px;
+            font-size: 80px; /* & немного меньше букв */
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            color: #4a3f3f;
+            text-shadow: 0 6px 18px rgba(0,0,0,0.1);
+            line-height: 1;
+        }
+        .initial-right {
+            display: inline-block;
+            transform: translateX(-12px); /* Ю чуть левее */
         }
         .handwritten-signature {
             font-family: 'Caveat', cursive;
@@ -71,9 +90,11 @@
         .handwritten-signature .heart-icon {
             color: #c9a87c;
             font-style: normal;
-            margin: 0 6px;
-            font-size: 26px;
+            margin: 0 4px;
+            font-size: 10px;  /* уменьшено в 2.5 раза (было 26px) */
             vertical-align: middle;
+            position: relative;
+            top: -1px;
         }
         .hero-top-decor { display: inline-block; margin-bottom: 20px; opacity: 0.5; }
         .hero-top-decor svg { width: 60px; height: auto; }
@@ -235,7 +256,10 @@
 
         /* Мобильная версия */
         @media (max-width: 768px) {
-            .initials { font-size: 80px; letter-spacing: 10px; }
+            .initials { font-size: 80px; }
+            .initial-amp { font-size: 60px; }
+            .initial-left { transform: translateX(8px); }
+            .initial-right { transform: translateX(-8px); }
             .handwritten-signature { font-size: 24px; }
             .date { font-size: 34px; letter-spacing: 4px; }
             .splash { padding: 20px 15px; }
@@ -255,7 +279,10 @@
             .dresscode-circle { width: 44px; height: 44px; }
         }
         @media (max-width: 400px) {
-            .initials { font-size: 60px; letter-spacing: 8px; }
+            .initials { font-size: 60px; }
+            .initial-amp { font-size: 45px; }
+            .initial-left { transform: translateX(6px); }
+            .initial-right { transform: translateX(-6px); }
             .handwritten-signature { font-size: 20px; }
             .date { font-size: 28px; letter-spacing: 3px; }
             .photo-collage { width: 270px; height: 400px; }
@@ -272,9 +299,13 @@
 
     <!-- ══════ БЛОК 1 — ЗАСТАВКА ══════ -->
     <div class="splash" id="splash">
-        <!-- Большие инициалы -->
-        <div class="initials">Д &nbsp; Ю</div>
-        <!-- Рукописная подпись -->
+        <!-- Несимметричные инициалы -->
+        <div class="initials">
+            <span class="initial-left">Д</span>
+            <span class="initial-amp">&</span>
+            <span class="initial-right">Ю</span>
+        </div>
+        <!-- Рукописная подпись с мелким сердечком -->
         <p class="handwritten-signature">Данил <span class="heart-icon">♥</span> Юлия</p>
         <!-- Подзаголовок -->
         <p class="hero-subtitle">приглашение на свадьбу</p>
@@ -406,7 +437,6 @@
     </div>
 
     <script>
-        // Скрипты без изменений
         window.onload = function () {
             const weddingDate = new Date("June 26, 2026 00:00:00").getTime();
             function updateTimer() {
