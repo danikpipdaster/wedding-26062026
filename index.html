@@ -1,3 +1,8 @@
+Вот полный код с новым фоном для **Блока 2 и всех последующих** (начиная с гостей и до финала). Фоном служит твоё фото `zadnifon2.jpg`, а поверх него — лёгкое молочное наложение, чтобы текст оставался читаемым.
+
+Обнови `index.html` в репозитории этим содержимым.
+
+```html
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -9,6 +14,7 @@
     <link rel="preload" as="image" href="photo3.jpg">
     <link rel="preload" as="image" href="photo4.jpg">
     <link rel="preload" as="image" href="zadnifon1.jpg">
+    <link rel="preload" as="image" href="zadnifon2.jpg">
     <link rel="preload" as="image" href="serdecko.jpg">
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -110,7 +116,17 @@
         }
         .divider.gold { background: linear-gradient(to right, transparent, #c9a87c, transparent); }
 
-        /* БЛОК 2 — ГОСТИ + ФОТО */
+        /* БЛОК 2 — ГОСТИ + ФОТО + ВСЁ ДАЛЕЕ (НОВЫЙ ФОН) */
+        #invitation {
+            position: relative;
+            z-index: 1;
+            background: linear-gradient(rgba(250,247,244,0.75), rgba(250,247,244,0.75)), url('zadnifon2.jpg') center/cover no-repeat;
+            background-color: #faf7f4;
+            border-radius: 24px;
+            padding-top: 40px;
+            padding-bottom: 40px;
+            margin-top: 0;
+        }
         .section { padding: 70px 20px; position: relative; }
         .section-title {
             font-family: 'Cormorant Garamond', serif; font-size: 38px; font-weight: 400;
@@ -180,7 +196,7 @@
 
         /* БЛОК 4 — ДЕТЕКТИВНАЯ ПРОБКОВАЯ ДОСКА */
         .cork-board {
-            background: #b48b5a;  /* цвет пробки */
+            background: #b48b5a;
             background-image: radial-gradient(circle, #a07840 1px, transparent 1px);
             background-size: 12px 12px;
             border-radius: 28px;
@@ -195,7 +211,7 @@
         .timeline {
             position: relative;
             padding-left: 40px;
-            border-left: 3px dashed #c44b4b; /* красная нить */
+            border-left: 3px dashed #c44b4b;
             margin: 0 10px;
         }
         .timeline::before {
@@ -254,7 +270,6 @@
             line-height: 1.5;
         }
 
-        /* остальные блоки без изменений */
         .glass-box {
             position: relative; max-width: 580px; margin: 25px auto 0; padding: 36px 40px;
             background: rgba(255,255,255,0.35); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
@@ -290,6 +305,7 @@
             .heart-img { height: 12px; }
             .date { font-size: 34px; letter-spacing: 4px; }
             .splash { padding: 20px 15px; }
+            #invitation { border-radius: 16px; }
             .photo-collage { width: 320px; height: 470px; }
             .flip-card { width: 230px; height: 320px; transition: transform 0.9s ease, opacity 0.5s; }
             .flip-card.front { transform: translate(75px, 88px) rotate(0deg) scale(1.04); }
@@ -344,146 +360,147 @@
         <a href="#invitation" class="scroll-arrow" aria-label="К приглашению">↓</a>
     </div>
 
-    <!-- БЛОКИ 2–8 -->
-    <div id="invitation" class="container">
-        <!-- БЛОК 2 — ГОСТИ + ФОТО -->
-        <div class="section fade-in">
-            <h2 class="section-title" id="guest-greeting">Дорогие гости!</h2>
-            <p class="welcome-text" id="guest-message">
-                С огромной радостью и трепетом в сердце<br>
-                мы приглашаем вас разделить с нами<br>
-                <strong>самый важный день нашей жизни</strong> 🤍
-            </p>
-            <div class="divider"></div>
-        </div>
-        <div class="section fade-in">
-            <div class="photo-hint">Нажми на фото, чтобы перевернуть ✨</div>
-            <div class="photo-collage">
-                <div class="flip-card front" id="card1">
-                    <div class="flip-inner">
-                        <div class="flip-front"><img src="photo1.jpg" alt="Фото 1"></div>
-                        <div class="flip-back"><img src="photo2.jpg" alt="Фото 2"></div>
+    <!-- БЛОКИ 2–8 с новым фоном -->
+    <div id="invitation">
+        <div class="container">
+            <!-- БЛОК 2 — ГОСТИ + ФОТО -->
+            <div class="section fade-in">
+                <h2 class="section-title" id="guest-greeting">Дорогие гости!</h2>
+                <p class="welcome-text" id="guest-message">
+                    С огромной радостью и трепетом в сердце<br>
+                    мы приглашаем вас разделить с нами<br>
+                    <strong>самый важный день нашей жизни</strong> 🤍
+                </p>
+                <div class="divider"></div>
+            </div>
+            <div class="section fade-in">
+                <div class="photo-hint">Нажми на фото, чтобы перевернуть ✨</div>
+                <div class="photo-collage">
+                    <div class="flip-card front" id="card1">
+                        <div class="flip-inner">
+                            <div class="flip-front"><img src="photo1.jpg" alt="Фото 1"></div>
+                            <div class="flip-back"><img src="photo2.jpg" alt="Фото 2"></div>
+                        </div>
+                    </div>
+                    <div class="flip-card back" id="card2">
+                        <div class="flip-inner">
+                            <div class="flip-front"><img src="photo3.jpg" alt="Фото 3"></div>
+                            <div class="flip-back"><img src="photo4.jpg" alt="Фото 4"></div>
+                        </div>
                     </div>
                 </div>
-                <div class="flip-card back" id="card2">
-                    <div class="flip-inner">
-                        <div class="flip-front"><img src="photo3.jpg" alt="Фото 3"></div>
-                        <div class="flip-back"><img src="photo4.jpg" alt="Фото 4"></div>
+                <div class="divider"></div>
+            </div>
+
+            <!-- БЛОК 3 — Места -->
+            <div class="section fade-in" id="places-section">
+                <h2 class="section-title">Места проведения</h2>
+                <p class="section-subtitle">где это случится</p>
+                <div class="places" id="places-container">
+                    <div class="place-card" id="place-zags">
+                        <img src="zags.jpg" alt="ЗАГС">
+                        <div class="place-info">
+                            <strong>Церемония</strong> г. Надым<br>Парковый пр., 4<br>
+                            <a class="map-button" href="https://maps.google.com/?q=Надым+Парковый+4" target="_blank">Открыть карту</a>
+                        </div>
+                    </div>
+                    <div class="place-card" id="place-nedoma">
+                        <img src="nedoma.jpg" alt="НеДома">
+                        <div class="place-info">
+                            <strong>НеДома</strong> Семейный лофт<br>г. Надым<br>13 проезд, строение 11<br>
+                            <a class="map-button" href="https://maps.google.com/?q=НеДома+Семейный+лофт+13+проезд+строение+11+Надым" target="_blank">Открыть карту</a>
+                        </div>
                     </div>
                 </div>
+                <div class="divider"></div>
             </div>
-            <div class="divider"></div>
-        </div>
 
-        <!-- БЛОК 3 — Места -->
-        <div class="section fade-in" id="places-section">
-            <h2 class="section-title">Места проведения</h2>
-            <p class="section-subtitle">где это случится</p>
-            <div class="places" id="places-container">
-                <div class="place-card" id="place-zags">
-                    <img src="zags.jpg" alt="ЗАГС">
-                    <div class="place-info">
-                        <strong>Церемония</strong> г. Надым<br>Парковый пр., 4<br>
-                        <a class="map-button" href="https://maps.google.com/?q=Надым+Парковый+4" target="_blank">Открыть карту</a>
+            <!-- БЛОК 4 — ПРОГРАММА (ДЕТЕКТИВНАЯ ДОСКА) -->
+            <div class="section fade-in" id="schedule-section">
+                <h2 class="section-title">Программа дня</h2>
+                <p class="section-subtitle">26 июня 2026</p>
+
+                <div class="cork-board">
+                    <div class="timeline" id="timeline">
+                        <div class="timeline-item" id="item-meet">
+                            <div class="item-icon">🌸</div>
+                            <div class="item-title">Встреча гостей</div>
+                            <div class="item-desc">Объятия, бокалы и первые кадры</div>
+                        </div>
+                        <div class="timeline-item" id="item-ceremony">
+                            <div class="item-icon">💍</div>
+                            <div class="item-title">Церемония</div>
+                            <div class="item-desc">Мгновение, когда мир становится чуть добрее</div>
+                        </div>
+                        <div class="timeline-item" id="item-feast">
+                            <div class="item-icon">🍽️</div>
+                            <div class="item-title">Банкет</div>
+                            <div class="item-desc">Вкус, смех и первые тосты</div>
+                        </div>
+                        <div class="timeline-item" id="item-dance">
+                            <div class="item-icon">🕺</div>
+                            <div class="item-title">Танцы</div>
+                            <div class="item-desc">Ночь, которую невозможно забыть</div>
+                        </div>
                     </div>
                 </div>
-                <div class="place-card" id="place-nedoma">
-                    <img src="nedoma.jpg" alt="НеДома">
-                    <div class="place-info">
-                        <strong>НеДома</strong> Семейный лофт<br>г. Надым<br>13 проезд, строение 11<br>
-                        <a class="map-button" href="https://maps.google.com/?q=НеДома+Семейный+лофт+13+проезд+строение+11+Надым" target="_blank">Открыть карту</a>
+                <div class="divider"></div>
+            </div>
+
+            <!-- БЛОК 5 — Дресс-код -->
+            <div class="section fade-in">
+                <h2 class="section-title">Дресс-код</h2>
+                <p class="section-subtitle">пастельная нежность</p>
+                <div class="glass-box">
+                    <p>Мы будем очень рады, если вы поддержите<br>цветовую гамму нашего праздника 🤍<br><br>
+                    <span style="font-size:16px;opacity:0.7;">Оттенки пастельных тонов —<br>то, что делает этот день ещё нежнее.</span></p>
+                    <div class="dresscode-palette">
+                        <div class="dresscode-circle" style="background:#e8cec4;"></div>
+                        <div class="dresscode-circle" style="background:#f0d5c1;"></div>
+                        <div class="dresscode-circle" style="background:#c8d5c0;"></div>
+                        <div class="dresscode-circle" style="background:#f5eddf;"></div>
+                        <div class="dresscode-circle" style="background:#dacfe0;"></div>
+                        <div class="dresscode-circle" style="background:#cddfe8;"></div>
                     </div>
                 </div>
+                <div class="divider"></div>
             </div>
-            <div class="divider"></div>
-        </div>
 
-        <!-- БЛОК 4 — ПРОГРАММА (ДЕТЕКТИВНАЯ ДОСКА) -->
-        <div class="section fade-in" id="schedule-section">
-            <h2 class="section-title">Программа дня</h2>
-            <p class="section-subtitle">26 июня 2026</p>
-
-            <div class="cork-board">
-                <div class="timeline" id="timeline">
-                    <div class="timeline-item" id="item-meet">
-                        <div class="item-icon">🌸</div>
-                        <div class="item-title">Встреча гостей</div>
-                        <div class="item-desc">Объятия, бокалы и первые кадры</div>
-                    </div>
-                    <div class="timeline-item" id="item-ceremony">
-                        <div class="item-icon">💍</div>
-                        <div class="item-title">Церемония</div>
-                        <div class="item-desc">Мгновение, когда мир становится чуть добрее</div>
-                    </div>
-                    <div class="timeline-item" id="item-feast">
-                        <div class="item-icon">🍽️</div>
-                        <div class="item-title">Банкет</div>
-                        <div class="item-desc">Вкус, смех и первые тосты</div>
-                    </div>
-                    <div class="timeline-item" id="item-dance">
-                        <div class="item-icon">🕺</div>
-                        <div class="item-title">Танцы</div>
-                        <div class="item-desc">Ночь, которую невозможно забыть</div>
-                    </div>
+            <!-- БЛОК 6 — Важно -->
+            <div class="section fade-in">
+                <h2 class="section-title">Важно для гостей</h2>
+                <p class="section-subtitle">вайб нашего дня</p>
+                <div class="glass-box">
+                    <p>📸 Телефоны не прячем —<br>снимаем, ловим моменты и кайфуем ✨</p>
+                    <p style="margin-top:14px;">🎤 Если вдруг появится идея для тоста<br>или перформанса — обязательно воплощайте её в жизнь 😄</p>
+                    <p style="margin-top:14px;">Мы только за любую движуху 💛</p>
                 </div>
+                <div class="divider"></div>
             </div>
-            <div class="divider"></div>
-        </div>
 
-        <!-- БЛОК 5 — Дресс-код -->
-        <div class="section fade-in">
-            <h2 class="section-title">Дресс-код</h2>
-            <p class="section-subtitle">пастельная нежность</p>
-            <div class="glass-box">
-                <p>Мы будем очень рады, если вы поддержите<br>цветовую гамму нашего праздника 🤍<br><br>
-                <span style="font-size:16px;opacity:0.7;">Оттенки пастельных тонов —<br>то, что делает этот день ещё нежнее.</span></p>
-                <div class="dresscode-palette">
-                    <div class="dresscode-circle" style="background:#e8cec4;"></div>
-                    <div class="dresscode-circle" style="background:#f0d5c1;"></div>
-                    <div class="dresscode-circle" style="background:#c8d5c0;"></div>
-                    <div class="dresscode-circle" style="background:#f5eddf;"></div>
-                    <div class="dresscode-circle" style="background:#dacfe0;"></div>
-                    <div class="dresscode-circle" style="background:#cddfe8;"></div>
+            <!-- БЛОК 7 — Подарки -->
+            <div class="section fade-in">
+                <h2 class="section-title">Подарки</h2>
+                <div class="glass-box">
+                    <p>Честно — нам ничего не нужно 😄</p>
+                    <p style="margin-top:10px;">Просто приходите и разделите этот день с нами 💛</p>
+                    <p style="margin-top:10px;">Но если вдруг очень захочется что-то подарить —<br>пусть это будет удобно положить в конверт 😉</p>
+                    <div style="margin-top:18px;font-size:14px;opacity:0.6;font-style:italic;color:#9a8a7a;">*обещаем потратить с умом</div>
                 </div>
+                <div class="divider"></div>
             </div>
-            <div class="divider"></div>
-        </div>
 
-        <!-- БЛОК 6 — Важно -->
-        <div class="section fade-in">
-            <h2 class="section-title">Важно для гостей</h2>
-            <p class="section-subtitle">вайб нашего дня</p>
-            <div class="glass-box">
-                <p>📸 Телефоны не прячем —<br>снимаем, ловим моменты и кайфуем ✨</p>
-                <p style="margin-top:14px;">🎤 Если вдруг появится идея для тоста<br>или перформанса — обязательно воплощайте её в жизнь 😄</p>
-                <p style="margin-top:14px;">Мы только за любую движуху 💛</p>
+            <!-- БЛОК 8 — Финал -->
+            <div class="final fade-in">
+                <p>С любовью и нетерпением ждём вас 🤍</p>
+                <p style="font-size:16px;margin-top:8px;opacity:0.7;">Данил & Юлия</p>
+                <div class="heart">💛</div>
             </div>
-            <div class="divider"></div>
-        </div>
-
-        <!-- БЛОК 7 — Подарки -->
-        <div class="section fade-in">
-            <h2 class="section-title">Подарки</h2>
-            <div class="glass-box">
-                <p>Честно — нам ничего не нужно 😄</p>
-                <p style="margin-top:10px;">Просто приходите и разделите этот день с нами 💛</p>
-                <p style="margin-top:10px;">Но если вдруг очень захочется что-то подарить —<br>пусть это будет удобно положить в конверт 😉</p>
-                <div style="margin-top:18px;font-size:14px;opacity:0.6;font-style:italic;color:#9a8a7a;">*обещаем потратить с умом</div>
-            </div>
-            <div class="divider"></div>
-        </div>
-
-        <!-- БЛОК 8 — Финал -->
-        <div class="final fade-in">
-            <p>С любовью и нетерпением ждём вас 🤍</p>
-            <p style="font-size:16px;margin-top:8px;opacity:0.7;">Данил & Юлия</p>
-            <div class="heart">💛</div>
         </div>
     </div>
 
     <script>
         window.onload = function () {
-            // Таймер
             const weddingDate = new Date("June 26, 2026 00:00:00").getTime();
             function updateTimer() {
                 const now = new Date().getTime();
@@ -500,7 +517,6 @@
             updateTimer();
             setInterval(updateTimer, 1000);
 
-            // Скретч-слой
             const canvas = document.getElementById("scratch");
             const ctx = canvas.getContext("2d");
             const date = document.querySelector(".date");
@@ -523,7 +539,6 @@
             canvas.addEventListener("touchstart", e => { e.preventDefault(); const rect = canvas.getBoundingClientRect(); scratch(e.touches[0].clientX - rect.left, e.touches[0].clientY - rect.top); });
             canvas.addEventListener("touchmove", e => { e.preventDefault(); const rect = canvas.getBoundingClientRect(); scratch(e.touches[0].clientX - rect.left, e.touches[0].clientY - rect.top); });
 
-            // Карточки
             const card1 = document.getElementById("card1");
             const card2 = document.getElementById("card2");
             let activeCard = card1;
@@ -554,7 +569,6 @@
                 else { bringToFront(card2); }
             });
 
-            // Плавное появление
             const fadeEls = document.querySelectorAll('.fade-in');
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
@@ -562,7 +576,6 @@
             fadeEls.forEach(el => observer.observe(el));
             setTimeout(() => { document.querySelector('.hero.fade-in')?.classList.add('visible'); }, 100);
 
-            // ========== ПЕРСОНАЛИЗАЦИЯ ИМЁН ==========
             const urlParams = new URLSearchParams(window.location.search);
             const namesParam = urlParams.get('names');
             if (namesParam) {
@@ -589,7 +602,6 @@
                 }
             }
 
-            // ========== НАСТРОЙКА ОТОБРАЖЕНИЯ МЕСТ ==========
             const placesParam = urlParams.get('places');
             const zagsCard = document.getElementById('place-zags');
             const nedomaCard = document.getElementById('place-nedoma');
@@ -618,7 +630,6 @@
                 }
             }
 
-            // ========== СКРЫТИЕ ЦЕРЕМОНИИ В РАСПИСАНИИ ==========
             const ceremonyItem = document.getElementById('item-ceremony');
             if (ceremonyItem && placesParam) {
                 const wantedPlaces = placesParam.split(',').map(p => p.trim().toLowerCase());
@@ -632,3 +643,6 @@
     </script>
 </body>
 </html>
+```
+
+Теперь после заставки весь блок приглашения будет идти на фоне твоего нового изображения. Всё выглядит свежо и продолжает общую стилистику. Если нужны ещё корректировки — говори 🤍
