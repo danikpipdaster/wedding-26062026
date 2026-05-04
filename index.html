@@ -115,7 +115,7 @@
         }
         .divider.gold { background: linear-gradient(to right, transparent, #c9a87c, transparent); }
 
-        /* ОБЩИЙ ФОН ДЛЯ ДЕСКТОПА УБРАН — ТЕПЕРЬ ПРОЗРАЧНО */
+        /* ОБЩИЙ ФОН ПРОЗРАЧНЫЙ */
         #invitation {
             position: relative;
             z-index: 1;
@@ -139,9 +139,9 @@
         /* БЛОК ФОТО С СТРЕЛКОЙ */
         .photo-wrapper {
             display: flex;
-            align-items: flex-start;
+            align-items: center;
             justify-content: center;
-            gap: 15px;
+            gap: 10px;
             flex-wrap: wrap;
         }
         .photo-collage {
@@ -179,42 +179,44 @@
         .flip-card.front img { box-shadow: 0 26px 58px rgba(90,74,74,0.35); }
         .flip-card.back img { filter: brightness(0.96); }
 
-        /* Стрелка справа */
+        /* Стильная стрелка справа */
         .photo-arrow-hint {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            margin-top: 260px; /* выровнено по фото */
-            color: #4a3f3f;
+            color: #ffffff;
             font-family: 'Montserrat', sans-serif;
-            font-size: 13px;
+            font-size: 11px;
             letter-spacing: 2px;
-            opacity: 0.9;
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
+            text-transform: uppercase;
+            background: rgba(0,0,0,0.25);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             padding: 10px 14px;
-            border-radius: 20px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border-radius: 40px;
+            margin-left: -20px;
+            position: relative;
+            z-index: 5;
         }
         .arrow-icon {
             font-size: 26px;
-            animation: arrowRight 1.5s infinite;
-            display: block;
             margin-bottom: 4px;
+            animation: arrowRight 1.5s infinite;
         }
         @keyframes arrowRight {
             0%, 100% { transform: translateX(0); }
-            50% { transform: translateX(6px); }
+            50% { transform: translateX(5px); }
         }
 
-        /* ФОНЫ СЕКЦИЙ */
+        /* ФОНЫ СЕКЦИЙ (ПК) */
         #photo-section {
-            background: linear-gradient(rgba(250,247,244,0.55), rgba(250,247,244,0.55)), url('zadnikinsta.jpg') center/cover no-repeat;
+            background: linear-gradient(rgba(250,247,244,0.7), rgba(250,247,244,0.7)), url('zadnikinsta.jpg') center/contain no-repeat;
+            background-size: contain;
+            background-color: #faf7f4;
             border-radius: 28px;
             margin: 30px 0;
-            padding: 25px 25px 45px;
+            padding: 20px 20px 40px;
             box-shadow: 0 8px 24px rgba(90,74,74,0.08);
         }
         #places-section {
@@ -348,15 +350,13 @@
         @media (max-width: 768px) {
             .photo-wrapper { flex-direction: column; align-items: center; }
             .photo-arrow-hint {
-                margin-top: 10px;
                 flex-direction: row;
                 gap: 8px;
-                background: rgba(255, 255, 255, 0.8);
-                padding: 6px 14px;
-                border-radius: 20px;
-                font-size: 12px;
+                margin-left: 0;
+                margin-top: 12px;
+                background: rgba(0,0,0,0.3);
             }
-            .arrow-icon { font-size: 22px; animation: arrowRight 1.5s infinite; margin-bottom: 0; }
+            .arrow-icon { margin-bottom: 0; }
             #photo-section {
                 background: #faf7f4;
                 border-radius: 0;
@@ -377,7 +377,7 @@
                 background-position: center;
                 background-size: cover;
                 background-repeat: no-repeat;
-                opacity: 0.35;
+                opacity: 0.3;
             }
             #places-section, #gifts-section {
                 background: #faf7f4;
@@ -400,7 +400,7 @@
                 background-position: center;
                 background-size: cover;
                 background-repeat: no-repeat;
-                opacity: 0.35;
+                opacity: 0.3;
             }
             .section {
                 background: transparent;
@@ -417,8 +417,8 @@
                 width: 230px; height: 320px;
                 transition: transform 0.9s ease, opacity 0.5s;
             }
-            .flip-card.front { transform: translate(75px, 70px) rotate(0deg) scale(1.04); }
-            .flip-card.back { transform: translate(5px, -15px) rotate(-7deg) scale(0.92); }
+            .flip-card.front { transform: translate(75px, 88px) rotate(0deg) scale(1.04); }
+            .flip-card.back { transform: translate(5px, 5px) rotate(-7deg) scale(0.92); }
             .flip-card img { border-radius: 18px; }
             .initial-line { font-size: 110px; }
             .initial-line.line-amp { font-size: 50px; margin: -10px 0; }
@@ -447,8 +447,8 @@
             .date { font-size: 28px; letter-spacing: 3px; }
             .photo-collage { width: 270px; height: 400px; }
             .flip-card { width: 190px; height: 270px; }
-            .flip-card.front { transform: translate(60px, 65px) rotate(0deg) scale(1.04); }
-            .flip-card.back { transform: translate(5px, -10px) rotate(-7deg) scale(0.92); }
+            .flip-card.front { transform: translate(60px, 72px) rotate(0deg) scale(1.04); }
+            .flip-card.back { transform: translate(5px, 5px) rotate(-7deg) scale(0.92); }
         }
     </style>
 </head>
