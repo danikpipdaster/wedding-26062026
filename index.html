@@ -144,7 +144,6 @@
         }
         @keyframes hintFloat { 0% { opacity: 0.45; } 50% { opacity: 1; } 100% { opacity: 0.45; } }
 
-        /* Смещённая подсказка, чтобы не перекрывать фон */
         #photo-section .photo-hint {
             background: rgba(255, 255, 255, 0.75);
             display: inline-block;
@@ -155,12 +154,15 @@
             color: #4a3f3f;
             font-weight: 400;
             letter-spacing: 2px;
-            margin-top: 50px;     /* опускаем вниз */
+            margin-top: 10px;     /* уменьшено с 50px, чтобы подсказка была ближе к фото */
             margin-bottom: 20px;
         }
 
         .photo-collage {
-            position: relative; width: 600px; height: 740px; margin: 25px auto 10px;
+            position: relative; 
+            width: 600px; 
+            height: 670px;        /* уменьшено с 740px, чтобы коллаж стал компактнее */
+            margin: 0 auto 10px;   /* убрал верхний отступ */
             perspective: 1400px;
         }
         .flip-card {
@@ -169,8 +171,9 @@
             transition: transform 1.5s cubic-bezier(.22,.61,.36,1), opacity 0.7s ease;
             will-change: transform;
         }
-        .flip-card.front { transform: translate(170px, 150px) rotate(0deg) scale(1.04); z-index: 10; }
-        .flip-card.back { transform: translate(0px, 0px) rotate(-7deg) scale(0.92); z-index: 1; }
+        .flip-card.front { transform: translate(170px, 100px) rotate(0deg) scale(1.04); z-index: 10; } /* поднято с 150px до 100px */
+        .flip-card.back { transform: translate(0px, -20px) rotate(-7deg) scale(0.92); z-index: 1; }  /* чуть выше */
+
         .flip-inner {
             position: relative; width: 100%; height: 100%;
             transition: transform 0.95s cubic-bezier(.22,.61,.36,1);
@@ -296,7 +299,7 @@
             background: linear-gradient(rgba(250,247,244,0.7), rgba(250,247,244,0.7)), url('zadnikinsta.jpg') center/cover no-repeat;
             border-radius: 28px;
             margin: 30px 0;
-            padding: 40px 20px;
+            padding: 20px 20px 40px;  /* верхний отступ уменьшен */
             box-shadow: 0 8px 24px rgba(90,74,74,0.08);
         }
 
@@ -326,7 +329,7 @@
         .fade-in { opacity: 0; transform: translateY(25px); transition: opacity 1s ease, transform 1s ease; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-        /* Мобильная версия: изолируем фоны через псевдоэлементы */
+        /* Мобильная версия */
         @media (max-width: 768px) {
             #invitation {
                 background: #faf7f4;
@@ -363,6 +366,17 @@
                 margin: 0;
                 padding: 50px 15px;
             }
+            .photo-collage {
+                width: 320px;
+                height: 440px;  /* чуть ниже */
+            }
+            .flip-card {
+                width: 230px; height: 320px;
+                transition: transform 0.9s ease, opacity 0.5s;
+            }
+            .flip-card.front { transform: translate(75px, 70px) rotate(0deg) scale(1.04); }
+            .flip-card.back { transform: translate(5px, -15px) rotate(-7deg) scale(0.92); }
+            .flip-card img { border-radius: 18px; }
             .initial-line { font-size: 110px; }
             .initial-line.line-amp { font-size: 50px; margin: -10px 0; }
             .initial-line.line-d { transform: translateX(-30px); }
@@ -371,11 +385,6 @@
             .heart-img { height: 12px; }
             .date { font-size: 34px; letter-spacing: 4px; }
             .splash { padding: 20px 15px; }
-            .photo-collage { width: 320px; height: 470px; }
-            .flip-card { width: 230px; height: 320px; transition: transform 0.9s ease, opacity 0.5s; }
-            .flip-card.front { transform: translate(75px, 88px) rotate(0deg) scale(1.04); }
-            .flip-card.back { transform: translate(5px, 5px) rotate(-7deg) scale(0.92); }
-            .flip-card img { border-radius: 18px; }
             .place-card { width: 100%; max-width: 380px; }
             .glass-box { margin: 25px 15px 0; font-size: 17px; padding: 28px 30px; }
             .glass-box::before { left: 15px; } .glass-box::after { right: 15px; }
@@ -395,8 +404,8 @@
             .date { font-size: 28px; letter-spacing: 3px; }
             .photo-collage { width: 270px; height: 400px; }
             .flip-card { width: 190px; height: 270px; }
-            .flip-card.front { transform: translate(60px, 72px) rotate(0deg) scale(1.04); }
-            .flip-card.back { transform: translate(5px, 5px) rotate(-7deg) scale(0.92); }
+            .flip-card.front { transform: translate(60px, 65px) rotate(0deg) scale(1.04); }
+            .flip-card.back { transform: translate(5px, -10px) rotate(-7deg) scale(0.92); }
         }
     </style>
 </head>
