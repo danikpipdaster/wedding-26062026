@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Данил & Юлия — Приглашение на свадьбу</title>
 
-    <!-- Предзагрузка фото -->
+    <!-- Предзагрузка фото для плавного переворота -->
     <link rel="preload" as="image" href="photo1.jpg">
     <link rel="preload" as="image" href="photo2.jpg">
     <link rel="preload" as="image" href="photo3.jpg">
@@ -290,7 +290,7 @@
             100% { opacity: 0.45; }
         }
 
-        /* === ФОТО-КОЛЛАЖ (исправлено отзеркаливание) === */
+        /* === ФОТО-КОЛЛАЖ (БАГ ИСПРАВЛЕН) === */
         .photo-collage {
             position: relative;
             width: 500px;
@@ -307,9 +307,9 @@
             cursor: pointer;
             transform-style: preserve-3d;
             -webkit-transform-style: preserve-3d;
-            transition: top 0.5s cubic-bezier(.22,.61,.36,1),
-                        left 0.5s cubic-bezier(.22,.61,.36,1),
-                        opacity 0.3s ease;
+            transition: top 0.8s cubic-bezier(.22,.61,.36,1),
+                        left 0.8s cubic-bezier(.22,.61,.36,1),
+                        opacity 0.5s ease;   /* Возвращаем старую скорость 0.8s */
             will-change: top, left;
         }
 
@@ -331,7 +331,7 @@
             position: relative;
             width: 100%;
             height: 100%;
-            transition: transform 0.8s cubic-bezier(.22,.61,.36,1);
+            transition: transform 0.95s cubic-bezier(.22,.61,.36,1);
             transform-style: preserve-3d;
             -webkit-transform-style: preserve-3d;
         }
@@ -364,28 +364,23 @@
             padding: 8px;
             box-shadow: 0 18px 40px rgba(90, 74, 74, 0.15);
             box-sizing: border-box;
-            /* Принудительно оставляем картинку в плоскости экрана */
+            /* Статичное положение без анимации */
             transform: rotateY(0deg) translateZ(0);
             -webkit-transform: rotateY(0deg) translateZ(0);
             backface-visibility: hidden;
             -webkit-backface-visibility: hidden;
         }
 
+        /* Передняя карточка теперь просто с более яркой тенью (без пульсации) */
         .flip-card.front img {
-            animation: photoPulse 2s infinite;
-            box-shadow: 0 26px 58px rgba(90, 74, 74, 0.25);
+            box-shadow: 0 26px 58px rgba(90, 74, 74, 0.35);
         }
 
         .flip-card.back img {
             filter: brightness(0.96);
         }
 
-        @keyframes photoPulse {
-            0% { transform: scale(1) rotateY(0deg) translateZ(0); }
-            50% { transform: scale(1.022) rotateY(0deg) translateZ(0); }
-            100% { transform: scale(1) rotateY(0deg) translateZ(0); }
-        }
-        /* === КОНЕЦ ФОТО === */
+        /* ======================== */
 
         .places {
             display: flex;
@@ -658,7 +653,7 @@
             <div class="divider"></div>
         </div>
 
-        <!-- Фото -->
+        <!-- Фото (исправлено) -->
         <div class="section fade-in">
             <div class="photo-hint">Нажми на фото, чтобы перевернуть ✨</div>
             <div class="photo-collage">
@@ -822,14 +817,14 @@
                 card.classList.remove("back");
                 card.classList.add("front");
                 activeCard = card;
-                setTimeout(() => { locked = false; }, 600);
+                setTimeout(() => { locked = false; }, 900); // чуть позже, чтобы анимация 0.8s завершилась
             }
 
             function flipCard(card) {
                 if (locked || card !== activeCard) return;
                 locked = true;
                 card.classList.toggle("flipped");
-                setTimeout(() => { locked = false; }, 800);
+                setTimeout(() => { locked = false; }, 950);
             }
 
             card1.addEventListener("click", () => {
