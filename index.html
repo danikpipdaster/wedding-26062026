@@ -11,6 +11,7 @@
     <link rel="preload" as="image" href="zadnifon1.jpg">
     <link rel="preload" as="image" href="zadnifon2.jpg">
     <link rel="preload" as="image" href="zadnifonkarta.jpg">
+    <link rel="preload" as="image" href="zadnifonkras.jpg">
     <link rel="preload" as="image" href="monetka.jpg">
     <link rel="preload" as="image" href="serdecko.jpg">
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
@@ -268,6 +269,15 @@
             box-shadow: 0 8px 24px rgba(90,74,74,0.08);
         }
 
+        /* ФОН ДЛЯ БЛОКА ПОДАРКОВ */
+        #gifts-section {
+            background: linear-gradient(rgba(250,247,244,0.7), rgba(250,247,244,0.7)), url('zadnifonkras.jpg') center/cover no-repeat;
+            border-radius: 28px;
+            margin: 30px 0;
+            padding: 40px 20px;
+            box-shadow: 0 8px 24px rgba(90,74,74,0.08);
+        }
+
         /* РАЗДЕЛИТЕЛИ МЕЖДУ СЕКЦИЯМИ */
         .section + .section {
             border-top: 1px solid rgba(180,150,130,0.25);
@@ -311,7 +321,7 @@
             .date { font-size: 34px; letter-spacing: 4px; }
             .splash { padding: 20px 15px; }
             #invitation { background-attachment: scroll; }
-            #places-section { margin: 20px 0; padding: 30px 15px; }
+            #places-section, #gifts-section { margin: 20px 0; padding: 30px 15px; }
             .photo-collage { width: 320px; height: 470px; }
             .flip-card { width: 230px; height: 320px; transition: transform 0.9s ease, opacity 0.5s; }
             .flip-card.front { transform: translate(75px, 88px) rotate(0deg) scale(1.04); }
@@ -484,8 +494,8 @@
                 <div class="divider"></div>
             </div>
 
-            <!-- БЛОК 7 — Подарки -->
-            <div class="section fade-in">
+            <!-- БЛОК 7 — Подарки (с новым фоном) -->
+            <div class="section fade-in" id="gifts-section">
                 <h2 class="section-title">Подарки</h2>
                 <div class="glass-box">
                     <p>Честно — нам ничего не нужно 😄</p>
