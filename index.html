@@ -174,7 +174,6 @@
         .flip-card.front img { box-shadow: 0 26px 58px rgba(90,74,74,0.35); }
         .flip-card.back img { filter: brightness(0.96); }
 
-        /* Места и подарки без фонов */
         #places-section, #gifts-section {
             background: transparent;
             border-radius: 0;
@@ -200,7 +199,6 @@
         }
         .map-button:hover { background: #b8976e; box-shadow: 0 6px 20px rgba(180,140,100,0.3); }
 
-        /* РАСПИСАНИЕ В СТИЛЕ ЗАГЛАВНЫХ БУКВ */
         .schedule-big {
             font-family: 'Great Vibes', cursive;
             font-size: 72px;
@@ -244,11 +242,46 @@
         /* Мобильная версия */
         @media (max-width: 768px) {
             #invitation {
-                background: linear-gradient(rgba(250,247,244,0.65), rgba(250,247,244,0.65)),
+                background: linear-gradient(rgba(250,247,244,0.45), rgba(250,247,244,0.45)),
                             url('seryzadnik.jpg') center / cover no-repeat;
                 background-attachment: scroll;
-                min-height: 100vh;
             }
+
+            /* Делаем весь текст в секциях белым */
+            .section-title,
+            .section-subtitle,
+            .welcome-text,
+            .welcome-text strong,
+            .photo-hint,
+            .schedule-big,
+            .final,
+            .final .heart,
+            .glass-box,
+            .place-info,
+            .place-info strong,
+            .map-button {
+                color: #ffffff !important;
+                text-shadow: 0 2px 6px rgba(0,0,0,0.3);
+            }
+            .glass-box {
+                background: rgba(0,0,0,0.2);
+                backdrop-filter: blur(8px);
+                -webkit-backdrop-filter: blur(8px);
+                border-color: rgba(255,255,255,0.3);
+            }
+            .divider {
+                background: linear-gradient(to right, transparent, #ffffff, transparent) !important;
+            }
+            .place-card {
+                background: rgba(255,255,255,0.15);
+                color: #fff;
+            }
+            .map-button {
+                background: #fff;
+                color: #4a3f3f !important;
+                font-weight: 500;
+            }
+
             .section { background: transparent; border-radius: 0; box-shadow: none; margin: 0; padding: 50px 15px; }
             .photo-collage { width: 320px; height: 440px; }
             .flip-card { width: 230px; height: 320px; transition: transform 0.9s ease, opacity 0.5s; }
@@ -265,8 +298,6 @@
             .date { font-size: 34px; letter-spacing: 4px; }
             .splash { padding: 20px 15px; }
             .place-card { width: 100%; max-width: 380px; }
-            .glass-box { margin: 25px 15px 0; font-size: 17px; padding: 28px 30px; }
-            .glass-box::before { left: 15px; } .glass-box::after { right: 15px; }
             .section-title { font-size: 30px; }
             .coin { display: none !important; }
             .decor-branch-left, .decor-branch-right { font-size: 160px; }
@@ -316,7 +347,6 @@
     <!-- БЛОКИ 2–8 с общим фоном seryzadnik.jpg -->
     <div id="invitation">
         <div class="container">
-            <!-- БЛОК 2 — ГОСТИ + ФОТО -->
             <div class="section fade-in">
                 <h2 class="section-title" id="guest-greeting">Дорогие гости!</h2>
                 <p class="welcome-text" id="guest-message">
@@ -345,7 +375,6 @@
                 <div class="divider"></div>
             </div>
 
-            <!-- БЛОК 3 — Места (без фона) -->
             <div class="section fade-in" id="places-section">
                 <h2 class="section-title">Места проведения</h2>
                 <p class="section-subtitle">где это случится</p>
@@ -368,7 +397,6 @@
                 <div class="divider"></div>
             </div>
 
-            <!-- БЛОК 4 — ПРОГРАММА (заглавные буквы) -->
             <div class="section fade-in" id="schedule-section">
                 <h2 class="section-title">Программа дня</h2>
                 <p class="section-subtitle">26 июня 2026</p>
@@ -381,7 +409,6 @@
                 <div class="divider"></div>
             </div>
 
-            <!-- БЛОК 5 — Дресс-код -->
             <div class="section fade-in">
                 <h2 class="section-title">Дресс-код</h2>
                 <p class="section-subtitle">пастельная нежность</p>
@@ -400,7 +427,6 @@
                 <div class="divider"></div>
             </div>
 
-            <!-- БЛОК 6 — Важно -->
             <div class="section fade-in">
                 <h2 class="section-title">Важно для гостей</h2>
                 <p class="section-subtitle">вайб нашего дня</p>
@@ -412,7 +438,6 @@
                 <div class="divider"></div>
             </div>
 
-            <!-- БЛОК 7 — Подарки (без фона) -->
             <div class="section fade-in" id="gifts-section">
                 <h2 class="section-title">Подарки</h2>
                 <div class="glass-box">
@@ -424,7 +449,6 @@
                 <div class="divider"></div>
             </div>
 
-            <!-- БЛОК 8 — Финал -->
             <div class="final fade-in">
                 <p>С любовью и нетерпением ждём вас 🤍</p>
                 <p style="font-size:16px;margin-top:8px;opacity:0.7;">Данил & Юлия</p>
@@ -436,7 +460,6 @@
     <script>
         (function() {
             window.addEventListener('DOMContentLoaded', function() {
-                // Таймер
                 const timerEl = document.getElementById("timer");
                 if (timerEl) {
                     const weddingDate = new Date("June 26, 2026 00:00:00").getTime();
@@ -453,7 +476,6 @@
                     setInterval(updateTimer, 1000);
                 }
 
-                // Скретч-слой
                 const canvas = document.getElementById("scratch");
                 if (canvas) {
                     const ctx = canvas.getContext("2d");
@@ -480,7 +502,6 @@
                     }
                 }
 
-                // Карточки
                 const card1 = document.getElementById("card1");
                 const card2 = document.getElementById("card2");
                 if (card1 && card2) {
@@ -504,7 +525,6 @@
                     card2.addEventListener("click", () => { if (card2 === activeCard) flipCard(card2); else bringToFront(card2); });
                 }
 
-                // Плавное появление
                 document.querySelectorAll('.fade-in').forEach(el => {
                     const observer = new IntersectionObserver((entries) => {
                         entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
@@ -512,7 +532,6 @@
                     observer.observe(el);
                 });
 
-                // Персонализация
                 const urlParams = new URLSearchParams(window.location.search);
                 const namesParam = urlParams.get('names');
                 const guestGreeting = document.getElementById('guest-greeting');
@@ -540,7 +559,6 @@
                     }
                 }
 
-                // Управление карточками мест
                 const placesParam = urlParams.get('places');
                 if (placesParam) {
                     const wantedPlaces = placesParam.split(',').map(p => p.trim().toLowerCase());
@@ -555,7 +573,6 @@
                     }
                 }
 
-                // Скрытие церемонии в расписании
                 const ceremonyItem = document.getElementById('item-ceremony');
                 if (ceremonyItem && placesParam) {
                     const wantedPlaces = placesParam.split(',').map(p => p.trim().toLowerCase());
