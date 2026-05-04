@@ -42,7 +42,7 @@
         .decor-branch-right { bottom: -40px; right: -60px; transform: rotate(165deg); }
         .container { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; padding: 0 20px; }
 
-        /* ══════ БЛОК 1 — ЗАСТАВКА ══════ */
+        /* БЛОК 1 — ЗАСТАВКА */
         .splash {
             position: relative; z-index: 1;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -50,9 +50,7 @@
             background: linear-gradient(rgba(250,247,244,0.75), rgba(250,247,244,0.75)), url('zadnifon1.jpg') center/cover no-repeat;
             background-color: #faf7f4;
         }
-        .initials-block {
-            margin-bottom: 0.3em;
-        }
+        .initials-block { margin-bottom: 0.3em; }
         .initial-line {
             display: block;
             font-family: 'Great Vibes', cursive;
@@ -62,37 +60,14 @@
             text-shadow: 0 6px 18px rgba(0,0,0,0.1);
             line-height: 1;
         }
-        .initial-line.line-d {
-            text-align: left;
-            transform: translateX(-45px);
-        }
-        .initial-line.line-amp {
-            text-align: center;
-            font-size: 60px;
-            margin: -15px 0;   /* увеличен отступ, чтобы не слипалось с Ю */
-        }
-        .initial-line.line-yu {
-            text-align: right;
-            transform: translateX(45px);
-            margin-top: 0;
-        }
+        .initial-line.line-d { text-align: left; transform: translateX(-45px); }
+        .initial-line.line-amp { text-align: center; font-size: 60px; margin: -15px 0; }
+        .initial-line.line-yu { text-align: right; transform: translateX(45px); }
         .handwritten-signature {
-            font-family: 'Caveat', cursive;
-            font-size: 30px;
-            color: #4a3f3f;
-            margin-top: 5px;
-            line-height: 1.4;
+            font-family: 'Caveat', cursive; font-size: 30px; color: #4a3f3f;
+            margin-top: 5px; line-height: 1.4;
         }
-        /* Картинка-сердечко вместо текстового */
-        .heart-img {
-            height: 14px;          /* тот же размер, что был */
-            width: auto;
-            vertical-align: middle;
-            margin: 0 4px;
-            position: relative;
-            top: -1px;
-            display: inline-block;
-        }
+        .heart-img { height: 14px; width: auto; vertical-align: middle; margin: 0 4px; position: relative; top: -1px; display: inline-block; }
         .hero-subtitle {
             font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 14px;
             letter-spacing: 6px; text-transform: uppercase; color: #9a8a7a; margin-top: 15px;
@@ -135,7 +110,7 @@
         }
         .divider.gold { background: linear-gradient(to right, transparent, #c9a87c, transparent); }
 
-        /* ══════ БЛОК 2 — ГОСТИ + ФОТО ══════ */
+        /* БЛОК 2 — ГОСТИ + ФОТО */
         .section { padding: 70px 20px; position: relative; }
         .section-title {
             font-family: 'Cormorant Garamond', serif; font-size: 38px; font-weight: 400;
@@ -154,7 +129,6 @@
         }
         @keyframes hintFloat { 0% { opacity: 0.45; } 50% { opacity: 1; } 100% { opacity: 0.45; } }
 
-        /* Фотоколлаж (увеличенные карточки, translate) */
         .photo-collage {
             position: relative; width: 600px; height: 740px; margin: 25px auto 10px;
             perspective: 1400px;
@@ -182,13 +156,11 @@
         .flip-card img {
             width: 100%; height: 100%; object-fit: cover; border-radius: 22px;
             background: #ffffff; padding: 8px; box-shadow: 0 18px 40px rgba(90,74,74,0.15);
-            box-sizing: border-box;
-            backface-visibility: hidden; -webkit-backface-visibility: hidden;
+            box-sizing: border-box; backface-visibility: hidden; -webkit-backface-visibility: hidden;
         }
         .flip-card.front img { box-shadow: 0 26px 58px rgba(90,74,74,0.35); }
         .flip-card.back img { filter: brightness(0.96); }
 
-        /* Места, Программа, Дресс-код, Важно, Подарки */
         .places { display: flex; justify-content: center; gap: 35px; flex-wrap: wrap; }
         .place-card {
             width: 380px; background: rgba(255,255,255,0.7); border-radius: 24px; overflow: hidden;
@@ -206,14 +178,8 @@
         }
         .map-button:hover { background: #b8976e; box-shadow: 0 6px 20px rgba(180,140,100,0.3); }
         .schedule { max-width: 450px; margin: 30px auto 0; font-size: 18px; line-height: 2.2; color: #5a4a4a; }
-        .schedule-item {
-            display: flex; align-items: center; gap: 15px; padding: 8px 0;
-            border-bottom: 1px dotted rgba(180,150,130,0.3);
-        }
-        .schedule-time {
-            font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 400;
-            letter-spacing: 2px; color: #b8977e; min-width: 80px; text-align: right;
-        }
+        .schedule-item { display: flex; align-items: center; gap: 15px; padding: 8px 0; border-bottom: 1px dotted rgba(180,150,130,0.3); }
+        .schedule-time { font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 400; letter-spacing: 2px; color: #b8977e; min-width: 80px; text-align: right; }
         .schedule-text { text-align: left; }
         .glass-box {
             position: relative; max-width: 580px; margin: 25px auto 0; padding: 36px 40px;
@@ -226,8 +192,7 @@
             background: linear-gradient(to bottom, transparent, #c9a87c, transparent);
             opacity: 0.45; border-radius: 1px;
         }
-        .glass-box::before { left: 22px; }
-        .glass-box::after { right: 22px; }
+        .glass-box::before { left: 22px; } .glass-box::after { right: 22px; }
         .dresscode-palette { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-top: 24px; }
         .dresscode-circle {
             width: 56px; height: 56px; border-radius: 50%;
@@ -236,23 +201,15 @@
         }
         .dresscode-circle:hover { transform: scale(1.12); box-shadow: 0 8px 18px rgba(0,0,0,0.1), 0 0 0 3px rgba(180,140,110,0.4), inset 0 1px 2px rgba(255,255,255,0.5); }
 
-        /* ══════ БЛОК 8 — ФИНАЛ ══════ */
         .final { padding: 70px 20px 90px; font-size: 24px; color: #4a3f3f; letter-spacing: 1px; }
         .final .heart { margin-top: 16px; font-size: 32px; animation: heartBeat 1.5s infinite; display: inline-block; }
-        @keyframes heartBeat {
-            0% { transform: scale(1); } 25% { transform: scale(1.15); }
-            50% { transform: scale(1); } 75% { transform: scale(1.1); } 100% { transform: scale(1); }
-        }
-        .fade-in {
-            opacity: 0; transform: translateY(25px);
-            transition: opacity 1s ease, transform 1s ease;
-        }
+        @keyframes heartBeat { 0% { transform: scale(1); } 25% { transform: scale(1.15); } 50% { transform: scale(1); } 75% { transform: scale(1.1); } 100% { transform: scale(1); } }
+        .fade-in { opacity: 0; transform: translateY(25px); transition: opacity 1s ease, transform 1s ease; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-        /* Мобильная версия */
         @media (max-width: 768px) {
             .initial-line { font-size: 110px; }
-            .initial-line.line-amp { font-size: 50px; margin: -10px 0; }  /* ещё чуть-чуть отодвинули */
+            .initial-line.line-amp { font-size: 50px; margin: -10px 0; }
             .initial-line.line-d { transform: translateX(-30px); }
             .initial-line.line-yu { transform: translateX(30px); }
             .handwritten-signature { font-size: 24px; }
@@ -294,7 +251,7 @@
     <div class="decor-branch-right">❦</div>
     <div class="coin" id="coin"></div>
 
-    <!-- ══════ БЛОК 1 — ЗАСТАВКА ══════ -->
+    <!-- БЛОК 1 — ЗАСТАВКА -->
     <div class="splash" id="splash">
         <div class="initials-block">
             <span class="initial-line line-d">Д</span>
@@ -302,9 +259,7 @@
             <span class="initial-line line-yu">Ю</span>
         </div>
         <p class="handwritten-signature">
-            Данил
-            <img src="serdecko.jpg" alt="♥" class="heart-img">
-            Юлия
+            Данил <img src="serdecko.jpg" alt="♥" class="heart-img"> Юлия
         </p>
         <p class="hero-subtitle">приглашение на свадьбу</p>
         <div class="date-container">
@@ -315,12 +270,12 @@
         <a href="#invitation" class="scroll-arrow" aria-label="К приглашению">↓</a>
     </div>
 
-    <!-- ══════ БЛОКИ 2–8 ══════ -->
+    <!-- БЛОКИ 2–8 -->
     <div id="invitation" class="container">
-        <!-- БЛОК 2 — Гости + Фото -->
+        <!-- БЛОК 2 — ГОСТИ + ФОТО -->
         <div class="section fade-in">
-            <h2 class="section-title">Дорогие гости!</h2>
-            <p class="welcome-text">
+            <h2 class="section-title" id="guest-greeting">Дорогие гости!</h2>
+            <p class="welcome-text" id="guest-message">
                 С огромной радостью и трепетом в сердце<br>
                 мы приглашаем вас разделить с нами<br>
                 <strong>самый важный день нашей жизни</strong> 🤍
@@ -435,6 +390,7 @@
 
     <script>
         window.onload = function () {
+            // --------------- ТАЙМЕР ---------------
             const weddingDate = new Date("June 26, 2026 00:00:00").getTime();
             function updateTimer() {
                 const now = new Date().getTime();
@@ -451,6 +407,7 @@
             updateTimer();
             setInterval(updateTimer, 1000);
 
+            // --------------- СКРЕТЧ-СЛОЙ ---------------
             const canvas = document.getElementById("scratch");
             const ctx = canvas.getContext("2d");
             const date = document.querySelector(".date");
@@ -473,6 +430,7 @@
             canvas.addEventListener("touchstart", e => { e.preventDefault(); const rect = canvas.getBoundingClientRect(); scratch(e.touches[0].clientX - rect.left, e.touches[0].clientY - rect.top); });
             canvas.addEventListener("touchmove", e => { e.preventDefault(); const rect = canvas.getBoundingClientRect(); scratch(e.touches[0].clientX - rect.left, e.touches[0].clientY - rect.top); });
 
+            // --------------- КАРТОЧКИ ---------------
             const card1 = document.getElementById("card1");
             const card2 = document.getElementById("card2");
             let activeCard = card1;
@@ -503,12 +461,39 @@
                 else { bringToFront(card2); }
             });
 
+            // --------------- ПЛАВНОЕ ПОЯВЛЕНИЕ ---------------
             const fadeEls = document.querySelectorAll('.fade-in');
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
             }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
             fadeEls.forEach(el => observer.observe(el));
             setTimeout(() => { document.querySelector('.hero.fade-in')?.classList.add('visible'); }, 100);
+
+            // --------------- ПЕРСОНАЛИЗАЦИЯ ДЛЯ НЕСКОЛЬКИХ ИМЁН ---------------
+            const urlParams = new URLSearchParams(window.location.search);
+            const namesParam = urlParams.get('names');   // пример: ?names=Ирина,Влад,Руслан
+
+            if (namesParam) {
+                const namesArray = namesParam.split(',').map(n => n.trim()).filter(n => n.length > 0);
+
+                if (namesArray.length > 0) {
+                    // Формируем обращение: "Дорогие Ирина, Влад и Руслан!"
+                    const last = namesArray.pop(); // последнее имя
+                    const greeting = 'Дорогие ' + (namesArray.length > 0 ? namesArray.join(', ') + ' и ' : '') + last + '!';
+
+                    document.getElementById('guest-greeting').textContent = greeting;
+
+                    // Заменяем текст приглашения, используя имена
+                    const messageEl = document.getElementById('guest-message');
+                    if (messageEl) {
+                        const namesString = namesArray.length > 0 ? namesArray.join(', ') + ' и ' + last : last;
+                        messageEl.innerHTML =
+                            'С огромной радостью и трепетом в сердце<br>' +
+                            'мы приглашаем вас, <strong>' + namesString + '</strong>, разделить с нами<br>' +
+                            '<strong>самый важный день нашей жизни</strong> 🤍';
+                    }
+                }
+            }
         };
     </script>
 </body>
