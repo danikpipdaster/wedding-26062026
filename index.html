@@ -115,12 +115,11 @@
         }
         .divider.gold { background: linear-gradient(to right, transparent, #c9a87c, transparent); }
 
-        /* Общий фон (без fixed) */
+        /* ОБЩИЙ ФОН ДЛЯ ДЕСКТОПА УБРАН — ТЕПЕРЬ ПРОЗРАЧНО */
         #invitation {
             position: relative;
             z-index: 1;
-            background: linear-gradient(rgba(250,247,244,0.65), rgba(250,247,244,0.65)), url('zadnifon2.jpg') center/cover no-repeat;
-            background-color: #faf7f4;
+            background: transparent;
             padding-top: 30px;
             padding-bottom: 30px;
         }
@@ -137,26 +136,17 @@
         .welcome-text { font-size: 20px; line-height: 1.7; color: #6a5a5a; max-width: 600px; margin: 0 auto; }
         .welcome-text strong { font-weight: 500; color: #4a3f3f; }
 
-        /* Облегчённая подсказка */
-        .photo-hint {
-            font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 13px;
-            letter-spacing: 3px; opacity: 0.85; color: #ffffff;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.3);
-            animation: hintFloat 1.8s infinite;
-            margin-top: 10px;
-            margin-bottom: 24px;
-            display: inline-block;
-            background: transparent;
-            padding: 0;
-            border-radius: 0;
-            backdrop-filter: none;
-            -webkit-backdrop-filter: none;
+        /* БЛОК ФОТО С СТРЕЛКОЙ */
+        .photo-wrapper {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
         }
-        @keyframes hintFloat { 0% { opacity: 0.6; } 50% { opacity: 1; } 100% { opacity: 0.6; } }
-
         .photo-collage {
-            position: relative; 
-            width: 600px; 
+            position: relative;
+            width: 600px;
             height: 670px;
             margin: 0 auto 10px;
             perspective: 1400px;
@@ -169,7 +159,6 @@
         }
         .flip-card.front { transform: translate(170px, 100px) rotate(0deg) scale(1.04); z-index: 10; }
         .flip-card.back { transform: translate(0px, -20px) rotate(-7deg) scale(0.92); z-index: 1; }
-
         .flip-inner {
             position: relative; width: 100%; height: 100%;
             transition: transform 0.95s cubic-bezier(.22,.61,.36,1);
@@ -190,6 +179,52 @@
         .flip-card.front img { box-shadow: 0 26px 58px rgba(90,74,74,0.35); }
         .flip-card.back img { filter: brightness(0.96); }
 
+        /* Стрелка справа */
+        .photo-arrow-hint {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 270px;
+            color: #4a3f3f;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 12px;
+            letter-spacing: 2px;
+            opacity: 0.8;
+        }
+        .arrow-icon {
+            font-size: 28px;
+            animation: arrowRight 1.5s infinite;
+        }
+        @keyframes arrowRight {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(6px); }
+        }
+
+        /* ФОНЫ СЕКЦИЙ */
+        #photo-section {
+            background: linear-gradient(rgba(250,247,244,0.7), rgba(250,247,244,0.7)), url('zadnikinsta.jpg') center/cover no-repeat;
+            border-radius: 28px;
+            margin: 30px 0;
+            padding: 20px 20px 40px;
+            box-shadow: 0 8px 24px rgba(90,74,74,0.08);
+        }
+        #places-section {
+            background: linear-gradient(rgba(250,247,244,0.7), rgba(250,247,244,0.7)), url('zadnifonkarta.jpg') center/cover no-repeat;
+            border-radius: 28px;
+            margin: 30px 0;
+            padding: 40px 20px;
+            box-shadow: 0 8px 24px rgba(90,74,74,0.08);
+        }
+        #gifts-section {
+            background: linear-gradient(rgba(250,247,244,0.7), rgba(250,247,244,0.7)), url('zadnifonkras.jpg') center/cover no-repeat;
+            border-radius: 28px;
+            margin: 30px 0;
+            padding: 40px 20px;
+            box-shadow: 0 8px 24px rgba(90,74,74,0.08);
+        }
+
+        /* Остальные блоки */
         .places { display: flex; justify-content: center; gap: 35px; flex-wrap: wrap; }
         .place-card {
             width: 380px; background: rgba(255,255,255,0.7); border-radius: 24px; overflow: hidden;
@@ -207,7 +242,6 @@
         }
         .map-button:hover { background: #b8976e; box-shadow: 0 6px 20px rgba(180,140,100,0.3); }
 
-        /* БЛОК 4 — ДЕТЕКТИВНАЯ ПРОБКОВАЯ ДОСКА */
         .cork-board {
             background: #b48b5a;
             background-image: radial-gradient(circle, #a07840 1px, transparent 1px);
@@ -276,29 +310,6 @@
             line-height: 1.5;
         }
 
-        /* Фоновые секции */
-        #places-section {
-            background: linear-gradient(rgba(250,247,244,0.7), rgba(250,247,244,0.7)), url('zadnifonkarta.jpg') center/cover no-repeat;
-            border-radius: 28px;
-            margin: 30px 0;
-            padding: 40px 20px;
-            box-shadow: 0 8px 24px rgba(90,74,74,0.08);
-        }
-        #gifts-section {
-            background: linear-gradient(rgba(250,247,244,0.7), rgba(250,247,244,0.7)), url('zadnifonkras.jpg') center/cover no-repeat;
-            border-radius: 28px;
-            margin: 30px 0;
-            padding: 40px 20px;
-            box-shadow: 0 8px 24px rgba(90,74,74,0.08);
-        }
-        #photo-section {
-            background: linear-gradient(rgba(250,247,244,0.7), rgba(250,247,244,0.7)), url('zadnikinsta.jpg') center/cover no-repeat;
-            border-radius: 28px;
-            margin: 30px 0;
-            padding: 20px 20px 40px;
-            box-shadow: 0 8px 24px rgba(90,74,74,0.08);
-        }
-
         .glass-box {
             position: relative; max-width: 580px; margin: 25px auto 0; padding: 36px 40px;
             background: rgba(255,255,255,0.35); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
@@ -325,13 +336,11 @@
         .fade-in { opacity: 0; transform: translateY(25px); transition: opacity 1s ease, transform 1s ease; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-        /* Мобильная версия */
         @media (max-width: 768px) {
-            #invitation {
-                background: #faf7f4;
-                background-attachment: scroll;
-            }
-            #places-section, #gifts-section, #photo-section {
+            .photo-wrapper { flex-direction: column; align-items: center; }
+            .photo-arrow-hint { margin-top: 0; flex-direction: row; gap: 8px; }
+            .arrow-icon { animation: arrowRight 1.5s infinite; }
+            #photo-section {
                 background: #faf7f4;
                 border-radius: 0;
                 box-shadow: none;
@@ -342,7 +351,31 @@
                 z-index: 0;
                 will-change: transform;
             }
-            #places-section::before, #gifts-section::before, #photo-section::before {
+            #photo-section::before {
+                content: '';
+                position: absolute;
+                top: 0; left: 0; width: 100%; height: 100%;
+                z-index: -1;
+                background-image: url('zadnikinsta.jpg');
+                background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat;
+                opacity: 0.3;
+            }
+            #places-section, #gifts-section {
+                background: #faf7f4;
+                border-radius: 0;
+                box-shadow: none;
+                margin: 20px 0;
+                padding: 30px 15px;
+                position: relative;
+                overflow: hidden;
+                z-index: 0;
+                will-change: transform;
+            }
+            #places-section::before { background-image: url('zadnifonkarta.jpg'); }
+            #gifts-section::before { background-image: url('zadnifonkras.jpg'); }
+            #places-section::before, #gifts-section::before {
                 content: '';
                 position: absolute;
                 top: 0; left: 0; width: 100%; height: 100%;
@@ -352,9 +385,6 @@
                 background-repeat: no-repeat;
                 opacity: 0.3;
             }
-            #places-section::before { background-image: url('zadnifonkarta.jpg'); }
-            #gifts-section::before { background-image: url('zadnifonkras.jpg'); }
-            #photo-section::before { background-image: url('zadnikinsta.jpg'); }
             .section {
                 background: transparent;
                 border-radius: 0;
@@ -443,19 +473,24 @@
                 <div class="divider"></div>
             </div>
             <div class="section fade-in" id="photo-section">
-                <div class="photo-hint">Нажми на фото, чтобы перевернуть ✨</div>
-                <div class="photo-collage">
-                    <div class="flip-card front" id="card1">
-                        <div class="flip-inner">
-                            <div class="flip-front"><img src="photo1.jpg" alt="Фото 1"></div>
-                            <div class="flip-back"><img src="photo2.jpg" alt="Фото 2"></div>
+                <div class="photo-wrapper">
+                    <div class="photo-collage">
+                        <div class="flip-card front" id="card1">
+                            <div class="flip-inner">
+                                <div class="flip-front"><img src="photo1.jpg" alt="Фото 1"></div>
+                                <div class="flip-back"><img src="photo2.jpg" alt="Фото 2"></div>
+                            </div>
+                        </div>
+                        <div class="flip-card back" id="card2">
+                            <div class="flip-inner">
+                                <div class="flip-front"><img src="photo3.jpg" alt="Фото 3"></div>
+                                <div class="flip-back"><img src="photo4.jpg" alt="Фото 4"></div>
+                            </div>
                         </div>
                     </div>
-                    <div class="flip-card back" id="card2">
-                        <div class="flip-inner">
-                            <div class="flip-front"><img src="photo3.jpg" alt="Фото 3"></div>
-                            <div class="flip-back"><img src="photo4.jpg" alt="Фото 4"></div>
-                        </div>
+                    <div class="photo-arrow-hint">
+                        <span class="arrow-icon">→</span>
+                        <span>нажми</span>
                     </div>
                 </div>
                 <div class="divider"></div>
