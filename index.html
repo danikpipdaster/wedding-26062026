@@ -177,10 +177,84 @@
             transition: all 0.3s ease;
         }
         .map-button:hover { background: #b8976e; box-shadow: 0 6px 20px rgba(180,140,100,0.3); }
-        .schedule { max-width: 450px; margin: 30px auto 0; font-size: 18px; line-height: 2.2; color: #5a4a4a; }
-        .schedule-item { display: flex; align-items: center; gap: 15px; padding: 8px 0; border-bottom: 1px dotted rgba(180,150,130,0.3); }
-        .schedule-time { font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 400; letter-spacing: 2px; color: #b8977e; min-width: 80px; text-align: right; }
-        .schedule-text { text-align: left; }
+
+        /* БЛОК 4 — ДЕТЕКТИВНАЯ ПРОБКОВАЯ ДОСКА */
+        .cork-board {
+            background: #b48b5a;  /* цвет пробки */
+            background-image: radial-gradient(circle, #a07840 1px, transparent 1px);
+            background-size: 12px 12px;
+            border-radius: 28px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15), inset 0 2px 6px rgba(0,0,0,0.2);
+            padding: 30px 20px;
+            margin: 30px auto 0;
+            max-width: 480px;
+            position: relative;
+            color: #2e241a;
+            font-family: 'Cormorant Garamond', serif;
+        }
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+            border-left: 3px dashed #c44b4b; /* красная нить */
+            margin: 0 10px;
+        }
+        .timeline::before {
+            content: '🧷';
+            position: absolute;
+            left: -13px;
+            top: -25px;
+            font-size: 24px;
+            color: #c44b4b;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 28px;
+            padding: 12px 18px;
+            background: rgba(255,248,240,0.9);
+            border-radius: 16px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .timeline-item:hover {
+            transform: scale(1.02);
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -48px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 14px;
+            height: 14px;
+            background: #c44b4b;
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px #b48b5a, 0 0 0 6px rgba(0,0,0,0.2);
+            z-index: 2;
+        }
+        .timeline-item.hidden {
+            display: none;
+        }
+        .item-icon {
+            font-size: 28px;
+            margin-bottom: 6px;
+        }
+        .item-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #4a3f3f;
+        }
+        .item-desc {
+            font-size: 16px;
+            color: #5a4a4a;
+            margin-top: 4px;
+            line-height: 1.5;
+        }
+
+        /* остальные блоки без изменений */
         .glass-box {
             position: relative; max-width: 580px; margin: 25px auto 0; padding: 36px 40px;
             background: rgba(255,255,255,0.35); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
@@ -302,18 +376,18 @@
         </div>
 
         <!-- БЛОК 3 — Места -->
-        <div class="section fade-in">
+        <div class="section fade-in" id="places-section">
             <h2 class="section-title">Места проведения</h2>
             <p class="section-subtitle">где это случится</p>
-            <div class="places">
-                <div class="place-card">
+            <div class="places" id="places-container">
+                <div class="place-card" id="place-zags">
                     <img src="zags.jpg" alt="ЗАГС">
                     <div class="place-info">
                         <strong>Церемония</strong> г. Надым<br>Парковый пр., 4<br>
                         <a class="map-button" href="https://maps.google.com/?q=Надым+Парковый+4" target="_blank">Открыть карту</a>
                     </div>
                 </div>
-                <div class="place-card">
+                <div class="place-card" id="place-nedoma">
                     <img src="nedoma.jpg" alt="НеДома">
                     <div class="place-info">
                         <strong>НеДома</strong> Семейный лофт<br>г. Надым<br>13 проезд, строение 11<br>
@@ -324,15 +398,34 @@
             <div class="divider"></div>
         </div>
 
-        <!-- БЛОК 4 — Программа -->
-        <div class="section fade-in">
+        <!-- БЛОК 4 — ПРОГРАММА (ДЕТЕКТИВНАЯ ДОСКА) -->
+        <div class="section fade-in" id="schedule-section">
             <h2 class="section-title">Программа дня</h2>
             <p class="section-subtitle">26 июня 2026</p>
-            <div class="schedule">
-                <div class="schedule-item"><span class="schedule-time">15:00</span><span class="schedule-text">Сбор гостей</span></div>
-                <div class="schedule-item"><span class="schedule-time">16:00</span><span class="schedule-text">Церемония</span></div>
-                <div class="schedule-item"><span class="schedule-time">17:00</span><span class="schedule-text">Банкет</span></div>
-                <div class="schedule-item"><span class="schedule-time">22:00</span><span class="schedule-text">Танцы и праздник</span></div>
+
+            <div class="cork-board">
+                <div class="timeline" id="timeline">
+                    <div class="timeline-item" id="item-meet">
+                        <div class="item-icon">🌸</div>
+                        <div class="item-title">Встреча гостей</div>
+                        <div class="item-desc">Объятия, бокалы и первые кадры</div>
+                    </div>
+                    <div class="timeline-item" id="item-ceremony">
+                        <div class="item-icon">💍</div>
+                        <div class="item-title">Церемония</div>
+                        <div class="item-desc">Мгновение, когда мир становится чуть добрее</div>
+                    </div>
+                    <div class="timeline-item" id="item-feast">
+                        <div class="item-icon">🍽️</div>
+                        <div class="item-title">Банкет</div>
+                        <div class="item-desc">Вкус, смех и первые тосты</div>
+                    </div>
+                    <div class="timeline-item" id="item-dance">
+                        <div class="item-icon">🕺</div>
+                        <div class="item-title">Танцы</div>
+                        <div class="item-desc">Ночь, которую невозможно забыть</div>
+                    </div>
+                </div>
             </div>
             <div class="divider"></div>
         </div>
@@ -469,7 +562,7 @@
             fadeEls.forEach(el => observer.observe(el));
             setTimeout(() => { document.querySelector('.hero.fade-in')?.classList.add('visible'); }, 100);
 
-            // ========== ПЕРСОНАЛЬНОЕ ПРИГЛАШЕНИЕ ==========
+            // ========== ПЕРСОНАЛИЗАЦИЯ ИМЁН ==========
             const urlParams = new URLSearchParams(window.location.search);
             const namesParam = urlParams.get('names');
             if (namesParam) {
@@ -479,7 +572,6 @@
                     const greeting = 'Дорогие ' + (namesArray.length > 0 ? namesArray.join(', ') + ' и ' : '') + last + '!';
                     document.getElementById('guest-greeting').textContent = greeting;
 
-                    // Персональный текст для Ирины, Владислава и Руслана
                     if (namesParam === 'Ирина,Владислав,Руслан' || namesParam === 'Ирина, Владислав, Руслан') {
                         document.getElementById('guest-message').innerHTML =
                             '<p>Мы строим самый важный день в нашей жизни — и поняли, что он просто не сможет быть идеальным без вас. Будет красиво, душевно и немножко громко. Обещаем тёплые объятия, вкусный торт и пару сюрпризов (хороших, честно 😄).</p>' +
@@ -488,13 +580,52 @@
                             '<p style="margin-top:14px;">💪 <strong>Руслан</strong>, без тебя этот день был бы слишком спокойным. Будет борьба… возможно. Но мы верим, что ты направишь свою энергию в правильное русло — например, в танцы или в борьбу с тортом. Кто победит — увидим 😉</p>' +
                             '<p style="margin-top:18px;">Ждём вас с нетерпением, чтобы разделить счастье и создать воспоминания, которые останутся с нами на всю жизнь. Приходите — без вас свадьба не начнётся! 🤍</p>';
                     } else {
-                        // Общий персонализированный текст для остальных гостей
                         const namesString = namesArray.length > 0 ? namesArray.join(', ') + ' и ' + last : last;
                         document.getElementById('guest-message').innerHTML =
                             'С огромной радостью и трепетом в сердце<br>' +
                             'мы приглашаем вас, <strong>' + namesString + '</strong>, разделить с нами<br>' +
                             '<strong>самый важный день нашей жизни</strong> 🤍';
                     }
+                }
+            }
+
+            // ========== НАСТРОЙКА ОТОБРАЖЕНИЯ МЕСТ ==========
+            const placesParam = urlParams.get('places');
+            const zagsCard = document.getElementById('place-zags');
+            const nedomaCard = document.getElementById('place-nedoma');
+
+            if (placesParam) {
+                const wantedPlaces = placesParam.split(',').map(p => p.trim().toLowerCase());
+
+                if (zagsCard) zagsCard.style.display = 'none';
+                if (nedomaCard) nedomaCard.style.display = 'none';
+
+                if (wantedPlaces.includes('zags') && zagsCard) {
+                    zagsCard.style.display = '';
+                }
+                if (wantedPlaces.includes('nedoma') && nedomaCard) {
+                    nedomaCard.style.display = '';
+                }
+            }
+
+            const container = document.getElementById('places-container');
+            if (container) {
+                const visibleCards = container.querySelectorAll('.place-card[style*="display:""], .place-card:not([style*="display: none"])');
+                if (visibleCards.length === 1) {
+                    container.style.justifyContent = 'center';
+                } else {
+                    container.style.justifyContent = '';
+                }
+            }
+
+            // ========== СКРЫТИЕ ЦЕРЕМОНИИ В РАСПИСАНИИ ==========
+            const ceremonyItem = document.getElementById('item-ceremony');
+            if (ceremonyItem && placesParam) {
+                const wantedPlaces = placesParam.split(',').map(p => p.trim().toLowerCase());
+                if (!wantedPlaces.includes('zags')) {
+                    ceremonyItem.classList.add('hidden');
+                } else {
+                    ceremonyItem.classList.remove('hidden');
                 }
             }
         };
