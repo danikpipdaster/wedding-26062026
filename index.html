@@ -283,6 +283,11 @@
             margin: 30px 0;
             padding: 40px 20px;
             box-shadow: 0 8px 24px rgba(90,74,74,0.08);
+            /* фикс мерцания */
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
         }
 
         /* ФОН ДЛЯ БЛОКА ПОДАРКОВ */
@@ -292,6 +297,10 @@
             margin: 30px 0;
             padding: 40px 20px;
             box-shadow: 0 8px 24px rgba(90,74,74,0.08);
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
         }
 
         /* ФОН ДЛЯ БЛОКА С ФОТО */
@@ -301,6 +310,10 @@
             margin: 30px 0;
             padding: 40px 20px;
             box-shadow: 0 8px 24px rgba(90,74,74,0.08);
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
         }
 
         .glass-box {
@@ -332,15 +345,22 @@
         /* Мобильная версия: убираем общий фон, задаём фоны точечно */
         @media (max-width: 768px) {
             #invitation {
-                background: #faf7f4;
-                background-attachment: scroll;
+                background: #faf7f4;                /* чистый цвет, без картинки */
+                background-attachment: scroll;      /* обязательно сбросить fixed */
+                -webkit-transform: translateZ(0);
+                transform: translateZ(0);
             }
             #places-section, #gifts-section, #photo-section {
                 margin: 20px 0;
                 padding: 30px 15px;
+                border-radius: 0;   /* убираем скругления для стабильности */
             }
+            /* если хочешь сохранить скругления, раскомментируй следующие строки и убери border-radius: 0 выше */
+            /* #places-section, #gifts-section, #photo-section {
+                border-radius: 28px;
+            } */
             .section {
-                background: #faf7f4;
+                background: transparent;
                 border-radius: 0;
                 box-shadow: none;
                 margin: 0;
