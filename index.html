@@ -289,7 +289,7 @@
             100% { opacity: 0.45; }
         }
 
-        /* === ФОТО-КОЛЛАЖ (плавная смена карточек) === */
+        /* === ФОТО-КОЛЛАЖ (очень медленная смена) === */
         .photo-collage {
             position: relative;
             width: 500px;
@@ -306,10 +306,10 @@
             cursor: pointer;
             transform-style: preserve-3d;
             -webkit-transform-style: preserve-3d;
-            /* Замедленная смена позиций (top/left) и прозрачности */
-            transition: top 1.3s cubic-bezier(.22,.61,.36,1),
-                        left 1.3s cubic-bezier(.22,.61,.36,1),
-                        opacity 0.7s ease;
+            /* Самая медленная смена (1.8s) */
+            transition: top 1.8s cubic-bezier(.22,.61,.36,1),
+                        left 1.8s cubic-bezier(.22,.61,.36,1),
+                        opacity 0.9s ease;
             will-change: top, left;
         }
 
@@ -331,7 +331,6 @@
             position: relative;
             width: 100%;
             height: 100%;
-            /* Переворот остаётся быстрым */
             transition: transform 0.95s cubic-bezier(.22,.61,.36,1);
             transform-style: preserve-3d;
             -webkit-transform-style: preserve-3d;
@@ -378,7 +377,6 @@
         .flip-card.back img {
             filter: brightness(0.96);
         }
-
         /* ======================== */
 
         .places {
@@ -558,7 +556,7 @@
             .flip-card {
                 width: 230px;
                 height: 320px;
-                transition: top 0.9s ease, left 0.9s ease, opacity 0.5s; /* чуть быстрее на мобильном */
+                transition: top 1.2s ease, left 1.2s ease, opacity 0.7s;
             }
             .flip-card.front { top: 88px; left: 75px; }
             .flip-card.back { top: 5px; left: 5px; }
@@ -656,7 +654,7 @@
             <div class="divider"></div>
         </div>
 
-        <!-- Фото (медленная смена, быстрый переворот) -->
+        <!-- Фото -->
         <div class="section fade-in">
             <div class="photo-hint">Нажми на фото, чтобы перевернуть ✨</div>
             <div class="photo-collage">
@@ -820,8 +818,8 @@
                 card.classList.remove("back");
                 card.classList.add("front");
                 activeCard = card;
-                // Длительность transition = 1.3s, разблокируем через 1.4s
-                setTimeout(() => { locked = false; }, 1400);
+                // Длительность transition = 1.8s, разблокируем через 1.9s
+                setTimeout(() => { locked = false; }, 1900);
             }
 
             function flipCard(card) {
