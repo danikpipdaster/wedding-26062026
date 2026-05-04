@@ -112,35 +112,44 @@
         }
         .divider.gold { background: linear-gradient(to right, transparent, #c9a87c, transparent); }
 
-        /* ОБЩИЙ ФОН ДЛЯ ВСЕХ СЕКЦИЙ ПОСЛЕ ЗАСТАВКИ — seryzadnik.jpg */
+        /* Убираем общий фон с #invitation */
         #invitation {
             position: relative;
             z-index: 1;
-            background: linear-gradient(rgba(250,247,244,0.65), rgba(250,247,244,0.65)), url('seryzadnik.jpg') center/cover no-repeat;
-            background-attachment: fixed;
-            background-color: #faf7f4;
+            background: transparent;
             padding-top: 30px;
             padding-bottom: 30px;
         }
 
-        .section { padding: 70px 20px; position: relative; }
+        /* Каждая секция получает свой фон seryzadnik.jpg */
+        .section {
+            padding: 70px 20px;
+            position: relative;
+            background: url('seryzadnik.jpg') center/cover no-repeat;
+            background-attachment: scroll;
+            /* Лёгкое затемнение для читаемости текста */
+            box-shadow: inset 0 0 0 2000px rgba(250,247,244,0.65);
+            color: #ffffff; /* базовый белый текст */
+        }
         .section-title {
             font-family: 'Cormorant Garamond', serif; font-size: 38px; font-weight: 400;
-            margin-bottom: 10px; color: #4a3f3f; letter-spacing: 2px;
+            margin-bottom: 10px; color: #ffffff; letter-spacing: 2px;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.3);
         }
         .section-subtitle {
             font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 12px;
-            letter-spacing: 4px; text-transform: uppercase; color: #b8977e; margin-bottom: 30px;
+            letter-spacing: 4px; text-transform: uppercase; color: #ffffff; margin-bottom: 30px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
-        .welcome-text { font-size: 20px; line-height: 1.7; color: #6a5a5a; max-width: 600px; margin: 0 auto; }
-        .welcome-text strong { font-weight: 500; color: #4a3f3f; }
+        .welcome-text { font-size: 20px; line-height: 1.7; color: #ffffff; max-width: 600px; margin: 0 auto; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
+        .welcome-text strong { font-weight: 500; color: #ffffff; }
 
         .photo-hint {
             font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 13px;
-            letter-spacing: 3px; opacity: 0.7; margin-bottom: 8px; color: #9a8a7a;
+            letter-spacing: 3px; opacity: 0.9; margin-bottom: 8px; color: #ffffff;
             animation: hintFloat 1.8s infinite;
         }
-        @keyframes hintFloat { 0% { opacity: 0.45; } 50% { opacity: 1; } 100% { opacity: 0.45; } }
+        @keyframes hintFloat { 0% { opacity: 0.6; } 50% { opacity: 1; } 100% { opacity: 0.6; } }
         .photo-collage {
             position: relative; width: 600px; height: 670px;
             margin: 25px auto 10px;
@@ -174,37 +183,30 @@
         .flip-card.front img { box-shadow: 0 26px 58px rgba(90,74,74,0.35); }
         .flip-card.back img { filter: brightness(0.96); }
 
-        #places-section, #gifts-section {
-            background: transparent;
-            border-radius: 0;
-            box-shadow: none;
-            margin: 30px 0;
-            padding: 40px 20px;
-        }
-
         .places { display: flex; justify-content: center; gap: 35px; flex-wrap: wrap; }
         .place-card {
-            width: 380px; background: rgba(255,255,255,0.7); border-radius: 24px; overflow: hidden;
-            box-shadow: 0 12px 35px rgba(90,74,74,0.08); transition: transform 0.4s ease, box-shadow 0.4s ease;
+            width: 380px; background: rgba(255,255,255,0.25); border-radius: 24px; overflow: hidden;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.15); transition: transform 0.4s ease, box-shadow 0.4s ease;
+            color: #ffffff;
         }
-        .place-card:hover { transform: translateY(-4px); box-shadow: 0 20px 45px rgba(90,74,74,0.13); }
+        .place-card:hover { transform: translateY(-4px); box-shadow: 0 20px 45px rgba(0,0,0,0.25); }
         .place-card img { width: 100%; height: 230px; object-fit: cover; }
-        .place-info { padding: 24px 22px 28px; font-size: 18px; line-height: 1.6; color: #4a3f3f; }
-        .place-info strong { display: block; font-size: 20px; margin-bottom: 6px; font-weight: 500; }
+        .place-info { padding: 24px 22px 28px; font-size: 18px; line-height: 1.6; color: #ffffff; }
+        .place-info strong { display: block; font-size: 20px; margin-bottom: 6px; font-weight: 500; color: #ffffff; }
         .map-button {
-            display: inline-block; margin-top: 14px; padding: 10px 22px; background: #c9a87c;
-            color: white; border-radius: 25px; text-decoration: none;
+            display: inline-block; margin-top: 14px; padding: 10px 22px; background: #ffffff;
+            color: #4a3f3f; border-radius: 25px; text-decoration: none;
             font-family: 'Montserrat', sans-serif; font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
-            transition: all 0.3s ease;
+            transition: all 0.3s ease; font-weight: 500;
         }
-        .map-button:hover { background: #b8976e; box-shadow: 0 6px 20px rgba(180,140,100,0.3); }
+        .map-button:hover { background: #f0e6d3; }
 
         .schedule-big {
             font-family: 'Great Vibes', cursive;
             font-size: 72px;
             font-weight: 400;
-            color: #4a3f3f;
-            text-shadow: 0 6px 18px rgba(0,0,0,0.1);
+            color: #ffffff;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.3);
             line-height: 1.2;
             margin: 30px 0 10px;
             display: flex;
@@ -217,71 +219,40 @@
 
         .glass-box {
             position: relative; max-width: 580px; margin: 25px auto 0; padding: 36px 40px;
-            background: rgba(255,255,255,0.35); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-            border-radius: 28px; box-shadow: 0 8px 24px rgba(90,74,74,0.06);
-            border: 1px solid rgba(255,255,255,0.5); font-size: 19px; line-height: 1.8; color: #5a4a4a;
+            background: rgba(0,0,0,0.2); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            border-radius: 28px; box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,255,255,0.3); font-size: 19px; line-height: 1.8; color: #ffffff;
         }
         .glass-box::before, .glass-box::after {
             content: ''; position: absolute; top: 15%; bottom: 15%; width: 1px;
-            background: linear-gradient(to bottom, transparent, #c9a87c, transparent); opacity: 0.45;
+            background: linear-gradient(to bottom, transparent, #ffffff, transparent); opacity: 0.5;
         }
         .glass-box::before { left: 22px; } .glass-box::after { right: 22px; }
         .dresscode-palette { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-top: 24px; }
         .dresscode-circle {
             width: 56px; height: 56px; border-radius: 50%;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.06), 0 0 0 2px rgba(180,140,110,0.3), inset 0 1px 2px rgba(255,255,255,0.5);
-            border: 1px solid rgba(180,140,110,0.35); transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2), 0 0 0 2px rgba(255,255,255,0.5);
+            border: 1px solid rgba(255,255,255,0.6); transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .dresscode-circle:hover { transform: scale(1.12); box-shadow: 0 8px 18px rgba(0,0,0,0.1), 0 0 0 3px rgba(180,140,110,0.4), inset 0 1px 2px rgba(255,255,255,0.5); }
-        .final { padding: 70px 20px 90px; font-size: 24px; color: #4a3f3f; letter-spacing: 1px; }
+        .dresscode-circle:hover { transform: scale(1.12); box-shadow: 0 8px 18px rgba(0,0,0,0.3), 0 0 0 3px rgba(255,255,255,0.7); }
+
+        .final { padding: 70px 20px 90px; font-size: 24px; color: #ffffff; letter-spacing: 1px; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
         .final .heart { margin-top: 16px; font-size: 32px; animation: heartBeat 1.5s infinite; display: inline-block; }
         @keyframes heartBeat { 0% { transform: scale(1); } 25% { transform: scale(1.15); } 50% { transform: scale(1); } 75% { transform: scale(1.1); } 100% { transform: scale(1); } }
         .fade-in { opacity: 0; transform: translateY(25px); transition: opacity 1s ease, transform 1s ease; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
 
+        /* Убираем фоны для секций без фона */
+        #places-section, #gifts-section {
+            background: transparent; /* они всё равно внутри .section, которая уже с фоном */
+        }
+
         /* Мобильная версия */
         @media (max-width: 768px) {
-            #invitation {
-                background: linear-gradient(rgba(250,247,244,0.55), rgba(250,247,244,0.55)),
-                            url('seryzadnik.jpg') center / cover no-repeat;
+            .section {
                 background-attachment: scroll;
+                box-shadow: inset 0 0 0 2000px rgba(250,247,244,0.55);
             }
-
-            .section-title,
-            .section-subtitle,
-            .welcome-text,
-            .welcome-text strong,
-            .photo-hint,
-            .schedule-big,
-            .final,
-            .final .heart,
-            .glass-box,
-            .place-info,
-            .place-info strong,
-            .map-button {
-                color: #ffffff !important;
-                text-shadow: 0 2px 6px rgba(0,0,0,0.4);
-            }
-            .glass-box {
-                background: rgba(0,0,0,0.25);
-                backdrop-filter: blur(10px);
-                -webkit-backdrop-filter: blur(10px);
-                border-color: rgba(255,255,255,0.35);
-            }
-            .divider {
-                background: linear-gradient(to right, transparent, #ffffff, transparent) !important;
-            }
-            .place-card {
-                background: rgba(255,255,255,0.2);
-                color: #fff;
-            }
-            .map-button {
-                background: #fff;
-                color: #4a3f3f !important;
-                font-weight: 600;
-            }
-
-            .section { background: transparent; border-radius: 0; box-shadow: none; margin: 0; padding: 50px 15px; }
             .photo-collage { width: 320px; height: 440px; }
             .flip-card { width: 230px; height: 320px; transition: transform 0.9s ease, opacity 0.5s; }
             .flip-card.front { transform: translate(75px, 88px) rotate(0deg) scale(1.04); }
@@ -343,7 +314,7 @@
         <a href="#invitation" class="scroll-arrow" aria-label="К приглашению">↓</a>
     </div>
 
-    <!-- БЛОКИ 2–8 с общим фоном seryzadnik.jpg -->
+    <!-- БЛОКИ 2–8 с фоном на каждой секции -->
     <div id="invitation">
         <div class="container">
             <div class="section fade-in">
@@ -443,7 +414,7 @@
                     <p>Честно — нам ничего не нужно 😄</p>
                     <p style="margin-top:10px;">Просто приходите и разделите этот день с нами 💛</p>
                     <p style="margin-top:10px;">Но если вдруг очень захочется что-то подарить —<br>пусть это будет удобно положить в конверт 😉</p>
-                    <div style="margin-top:18px;font-size:14px;opacity:0.6;font-style:italic;color:#9a8a7a;">*обещаем потратить с умом</div>
+                    <div style="margin-top:18px;font-size:14px;opacity:0.6;font-style:italic;color:#ffffff;">*обещаем потратить с умом</div>
                 </div>
                 <div class="divider"></div>
             </div>
