@@ -115,12 +115,11 @@
         }
         .divider.gold { background: linear-gradient(to right, transparent, #c9a87c, transparent); }
 
-        /* Общий фон для десктопа */
+        /* Общий фон (без fixed) */
         #invitation {
             position: relative;
             z-index: 1;
             background: linear-gradient(rgba(250,247,244,0.65), rgba(250,247,244,0.65)), url('zadnifon2.jpg') center/cover no-repeat;
-            background-attachment: fixed;
             background-color: #faf7f4;
             padding-top: 30px;
             padding-bottom: 30px;
@@ -144,7 +143,6 @@
         }
         @keyframes hintFloat { 0% { opacity: 0.45; } 50% { opacity: 1; } 100% { opacity: 0.45; } }
 
-        /* Улучшение читаемости подсказки на фоне */
         #photo-section .photo-hint {
             background: rgba(255, 255, 255, 0.75);
             display: inline-block;
@@ -276,44 +274,27 @@
             line-height: 1.5;
         }
 
-        /* ФОН ДЛЯ БЛОКА МЕСТ */
+        /* Фоновые секции */
         #places-section {
             background: linear-gradient(rgba(250,247,244,0.7), rgba(250,247,244,0.7)), url('zadnifonkarta.jpg') center/cover no-repeat;
             border-radius: 28px;
             margin: 30px 0;
             padding: 40px 20px;
             box-shadow: 0 8px 24px rgba(90,74,74,0.08);
-            /* фикс мерцания */
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-            -webkit-transform: translateZ(0);
-            transform: translateZ(0);
         }
-
-        /* ФОН ДЛЯ БЛОКА ПОДАРКОВ */
         #gifts-section {
             background: linear-gradient(rgba(250,247,244,0.7), rgba(250,247,244,0.7)), url('zadnifonkras.jpg') center/cover no-repeat;
             border-radius: 28px;
             margin: 30px 0;
             padding: 40px 20px;
             box-shadow: 0 8px 24px rgba(90,74,74,0.08);
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-            -webkit-transform: translateZ(0);
-            transform: translateZ(0);
         }
-
-        /* ФОН ДЛЯ БЛОКА С ФОТО */
         #photo-section {
             background: linear-gradient(rgba(250,247,244,0.7), rgba(250,247,244,0.7)), url('zadnikinsta.jpg') center/cover no-repeat;
             border-radius: 28px;
             margin: 30px 0;
             padding: 40px 20px;
             box-shadow: 0 8px 24px rgba(90,74,74,0.08);
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-            -webkit-transform: translateZ(0);
-            transform: translateZ(0);
         }
 
         .glass-box {
@@ -342,38 +323,48 @@
         .fade-in { opacity: 0; transform: translateY(25px); transition: opacity 1s ease, transform 1s ease; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-        /* Мобильная версия: убираем общий фон, задаём фоны точечно */
+        /* Мобильная версия: изолируем фоны через псевдоэлементы */
         @media (max-width: 768px) {
             #invitation {
-                background: #faf7f4;                /* чистый цвет, без картинки */
-                background-attachment: scroll;      /* обязательно сбросить fixed */
-                -webkit-transform: translateZ(0);
-                transform: translateZ(0);
+                background: #faf7f4;
+                background-attachment: scroll;
             }
             #places-section, #gifts-section, #photo-section {
+                background: #faf7f4;
+                border-radius: 0;
+                box-shadow: none;
                 margin: 20px 0;
                 padding: 30px 15px;
-                border-radius: 0;   /* убираем скругления для стабильности */
+                position: relative;
+                overflow: hidden;
+                z-index: 0;
+                will-change: transform;
             }
-            /* если хочешь сохранить скругления, раскомментируй следующие строки и убери border-radius: 0 выше */
-            /* #places-section, #gifts-section, #photo-section {
-                border-radius: 28px;
-            } */
+            #places-section::before, #gifts-section::before, #photo-section::before {
+                content: '';
+                position: absolute;
+                top: 0; left: 0; width: 100%; height: 100%;
+                z-index: -1;
+                background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat;
+                opacity: 0.3;
+            }
+            #places-section::before {
+                background-image: url('zadnifonkarta.jpg');
+            }
+            #gifts-section::before {
+                background-image: url('zadnifonkras.jpg');
+            }
+            #photo-section::before {
+                background-image: url('zadnikinsta.jpg');
+            }
             .section {
                 background: transparent;
                 border-radius: 0;
                 box-shadow: none;
                 margin: 0;
                 padding: 50px 15px;
-            }
-            #places-section {
-                background: linear-gradient(rgba(250,247,244,0.7), rgba(250,247,244,0.7)), url('zadnifonkarta.jpg') center/cover no-repeat;
-            }
-            #gifts-section {
-                background: linear-gradient(rgba(250,247,244,0.7), rgba(250,247,244,0.7)), url('zadnifonkras.jpg') center/cover no-repeat;
-            }
-            #photo-section {
-                background: linear-gradient(rgba(250,247,244,0.7), rgba(250,247,244,0.7)), url('zadnikinsta.jpg') center/cover no-repeat;
             }
             .initial-line { font-size: 110px; }
             .initial-line.line-amp { font-size: 50px; margin: -10px 0; }
@@ -468,7 +459,7 @@
                 <div class="divider"></div>
             </div>
 
-            <!-- БЛОК 3 — Места (с новым фоном) -->
+            <!-- БЛОК 3 — Места -->
             <div class="section fade-in" id="places-section">
                 <h2 class="section-title">Места проведения</h2>
                 <p class="section-subtitle">где это случится</p>
@@ -491,11 +482,10 @@
                 <div class="divider"></div>
             </div>
 
-            <!-- БЛОК 4 — ПРОГРАММА (ДЕТЕКТИВНАЯ ДОСКА) -->
+            <!-- БЛОК 4 — ПРОГРАММА -->
             <div class="section fade-in" id="schedule-section">
                 <h2 class="section-title">Программа дня</h2>
                 <p class="section-subtitle">26 июня 2026</p>
-
                 <div class="cork-board">
                     <div class="timeline" id="timeline">
                         <div class="timeline-item" id="item-meet">
@@ -554,7 +544,7 @@
                 <div class="divider"></div>
             </div>
 
-            <!-- БЛОК 7 — Подарки (с новым фоном) -->
+            <!-- БЛОК 7 — Подарки -->
             <div class="section fade-in" id="gifts-section">
                 <h2 class="section-title">Подарки</h2>
                 <div class="glass-box">
