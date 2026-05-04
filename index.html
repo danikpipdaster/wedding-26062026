@@ -12,6 +12,7 @@
     <link rel="preload" as="image" href="zadnifon2.jpg">
     <link rel="preload" as="image" href="zadnifonkarta.jpg">
     <link rel="preload" as="image" href="zadnifonkras.jpg">
+    <link rel="preload" as="image" href="zadnikinsta.jpg">
     <link rel="preload" as="image" href="monetka.jpg">
     <link rel="preload" as="image" href="serdecko.jpg">
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
@@ -279,6 +280,15 @@
             box-shadow: 0 8px 24px rgba(90,74,74,0.08);
         }
 
+        /* ФОН ДЛЯ БЛОКА С ФОТО */
+        #photo-section {
+            background: linear-gradient(rgba(250,247,244,0.7), rgba(250,247,244,0.7)), url('zadnikinsta.jpg') center/cover no-repeat;
+            border-radius: 28px;
+            margin: 30px 0;
+            padding: 40px 20px;
+            box-shadow: 0 8px 24px rgba(90,74,74,0.08);
+        }
+
         .glass-box {
             position: relative; max-width: 580px; margin: 25px auto 0; padding: 36px 40px;
             background: rgba(255,255,255,0.35); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
@@ -308,14 +318,13 @@
         /* Мобильная версия: убираем общий фон, задаём фоны точечно */
         @media (max-width: 768px) {
             #invitation {
-                background: #faf7f4; /* чистый фон вместо картинки */
+                background: #faf7f4;
                 background-attachment: scroll;
             }
-            #places-section, #gifts-section {
+            #places-section, #gifts-section, #photo-section {
                 margin: 20px 0;
                 padding: 30px 15px;
             }
-            /* чтобы секции без явного фона шли с обычным цветом */
             .section {
                 background: #faf7f4;
                 border-radius: 0;
@@ -323,12 +332,14 @@
                 margin: 0;
                 padding: 50px 15px;
             }
-            /* возвращаем фон для мест и подарков */
             #places-section {
                 background: linear-gradient(rgba(250,247,244,0.7), rgba(250,247,244,0.7)), url('zadnifonkarta.jpg') center/cover no-repeat;
             }
             #gifts-section {
                 background: linear-gradient(rgba(250,247,244,0.7), rgba(250,247,244,0.7)), url('zadnifonkras.jpg') center/cover no-repeat;
+            }
+            #photo-section {
+                background: linear-gradient(rgba(250,247,244,0.7), rgba(250,247,244,0.7)), url('zadnikinsta.jpg') center/cover no-repeat;
             }
             .initial-line { font-size: 110px; }
             .initial-line.line-amp { font-size: 50px; margin: -10px 0; }
@@ -404,7 +415,7 @@
                 </p>
                 <div class="divider"></div>
             </div>
-            <div class="section fade-in">
+            <div class="section fade-in" id="photo-section">
                 <div class="photo-hint">Нажми на фото, чтобы перевернуть ✨</div>
                 <div class="photo-collage">
                     <div class="flip-card front" id="card1">
