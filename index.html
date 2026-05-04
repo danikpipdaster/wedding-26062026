@@ -12,7 +12,6 @@
     <link rel="preload" as="image" href="zadnifon2.jpg">
     <link rel="preload" as="image" href="zadnifonkarta.jpg">
     <link rel="preload" as="image" href="zadnifonkras.jpg">
-    <link rel="preload" as="image" href="zadnikinsta.jpg">
     <link rel="preload" as="image" href="monetka.jpg">
     <link rel="preload" as="image" href="serdecko.jpg">
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
@@ -115,7 +114,7 @@
         }
         .divider.gold { background: linear-gradient(to right, transparent, #c9a87c, transparent); }
 
-        /* ОБЩИЙ ФОН ПРОЗРАЧНЫЙ */
+        /* ОБЩИЙ КОНТЕЙНЕР ПРОЗРАЧНЫЙ */
         #invitation {
             position: relative;
             z-index: 1;
@@ -136,19 +135,16 @@
         .welcome-text { font-size: 20px; line-height: 1.7; color: #6a5a5a; max-width: 600px; margin: 0 auto; }
         .welcome-text strong { font-weight: 500; color: #4a3f3f; }
 
-        /* БЛОК ФОТО С СТРЕЛКОЙ */
-        .photo-wrapper {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            flex-wrap: wrap;
+        /* ФОТО – классический коллаж, без подсказки */
+        .photo-hint {
+            font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 13px;
+            letter-spacing: 3px; opacity: 0.7; margin-bottom: 8px; color: #9a8a7a;
+            animation: hintFloat 1.8s infinite;
         }
+        @keyframes hintFloat { 0% { opacity: 0.45; } 50% { opacity: 1; } 100% { opacity: 0.45; } }
         .photo-collage {
-            position: relative;
-            width: 600px;
-            height: 670px;
-            margin: 0 auto 10px;
+            position: relative; width: 600px; height: 670px;
+            margin: 25px auto 10px;
             perspective: 1400px;
         }
         .flip-card {
@@ -179,45 +175,14 @@
         .flip-card.front img { box-shadow: 0 26px 58px rgba(90,74,74,0.35); }
         .flip-card.back img { filter: brightness(0.96); }
 
-        /* Стильная стрелка справа */
-        .photo-arrow-hint {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: #ffffff;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 11px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            background: rgba(0,0,0,0.25);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            padding: 10px 14px;
-            border-radius: 40px;
-            margin-left: -20px;
-            position: relative;
-            z-index: 5;
-        }
-        .arrow-icon {
-            font-size: 26px;
-            margin-bottom: 4px;
-            animation: arrowRight 1.5s infinite;
-        }
-        @keyframes arrowRight {
-            0%, 100% { transform: translateX(0); }
-            50% { transform: translateX(5px); }
-        }
-
-        /* ФОНЫ СЕКЦИЙ (ПК) */
+        /* ФОНЫ ДЛЯ СЕКЦИЙ */
         #photo-section {
-            background: linear-gradient(rgba(250,247,244,0.7), rgba(250,247,244,0.7)), url('zadnikinsta.jpg') center/contain no-repeat;
-            background-size: contain;
-            background-color: #faf7f4;
-            border-radius: 28px;
+            /* без фона! */
+            background: transparent;
+            border-radius: 0;
+            box-shadow: none;
             margin: 30px 0;
             padding: 20px 20px 40px;
-            box-shadow: 0 8px 24px rgba(90,74,74,0.08);
         }
         #places-section {
             background: linear-gradient(rgba(250,247,244,0.7), rgba(250,247,244,0.7)), url('zadnifonkarta.jpg') center/cover no-repeat;
@@ -234,7 +199,7 @@
             box-shadow: 0 8px 24px rgba(90,74,74,0.08);
         }
 
-        /* Остальные блоки */
+        /* Остальное без изменений */
         .places { display: flex; justify-content: center; gap: 35px; flex-wrap: wrap; }
         .place-card {
             width: 380px; background: rgba(255,255,255,0.7); border-radius: 24px; overflow: hidden;
@@ -251,7 +216,6 @@
             transition: all 0.3s ease;
         }
         .map-button:hover { background: #b8976e; box-shadow: 0 6px 20px rgba(180,140,100,0.3); }
-
         .cork-board {
             background: #b48b5a;
             background-image: radial-gradient(circle, #a07840 1px, transparent 1px);
@@ -271,55 +235,20 @@
             border-left: 3px dashed #c44b4b;
             margin: 0 10px;
         }
-        .timeline::before {
-            content: '🧷';
-            position: absolute;
-            left: -13px;
-            top: -25px;
-            font-size: 24px;
-            color: #c44b4b;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-        }
+        .timeline::before { content: '🧷'; position: absolute; left: -13px; top: -25px; font-size: 24px; color: #c44b4b; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
         .timeline-item {
-            position: relative;
-            margin-bottom: 28px;
-            padding: 12px 18px;
-            background: rgba(255,248,240,0.9);
-            border-radius: 16px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
+            position: relative; margin-bottom: 28px; padding: 12px 18px;
+            background: rgba(255,248,240,0.9); border-radius: 16px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
-        .timeline-item:hover { transform: scale(1.02); }
         .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -48px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 14px;
-            height: 14px;
-            background: #c44b4b;
-            border-radius: 50%;
-            box-shadow: 0 0 0 4px #b48b5a, 0 0 0 6px rgba(0,0,0,0.2);
-            z-index: 2;
+            content: ''; position: absolute; left: -48px; top: 50%; transform: translateY(-50%);
+            width: 14px; height: 14px; background: #c44b4b; border-radius: 50%;
+            box-shadow: 0 0 0 4px #b48b5a, 0 0 0 6px rgba(0,0,0,0.2); z-index: 2;
         }
         .timeline-item.hidden { display: none; }
         .item-icon { font-size: 28px; margin-bottom: 6px; }
-        .item-title {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 500;
-            font-size: 16px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: #4a3f3f;
-        }
-        .item-desc {
-            font-size: 16px;
-            color: #5a4a4a;
-            margin-top: 4px;
-            line-height: 1.5;
-        }
-
+        .item-title { font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 16px; letter-spacing: 2px; text-transform: uppercase; color: #4a3f3f; }
+        .item-desc { font-size: 16px; color: #5a4a4a; margin-top: 4px; }
         .glass-box {
             position: relative; max-width: 580px; margin: 25px auto 0; padding: 36px 40px;
             background: rgba(255,255,255,0.35); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
@@ -328,8 +257,7 @@
         }
         .glass-box::before, .glass-box::after {
             content: ''; position: absolute; top: 15%; bottom: 15%; width: 1px;
-            background: linear-gradient(to bottom, transparent, #c9a87c, transparent);
-            opacity: 0.45; border-radius: 1px;
+            background: linear-gradient(to bottom, transparent, #c9a87c, transparent); opacity: 0.45;
         }
         .glass-box::before { left: 22px; } .glass-box::after { right: 22px; }
         .dresscode-palette { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-top: 24px; }
@@ -339,7 +267,6 @@
             border: 1px solid rgba(180,140,110,0.35); transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         .dresscode-circle:hover { transform: scale(1.12); box-shadow: 0 8px 18px rgba(0,0,0,0.1), 0 0 0 3px rgba(180,140,110,0.4), inset 0 1px 2px rgba(255,255,255,0.5); }
-
         .final { padding: 70px 20px 90px; font-size: 24px; color: #4a3f3f; letter-spacing: 1px; }
         .final .heart { margin-top: 16px; font-size: 32px; animation: heartBeat 1.5s infinite; display: inline-block; }
         @keyframes heartBeat { 0% { transform: scale(1); } 25% { transform: scale(1.15); } 50% { transform: scale(1); } 75% { transform: scale(1.1); } 100% { transform: scale(1); } }
@@ -348,75 +275,24 @@
 
         /* Мобильная версия */
         @media (max-width: 768px) {
-            .photo-wrapper { flex-direction: column; align-items: center; }
-            .photo-arrow-hint {
-                flex-direction: row;
-                gap: 8px;
-                margin-left: 0;
-                margin-top: 12px;
-                background: rgba(0,0,0,0.3);
-            }
-            .arrow-icon { margin-bottom: 0; }
-            #photo-section {
-                background: #faf7f4;
-                border-radius: 0;
-                box-shadow: none;
-                margin: 20px 0;
-                padding: 30px 15px;
-                position: relative;
-                overflow: hidden;
-                z-index: 0;
-                will-change: transform;
-            }
-            #photo-section::before {
-                content: '';
-                position: absolute;
-                top: 0; left: 0; width: 100%; height: 100%;
-                z-index: -1;
-                background-image: url('zadnikinsta.jpg');
-                background-position: center;
-                background-size: cover;
-                background-repeat: no-repeat;
-                opacity: 0.3;
-            }
+            #photo-section { background: transparent; }
             #places-section, #gifts-section {
                 background: #faf7f4;
                 border-radius: 0;
                 box-shadow: none;
                 margin: 20px 0;
                 padding: 30px 15px;
-                position: relative;
-                overflow: hidden;
-                z-index: 0;
-                will-change: transform;
+                position: relative; overflow: hidden; z-index: 0;
+            }
+            #places-section::before, #gifts-section::before {
+                content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
+                background-position: center; background-size: cover; background-repeat: no-repeat; opacity: 0.3;
             }
             #places-section::before { background-image: url('zadnifonkarta.jpg'); }
             #gifts-section::before { background-image: url('zadnifonkras.jpg'); }
-            #places-section::before, #gifts-section::before {
-                content: '';
-                position: absolute;
-                top: 0; left: 0; width: 100%; height: 100%;
-                z-index: -1;
-                background-position: center;
-                background-size: cover;
-                background-repeat: no-repeat;
-                opacity: 0.3;
-            }
-            .section {
-                background: transparent;
-                border-radius: 0;
-                box-shadow: none;
-                margin: 0;
-                padding: 50px 15px;
-            }
-            .photo-collage {
-                width: 320px;
-                height: 440px;
-            }
-            .flip-card {
-                width: 230px; height: 320px;
-                transition: transform 0.9s ease, opacity 0.5s;
-            }
+            .section { background: transparent; border-radius: 0; box-shadow: none; margin: 0; padding: 50px 15px; }
+            .photo-collage { width: 320px; height: 440px; }
+            .flip-card { width: 230px; height: 320px; transition: transform 0.9s ease, opacity 0.5s; }
             .flip-card.front { transform: translate(75px, 88px) rotate(0deg) scale(1.04); }
             .flip-card.back { transform: translate(5px, 5px) rotate(-7deg) scale(0.92); }
             .flip-card img { border-radius: 18px; }
@@ -490,24 +366,19 @@
                 <div class="divider"></div>
             </div>
             <div class="section fade-in" id="photo-section">
-                <div class="photo-wrapper">
-                    <div class="photo-collage">
-                        <div class="flip-card front" id="card1">
-                            <div class="flip-inner">
-                                <div class="flip-front"><img src="photo1.jpg" alt="Фото 1"></div>
-                                <div class="flip-back"><img src="photo2.jpg" alt="Фото 2"></div>
-                            </div>
-                        </div>
-                        <div class="flip-card back" id="card2">
-                            <div class="flip-inner">
-                                <div class="flip-front"><img src="photo3.jpg" alt="Фото 3"></div>
-                                <div class="flip-back"><img src="photo4.jpg" alt="Фото 4"></div>
-                            </div>
+                <div class="photo-hint">Нажми на фото, чтобы перевернуть ✨</div>
+                <div class="photo-collage">
+                    <div class="flip-card front" id="card1">
+                        <div class="flip-inner">
+                            <div class="flip-front"><img src="photo1.jpg" alt="Фото 1"></div>
+                            <div class="flip-back"><img src="photo2.jpg" alt="Фото 2"></div>
                         </div>
                     </div>
-                    <div class="photo-arrow-hint">
-                        <span class="arrow-icon">→</span>
-                        <span>нажми</span>
+                    <div class="flip-card back" id="card2">
+                        <div class="flip-inner">
+                            <div class="flip-front"><img src="photo3.jpg" alt="Фото 3"></div>
+                            <div class="flip-back"><img src="photo4.jpg" alt="Фото 4"></div>
+                        </div>
                     </div>
                 </div>
                 <div class="divider"></div>
