@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Данил & Юлия — Приглашение на свадьбу</title>
 
-    <!-- Предзагрузка фото для плавного переворота -->
     <link rel="preload" as="image" href="photo1.jpg">
     <link rel="preload" as="image" href="photo2.jpg">
     <link rel="preload" as="image" href="photo3.jpg">
@@ -290,7 +289,7 @@
             100% { opacity: 0.45; }
         }
 
-        /* === ФОТО-КОЛЛАЖ (БАГ ИСПРАВЛЕН) === */
+        /* === ФОТО-КОЛЛАЖ (плавная смена карточек) === */
         .photo-collage {
             position: relative;
             width: 500px;
@@ -307,9 +306,10 @@
             cursor: pointer;
             transform-style: preserve-3d;
             -webkit-transform-style: preserve-3d;
-            transition: top 0.8s cubic-bezier(.22,.61,.36,1),
-                        left 0.8s cubic-bezier(.22,.61,.36,1),
-                        opacity 0.5s ease;   /* Возвращаем старую скорость 0.8s */
+            /* Замедленная смена позиций (top/left) и прозрачности */
+            transition: top 1.3s cubic-bezier(.22,.61,.36,1),
+                        left 1.3s cubic-bezier(.22,.61,.36,1),
+                        opacity 0.7s ease;
             will-change: top, left;
         }
 
@@ -331,6 +331,7 @@
             position: relative;
             width: 100%;
             height: 100%;
+            /* Переворот остаётся быстрым */
             transition: transform 0.95s cubic-bezier(.22,.61,.36,1);
             transform-style: preserve-3d;
             -webkit-transform-style: preserve-3d;
@@ -364,14 +365,12 @@
             padding: 8px;
             box-shadow: 0 18px 40px rgba(90, 74, 74, 0.15);
             box-sizing: border-box;
-            /* Статичное положение без анимации */
             transform: rotateY(0deg) translateZ(0);
             -webkit-transform: rotateY(0deg) translateZ(0);
             backface-visibility: hidden;
             -webkit-backface-visibility: hidden;
         }
 
-        /* Передняя карточка теперь просто с более яркой тенью (без пульсации) */
         .flip-card.front img {
             box-shadow: 0 26px 58px rgba(90, 74, 74, 0.35);
         }
@@ -556,7 +555,11 @@
             .hero { padding: 50px 15px 40px; }
 
             .photo-collage { width: 320px; height: 470px; }
-            .flip-card { width: 230px; height: 320px; transition: top 0.4s ease, left 0.4s ease; }
+            .flip-card {
+                width: 230px;
+                height: 320px;
+                transition: top 0.9s ease, left 0.9s ease, opacity 0.5s; /* чуть быстрее на мобильном */
+            }
             .flip-card.front { top: 88px; left: 75px; }
             .flip-card.back { top: 5px; left: 5px; }
             .flip-card img { border-radius: 18px; }
@@ -653,7 +656,7 @@
             <div class="divider"></div>
         </div>
 
-        <!-- Фото (исправлено) -->
+        <!-- Фото (медленная смена, быстрый переворот) -->
         <div class="section fade-in">
             <div class="photo-hint">Нажми на фото, чтобы перевернуть ✨</div>
             <div class="photo-collage">
@@ -817,7 +820,8 @@
                 card.classList.remove("back");
                 card.classList.add("front");
                 activeCard = card;
-                setTimeout(() => { locked = false; }, 900); // чуть позже, чтобы анимация 0.8s завершилась
+                // Длительность transition = 1.3s, разблокируем через 1.4s
+                setTimeout(() => { locked = false; }, 1400);
             }
 
             function flipCard(card) {
