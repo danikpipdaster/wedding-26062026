@@ -114,7 +114,7 @@
         }
         .divider.gold { background: linear-gradient(to right, transparent, #c9a87c, transparent); }
 
-        /* БЛОК 2 И ДАЛЕЕ — НОВЫЙ ФОН */
+        /* Общий фон для десктопа */
         #invitation {
             position: relative;
             z-index: 1;
@@ -124,6 +124,7 @@
             padding-top: 30px;
             padding-bottom: 30px;
         }
+
         .section { padding: 70px 20px; position: relative; }
         .section-title {
             font-family: 'Cormorant Garamond', serif; font-size: 38px; font-weight: 400;
@@ -278,13 +279,6 @@
             box-shadow: 0 8px 24px rgba(90,74,74,0.08);
         }
 
-        /* РАЗДЕЛИТЕЛИ МЕЖДУ СЕКЦИЯМИ */
-        .section + .section {
-            border-top: 1px solid rgba(180,150,130,0.25);
-            margin-top: 20px;
-            padding-top: calc(70px + 20px);
-        }
-
         .glass-box {
             position: relative; max-width: 580px; margin: 25px auto 0; padding: 36px 40px;
             background: rgba(255,255,255,0.35); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
@@ -311,7 +305,31 @@
         .fade-in { opacity: 0; transform: translateY(25px); transition: opacity 1s ease, transform 1s ease; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
 
+        /* Мобильная версия: убираем общий фон, задаём фоны точечно */
         @media (max-width: 768px) {
+            #invitation {
+                background: #faf7f4; /* чистый фон вместо картинки */
+                background-attachment: scroll;
+            }
+            #places-section, #gifts-section {
+                margin: 20px 0;
+                padding: 30px 15px;
+            }
+            /* чтобы секции без явного фона шли с обычным цветом */
+            .section {
+                background: #faf7f4;
+                border-radius: 0;
+                box-shadow: none;
+                margin: 0;
+                padding: 50px 15px;
+            }
+            /* возвращаем фон для мест и подарков */
+            #places-section {
+                background: linear-gradient(rgba(250,247,244,0.7), rgba(250,247,244,0.7)), url('zadnifonkarta.jpg') center/cover no-repeat;
+            }
+            #gifts-section {
+                background: linear-gradient(rgba(250,247,244,0.7), rgba(250,247,244,0.7)), url('zadnifonkras.jpg') center/cover no-repeat;
+            }
             .initial-line { font-size: 110px; }
             .initial-line.line-amp { font-size: 50px; margin: -10px 0; }
             .initial-line.line-d { transform: translateX(-30px); }
@@ -320,8 +338,6 @@
             .heart-img { height: 12px; }
             .date { font-size: 34px; letter-spacing: 4px; }
             .splash { padding: 20px 15px; }
-            #invitation { background-attachment: scroll; }
-            #places-section, #gifts-section { margin: 20px 0; padding: 30px 15px; }
             .photo-collage { width: 320px; height: 470px; }
             .flip-card { width: 230px; height: 320px; transition: transform 0.9s ease, opacity 0.5s; }
             .flip-card.front { transform: translate(75px, 88px) rotate(0deg) scale(1.04); }
@@ -330,7 +346,6 @@
             .place-card { width: 100%; max-width: 380px; }
             .glass-box { margin: 25px 15px 0; font-size: 17px; padding: 28px 30px; }
             .glass-box::before { left: 15px; } .glass-box::after { right: 15px; }
-            .section { padding: 50px 15px; }
             .section-title { font-size: 30px; }
             .coin { display: none !important; }
             .decor-branch-left, .decor-branch-right { font-size: 160px; }
@@ -376,7 +391,7 @@
         <a href="#invitation" class="scroll-arrow" aria-label="К приглашению">↓</a>
     </div>
 
-    <!-- БЛОКИ 2–8 с новым фоном -->
+    <!-- БЛОКИ 2–8 -->
     <div id="invitation">
         <div class="container">
             <!-- БЛОК 2 — ГОСТИ + ФОТО -->
