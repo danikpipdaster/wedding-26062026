@@ -113,25 +113,32 @@
             opacity: 0.6;
         }
 
-        /* ОБЩИЙ ФОН ДЛЯ ВСЕХ СЕКЦИЙ ПОСЛЕ ЗАСТАВКИ (теперь на #invitation) */
+        /* Общий контейнер без фона */
         #invitation {
             position: relative;
             z-index: 1;
-            background: linear-gradient(rgba(250,247,244,0.65), rgba(250,247,244,0.65)), url('seryzadnik.jpg') center/cover no-repeat;
-            background-attachment: scroll;
-            background-color: #faf7f4;
+            background: transparent;
             padding-top: 30px;
             padding-bottom: 30px;
-            /* Тень-переход между секциями создаётся внутренними тенями секций */
         }
 
+        /* Каждая секция получает собственный фон через псевдоэлемент */
         .section {
-            padding: 70px 20px;
             position: relative;
-            background: transparent; /* фон наследуется от #invitation */
+            padding: 70px 20px;
+            overflow: hidden;
             color: #ffffff;
-            /* Мягкий переход между секциями */
-            box-shadow: inset 0 -30px 30px -30px rgba(0,0,0,0.1), inset 0 30px 30px -30px rgba(0,0,0,0.1);
+        }
+        .section::before {
+            content: '';
+            position: absolute;
+            top: -30px; left: -30px; right: -30px; bottom: -30px;
+            background: url('seryzadnik.jpg') center/cover no-repeat;
+            background-attachment: scroll;
+            z-index: -1;
+            /* Плавные переходы на стыках */
+            mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
         }
         .section-title {
             font-family: 'Cormorant Garamond', serif; font-size: 38px; font-weight: 400;
@@ -184,11 +191,6 @@
         }
         .flip-card.front img { box-shadow: 0 26px 58px rgba(90,74,74,0.35); }
         .flip-card.back img { filter: brightness(0.96); }
-
-        /* Места и подарки больше не сбрасывают фон */
-        #places-section, #gifts-section {
-            /* убраны background: transparent и другие сбросы, теперь они как обычные .section */
-        }
 
         .places { display: flex; justify-content: center; gap: 35px; flex-wrap: wrap; }
         .place-card {
@@ -243,7 +245,6 @@
         }
         .dresscode-circle:hover { transform: scale(1.12); box-shadow: 0 8px 18px rgba(0,0,0,0.3), 0 0 0 3px rgba(255,255,255,0.7); }
 
-        /* Финальный текст внутри последней секции */
         .final-text {
             font-size: 24px;
             color: #ffffff;
@@ -264,11 +265,9 @@
 
         /* Мобильная версия */
         @media (max-width: 768px) {
-            #invitation {
+            .section::before {
+                top: -20px; left: -20px; right: -20px; bottom: -20px;
                 background-attachment: scroll;
-            }
-            .section {
-                box-shadow: inset 0 -20px 20px -20px rgba(0,0,0,0.15), inset 0 20px 20px -20px rgba(0,0,0,0.15);
             }
             .photo-collage { width: 320px; height: 440px; }
             .flip-card { width: 230px; height: 320px; transition: transform 0.9s ease, opacity 0.5s; }
@@ -331,7 +330,7 @@
         <a href="#invitation" class="scroll-arrow" aria-label="К приглашению">↓</a>
     </div>
 
-    <!-- БЛОКИ 2–8 с общим фоном на #invitation -->
+    <!-- БЛОКИ 2–8 с фоном на каждой секции -->
     <div id="invitation">
         <div class="container">
             <!-- БЛОК 2 — ГОСТИ + ФОТО -->
@@ -363,7 +362,7 @@
                 <div class="divider"></div>
             </div>
 
-            <!-- БЛОК 3 — Места (теперь с фоном) -->
+            <!-- БЛОК 3 — Места -->
             <div class="section fade-in" id="places-section">
                 <h2 class="section-title">Места проведения</h2>
                 <p class="section-subtitle">где это случится</p>
@@ -430,7 +429,7 @@
                 <div class="divider"></div>
             </div>
 
-            <!-- БЛОК 7 — Подарки + Финал объединены -->
+            <!-- БЛОК 7 — Подарки + Финал -->
             <div class="section fade-in" id="gifts-section">
                 <h2 class="section-title">Подарки</h2>
                 <div class="glass-box">
@@ -439,8 +438,6 @@
                     <p style="margin-top:10px;">Но если вдруг очень захочется что-то подарить —<br>пусть это будет удобно положить в конверт 😉</p>
                     <div style="margin-top:18px;font-size:14px;opacity:0.6;font-style:italic;color:#ffffff;">*обещаем потратить с умом</div>
                 </div>
-
-                <!-- Финальный текст прямо здесь -->
                 <div class="final-text">
                     <p>С любовью и нетерпением ждём вас 🤍</p>
                     <p style="font-size:16px;margin-top:8px;opacity:0.7;">Данил & Юлия</p>
