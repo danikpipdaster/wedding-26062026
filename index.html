@@ -10,6 +10,7 @@
     <link rel="preload" as="image" href="photo4.jpg">
     <link rel="preload" as="image" href="zadnifon1.jpg">
     <link rel="preload" as="image" href="zadnifon2.jpg">
+    <link rel="preload" as="image" href="zadnifonkarta.jpg">
     <link rel="preload" as="image" href="serdecko.jpg">
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -116,7 +117,7 @@
             position: relative;
             z-index: 1;
             background: linear-gradient(rgba(250,247,244,0.65), rgba(250,247,244,0.65)), url('zadnifon2.jpg') center/cover no-repeat;
-            background-attachment: fixed;  /* красивый параллакс-эффект */
+            background-attachment: fixed;
             background-color: #faf7f4;
             padding-top: 30px;
             padding-bottom: 30px;
@@ -257,6 +258,15 @@
             line-height: 1.5;
         }
 
+        /* ФОН ДЛЯ БЛОКА МЕСТ */
+        #places-section {
+            background: linear-gradient(rgba(250,247,244,0.7), rgba(250,247,244,0.7)), url('zadnifonkarta.jpg') center/cover no-repeat;
+            border-radius: 28px;
+            margin: 30px 0;
+            padding: 40px 20px;
+            box-shadow: 0 8px 24px rgba(90,74,74,0.08);
+        }
+
         /* РАЗДЕЛИТЕЛИ МЕЖДУ СЕКЦИЯМИ */
         .section + .section {
             border-top: 1px solid rgba(180,150,130,0.25);
@@ -300,6 +310,7 @@
             .date { font-size: 34px; letter-spacing: 4px; }
             .splash { padding: 20px 15px; }
             #invitation { background-attachment: scroll; }
+            #places-section { margin: 20px 0; padding: 30px 15px; }
             .photo-collage { width: 320px; height: 470px; }
             .flip-card { width: 230px; height: 320px; transition: transform 0.9s ease, opacity 0.5s; }
             .flip-card.front { transform: translate(75px, 88px) rotate(0deg) scale(1.04); }
@@ -386,7 +397,7 @@
                 <div class="divider"></div>
             </div>
 
-            <!-- БЛОК 3 — Места -->
+            <!-- БЛОК 3 — Места (с новым фоном) -->
             <div class="section fade-in" id="places-section">
                 <h2 class="section-title">Места проведения</h2>
                 <p class="section-subtitle">где это случится</p>
