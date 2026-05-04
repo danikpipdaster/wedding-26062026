@@ -8,8 +8,7 @@
     <link rel="preload" as="image" href="photo2.jpg">
     <link rel="preload" as="image" href="photo3.jpg">
     <link rel="preload" as="image" href="photo4.jpg">
-    <link rel="preload" as="image" href="zadnifon1.jpg">
-    <link rel="preload" as="image" href="zadnifon2.jpg">
+    <link rel="preload" as="image" href="ryki.jpg">
     <link rel="preload" as="image" href="zadnifonkarta.jpg">
     <link rel="preload" as="image" href="zadnifonkras.jpg">
     <link rel="preload" as="image" href="monetka.jpg">
@@ -51,7 +50,7 @@
             position: relative; z-index: 1;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
             min-height: 100vh; padding: 40px 20px; text-align: center;
-            background: linear-gradient(rgba(250,247,244,0.75), rgba(250,247,244,0.75)), url('zadnifon1.jpg') center/cover no-repeat;
+            background: linear-gradient(rgba(250,247,244,0.75), rgba(250,247,244,0.75)), url('ryki.jpg') center/cover no-repeat;
             background-color: #faf7f4;
         }
         .initials-block { margin-bottom: 0.3em; }
@@ -135,7 +134,6 @@
         .welcome-text { font-size: 20px; line-height: 1.7; color: #6a5a5a; max-width: 600px; margin: 0 auto; }
         .welcome-text strong { font-weight: 500; color: #4a3f3f; }
 
-        /* ФОТО – классический коллаж, без подсказки */
         .photo-hint {
             font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 13px;
             letter-spacing: 3px; opacity: 0.7; margin-bottom: 8px; color: #9a8a7a;
@@ -175,9 +173,7 @@
         .flip-card.front img { box-shadow: 0 26px 58px rgba(90,74,74,0.35); }
         .flip-card.back img { filter: brightness(0.96); }
 
-        /* ФОНЫ ДЛЯ СЕКЦИЙ */
         #photo-section {
-            /* без фона! */
             background: transparent;
             border-radius: 0;
             box-shadow: none;
@@ -199,7 +195,6 @@
             box-shadow: 0 8px 24px rgba(90,74,74,0.08);
         }
 
-        /* Остальное без изменений */
         .places { display: flex; justify-content: center; gap: 35px; flex-wrap: wrap; }
         .place-card {
             width: 380px; background: rgba(255,255,255,0.7); border-radius: 24px; overflow: hidden;
