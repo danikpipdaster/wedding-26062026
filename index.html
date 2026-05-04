@@ -390,7 +390,7 @@
 
     <script>
         window.onload = function () {
-            // --------------- ТАЙМЕР ---------------
+            // Таймер
             const weddingDate = new Date("June 26, 2026 00:00:00").getTime();
             function updateTimer() {
                 const now = new Date().getTime();
@@ -407,7 +407,7 @@
             updateTimer();
             setInterval(updateTimer, 1000);
 
-            // --------------- СКРЕТЧ-СЛОЙ ---------------
+            // Скретч-слой
             const canvas = document.getElementById("scratch");
             const ctx = canvas.getContext("2d");
             const date = document.querySelector(".date");
@@ -430,7 +430,7 @@
             canvas.addEventListener("touchstart", e => { e.preventDefault(); const rect = canvas.getBoundingClientRect(); scratch(e.touches[0].clientX - rect.left, e.touches[0].clientY - rect.top); });
             canvas.addEventListener("touchmove", e => { e.preventDefault(); const rect = canvas.getBoundingClientRect(); scratch(e.touches[0].clientX - rect.left, e.touches[0].clientY - rect.top); });
 
-            // --------------- КАРТОЧКИ ---------------
+            // Карточки
             const card1 = document.getElementById("card1");
             const card2 = document.getElementById("card2");
             let activeCard = card1;
@@ -461,7 +461,7 @@
                 else { bringToFront(card2); }
             });
 
-            // --------------- ПЛАВНОЕ ПОЯВЛЕНИЕ ---------------
+            // Плавное появление
             const fadeEls = document.querySelectorAll('.fade-in');
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
@@ -469,25 +469,28 @@
             fadeEls.forEach(el => observer.observe(el));
             setTimeout(() => { document.querySelector('.hero.fade-in')?.classList.add('visible'); }, 100);
 
-            // --------------- ПЕРСОНАЛИЗАЦИЯ ДЛЯ НЕСКОЛЬКИХ ИМЁН ---------------
+            // ========== ПЕРСОНАЛЬНОЕ ПРИГЛАШЕНИЕ ==========
             const urlParams = new URLSearchParams(window.location.search);
-            const namesParam = urlParams.get('names');   // пример: ?names=Ирина,Влад,Руслан
-
+            const namesParam = urlParams.get('names');
             if (namesParam) {
                 const namesArray = namesParam.split(',').map(n => n.trim()).filter(n => n.length > 0);
-
                 if (namesArray.length > 0) {
-                    // Формируем обращение: "Дорогие Ирина, Влад и Руслан!"
-                    const last = namesArray.pop(); // последнее имя
+                    const last = namesArray.pop();
                     const greeting = 'Дорогие ' + (namesArray.length > 0 ? namesArray.join(', ') + ' и ' : '') + last + '!';
-
                     document.getElementById('guest-greeting').textContent = greeting;
 
-                    // Заменяем текст приглашения, используя имена
-                    const messageEl = document.getElementById('guest-message');
-                    if (messageEl) {
+                    // Персональный текст для Ирины, Влада и Руслана
+                    if (namesParam === 'Ирина,Влад,Руслан' || namesParam === 'Ирина, Влад, Руслан') {
+                        document.getElementById('guest-message').innerHTML =
+                            '<p>Мы строим самый важный день в нашей жизни — и поняли, что он просто не сможет быть идеальным без вас. Будет красиво, душевно и немножко громко. Обещаем тёплые объятия, вкусный торт и пару сюрпризов (хороших, честно 😄).</p>' +
+                            '<p style="margin-top:14px;">🌸 <strong>Ирина</strong>, мы помним, что настоящий праздник начинается только тогда, когда звучит «Вдоль ночных дорог». Так что обязательно поставим эту песню — и пусть весь зал вспомнит, что такое душа.</p>' +
+                            '<p style="margin-top:14px;">⚽ <strong>Влад</strong>, твоё присутствие — наш талисман. Мы официально заявляем: если ты придёшь на свадьбу, «Спартак» в этом сезоне возьмёт чемпионство. Не лишай страну праздника!</p>' +
+                            '<p style="margin-top:14px;">💪 <strong>Руслан</strong>, без тебя этот день был бы слишком спокойным. Будет борьба… возможно. Но мы верим, что ты направишь свою энергию в правильное русло — например, в танцы или в борьбу с тортом. Кто победит — увидим 😉</p>' +
+                            '<p style="margin-top:18px;">Ждём вас с нетерпением, чтобы разделить счастье и создать воспоминания, которые останутся с нами на всю жизнь. Приходите — без вас свадьба не начнётся! 🤍</p>';
+                    } else {
+                        // Общий персонализированный текст для остальных гостей
                         const namesString = namesArray.length > 0 ? namesArray.join(', ') + ' и ' + last : last;
-                        messageEl.innerHTML =
+                        document.getElementById('guest-message').innerHTML =
                             'С огромной радостью и трепетом в сердце<br>' +
                             'мы приглашаем вас, <strong>' + namesString + '</strong>, разделить с нами<br>' +
                             '<strong>самый важный день нашей жизни</strong> 🤍';
