@@ -107,29 +107,31 @@
         @keyframes arrowBounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(10px); } }
         .divider {
             width: 60px; height: 2px;
-            background: linear-gradient(to right, transparent, #d4c4b0, transparent);
-            margin: 20px auto; border-radius: 1px;
+            background: linear-gradient(to right, transparent, #ffffff, transparent);
+            margin: 20px auto;
+            border-radius: 1px;
+            opacity: 0.6;
         }
-        .divider.gold { background: linear-gradient(to right, transparent, #c9a87c, transparent); }
 
-        /* Убираем общий фон с #invitation */
+        /* ОБЩИЙ ФОН ДЛЯ ВСЕХ СЕКЦИЙ ПОСЛЕ ЗАСТАВКИ (теперь на #invitation) */
         #invitation {
             position: relative;
             z-index: 1;
-            background: transparent;
+            background: linear-gradient(rgba(250,247,244,0.65), rgba(250,247,244,0.65)), url('seryzadnik.jpg') center/cover no-repeat;
+            background-attachment: scroll;
+            background-color: #faf7f4;
             padding-top: 30px;
             padding-bottom: 30px;
+            /* Тень-переход между секциями создаётся внутренними тенями секций */
         }
 
-        /* Каждая секция получает свой фон seryzadnik.jpg */
         .section {
             padding: 70px 20px;
             position: relative;
-            background: url('seryzadnik.jpg') center/cover no-repeat;
-            background-attachment: scroll;
-            /* Лёгкое затемнение для читаемости текста */
-            box-shadow: inset 0 0 0 2000px rgba(250,247,244,0.65);
-            color: #ffffff; /* базовый белый текст */
+            background: transparent; /* фон наследуется от #invitation */
+            color: #ffffff;
+            /* Мягкий переход между секциями */
+            box-shadow: inset 0 -30px 30px -30px rgba(0,0,0,0.1), inset 0 30px 30px -30px rgba(0,0,0,0.1);
         }
         .section-title {
             font-family: 'Cormorant Garamond', serif; font-size: 38px; font-weight: 400;
@@ -182,6 +184,11 @@
         }
         .flip-card.front img { box-shadow: 0 26px 58px rgba(90,74,74,0.35); }
         .flip-card.back img { filter: brightness(0.96); }
+
+        /* Места и подарки больше не сбрасывают фон */
+        #places-section, #gifts-section {
+            /* убраны background: transparent и другие сбросы, теперь они как обычные .section */
+        }
 
         .places { display: flex; justify-content: center; gap: 35px; flex-wrap: wrap; }
         .place-card {
@@ -236,22 +243,32 @@
         }
         .dresscode-circle:hover { transform: scale(1.12); box-shadow: 0 8px 18px rgba(0,0,0,0.3), 0 0 0 3px rgba(255,255,255,0.7); }
 
-        .final { padding: 70px 20px 90px; font-size: 24px; color: #ffffff; letter-spacing: 1px; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
-        .final .heart { margin-top: 16px; font-size: 32px; animation: heartBeat 1.5s infinite; display: inline-block; }
+        /* Финальный текст внутри последней секции */
+        .final-text {
+            font-size: 24px;
+            color: #ffffff;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            margin-top: 50px;
+        }
+        .final-text .heart {
+            margin-top: 16px;
+            font-size: 32px;
+            animation: heartBeat 1.5s infinite;
+            display: inline-block;
+        }
         @keyframes heartBeat { 0% { transform: scale(1); } 25% { transform: scale(1.15); } 50% { transform: scale(1); } 75% { transform: scale(1.1); } 100% { transform: scale(1); } }
+
         .fade-in { opacity: 0; transform: translateY(25px); transition: opacity 1s ease, transform 1s ease; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-        /* Убираем фоны для секций без фона */
-        #places-section, #gifts-section {
-            background: transparent; /* они всё равно внутри .section, которая уже с фоном */
-        }
-
         /* Мобильная версия */
         @media (max-width: 768px) {
-            .section {
+            #invitation {
                 background-attachment: scroll;
-                box-shadow: inset 0 0 0 2000px rgba(250,247,244,0.55);
+            }
+            .section {
+                box-shadow: inset 0 -20px 20px -20px rgba(0,0,0,0.15), inset 0 20px 20px -20px rgba(0,0,0,0.15);
             }
             .photo-collage { width: 320px; height: 440px; }
             .flip-card { width: 230px; height: 320px; transition: transform 0.9s ease, opacity 0.5s; }
@@ -314,9 +331,10 @@
         <a href="#invitation" class="scroll-arrow" aria-label="К приглашению">↓</a>
     </div>
 
-    <!-- БЛОКИ 2–8 с фоном на каждой секции -->
+    <!-- БЛОКИ 2–8 с общим фоном на #invitation -->
     <div id="invitation">
         <div class="container">
+            <!-- БЛОК 2 — ГОСТИ + ФОТО -->
             <div class="section fade-in">
                 <h2 class="section-title" id="guest-greeting">Дорогие гости!</h2>
                 <p class="welcome-text" id="guest-message">
@@ -345,6 +363,7 @@
                 <div class="divider"></div>
             </div>
 
+            <!-- БЛОК 3 — Места (теперь с фоном) -->
             <div class="section fade-in" id="places-section">
                 <h2 class="section-title">Места проведения</h2>
                 <p class="section-subtitle">где это случится</p>
@@ -367,6 +386,7 @@
                 <div class="divider"></div>
             </div>
 
+            <!-- БЛОК 4 — ПРОГРАММА -->
             <div class="section fade-in" id="schedule-section">
                 <h2 class="section-title">Программа дня</h2>
                 <p class="section-subtitle">26 июня 2026</p>
@@ -379,6 +399,7 @@
                 <div class="divider"></div>
             </div>
 
+            <!-- БЛОК 5 — Дресс-код -->
             <div class="section fade-in">
                 <h2 class="section-title">Дресс-код</h2>
                 <p class="section-subtitle">пастельная нежность</p>
@@ -397,6 +418,7 @@
                 <div class="divider"></div>
             </div>
 
+            <!-- БЛОК 6 — Важно -->
             <div class="section fade-in">
                 <h2 class="section-title">Важно для гостей</h2>
                 <p class="section-subtitle">вайб нашего дня</p>
@@ -408,6 +430,7 @@
                 <div class="divider"></div>
             </div>
 
+            <!-- БЛОК 7 — Подарки + Финал объединены -->
             <div class="section fade-in" id="gifts-section">
                 <h2 class="section-title">Подарки</h2>
                 <div class="glass-box">
@@ -416,13 +439,13 @@
                     <p style="margin-top:10px;">Но если вдруг очень захочется что-то подарить —<br>пусть это будет удобно положить в конверт 😉</p>
                     <div style="margin-top:18px;font-size:14px;opacity:0.6;font-style:italic;color:#ffffff;">*обещаем потратить с умом</div>
                 </div>
-                <div class="divider"></div>
-            </div>
 
-            <div class="final fade-in">
-                <p>С любовью и нетерпением ждём вас 🤍</p>
-                <p style="font-size:16px;margin-top:8px;opacity:0.7;">Данил & Юлия</p>
-                <div class="heart">💛</div>
+                <!-- Финальный текст прямо здесь -->
+                <div class="final-text">
+                    <p>С любовью и нетерпением ждём вас 🤍</p>
+                    <p style="font-size:16px;margin-top:8px;opacity:0.7;">Данил & Юлия</p>
+                    <div class="heart">💛</div>
+                </div>
             </div>
         </div>
     </div>
