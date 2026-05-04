@@ -144,6 +144,20 @@
         }
         @keyframes hintFloat { 0% { opacity: 0.45; } 50% { opacity: 1; } 100% { opacity: 0.45; } }
 
+        /* Улучшение читаемости подсказки на фоне */
+        #photo-section .photo-hint {
+            background: rgba(255, 255, 255, 0.75);
+            display: inline-block;
+            padding: 8px 24px;
+            border-radius: 30px;
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            color: #4a3f3f;
+            font-weight: 400;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
         .photo-collage {
             position: relative; width: 600px; height: 740px; margin: 25px auto 10px;
             perspective: 1400px;
