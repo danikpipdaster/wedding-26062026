@@ -4,25 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Данил & Юлия — Приглашение на свадьбу</title>
-
     <link rel="preload" as="image" href="photo1.jpg">
     <link rel="preload" as="image" href="photo2.jpg">
     <link rel="preload" as="image" href="photo3.jpg">
     <link rel="preload" as="image" href="photo4.jpg">
-
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
-
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body {
             background: #faf7f4;
             font-family: 'Cormorant Garamond', serif;
@@ -31,577 +20,227 @@
             overflow-x: hidden;
             position: relative;
         }
-
         body::before {
             content: '';
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 0;
             background-image:
-                radial-gradient(ellipse at 20% 10%, rgba(200, 180, 160, 0.12) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 30%, rgba(180, 160, 140, 0.08) 0%, transparent 50%),
-                radial-gradient(ellipse at 50% 70%, rgba(190, 170, 150, 0.10) 0%, transparent 50%),
-                radial-gradient(ellipse at 10% 80%, rgba(200, 180, 160, 0.06) 0%, transparent 50%);
+                radial-gradient(ellipse at 20% 10%, rgba(200,180,160,0.12) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 30%, rgba(180,160,140,0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 70%, rgba(190,170,150,0.10) 0%, transparent 50%),
+                radial-gradient(ellipse at 10% 80%, rgba(200,180,160,0.06) 0%, transparent 50%);
             background-size: 100% 100%;
         }
+        .decor-branch-left, .decor-branch-right {
+            position: fixed; pointer-events: none; z-index: 0;
+            opacity: 0.06; font-size: 280px; color: #8a9a7b; font-family: serif; line-height: 1;
+        }
+        .decor-branch-left { top: -40px; left: -60px; transform: rotate(-15deg); }
+        .decor-branch-right { bottom: -40px; right: -60px; transform: rotate(165deg); }
+        .container { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; padding: 0 20px; }
 
-        .decor-branch-left,
-        .decor-branch-right {
-            position: fixed;
-            pointer-events: none;
-            z-index: 0;
-            opacity: 0.06;
-            font-size: 280px;
-            color: #8a9a7b;
-            font-family: serif;
-            line-height: 1;
-        }
-        .decor-branch-left {
-            top: -40px;
-            left: -60px;
-            transform: rotate(-15deg);
-        }
-        .decor-branch-right {
-            bottom: -40px;
-            right: -60px;
-            transform: rotate(165deg);
-        }
-
-        .container {
-            position: relative;
-            z-index: 1;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* ===== БЛОК 1 — ЗАСТАВКА ===== */
+        /* БЛОК 1 — Заставка */
         .splash {
-            position: relative;
-            z-index: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            padding: 40px 20px;
-            text-align: center;
+            position: relative; z-index: 1;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            min-height: 100vh; padding: 40px 20px; text-align: center;
         }
-
-        .hero-top-decor {
-            display: inline-block;
-            margin-bottom: 20px;
-            opacity: 0.5;
-        }
-        .hero-top-decor svg {
-            width: 60px;
-            height: auto;
-        }
-
-        .names-wrapper {
-            position: relative;
-            display: block;
-            margin: 0 auto;
-        }
-
+        .hero-top-decor { display: inline-block; margin-bottom: 20px; opacity: 0.5; }
+        .hero-top-decor svg { width: 60px; height: auto; }
+        .names-wrapper { position: relative; display: block; margin: 0 auto; }
         .names {
-            display: inline-block;
-            position: relative;
-            font-family: 'Great Vibes', cursive;
-            font-size: 78px;
-            font-weight: 400;
-            margin: 0;
-            line-height: 1.2;
-            color: #4a3f3f;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            display: inline-block; position: relative;
+            font-family: 'Great Vibes', cursive; font-size: 78px; font-weight: 400;
+            margin: 0; line-height: 1.2; color: #4a3f3f; text-shadow: 0 1px 2px rgba(0,0,0,0.05);
             white-space: nowrap;
         }
-
-        .names .and {
-            font-size: 50px;
-            margin: 0 0.1em;
-            opacity: 0.8;
-            font-style: italic;
-            vertical-align: middle;
-        }
-
+        .names .and { font-size: 50px; margin: 0 0.1em; opacity: 0.8; font-style: italic; vertical-align: middle; }
         .rings {
-            position: absolute;
-            top: -35px;
-            right: -40px;
+            position: absolute; top: -35px; right: -40px;
             animation: ringFloat 3s ease-in-out infinite;
-            filter: drop-shadow(0 4px 8px rgba(180, 150, 130, 0.25));
-            pointer-events: none;
+            filter: drop-shadow(0 4px 8px rgba(180,150,130,0.25)); pointer-events: none;
         }
-
-        .rings svg {
-            width: 60px;
-            height: 60px;
-            overflow: visible;
-        }
-
-        @keyframes ringFloat {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-6px); }
-            100% { transform: translateY(0); }
-        }
-
-        .diamond {
-            animation: diamondShine 2.4s ease-in-out infinite;
-        }
-
+        .rings svg { width: 60px; height: 60px; overflow: visible; }
+        @keyframes ringFloat { 0% { transform: translateY(0); } 50% { transform: translateY(-6px); } 100% { transform: translateY(0); } }
+        .diamond { animation: diamondShine 2.4s ease-in-out infinite; }
         @keyframes diamondShine {
             0% { opacity: 0.75; filter: drop-shadow(0 0 4px rgba(255,255,255,0.9)); }
             50% { opacity: 1; filter: drop-shadow(0 0 10px rgba(255,255,255,1)) drop-shadow(0 0 16px rgba(220,190,140,0.7)); }
             100% { opacity: 0.75; filter: drop-shadow(0 0 4px rgba(255,255,255,0.9)); }
         }
-
         .hero-subtitle {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 300;
-            font-size: 14px;
-            letter-spacing: 6px;
-            text-transform: uppercase;
-            color: #9a8a7a;
-            margin-top: 15px;
+            font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 14px;
+            letter-spacing: 6px; text-transform: uppercase; color: #9a8a7a; margin-top: 15px;
         }
-
-        .date-container {
-            margin-top: 40px;
-        }
-
+        .date-container { margin-top: 40px; }
         .scratch-hint {
-            font-size: 15px;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 300;
-            margin-bottom: 12px;
-            opacity: 0.7;
-            color: #9a8a7a;
-            letter-spacing: 2px;
+            font-size: 15px; font-family: 'Montserrat', sans-serif; font-weight: 300;
+            margin-bottom: 12px; opacity: 0.7; color: #9a8a7a; letter-spacing: 2px;
             animation: pulseText 2s infinite;
         }
-
-        @keyframes pulseText {
-            0% { opacity: 0.4; transform: translateY(0); }
-            50% { opacity: 1; transform: translateY(-2px); }
-            100% { opacity: 0.4; transform: translateY(0); }
-        }
-
-        .scratch-area {
-            position: relative;
-            display: inline-block;
-        }
-
+        @keyframes pulseText { 0% { opacity: 0.4; transform: translateY(0); } 50% { opacity: 1; transform: translateY(-2px); } 100% { opacity: 0.4; transform: translateY(0); } }
+        .scratch-area { position: relative; display: inline-block; }
         .date {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 44px;
-            font-weight: 400;
-            letter-spacing: 6px;
-            color: #4a3f3f;
-            padding: 8px 20px;
+            font-family: 'Cormorant Garamond', serif; font-size: 44px; font-weight: 400;
+            letter-spacing: 6px; color: #4a3f3f; padding: 8px 20px;
         }
-
-        #scratch {
-            position: absolute;
-            top: 0;
-            left: 0;
-            cursor: none;
-            touch-action: none;
-            border-radius: 8px;
-        }
-
+        #scratch { position: absolute; top: 0; left: 0; cursor: none; touch-action: none; border-radius: 8px; }
         .coin {
-            position: fixed;
-            width: 28px;
-            height: 28px;
-            background: url('monetka.jpg') center/cover no-repeat;
-            border-radius: 50%;
-            pointer-events: none;
-            transform: translate(-50%, -50%);
-            display: none;
-            z-index: 9999;
+            position: fixed; width: 28px; height: 28px;
+            background: url('monetka.jpg') center/cover no-repeat; border-radius: 50%;
+            pointer-events: none; transform: translate(-50%, -50%); display: none; z-index: 9999;
             box-shadow: 0 2px 8px rgba(0,0,0,0.15);
         }
-
         .timer {
-            margin-top: 28px;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 300;
-            font-size: 16px;
-            letter-spacing: 3px;
-            color: #9a8a7a;
+            margin-top: 28px; font-family: 'Montserrat', sans-serif; font-weight: 300;
+            font-size: 16px; letter-spacing: 3px; color: #9a8a7a;
         }
-        .timer span {
-            color: #b8977e;
-            font-weight: 400;
-        }
-
+        .timer span { color: #b8977e; font-weight: 400; }
         .scroll-arrow {
-            display: inline-block;
-            margin-top: 40px;
-            font-size: 32px;
-            color: #b8977e;
-            text-decoration: none;
-            animation: arrowBounce 2s infinite;
-            cursor: pointer;
-            transition: opacity 0.3s;
-            opacity: 0.7;
+            display: inline-block; margin-top: 40px; font-size: 32px; color: #b8977e;
+            text-decoration: none; animation: arrowBounce 2s infinite; cursor: pointer;
+            transition: opacity 0.3s; opacity: 0.7;
         }
-        .scroll-arrow:hover {
-            opacity: 1;
-        }
-
-        @keyframes arrowBounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(10px); }
-        }
-
+        .scroll-arrow:hover { opacity: 1; }
+        @keyframes arrowBounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(10px); } }
         .divider {
-            width: 60px;
-            height: 2px;
+            width: 60px; height: 2px;
             background: linear-gradient(to right, transparent, #d4c4b0, transparent);
-            margin: 20px auto;
-            border-radius: 1px;
+            margin: 20px auto; border-radius: 1px;
         }
-        .divider.gold {
-            background: linear-gradient(to right, transparent, #c9a87c, transparent);
-        }
+        .divider.gold { background: linear-gradient(to right, transparent, #c9a87c, transparent); }
 
-        /* ===== БЛОК 2 — ГОСТИ + ФОТО ===== */
-        .section {
-            padding: 70px 20px;
-            position: relative;
-        }
-
+        /* БЛОК 2 — Гости + Фото + далее */
+        .section { padding: 70px 20px; position: relative; }
         .section-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 38px;
-            font-weight: 400;
-            margin-bottom: 10px;
-            color: #4a3f3f;
-            letter-spacing: 2px;
+            font-family: 'Cormorant Garamond', serif; font-size: 38px; font-weight: 400;
+            margin-bottom: 10px; color: #4a3f3f; letter-spacing: 2px;
         }
         .section-subtitle {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 300;
-            font-size: 12px;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            color: #b8977e;
-            margin-bottom: 30px;
+            font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 12px;
+            letter-spacing: 4px; text-transform: uppercase; color: #b8977e; margin-bottom: 30px;
         }
-
-        .welcome-text {
-            font-size: 20px;
-            line-height: 1.7;
-            color: #6a5a5a;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        .welcome-text strong {
-            font-weight: 500;
-            color: #4a3f3f;
-        }
-
+        .welcome-text { font-size: 20px; line-height: 1.7; color: #6a5a5a; max-width: 600px; margin: 0 auto; }
+        .welcome-text strong { font-weight: 500; color: #4a3f3f; }
         .photo-hint {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 300;
-            font-size: 13px;
-            letter-spacing: 3px;
-            opacity: 0.7;
-            margin-bottom: 8px;
-            color: #9a8a7a;
+            font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 13px;
+            letter-spacing: 3px; opacity: 0.7; margin-bottom: 8px; color: #9a8a7a;
             animation: hintFloat 1.8s infinite;
         }
+        @keyframes hintFloat { 0% { opacity: 0.45; } 50% { opacity: 1; } 100% { opacity: 0.45; } }
 
-        @keyframes hintFloat {
-            0% { opacity: 0.45; }
-            50% { opacity: 1; }
-            100% { opacity: 0.45; }
-        }
-
-        /* Фото-коллаж (translate, без тряски) */
+        /* Фотоколлаж (позиционирование через translate, без тряски) */
         .photo-collage {
-            position: relative;
-            width: 600px;
-            height: 740px;
-            margin: 25px auto 10px;
+            position: relative; width: 600px; height: 740px; margin: 25px auto 10px;
             perspective: 1400px;
         }
-
         .flip-card {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 400px;
-            height: 550px;
-            cursor: pointer;
-            transform-style: preserve-3d;
-            -webkit-transform-style: preserve-3d;
-            transition: transform 1.5s cubic-bezier(.22,.61,.36,1),
-                        opacity 0.7s ease;
+            position: absolute; top: 0; left: 0; width: 400px; height: 550px; cursor: pointer;
+            transform-style: preserve-3d; -webkit-transform-style: preserve-3d;
+            transition: transform 1.5s cubic-bezier(.22,.61,.36,1), opacity 0.7s ease;
             will-change: transform;
         }
-
-        .flip-card.front {
-            transform: translate(170px, 150px) rotate(0deg) scale(1.04);
-            z-index: 10;
-        }
-
-        .flip-card.back {
-            transform: translate(0px, 0px) rotate(-7deg) scale(0.92);
-            z-index: 1;
-        }
-
+        .flip-card.front { transform: translate(170px, 150px) rotate(0deg) scale(1.04); z-index: 10; }
+        .flip-card.back { transform: translate(0px, 0px) rotate(-7deg) scale(0.92); z-index: 1; }
         .flip-inner {
-            position: relative;
-            width: 100%;
-            height: 100%;
+            position: relative; width: 100%; height: 100%;
             transition: transform 0.95s cubic-bezier(.22,.61,.36,1);
-            transform-style: preserve-3d;
-            -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d; -webkit-transform-style: preserve-3d;
         }
-
-        .flip-card.flipped .flip-inner {
-            transform: rotateY(180deg);
+        .flip-card.flipped .flip-inner { transform: rotateY(180deg); }
+        .flip-front, .flip-back {
+            position: absolute; inset: 0;
+            backface-visibility: hidden; -webkit-backface-visibility: hidden;
+            background-color: #ffffff; border-radius: 22px; overflow: hidden;
         }
-
-        .flip-front,
-        .flip-back {
-            position: absolute;
-            inset: 0;
-            backface-visibility: hidden;
-            -webkit-backface-visibility: hidden;
-            background-color: #ffffff;
-            border-radius: 22px;
-            overflow: hidden;
-        }
-
-        .flip-back {
-            transform: rotateY(180deg);
-        }
-
+        .flip-back { transform: rotateY(180deg); }
         .flip-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 22px;
-            background: #ffffff;
-            padding: 8px;
-            box-shadow: 0 18px 40px rgba(90, 74, 74, 0.15);
+            width: 100%; height: 100%; object-fit: cover; border-radius: 22px;
+            background: #ffffff; padding: 8px; box-shadow: 0 18px 40px rgba(90,74,74,0.15);
             box-sizing: border-box;
-            backface-visibility: hidden;
-            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden; -webkit-backface-visibility: hidden;
         }
+        .flip-card.front img { box-shadow: 0 26px 58px rgba(90,74,74,0.35); }
+        .flip-card.back img { filter: brightness(0.96); }
 
-        .flip-card.front img {
-            box-shadow: 0 26px 58px rgba(90, 74, 74, 0.35);
-        }
-
-        .flip-card.back img {
-            filter: brightness(0.96);
-        }
-
-        /* ===== БЛОК 3 — МЕСТА ===== */
-        .places {
-            display: flex;
-            justify-content: center;
-            gap: 35px;
-            flex-wrap: wrap;
-        }
-
+        /* Места, Программа, Дресс-код, Важно, Подарки */
+        .places { display: flex; justify-content: center; gap: 35px; flex-wrap: wrap; }
         .place-card {
-            width: 380px;
-            background: rgba(255,255,255,0.7);
-            border-radius: 24px;
-            overflow: hidden;
-            box-shadow: 0 12px 35px rgba(90, 74, 74, 0.08);
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            width: 380px; background: rgba(255,255,255,0.7); border-radius: 24px; overflow: hidden;
+            box-shadow: 0 12px 35px rgba(90,74,74,0.08); transition: transform 0.4s ease, box-shadow 0.4s ease;
         }
-        .place-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 45px rgba(90, 74, 74, 0.13);
-        }
-
-        .place-card img {
-            width: 100%;
-            height: 230px;
-            object-fit: cover;
-        }
-
-        .place-info {
-            padding: 24px 22px 28px;
-            font-size: 18px;
-            line-height: 1.6;
-            color: #4a3f3f;
-        }
-        .place-info strong {
-            display: block;
-            font-size: 20px;
-            margin-bottom: 6px;
-            font-weight: 500;
-        }
-
+        .place-card:hover { transform: translateY(-4px); box-shadow: 0 20px 45px rgba(90,74,74,0.13); }
+        .place-card img { width: 100%; height: 230px; object-fit: cover; }
+        .place-info { padding: 24px 22px 28px; font-size: 18px; line-height: 1.6; color: #4a3f3f; }
+        .place-info strong { display: block; font-size: 20px; margin-bottom: 6px; font-weight: 500; }
         .map-button {
-            display: inline-block;
-            margin-top: 14px;
-            padding: 10px 22px;
-            background: #c9a87c;
-            color: white;
-            border-radius: 25px;
-            text-decoration: none;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 12px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
+            display: inline-block; margin-top: 14px; padding: 10px 22px; background: #c9a87c;
+            color: white; border-radius: 25px; text-decoration: none;
+            font-family: 'Montserrat', sans-serif; font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
             transition: all 0.3s ease;
         }
-        .map-button:hover {
-            background: #b8976e;
-            box-shadow: 0 6px 20px rgba(180, 140, 100, 0.3);
-        }
-
-        /* ===== БЛОК 4 — ПРОГРАММА ===== */
-        .schedule {
-            max-width: 450px;
-            margin: 30px auto 0;
-            font-size: 18px;
-            line-height: 2.2;
-            color: #5a4a4a;
-        }
+        .map-button:hover { background: #b8976e; box-shadow: 0 6px 20px rgba(180,140,100,0.3); }
+        .schedule { max-width: 450px; margin: 30px auto 0; font-size: 18px; line-height: 2.2; color: #5a4a4a; }
         .schedule-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding: 8px 0;
+            display: flex; align-items: center; gap: 15px; padding: 8px 0;
             border-bottom: 1px dotted rgba(180,150,130,0.3);
         }
         .schedule-time {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 13px;
-            font-weight: 400;
-            letter-spacing: 2px;
-            color: #b8977e;
-            min-width: 80px;
-            text-align: right;
+            font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 400;
+            letter-spacing: 2px; color: #b8977e; min-width: 80px; text-align: right;
         }
-        .schedule-text {
-            text-align: left;
-        }
-
-        /* ===== БЛОК 5 — ДРЕСС-КОД, БЛОК 6 — ВАЖНО, БЛОК 7 — ПОДАРКИ (общие glass-box) ===== */
+        .schedule-text { text-align: left; }
         .glass-box {
-            position: relative;
-            max-width: 580px;
-            margin: 25px auto 0;
-            padding: 36px 40px;
-            background: rgba(255, 255, 255, 0.35);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-radius: 28px;
-            box-shadow: 0 8px 24px rgba(90, 74, 74, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            font-size: 19px;
-            line-height: 1.8;
-            color: #5a4a4a;
+            position: relative; max-width: 580px; margin: 25px auto 0; padding: 36px 40px;
+            background: rgba(255,255,255,0.35); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            border-radius: 28px; box-shadow: 0 8px 24px rgba(90,74,74,0.06);
+            border: 1px solid rgba(255,255,255,0.5); font-size: 19px; line-height: 1.8; color: #5a4a4a;
         }
-        .glass-box::before,
-        .glass-box::after {
-            content: '';
-            position: absolute;
-            top: 15%;
-            bottom: 15%;
-            width: 1px;
+        .glass-box::before, .glass-box::after {
+            content: ''; position: absolute; top: 15%; bottom: 15%; width: 1px;
             background: linear-gradient(to bottom, transparent, #c9a87c, transparent);
-            opacity: 0.45;
-            border-radius: 1px;
+            opacity: 0.45; border-radius: 1px;
         }
         .glass-box::before { left: 22px; }
         .glass-box::after { right: 22px; }
-
-        .dresscode-palette {
-            display: flex;
-            justify-content: center;
-            gap: 24px;
-            flex-wrap: wrap;
-            margin-top: 24px;
-        }
+        .dresscode-palette { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-top: 24px; }
         .dresscode-circle {
-            width: 56px;
-            height: 56px;
-            border-radius: 50%;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.06), 0 0 0 2px rgba(180, 140, 110, 0.3), inset 0 1px 2px rgba(255,255,255,0.5);
-            border: 1px solid rgba(180, 140, 110, 0.35);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 56px; height: 56px; border-radius: 50%;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.06), 0 0 0 2px rgba(180,140,110,0.3), inset 0 1px 2px rgba(255,255,255,0.5);
+            border: 1px solid rgba(180,140,110,0.35); transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .dresscode-circle:hover {
-            transform: scale(1.12);
-            box-shadow: 0 8px 18px rgba(0,0,0,0.1), 0 0 0 3px rgba(180, 140, 110, 0.4), inset 0 1px 2px rgba(255,255,255,0.5);
-        }
+        .dresscode-circle:hover { transform: scale(1.12); box-shadow: 0 8px 18px rgba(0,0,0,0.1), 0 0 0 3px rgba(180,140,110,0.4), inset 0 1px 2px rgba(255,255,255,0.5); }
 
-        /* ===== БЛОК 8 — ФИНАЛ ===== */
-        .final {
-            padding: 70px 20px 90px;
-            font-size: 24px;
-            color: #4a3f3f;
-            letter-spacing: 1px;
-        }
-        .final .heart {
-            margin-top: 16px;
-            font-size: 32px;
-            animation: heartBeat 1.5s infinite;
-            display: inline-block;
-        }
+        /* БЛОК 8 — Финал */
+        .final { padding: 70px 20px 90px; font-size: 24px; color: #4a3f3f; letter-spacing: 1px; }
+        .final .heart { margin-top: 16px; font-size: 32px; animation: heartBeat 1.5s infinite; display: inline-block; }
         @keyframes heartBeat {
-            0% { transform: scale(1); }
-            25% { transform: scale(1.15); }
-            50% { transform: scale(1); }
-            75% { transform: scale(1.1); }
-            100% { transform: scale(1); }
+            0% { transform: scale(1); } 25% { transform: scale(1.15); }
+            50% { transform: scale(1); } 75% { transform: scale(1.1); } 100% { transform: scale(1); }
         }
-
         .fade-in {
-            opacity: 0;
-            transform: translateY(25px);
+            opacity: 0; transform: translateY(25px);
             transition: opacity 1s ease, transform 1s ease;
         }
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-        /* ===== МОБИЛЬНАЯ ВЕРСИЯ ===== */
+        /* Мобильная версия */
         @media (max-width: 768px) {
             .names { font-size: 52px; }
             .names .and { font-size: 36px; }
             .rings { top: -25px; right: -30px; }
             .rings svg { width: 48px; height: 48px; }
             .date { font-size: 34px; letter-spacing: 4px; }
-
             .splash { padding: 20px 15px; }
-
             .photo-collage { width: 320px; height: 470px; }
-            .flip-card {
-                width: 230px;
-                height: 320px;
-                transition: transform 0.9s ease, opacity 0.5s;
-            }
-            .flip-card.front {
-                transform: translate(75px, 88px) rotate(0deg) scale(1.04);
-            }
-            .flip-card.back {
-                transform: translate(5px, 5px) rotate(-7deg) scale(0.92);
-            }
+            .flip-card { width: 230px; height: 320px; transition: transform 0.9s ease, opacity 0.5s; }
+            .flip-card.front { transform: translate(75px, 88px) rotate(0deg) scale(1.04); }
+            .flip-card.back { transform: translate(5px, 5px) rotate(-7deg) scale(0.92); }
             .flip-card img { border-radius: 18px; }
-
             .place-card { width: 100%; max-width: 380px; }
             .glass-box { margin: 25px 15px 0; font-size: 17px; padding: 28px 30px; }
-            .glass-box::before { left: 15px; }
-            .glass-box::after { right: 15px; }
+            .glass-box::before { left: 15px; } .glass-box::after { right: 15px; }
             .section { padding: 50px 15px; }
             .section-title { font-size: 30px; }
             .coin { display: none !important; }
@@ -609,7 +248,6 @@
             .dresscode-palette { gap: 16px; }
             .dresscode-circle { width: 44px; height: 44px; }
         }
-
         @media (max-width: 400px) {
             .names { font-size: 40px; }
             .names .and { font-size: 28px; }
@@ -618,12 +256,8 @@
             .date { font-size: 28px; letter-spacing: 3px; }
             .photo-collage { width: 270px; height: 400px; }
             .flip-card { width: 190px; height: 270px; }
-            .flip-card.front {
-                transform: translate(60px, 72px) rotate(0deg) scale(1.04);
-            }
-            .flip-card.back {
-                transform: translate(5px, 5px) rotate(-7deg) scale(0.92);
-            }
+            .flip-card.front { transform: translate(60px, 72px) rotate(0deg) scale(1.04); }
+            .flip-card.back { transform: translate(5px, 5px) rotate(-7deg) scale(0.92); }
         }
     </style>
 </head>
@@ -648,14 +282,10 @@
                     <svg viewBox="0 0 110 110">
                         <defs>
                             <linearGradient id="ringGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="#f2d3ce"/>
-                                <stop offset="45%" stop-color="#d8a7a0"/>
-                                <stop offset="100%" stop-color="#b9827a"/>
+                                <stop offset="0%" stop-color="#f2d3ce"/><stop offset="45%" stop-color="#d8a7a0"/><stop offset="100%" stop-color="#b9827a"/>
                             </linearGradient>
                             <linearGradient id="diamondGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="#ffffff"/>
-                                <stop offset="50%" stop-color="#f8eeee"/>
-                                <stop offset="100%" stop-color="#d8a7a0"/>
+                                <stop offset="0%" stop-color="#ffffff"/><stop offset="50%" stop-color="#f8eeee"/><stop offset="100%" stop-color="#d8a7a0"/>
                             </linearGradient>
                         </defs>
                         <circle cx="43" cy="62" r="24" stroke="url(#ringGradient)" stroke-width="5" fill="none"/>
@@ -671,23 +301,16 @@
                 </span>
             </h1>
         </div>
-
         <p class="hero-subtitle">приглашение на свадьбу</p>
-
         <div class="date-container">
             <div class="scratch-hint">Сотри монеткой дату ✨</div>
-            <div class="scratch-area">
-                <div class="date">26.06.2026</div>
-                <canvas id="scratch"></canvas>
-            </div>
+            <div class="scratch-area"><div class="date">26.06.2026</div><canvas id="scratch"></canvas></div>
         </div>
-
         <div class="timer" id="timer"></div>
-
         <a href="#invitation" class="scroll-arrow" aria-label="К приглашению">↓</a>
     </div>
 
-    <!-- БЛОК 2–8 в общем контейнере -->
+    <!-- БЛОК 2–8 -->
     <div id="invitation" class="container">
 
         <!-- БЛОК 2 — Гости + Фото -->
@@ -700,7 +323,6 @@
             </p>
             <div class="divider"></div>
         </div>
-
         <div class="section fade-in">
             <div class="photo-hint">Нажми на фото, чтобы перевернуть ✨</div>
             <div class="photo-collage">
@@ -728,16 +350,14 @@
                 <div class="place-card">
                     <img src="zags.jpg" alt="ЗАГС">
                     <div class="place-info">
-                        <strong>Церемония</strong>
-                        г. Надым<br>Парковый пр., 4<br>
+                        <strong>Церемония</strong> г. Надым<br>Парковый пр., 4<br>
                         <a class="map-button" href="https://maps.google.com/?q=Надым+Парковый+4" target="_blank">Открыть карту</a>
                     </div>
                 </div>
                 <div class="place-card">
                     <img src="nedoma.jpg" alt="НеДома">
                     <div class="place-info">
-                        <strong>НеДома</strong>
-                        Семейный лофт<br>г. Надым<br>13 проезд, строение 11<br>
+                        <strong>НеДома</strong> Семейный лофт<br>г. Надым<br>13 проезд, строение 11<br>
                         <a class="map-button" href="https://maps.google.com/?q=НеДома+Семейный+лофт+13+проезд+строение+11+Надым" target="_blank">Открыть карту</a>
                     </div>
                 </div>
@@ -764,27 +384,27 @@
             <p class="section-subtitle">пастельная нежность</p>
             <div class="glass-box">
                 <p>Мы будем очень рады, если вы поддержите<br>цветовую гамму нашего праздника 🤍<br><br>
-                <span style="font-size: 16px; opacity: 0.7;">Оттенки пастельных тонов —<br>то, что делает этот день ещё нежнее.</span></p>
+                <span style="font-size:16px;opacity:0.7;">Оттенки пастельных тонов —<br>то, что делает этот день ещё нежнее.</span></p>
                 <div class="dresscode-palette">
-                    <div class="dresscode-circle" style="background: #e8cec4;"></div>
-                    <div class="dresscode-circle" style="background: #f0d5c1;"></div>
-                    <div class="dresscode-circle" style="background: #c8d5c0;"></div>
-                    <div class="dresscode-circle" style="background: #f5eddf;"></div>
-                    <div class="dresscode-circle" style="background: #dacfe0;"></div>
-                    <div class="dresscode-circle" style="background: #cddfe8;"></div>
+                    <div class="dresscode-circle" style="background:#e8cec4;"></div>
+                    <div class="dresscode-circle" style="background:#f0d5c1;"></div>
+                    <div class="dresscode-circle" style="background:#c8d5c0;"></div>
+                    <div class="dresscode-circle" style="background:#f5eddf;"></div>
+                    <div class="dresscode-circle" style="background:#dacfe0;"></div>
+                    <div class="dresscode-circle" style="background:#cddfe8;"></div>
                 </div>
             </div>
             <div class="divider"></div>
         </div>
 
-        <!-- БЛОК 6 — Важно для гостей -->
+        <!-- БЛОК 6 — Важно -->
         <div class="section fade-in">
             <h2 class="section-title">Важно для гостей</h2>
             <p class="section-subtitle">вайб нашего дня</p>
             <div class="glass-box">
                 <p>📸 Телефоны не прячем —<br>снимаем, ловим моменты и кайфуем ✨</p>
-                <p style="margin-top: 14px;">🎤 Если вдруг появится идея для тоста<br>или перформанса — обязательно воплощайте её в жизнь 😄</p>
-                <p style="margin-top: 14px;">Мы только за любую движуху 💛</p>
+                <p style="margin-top:14px;">🎤 Если вдруг появится идея для тоста<br>или перформанса — обязательно воплощайте её в жизнь 😄</p>
+                <p style="margin-top:14px;">Мы только за любую движуху 💛</p>
             </div>
             <div class="divider"></div>
         </div>
@@ -794,9 +414,9 @@
             <h2 class="section-title">Подарки</h2>
             <div class="glass-box">
                 <p>Честно — нам ничего не нужно 😄</p>
-                <p style="margin-top: 10px;">Просто приходите и разделите этот день с нами 💛</p>
-                <p style="margin-top: 10px;">Но если вдруг очень захочется что-то подарить —<br>пусть это будет удобно положить в конверт 😉</p>
-                <div style="margin-top: 18px; font-size: 14px; opacity: 0.6; font-style: italic; color: #9a8a7a;">*обещаем потратить с умом</div>
+                <p style="margin-top:10px;">Просто приходите и разделите этот день с нами 💛</p>
+                <p style="margin-top:10px;">Но если вдруг очень захочется что-то подарить —<br>пусть это будет удобно положить в конверт 😉</p>
+                <div style="margin-top:18px;font-size:14px;opacity:0.6;font-style:italic;color:#9a8a7a;">*обещаем потратить с умом</div>
             </div>
             <div class="divider"></div>
         </div>
@@ -804,13 +424,13 @@
         <!-- БЛОК 8 — Финал -->
         <div class="final fade-in">
             <p>С любовью и нетерпением ждём вас 🤍</p>
-            <p style="font-size: 16px; margin-top: 8px; opacity: 0.7;">Данил & Юлия</p>
+            <p style="font-size:16px;margin-top:8px;opacity:0.7;">Данил & Юлия</p>
             <div class="heart">💛</div>
         </div>
     </div>
 
     <script>
-        window.onload = function() {
+        window.onload = function () {
             const weddingDate = new Date("June 26, 2026 00:00:00").getTime();
             function updateTimer() {
                 const now = new Date().getTime();
@@ -853,7 +473,6 @@
             const card2 = document.getElementById("card2");
             let activeCard = card1;
             let locked = false;
-
             function bringToFront(card) {
                 if (locked || card === activeCard) return;
                 locked = true;
@@ -863,33 +482,27 @@
                 card.classList.remove("back");
                 card.classList.add("front");
                 activeCard = card;
-                setTimeout(() => { locked = false; }, 1600); // чуть больше длительности transition
+                setTimeout(() => { locked = false; }, 1600);
             }
-
             function flipCard(card) {
                 if (locked || card !== activeCard) return;
                 locked = true;
                 card.classList.toggle("flipped");
                 setTimeout(() => { locked = false; }, 950);
             }
-
             card1.addEventListener("click", () => {
-                if (card1 === activeCard) {
-                    flipCard(card1);
-                } else {
-                    bringToFront(card1);
-                }
+                if (card1 === activeCard) { flipCard(card1); }
+                else { bringToFront(card1); }
             });
             card2.addEventListener("click", () => {
-                if (card2 === activeCard) {
-                    flipCard(card2);
-                } else {
-                    bringToFront(card2);
-                }
+                if (card2 === activeCard) { flipCard(card2); }
+                else { bringToFront(card2); }
             });
 
             const fadeEls = document.querySelectorAll('.fade-in');
-            const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); }); }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+            }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
             fadeEls.forEach(el => observer.observe(el));
             setTimeout(() => { document.querySelector('.hero.fade-in')?.classList.add('visible'); }, 100);
         };
