@@ -90,45 +90,51 @@
             height: auto;
         }
 
+        /* === ИМЕНА ПО ЦЕНТРУ === */
         .names-wrapper {
-            position: relative;
-            display: inline-block;
+            position: relative;  /* для позиционирования колец */
+            display: block;
             margin: 0 auto;
+            text-align: center;
         }
 
         .names {
-            position: relative;
             display: inline-block;
+            position: relative;
             font-family: 'Great Vibes', cursive;
             font-size: 78px;
             font-weight: 400;
             margin: 0;
-            line-height: 1.1;
+            line-height: 1.2;
             color: #4a3f3f;
             text-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            white-space: nowrap; /* чтобы никогда не переносилось */
         }
 
         .names .and {
-            display: block;
-            font-size: 36px;
-            margin: -10px 0 -5px;
-            opacity: 0.7;
+            font-size: 50px;       /* чуть поменьше, чем имена */
+            margin: 0 0.1em;
+            opacity: 0.8;
             font-style: italic;
+            vertical-align: middle;
         }
 
         .rings {
             position: absolute;
-            top: -30px;
-            right: -70px;
+            top: -35px;
+            right: -40px;         /* немного ближе к тексту */
             animation: ringFloat 3s ease-in-out infinite;
             filter: drop-shadow(0 4px 8px rgba(180, 150, 130, 0.25));
+            pointer-events: none;
         }
 
         .rings svg {
-            width: 70px;
-            height: 70px;
+            width: 60px;
+            height: 60px;
             overflow: visible;
         }
+
+        /* ====================== */
 
         @keyframes ringFloat {
             0% { transform: translateY(0); }
@@ -289,7 +295,7 @@
             100% { opacity: 0.45; }
         }
 
-        /* === ФОТО-КОЛЛАЖ (очень медленная смена) === */
+        /* Фото-коллаж (медленная смена) */
         .photo-collage {
             position: relative;
             width: 500px;
@@ -306,7 +312,6 @@
             cursor: pointer;
             transform-style: preserve-3d;
             -webkit-transform-style: preserve-3d;
-            /* Самая медленная смена (1.8s) */
             transition: top 1.8s cubic-bezier(.22,.61,.36,1),
                         left 1.8s cubic-bezier(.22,.61,.36,1),
                         opacity 0.9s ease;
@@ -377,8 +382,8 @@
         .flip-card.back img {
             filter: brightness(0.96);
         }
-        /* ======================== */
 
+        /* Места, программа, дресс-код и т.д. (все стили без изменений) */
         .places {
             display: flex;
             justify-content: center;
@@ -545,19 +550,25 @@
 
         /* Мобильная версия */
         @media (max-width: 768px) {
-            .names { font-size: 52px; }
-            .names .and { font-size: 26px; }
-            .rings { top: -22px; right: -48px; }
-            .rings svg { width: 52px; height: 52px; }
+            .names {
+                font-size: 52px;
+            }
+            .names .and {
+                font-size: 36px;
+            }
+            .rings {
+                top: -25px;
+                right: -30px;
+            }
+            .rings svg {
+                width: 48px;
+                height: 48px;
+            }
             .date { font-size: 34px; letter-spacing: 4px; }
             .hero { padding: 50px 15px 40px; }
 
             .photo-collage { width: 320px; height: 470px; }
-            .flip-card {
-                width: 230px;
-                height: 320px;
-                transition: top 1.2s ease, left 1.2s ease, opacity 0.7s;
-            }
+            .flip-card { width: 230px; height: 320px; transition: top 1.2s ease, left 1.2s ease, opacity 0.7s; }
             .flip-card.front { top: 88px; left: 75px; }
             .flip-card.back { top: 5px; left: 5px; }
             .flip-card img { border-radius: 18px; }
@@ -575,9 +586,16 @@
         }
 
         @media (max-width: 400px) {
-            .names { font-size: 40px; }
-            .names .and { font-size: 20px; margin: -6px 0 -3px; }
-            .rings { top: -18px; right: -36px; }
+            .names {
+                font-size: 40px;
+            }
+            .names .and {
+                font-size: 28px;
+            }
+            .rings {
+                top: -20px;
+                right: -25px;
+            }
             .rings svg { width: 40px; height: 40px; }
             .date { font-size: 28px; letter-spacing: 3px; }
             .photo-collage { width: 270px; height: 400px; }
@@ -601,9 +619,11 @@
                     <circle cx="40" cy="25" r="2" fill="#c9a87c" opacity="0.5"/>
                 </svg>
             </div>
+
+            <!-- 🆕 Имена в одну строку по центру -->
             <div class="names-wrapper">
                 <h1 class="names">
-                    Данил<br><span class="and">&</span>Юлия
+                    Данил <span class="and">&</span> Юлия
                     <span class="rings">
                         <svg viewBox="0 0 110 110">
                             <defs>
@@ -631,7 +651,9 @@
                     </span>
                 </h1>
             </div>
+
             <p class="hero-subtitle">приглашение на свадьбу</p>
+
             <div class="date-container">
                 <div class="scratch-hint">Сотри монеткой дату ✨</div>
                 <div class="scratch-area">
@@ -818,7 +840,6 @@
                 card.classList.remove("back");
                 card.classList.add("front");
                 activeCard = card;
-                // Длительность transition = 1.8s, разблокируем через 1.9s
                 setTimeout(() => { locked = false; }, 1900);
             }
 
