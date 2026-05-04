@@ -113,7 +113,7 @@
         }
         .divider.gold { background: linear-gradient(to right, transparent, #c9a87c, transparent); }
 
-        /* ОБЩИЙ КОНТЕЙНЕР ПРОЗРАЧНЫЙ */
+        /* ОБЩИЙ КОНТЕЙНЕР */
         #invitation {
             position: relative;
             z-index: 1;
@@ -486,146 +486,150 @@
     </div>
 
     <script>
-        window.onload = function () {
-            const weddingDate = new Date("June 26, 2026 00:00:00").getTime();
-            function updateTimer() {
-                const now = new Date().getTime();
-                const distance = weddingDate - now;
-                if (distance < 0) {
-                    document.getElementById("timer").innerHTML = '<span>💛 Этот день настал!</span>';
-                    return;
+        (function() {
+            // Дожидаемся загрузки DOM
+            window.addEventListener('DOMContentLoaded', function() {
+                // --------------- ТАЙМЕР ---------------
+                const timerEl = document.getElementById("timer");
+                if (timerEl) {
+                    const weddingDate = new Date("June 26, 2026 00:00:00").getTime();
+                    function updateTimer() {
+                        const now = new Date().getTime();
+                        const distance = weddingDate - now;
+                        if (distance < 0) {
+                            timerEl.innerHTML = '<span>💛 Этот день настал!</span>';
+                            return;
+                        }
+                        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                        const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+                        const minutes = Math.floor((distance / (1000 * 60)) % 60);
+                        timerEl.innerHTML = '<span>' + days + '</span> дней &nbsp;<span>' + hours + '</span> часов &nbsp;<span>' + minutes + '</span> минут';
+                    }
+                    updateTimer();
+                    setInterval(updateTimer, 1000);
                 }
-                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
-                const minutes = Math.floor((distance / (1000 * 60)) % 60);
-                document.getElementById("timer").innerHTML = '<span>' + days + '</span> дней &nbsp;<span>' + hours + '</span> часов &nbsp;<span>' + minutes + '</span> минут';
-            }
-            updateTimer();
-            setInterval(updateTimer, 1000);
 
-            const canvas = document.getElementById("scratch");
-            const ctx = canvas.getContext("2d");
-            const date = document.querySelector(".date");
-            const hint = document.querySelector(".scratch-hint");
-            const coin = document.getElementById("coin");
-            canvas.width = date.offsetWidth;
-            canvas.height = date.offsetHeight;
-            ctx.fillStyle = "#c9a7a0";
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.globalCompositeOperation = "destination-out";
-            let drawing = false;
-            function moveCoin(e) { coin.style.display = "block"; coin.style.left = e.clientX + "px"; coin.style.top = e.clientY + "px"; }
-            function hideCoin() { coin.style.display = "none"; }
-            function scratch(x, y) { hint.style.opacity = "0"; ctx.beginPath(); ctx.arc(x, y, 14, 0, Math.PI * 2); ctx.fill(); }
-            canvas.addEventListener("mouseenter", moveCoin);
-            canvas.addEventListener("mousemove", e => { moveCoin(e); if (!drawing) return; const rect = canvas.getBoundingClientRect(); scratch(e.clientX - rect.left, e.clientY - rect.top); });
-            canvas.addEventListener("mouseleave", () => { drawing = false; hideCoin(); });
-            canvas.addEventListener("mousedown", e => { drawing = true; const rect = canvas.getBoundingClientRect(); scratch(e.clientX - rect.left, e.clientY - rect.top); });
-            window.addEventListener("mouseup", () => drawing = false);
-            canvas.addEventListener("touchstart", e => { e.preventDefault(); const rect = canvas.getBoundingClientRect(); scratch(e.touches[0].clientX - rect.left, e.touches[0].clientY - rect.top); });
-            canvas.addEventListener("touchmove", e => { e.preventDefault(); const rect = canvas.getBoundingClientRect(); scratch(e.touches[0].clientX - rect.left, e.touches[0].clientY - rect.top); });
-
-            const card1 = document.getElementById("card1");
-            const card2 = document.getElementById("card2");
-            let activeCard = card1;
-            let locked = false;
-            function bringToFront(card) {
-                if (locked || card === activeCard) return;
-                locked = true;
-                const oldFront = activeCard;
-                oldFront.classList.remove("front");
-                oldFront.classList.add("back");
-                card.classList.remove("back");
-                card.classList.add("front");
-                activeCard = card;
-                setTimeout(() => { locked = false; }, 1600);
-            }
-            function flipCard(card) {
-                if (locked || card !== activeCard) return;
-                locked = true;
-                card.classList.toggle("flipped");
-                setTimeout(() => { locked = false; }, 950);
-            }
-            card1.addEventListener("click", () => {
-                if (card1 === activeCard) { flipCard(card1); }
-                else { bringToFront(card1); }
-            });
-            card2.addEventListener("click", () => {
-                if (card2 === activeCard) { flipCard(card2); }
-                else { bringToFront(card2); }
-            });
-
-            const fadeEls = document.querySelectorAll('.fade-in');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
-            }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-            fadeEls.forEach(el => observer.observe(el));
-            setTimeout(() => { document.querySelector('.hero.fade-in')?.classList.add('visible'); }, 100);
-
-            const urlParams = new URLSearchParams(window.location.search);
-            const namesParam = urlParams.get('names');
-            if (namesParam) {
-                const namesArray = namesParam.split(',').map(n => n.trim()).filter(n => n.length > 0);
-                if (namesArray.length > 0) {
-                    const last = namesArray.pop();
-                    const greeting = 'Дорогие ' + (namesArray.length > 0 ? namesArray.join(', ') + ' и ' : '') + last + '!';
-                    document.getElementById('guest-greeting').textContent = greeting;
-
-                    if (namesParam === 'Ирина,Владислав,Руслан' || namesParam === 'Ирина, Владислав, Руслан') {
-                        document.getElementById('guest-message').innerHTML =
-                            '<p>Мы строим самый важный день в нашей жизни — и поняли, что он просто не сможет быть идеальным без вас. Будет красиво, душевно и немножко громко. Обещаем тёплые объятия, вкусный торт и пару сюрпризов (хороших, честно 😄).</p>' +
-                            '<p style="margin-top:14px;">🌸 <strong>Ирина</strong>, мы помним, что настоящий праздник начинается только тогда, когда звучит «Вдоль ночных дорог». Так что обязательно поставим эту песню — и пусть весь зал вспомнит, что такое душа.</p>' +
-                            '<p style="margin-top:14px;">⚽ <strong>Владислав</strong>, твоё присутствие — наш талисман. Мы официально заявляем: если ты придёшь на свадьбу, «Спартак» в этом сезоне возьмёт чемпионство. Не лишай страну праздника!</p>' +
-                            '<p style="margin-top:14px;">💪 <strong>Руслан</strong>, без тебя этот день был бы слишком спокойным. Будет борьба… возможно. Но мы верим, что ты направишь свою энергию в правильное русло — например, в танцы или в борьбу с тортом. Кто победит — увидим 😉</p>' +
-                            '<p style="margin-top:18px;">Ждём вас с нетерпением, чтобы разделить счастье и создать воспоминания, которые останутся с нами на всю жизнь. Приходите — без вас свадьба не начнётся! 🤍</p>';
-                    } else {
-                        const namesString = namesArray.length > 0 ? namesArray.join(', ') + ' и ' + last : last;
-                        document.getElementById('guest-message').innerHTML =
-                            'С огромной радостью и трепетом в сердце<br>' +
-                            'мы приглашаем вас, <strong>' + namesString + '</strong>, разделить с нами<br>' +
-                            '<strong>самый важный день нашей жизни</strong> 🤍';
+                // --------------- СКРЕТЧ-СЛОЙ ---------------
+                const canvas = document.getElementById("scratch");
+                if (canvas) {
+                    const ctx = canvas.getContext("2d");
+                    const dateEl = document.querySelector(".date");
+                    const hint = document.querySelector(".scratch-hint");
+                    const coin = document.getElementById("coin");
+                    if (dateEl && hint && coin) {
+                        canvas.width = dateEl.offsetWidth;
+                        canvas.height = dateEl.offsetHeight;
+                        ctx.fillStyle = "#c9a7a0";
+                        ctx.fillRect(0, 0, canvas.width, canvas.height);
+                        ctx.globalCompositeOperation = "destination-out";
+                        let drawing = false;
+                        function moveCoin(e) { coin.style.display = "block"; coin.style.left = e.clientX + "px"; coin.style.top = e.clientY + "px"; }
+                        function hideCoin() { coin.style.display = "none"; }
+                        function scratch(x, y) { hint.style.opacity = "0"; ctx.beginPath(); ctx.arc(x, y, 14, 0, Math.PI * 2); ctx.fill(); }
+                        canvas.addEventListener("mouseenter", moveCoin);
+                        canvas.addEventListener("mousemove", e => { moveCoin(e); if (!drawing) return; const rect = canvas.getBoundingClientRect(); scratch(e.clientX - rect.left, e.clientY - rect.top); });
+                        canvas.addEventListener("mouseleave", () => { drawing = false; hideCoin(); });
+                        canvas.addEventListener("mousedown", e => { drawing = true; const rect = canvas.getBoundingClientRect(); scratch(e.clientX - rect.left, e.clientY - rect.top); });
+                        window.addEventListener("mouseup", () => drawing = false);
+                        canvas.addEventListener("touchstart", e => { e.preventDefault(); const rect = canvas.getBoundingClientRect(); scratch(e.touches[0].clientX - rect.left, e.touches[0].clientY - rect.top); });
+                        canvas.addEventListener("touchmove", e => { e.preventDefault(); const rect = canvas.getBoundingClientRect(); scratch(e.touches[0].clientX - rect.left, e.touches[0].clientY - rect.top); });
                     }
                 }
-            }
 
-            const placesParam = urlParams.get('places');
-            const zagsCard = document.getElementById('place-zags');
-            const nedomaCard = document.getElementById('place-nedoma');
-
-            if (placesParam) {
-                const wantedPlaces = placesParam.split(',').map(p => p.trim().toLowerCase());
-
-                if (zagsCard) zagsCard.style.display = 'none';
-                if (nedomaCard) nedomaCard.style.display = 'none';
-
-                if (wantedPlaces.includes('zags') && zagsCard) {
-                    zagsCard.style.display = '';
+                // --------------- КАРТОЧКИ ---------------
+                const card1 = document.getElementById("card1");
+                const card2 = document.getElementById("card2");
+                if (card1 && card2) {
+                    let activeCard = card1;
+                    let locked = false;
+                    function bringToFront(card) {
+                        if (locked || card === activeCard) return;
+                        locked = true;
+                        const oldFront = activeCard;
+                        oldFront.classList.remove("front");
+                        oldFront.classList.add("back");
+                        card.classList.remove("back");
+                        card.classList.add("front");
+                        activeCard = card;
+                        setTimeout(() => { locked = false; }, 1600);
+                    }
+                    function flipCard(card) {
+                        if (locked || card !== activeCard) return;
+                        locked = true;
+                        card.classList.toggle("flipped");
+                        setTimeout(() => { locked = false; }, 950);
+                    }
+                    card1.addEventListener("click", () => {
+                        if (card1 === activeCard) { flipCard(card1); }
+                        else { bringToFront(card1); }
+                    });
+                    card2.addEventListener("click", () => {
+                        if (card2 === activeCard) { flipCard(card2); }
+                        else { bringToFront(card2); }
+                    });
                 }
-                if (wantedPlaces.includes('nedoma') && nedomaCard) {
-                    nedomaCard.style.display = '';
-                }
-            }
 
-            const container = document.getElementById('places-container');
-            if (container) {
-                const visibleCards = container.querySelectorAll('.place-card[style*="display:""], .place-card:not([style*="display: none"])');
-                if (visibleCards.length === 1) {
-                    container.style.justifyContent = 'center';
-                } else {
-                    container.style.justifyContent = '';
+                // --------------- ПЛАВНОЕ ПОЯВЛЕНИЕ ---------------
+                const fadeEls = document.querySelectorAll('.fade-in');
+                if (fadeEls.length > 0) {
+                    const observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+                    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+                    fadeEls.forEach(el => observer.observe(el));
                 }
-            }
 
-            const ceremonyItem = document.getElementById('item-ceremony');
-            if (ceremonyItem && placesParam) {
-                const wantedPlaces = placesParam.split(',').map(p => p.trim().toLowerCase());
-                if (!wantedPlaces.includes('zags')) {
-                    ceremonyItem.classList.add('hidden');
-                } else {
-                    ceremonyItem.classList.remove('hidden');
+                // --------------- ПЕРСОНАЛИЗАЦИЯ ---------------
+                const urlParams = new URLSearchParams(window.location.search);
+                const namesParam = urlParams.get('names');
+                const guestGreeting = document.getElementById('guest-greeting');
+                const guestMessage = document.getElementById('guest-message');
+                if (guestGreeting && guestMessage && namesParam) {
+                    const namesArray = namesParam.split(',').map(n => n.trim()).filter(n => n.length > 0);
+                    if (namesArray.length > 0) {
+                        const last = namesArray.pop();
+                        const greeting = 'Дорогие ' + (namesArray.length > 0 ? namesArray.join(', ') + ' и ' : '') + last + '!';
+                        guestGreeting.textContent = greeting;
+
+                        if (namesParam === 'Ирина,Владислав,Руслан' || namesParam === 'Ирина, Владислав, Руслан') {
+                            guestMessage.innerHTML =
+                                '<p>Мы строим самый важный день в нашей жизни — и поняли, что он просто не сможет быть идеальным без вас. Будет красиво, душевно и немножко громко. Обещаем тёплые объятия, вкусный торт и пару сюрпризов (хороших, честно 😄).</p>' +
+                                '<p style="margin-top:14px;">🌸 <strong>Ирина</strong>, мы помним, что настоящий праздник начинается только тогда, когда звучит «Вдоль ночных дорог». Так что обязательно поставим эту песню — и пусть весь зал вспомнит, что такое душа.</p>' +
+                                '<p style="margin-top:14px;">⚽ <strong>Владислав</strong>, твоё присутствие — наш талисман. Мы официально заявляем: если ты придёшь на свадьбу, «Спартак» в этом сезоне возьмёт чемпионство. Не лишай страну праздника!</p>' +
+                                '<p style="margin-top:14px;">💪 <strong>Руслан</strong>, без тебя этот день был бы слишком спокойным. Будет борьба… возможно. Но мы верим, что ты направишь свою энергию в правильное русло — например, в танцы или в борьбу с тортом. Кто победит — увидим 😉</p>' +
+                                '<p style="margin-top:18px;">Ждём вас с нетерпением, чтобы разделить счастье и создать воспоминания, которые останутся с нами на всю жизнь. Приходите — без вас свадьба не начнётся! 🤍</p>';
+                        } else {
+                            const namesString = namesArray.length > 0 ? namesArray.join(', ') + ' и ' + last : last;
+                            guestMessage.innerHTML =
+                                'С огромной радостью и трепетом в сердце<br>' +
+                                'мы приглашаем вас, <strong>' + namesString + '</strong>, разделить с нами<br>' +
+                                '<strong>самый важный день нашей жизни</strong> 🤍';
+                        }
+                    }
                 }
-            }
-        };
+
+                // --------------- НАСТРОЙКА МЕСТ ---------------
+                const placesParam = urlParams.get('places');
+                const zagsCard = document.getElementById('place-zags');
+                const nedomaCard = document.getElementById('place-nedoma');
+                if (placesParam) {
+                    const wantedPlaces = placesParam.split(',').map(p => p.trim().toLowerCase());
+                    if (zagsCard) zagsCard.style.display = wantedPlaces.includes('zags') ? '' : 'none';
+                    if (nedomaCard) nedomaCard.style.display = wantedPlaces.includes('nedoma') ? '' : 'none';
+                }
+                const container = document.getElementById('places-container');
+                if (container) {
+                    const visibleCards = container.querySelectorAll('.place-card[style*="display:""], .place-card:not([style*="display: none"])');
+                    container.style.justifyContent = visibleCards.length === 1 ? 'center' : '';
+                }
+
+                // --------------- СКРЫТИЕ ЦЕРЕМОНИИ ---------------
+                const ceremonyItem = document.getElementById('item-ceremony');
+                if (ceremonyItem && placesParam) {
+                    const wantedPlaces = placesParam.split(',').map(p => p.trim().toLowerCase());
+                    ceremonyItem.classList.toggle('hidden', !wantedPlaces.includes('zags'));
+                }
+            });
+        })();
     </script>
 </body>
 </html>
