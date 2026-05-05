@@ -12,14 +12,19 @@
     <link rel="preload" as="image" href="seryzadnik.jpg">
     <link rel="preload" as="image" href="monetka.jpg">
     <link rel="preload" as="image" href="serdecko.jpg">
-    <!-- Шрифты для заставки -->
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* Подключение локального шрифта French Kiss Script */
         @font-face {
             font-family: 'French Kiss Script';
             src: url('FrenchKissscript.ttf') format('truetype');
             font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Theatre Bold';
+            src: url('Theaterv04_Bold.ttf') format('truetype');
+            font-weight: bold;
             font-style: normal;
             font-display: swap;
         }
@@ -28,7 +33,7 @@
         html { scroll-behavior: smooth; }
         body {
             background: #faf7f4;
-            font-family: 'French Kiss Script', 'Cormorant Garamond', cursive;
+            font-family: 'Theatre Bold', 'Cormorant Garamond', serif;
             color: #4a3f3f;
             text-align: center;
             overflow-x: hidden;
@@ -123,7 +128,6 @@
             opacity: 0.6;
         }
 
-        /* Общий контейнер без фона */
         #invitation {
             position: relative;
             z-index: 1;
@@ -132,13 +136,11 @@
             padding-bottom: 30px;
         }
 
-        /* Каждая секция (блоки 2–8) – увеличенные шрифты */
         .section {
             position: relative;
             padding: 70px 20px;
             overflow: hidden;
             color: #ffffff;
-            font-family: 'French Kiss Script', 'Cormorant Garamond', cursive;
         }
         .section::before {
             content: '';
@@ -152,7 +154,7 @@
         }
         .section-title {
             font-family: 'French Kiss Script', 'Cormorant Garamond', cursive;
-            font-size: 48px;          /* увеличено */
+            font-size: 48px;
             font-weight: 400;
             margin-bottom: 10px;
             color: #ffffff;
@@ -162,7 +164,7 @@
         .section-subtitle {
             font-family: 'Montserrat', sans-serif;
             font-weight: 300;
-            font-size: 16px;         /* увеличено */
+            font-size: 16px;
             letter-spacing: 4px;
             text-transform: uppercase;
             color: #ffffff;
@@ -170,17 +172,18 @@
             text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
         .welcome-text {
-            font-size: 24px;          /* увеличено */
+            font-family: 'Theatre Bold', 'Cormorant Garamond', serif;
+            font-size: 24px;
             line-height: 1.7;
             color: #ffffff;
             max-width: 700px;
             margin: 0 auto;
             text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
-        .welcome-text strong { font-weight: 500; color: #ffffff; }
+        .welcome-text strong { font-weight: bold; color: #ffffff; }
 
         .photo-hint {
-            font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 16px;   /* увеличено */
+            font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 16px;
             letter-spacing: 3px; opacity: 0.9; margin-bottom: 8px; color: #ffffff;
             animation: hintFloat 1.8s infinite;
         }
@@ -227,31 +230,32 @@
         .place-card:hover { transform: translateY(-4px); box-shadow: 0 20px 45px rgba(0,0,0,0.25); }
         .place-card img { width: 100%; height: 230px; object-fit: cover; }
         .place-info {
+            font-family: 'Theatre Bold', 'Cormorant Garamond', serif;
             padding: 24px 22px 28px;
-            font-size: 22px;         /* увеличено */
+            font-size: 22px;
             line-height: 1.6;
             color: #ffffff;
         }
         .place-info strong {
             display: block;
-            font-size: 26px;         /* увеличено */
+            font-size: 26px;
             margin-bottom: 6px;
-            font-weight: 500;
+            font-weight: bold;
             color: #ffffff;
         }
         .map-button {
             display: inline-block; margin-top: 14px; padding: 12px 28px; background: #ffffff;
             color: #4a3f3f; border-radius: 25px; text-decoration: none;
-            font-family: 'Montserrat', sans-serif; font-size: 14px;   /* увеличено */
+            font-family: 'Montserrat', sans-serif; font-size: 14px;
             letter-spacing: 2px; text-transform: uppercase;
             transition: all 0.3s ease; font-weight: 500;
         }
         .map-button:hover { background: #f0e6d3; }
 
         .schedule-big {
-            font-family: 'French Kiss Script', 'Cormorant Garamond', cursive;
-            font-size: 42px;         /* увеличено */
-            font-weight: 400;
+            font-family: 'Theatre Bold', 'Cormorant Garamond', serif;
+            font-size: 42px;
+            font-weight: bold;
             color: #ffffff;
             text-shadow: 0 2px 6px rgba(0,0,0,0.3);
             line-height: 1.5;
@@ -269,10 +273,10 @@
             background: rgba(0,0,0,0.2); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
             border-radius: 28px; box-shadow: 0 8px 24px rgba(0,0,0,0.2);
             border: 1px solid rgba(255,255,255,0.3);
-            font-size: 24px;         /* увеличено */
+            font-family: 'Theatre Bold', 'Cormorant Garamond', serif;
+            font-size: 24px;
             line-height: 1.8;
             color: #ffffff;
-            font-family: 'French Kiss Script', 'Cormorant Garamond', cursive;
         }
         .glass-box::before, .glass-box::after {
             content: ''; position: absolute; top: 15%; bottom: 15%; width: 1px;
@@ -288,12 +292,12 @@
         .dresscode-circle:hover { transform: scale(1.12); box-shadow: 0 8px 18px rgba(0,0,0,0.3), 0 0 0 3px rgba(255,255,255,0.7); }
 
         .final-text {
-            font-size: 28px;         /* увеличено */
+            font-family: 'Theatre Bold', 'Cormorant Garamond', serif;
+            font-size: 28px;
             color: #ffffff;
             letter-spacing: 1px;
             text-shadow: 0 2px 4px rgba(0,0,0,0.3);
             margin-top: 50px;
-            font-family: 'French Kiss Script', 'Cormorant Garamond', cursive;
         }
         .final-text .heart {
             margin-top: 16px;
@@ -306,7 +310,7 @@
         .fade-in { opacity: 0; transform: translateY(25px); transition: opacity 1s ease, transform 1s ease; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-        /* Мобильная версия — размеры немного уменьшены, но всё ещё крупнее стандартных */
+        /* Мобильная версия */
         @media (max-width: 768px) {
             .section::before {
                 top: -20px; left: -20px; right: -20px; bottom: -20px;
@@ -385,7 +389,7 @@
         <a href="#invitation" class="scroll-arrow" aria-label="К приглашению">↓</a>
     </div>
 
-    <!-- БЛОКИ 2–8 с увеличенным шрифтом French Kiss Script -->
+    <!-- БЛОКИ 2–8 с увеличенным шрифтом Theatre Bold -->
     <div id="invitation">
         <div class="container">
             <!-- БЛОК 2 — ГОСТИ + ФОТО -->
