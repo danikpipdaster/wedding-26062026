@@ -110,16 +110,23 @@
         }
         .scroll-arrow:hover { opacity: 1; }
         @keyframes arrowBounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(10px); } }
+        .divider {
+            width: 60px; height: 2px;
+            background: linear-gradient(to right, transparent, #4a3f3f, transparent);
+            margin: 20px auto;
+            border-radius: 1px;
+            opacity: 0.4;
+        }
 
         #invitation {
             position: relative;
             z-index: 1;
             background: transparent;
-            padding-top: 0;
-            padding-bottom: 0;
-            margin-top: -10px;
+            padding-top: 30px;
+            padding-bottom: 30px;
         }
 
+        /* Базовая секция */
         .section {
             position: relative;
             padding: 70px 20px;
@@ -130,24 +137,29 @@
             content: '';
             position: absolute;
             top: -30px; left: -30px; right: -30px; bottom: -30px;
-            background: url('azdnikgradient.jpg') center/cover no-repeat;
             background-color: #faf7f4;
             background-attachment: scroll;
             z-index: -1;
             mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
             -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
         }
-        .section::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: url('azdnikgradient.jpg') center/cover no-repeat;
-            background-attachment: scroll;
-            z-index: -2;
-            opacity: 0.3;
-            mask-image: none;
-            -webkit-mask-image: none;
+
+        /* Блок 2 – гости + фото */
+        #photo-section::before {
+            background: url('fonblok2.jpg') center/cover no-repeat;
         }
+
+        /* Блок 3 – места */
+        #places-section::before {
+            background: url('fonblok3.jpg') center/cover no-repeat;
+        }
+
+        /* Блок 5 и Блок 6 – общий фон */
+        #dresscode-section::before,
+        #important-section::before {
+            background: url('fonblok5png.png') center/cover no-repeat;
+        }
+
         .section-title {
             font-family: 'French Kiss Script', 'Cormorant Garamond', cursive;
             font-size: 72px;
@@ -314,9 +326,7 @@
             }
             .section::before {
                 top: -20px; left: -20px; right: -20px; bottom: -20px;
-            }
-            .section::after {
-                top: -20px; left: -20px; right: -20px; bottom: -20px;
+                background-attachment: scroll;
             }
             .container { padding: 0 15px; }
             .section-title { font-size: 48px; }
@@ -373,6 +383,7 @@
     <div class="decor-branch-right">❦</div>
     <div class="coin" id="coin"></div>
 
+    <!-- БЛОК 1 — ЗАСТАВКА -->
     <div class="splash" id="splash">
         <div class="initials-block">
             <span class="initial-line line-d">Д</span>
@@ -392,18 +403,17 @@
         <a href="#invitation" class="scroll-arrow" aria-label="К приглашению">↓</a>
     </div>
 
+    <!-- БЛОКИ 2–8 с новыми фонами -->
     <div id="invitation">
         <div class="container">
-            <div class="section fade-in">
+            <!-- БЛОК 2 — ГОСТИ + ФОТО (фон fonblok2.jpg) -->
+            <div class="section fade-in" id="photo-section">
                 <h2 class="section-title" id="guest-greeting">Дорогие гости!</h2>
                 <p class="welcome-text" id="guest-message">
                     С огромной радостью и трепетом в сердце<br>
                     мы приглашаем вас разделить с нами<br>
                     <strong>самый важный день нашей жизни</strong> 🤍
                 </p>
-                <div class="divider"></div>
-            </div>
-            <div class="section fade-in" id="photo-section">
                 <div class="photo-hint">Нажми на фото, чтобы перевернуть ✨</div>
                 <div class="photo-collage">
                     <div class="flip-card front" id="card1">
@@ -422,6 +432,7 @@
                 <div class="divider"></div>
             </div>
 
+            <!-- БЛОК 3 — Места (фон fonblok3.jpg) -->
             <div class="section fade-in" id="places-section">
                 <h2 class="section-title">Места проведения</h2>
                 <p class="section-subtitle">где это случится</p>
@@ -444,6 +455,7 @@
                 <div class="divider"></div>
             </div>
 
+            <!-- БЛОК 4 — ПРОГРАММА (без изменений) -->
             <div class="section fade-in" id="schedule-section">
                 <h2 class="section-title">Программа дня</h2>
                 <p class="section-subtitle">26 июня 2026</p>
@@ -456,7 +468,8 @@
                 <div class="divider"></div>
             </div>
 
-            <div class="section fade-in">
+            <!-- БЛОК 5 — Дресс-код (общий фон с блоком 6) -->
+            <div class="section fade-in" id="dresscode-section">
                 <h2 class="section-title">Дресс-код</h2>
                 <p class="section-subtitle">пастельная нежность</p>
                 <div class="glass-box">
@@ -474,7 +487,8 @@
                 <div class="divider"></div>
             </div>
 
-            <div class="section fade-in">
+            <!-- БЛОК 6 — Важно (общий фон с блоком 5) -->
+            <div class="section fade-in" id="important-section">
                 <h2 class="section-title">Важно для гостей</h2>
                 <p class="section-subtitle">вайб нашего дня</p>
                 <div class="glass-box">
@@ -485,6 +499,7 @@
                 <div class="divider"></div>
             </div>
 
+            <!-- БЛОК 7 — Подарки + Финал (без изменений) -->
             <div class="section fade-in" id="gifts-section">
                 <h2 class="section-title">Подарки</h2>
                 <div class="glass-box">
