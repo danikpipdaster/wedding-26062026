@@ -14,6 +14,15 @@
     <link rel="preload" as="image" href="serdecko.jpg">
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        /* Локальный рукописный шрифт для заголовков блоков */
+        @font-face {
+            font-family: 'French Kiss Script';
+            src: url('FrenchKissscript.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body {
@@ -138,8 +147,8 @@
             -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
         }
         .section-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 72px;   /* крупный классический заголовок */
+            font-family: 'French Kiss Script', 'Cormorant Garamond', cursive;
+            font-size: 72px;
             font-weight: 400;
             margin-bottom: 10px;
             color: #ffffff;
@@ -374,7 +383,7 @@
         <a href="#invitation" class="scroll-arrow" aria-label="К приглашению">↓</a>
     </div>
 
-    <!-- БЛОКИ 2–8 с классическими шрифтами -->
+    <!-- БЛОКИ 2–8 с рукописными заголовками и классическим текстом -->
     <div id="invitation">
         <div class="container">
             <!-- БЛОК 2 — ГОСТИ + ФОТО -->
