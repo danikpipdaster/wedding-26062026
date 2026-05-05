@@ -12,13 +12,23 @@
     <link rel="preload" as="image" href="seryzadnik.jpg">
     <link rel="preload" as="image" href="monetka.jpg">
     <link rel="preload" as="image" href="serdecko.jpg">
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Шрифты для заставки -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        /* Подключение локального шрифта Fet Regular */
+        @font-face {
+            font-family: 'Fet Regular';
+            src: url('ofont.ru_Fet.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body {
             background: #faf7f4;
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'Fet Regular', 'Cormorant Garamond', serif;   /* основной текст – Fet Regular */
             color: #4a3f3f;
             text-align: center;
             overflow-x: hidden;
@@ -83,7 +93,7 @@
         @keyframes pulseText { 0% { opacity: 0.4; transform: translateY(0); } 50% { opacity: 1; transform: translateY(-2px); } 100% { opacity: 0.4; transform: translateY(0); } }
         .scratch-area { position: relative; display: inline-block; }
         .date {
-            font-family: 'Cormorant Garamond', serif; font-size: 44px; font-weight: 400;
+            font-family: 'Fet Regular', 'Cormorant Garamond', serif; font-size: 44px; font-weight: 400;
             letter-spacing: 6px; color: #4a3f3f; padding: 8px 20px;
         }
         #scratch { position: absolute; top: 0; left: 0; cursor: none; touch-action: none; border-radius: 8px; }
@@ -122,12 +132,13 @@
             padding-bottom: 30px;
         }
 
-        /* Каждая секция получает собственный фон через псевдоэлемент */
+        /* Каждая секция (блоки 2–8) – шрифт Fet Regular */
         .section {
             position: relative;
             padding: 70px 20px;
             overflow: hidden;
             color: #ffffff;
+            font-family: 'Fet Regular', 'Cormorant Garamond', serif;
         }
         .section::before {
             content: '';
@@ -136,12 +147,12 @@
             background: url('seryzadnik.jpg') center/cover no-repeat;
             background-attachment: scroll;
             z-index: -1;
-            /* Плавные переходы на стыках */
             mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
             -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
         }
         .section-title {
-            font-family: 'Cormorant Garamond', serif; font-size: 38px; font-weight: 400;
+            font-family: 'Fet Regular', 'Cormorant Garamond', serif;
+            font-size: 38px; font-weight: 400;
             margin-bottom: 10px; color: #ffffff; letter-spacing: 2px;
             text-shadow: 0 2px 6px rgba(0,0,0,0.3);
         }
@@ -210,9 +221,8 @@
         }
         .map-button:hover { background: #f0e6d3; }
 
-        /* Обновлённый блок расписания */
         .schedule-big {
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'Fet Regular', 'Cormorant Garamond', serif;
             font-size: 36px;
             font-weight: 400;
             color: #ffffff;
@@ -232,6 +242,7 @@
             background: rgba(0,0,0,0.2); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
             border-radius: 28px; box-shadow: 0 8px 24px rgba(0,0,0,0.2);
             border: 1px solid rgba(255,255,255,0.3); font-size: 19px; line-height: 1.8; color: #ffffff;
+            font-family: 'Fet Regular', 'Cormorant Garamond', serif;
         }
         .glass-box::before, .glass-box::after {
             content: ''; position: absolute; top: 15%; bottom: 15%; width: 1px;
@@ -252,6 +263,7 @@
             letter-spacing: 1px;
             text-shadow: 0 2px 4px rgba(0,0,0,0.3);
             margin-top: 50px;
+            font-family: 'Fet Regular', 'Cormorant Garamond', serif;
         }
         .final-text .heart {
             margin-top: 16px;
@@ -331,7 +343,7 @@
         <a href="#invitation" class="scroll-arrow" aria-label="К приглашению">↓</a>
     </div>
 
-    <!-- БЛОКИ 2–8 с фоном на каждой секции -->
+    <!-- БЛОКИ 2–8 с фоном на каждой секции и шрифтом Fet Regular -->
     <div id="invitation">
         <div class="container">
             <!-- БЛОК 2 — ГОСТИ + ФОТО -->
@@ -386,7 +398,7 @@
                 <div class="divider"></div>
             </div>
 
-            <!-- БЛОК 4 — ПРОГРАММА (обновлённый стиль) -->
+            <!-- БЛОК 4 — ПРОГРАММА -->
             <div class="section fade-in" id="schedule-section">
                 <h2 class="section-title">Программа дня</h2>
                 <p class="section-subtitle">26 июня 2026</p>
