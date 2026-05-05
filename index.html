@@ -112,10 +112,10 @@
         @keyframes arrowBounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(10px); } }
         .divider {
             width: 60px; height: 2px;
-            background: linear-gradient(to right, transparent, #ffffff, transparent);
+            background: linear-gradient(to right, transparent, #4a3f3f, transparent);  /* тёмный разделитель */
             margin: 20px auto;
             border-radius: 1px;
-            opacity: 0.6;
+            opacity: 0.4;
         }
 
         #invitation {
@@ -130,14 +130,14 @@
             position: relative;
             padding: 70px 20px;
             overflow: hidden;
-            color: #ffffff;
+            color: #4a3f3f;              /* тёмный текст */
         }
         .section::before {
             content: '';
             position: absolute;
             top: -30px; left: -30px; right: -30px; bottom: -30px;
-            background: url('seryzadnik.jpg') center/cover no-repeat;
-            background-color: #5a5a5a;
+            background: url('belyzadnik.jpg') center/cover no-repeat;   /* новый фон */
+            background-color: #faf7f4;
             background-attachment: scroll;
             z-index: -1;
             mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
@@ -148,9 +148,9 @@
             font-size: 72px;
             font-weight: 400;
             margin-bottom: 10px;
-            color: #ffffff;
+            color: #4a3f3f;
             letter-spacing: 2px;
-            text-shadow: 0 2px 6px rgba(0,0,0,0.3);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         .section-subtitle {
             font-family: 'Montserrat', sans-serif;
@@ -158,27 +158,27 @@
             font-size: 16px;
             letter-spacing: 4px;
             text-transform: uppercase;
-            color: #ffffff;
+            color: #4a3f3f;
             margin-bottom: 30px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
         }
         .welcome-text {
             font-family: 'Cormorant Garamond', serif;
             font-size: 24px;
             line-height: 1.7;
-            color: #ffffff;
+            color: #4a3f3f;
             max-width: 700px;
             margin: 0 auto;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
         }
-        .welcome-text strong { font-weight: 500; color: #ffffff; }
+        .welcome-text strong { font-weight: 500; color: #4a3f3f; }
 
         .photo-hint {
             font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 16px;
-            letter-spacing: 3px; opacity: 0.9; margin-bottom: 8px; color: #ffffff;
+            letter-spacing: 3px; opacity: 0.8; margin-bottom: 8px; color: #4a3f3f;
             animation: hintFloat 1.8s infinite;
         }
-        @keyframes hintFloat { 0% { opacity: 0.6; } 50% { opacity: 1; } 100% { opacity: 0.6; } }
+        @keyframes hintFloat { 0% { opacity: 0.5; } 50% { opacity: 0.8; } 100% { opacity: 0.5; } }
         .photo-collage {
             position: relative; width: 600px; height: 670px;
             margin: 25px auto 10px;
@@ -214,25 +214,25 @@
 
         .places { display: flex; justify-content: center; gap: 35px; flex-wrap: wrap; }
         .place-card {
-            width: 380px; background: rgba(255,255,255,0.25); border-radius: 24px; overflow: hidden;
-            box-shadow: 0 12px 35px rgba(0,0,0,0.15); transition: transform 0.4s ease, box-shadow 0.4s ease;
-            color: #ffffff;
+            width: 380px; background: rgba(255,255,255,0.6); border-radius: 24px; overflow: hidden;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.1); transition: transform 0.4s ease, box-shadow 0.4s ease;
+            color: #4a3f3f;
         }
-        .place-card:hover { transform: translateY(-4px); box-shadow: 0 20px 45px rgba(0,0,0,0.25); }
+        .place-card:hover { transform: translateY(-4px); box-shadow: 0 20px 45px rgba(0,0,0,0.2); }
         .place-card img { width: 100%; height: 230px; object-fit: cover; }
         .place-info {
             font-family: 'Cormorant Garamond', serif;
             padding: 24px 22px 28px;
             font-size: 22px;
             line-height: 1.6;
-            color: #ffffff;
+            color: #4a3f3f;
         }
         .place-info strong {
             display: block;
             font-size: 26px;
             margin-bottom: 6px;
             font-weight: 500;
-            color: #ffffff;
+            color: #4a3f3f;
         }
         .map-button {
             display: inline-block; margin-top: 14px; padding: 12px 28px; background: #ffffff;
@@ -240,6 +240,7 @@
             font-family: 'Montserrat', sans-serif; font-size: 14px;
             letter-spacing: 2px; text-transform: uppercase;
             transition: all 0.3s ease; font-weight: 500;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
         .map-button:hover { background: #f0e6d3; }
 
@@ -247,8 +248,8 @@
             font-family: 'Cormorant Garamond', serif;
             font-size: 42px;
             font-weight: 400;
-            color: #ffffff;
-            text-shadow: 0 2px 6px rgba(0,0,0,0.3);
+            color: #4a3f3f;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.1);
             line-height: 1.5;
             margin: 30px 0 10px;
             display: flex;
@@ -261,33 +262,33 @@
 
         .glass-box {
             position: relative; max-width: 640px; margin: 25px auto 0; padding: 40px 45px;
-            background: rgba(0,0,0,0.2); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-            border-radius: 28px; box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-            border: 1px solid rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.5); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            border-radius: 28px; box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+            border: 1px solid rgba(0,0,0,0.1);
             font-family: 'Cormorant Garamond', serif;
             font-size: 24px;
             line-height: 1.8;
-            color: #ffffff;
+            color: #4a3f3f;
         }
         .glass-box::before, .glass-box::after {
             content: ''; position: absolute; top: 15%; bottom: 15%; width: 1px;
-            background: linear-gradient(to bottom, transparent, #ffffff, transparent); opacity: 0.5;
+            background: linear-gradient(to bottom, transparent, #4a3f3f, transparent); opacity: 0.3;
         }
         .glass-box::before { left: 22px; } .glass-box::after { right: 22px; }
         .dresscode-palette { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-top: 24px; }
         .dresscode-circle {
             width: 56px; height: 56px; border-radius: 50%;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2), 0 0 0 2px rgba(255,255,255,0.5);
-            border: 1px solid rgba(255,255,255,0.6); transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1), 0 0 0 2px rgba(0,0,0,0.2);
+            border: 1px solid rgba(0,0,0,0.2); transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .dresscode-circle:hover { transform: scale(1.12); box-shadow: 0 8px 18px rgba(0,0,0,0.3), 0 0 0 3px rgba(255,255,255,0.7); }
+        .dresscode-circle:hover { transform: scale(1.12); box-shadow: 0 8px 18px rgba(0,0,0,0.2), 0 0 0 3px rgba(0,0,0,0.3); }
 
         .final-text {
             font-family: 'Cormorant Garamond', serif;
             font-size: 28px;
-            color: #ffffff;
+            color: #4a3f3f;
             letter-spacing: 1px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
             margin-top: 50px;
         }
         .final-text .heart {
@@ -304,16 +305,13 @@
         /* Мобильная версия */
         @media (max-width: 768px) {
             .section {
-                padding: 50px 0;   /* убираем боковые отступы, чтобы фон касался краёв */
+                padding: 50px 0;
             }
             .section::before {
                 top: -20px; left: -20px; right: -20px; bottom: -20px;
                 background-attachment: scroll;
-                /* маска остаётся для красивых переходов, но без боковых зазоров */
             }
-            .container {
-                padding: 0 15px;   /* даём контенту немного отступа от краёв */
-            }
+            .container { padding: 0 15px; }
             .section-title { font-size: 48px; }
             .section-subtitle { font-size: 14px; }
             .welcome-text { font-size: 18px; }
@@ -388,7 +386,7 @@
         <a href="#invitation" class="scroll-arrow" aria-label="К приглашению">↓</a>
     </div>
 
-    <!-- БЛОКИ 2–8 с восстановленной текстурой фона и фотографиями -->
+    <!-- БЛОКИ 2–8 с новым светлым фоном и тёмным текстом -->
     <div id="invitation">
         <div class="container">
             <!-- БЛОК 2 — ГОСТИ + ФОТО -->
@@ -462,7 +460,7 @@
                 <p class="section-subtitle">пастельная нежность</p>
                 <div class="glass-box">
                     <p>Мы будем очень рады, если вы поддержите<br>цветовую гамму нашего праздника 🤍<br><br>
-                    <span style="font-size:20px;opacity:0.7;">Оттенки пастельных тонов —<br>то, что делает этот день ещё нежнее.</span></p>
+                    <span style="font-size:20px;opacity:0.8;">Оттенки пастельных тонов —<br>то, что делает этот день ещё нежнее.</span></p>
                     <div class="dresscode-palette">
                         <div class="dresscode-circle" style="background:#e8cec4;"></div>
                         <div class="dresscode-circle" style="background:#f0d5c1;"></div>
@@ -494,7 +492,7 @@
                     <p>Говорят, молодым нужно всё и сразу: от блендера до путешествий ✈️</p>
                     <p style="margin-top:10px;">Мы не будем спорить с этой истиной 😄</p>
                     <p style="margin-top:10px;">Если вы решите поддержать наш «молодожённый стартап», конверт будет очень кстати.</p>
-                    <p style="margin-top:18px;font-size:20px;opacity:0.8;font-style:italic;color:#ffffff;">Но самый главный подарок — ваше присутствие и улыбки 🤍</p>
+                    <p style="margin-top:18px;font-size:20px;opacity:0.8;font-style:italic;color:#4a3f3f;">Но самый главный подарок — ваше присутствие и улыбки 🤍</p>
                 </div>
                 <div class="final-text">
                     <p>С любовью и нетерпением ждём вас 🤍</p>
