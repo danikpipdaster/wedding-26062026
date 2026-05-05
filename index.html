@@ -126,6 +126,7 @@
             padding-bottom: 30px;
         }
 
+        /* Все секции (блоки 2–8) с единым фоном kolca.jpg */
         .section {
             position: relative;
             padding: 70px 20px;
@@ -143,6 +144,7 @@
             mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
             -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
         }
+
         .section-title {
             font-family: 'French Kiss Script', 'Cormorant Garamond', cursive;
             font-size: 72px;
@@ -390,13 +392,16 @@
     <div id="invitation">
         <div class="container">
             <!-- БЛОК 2 — ГОСТИ + ФОТО -->
-            <div class="section fade-in" id="photo-section">
+            <div class="section fade-in">
                 <h2 class="section-title" id="guest-greeting">Дорогие гости!</h2>
                 <p class="welcome-text" id="guest-message">
                     С огромной радостью и трепетом в сердце<br>
                     мы приглашаем вас разделить с нами<br>
                     <strong>самый важный день нашей жизни</strong> 🤍
                 </p>
+                <div class="divider"></div>
+            </div>
+            <div class="section fade-in" id="photo-section">
                 <div class="photo-hint">Нажми на фото, чтобы перевернуть ✨</div>
                 <div class="photo-collage">
                     <div class="flip-card front" id="card1">
