@@ -132,7 +132,7 @@
             padding-bottom: 30px;
         }
 
-        /* Каждая секция (блоки 2–8) – шрифт French Kiss Script */
+        /* Каждая секция (блоки 2–8) – увеличенные шрифты */
         .section {
             position: relative;
             padding: 70px 20px;
@@ -152,20 +152,35 @@
         }
         .section-title {
             font-family: 'French Kiss Script', 'Cormorant Garamond', cursive;
-            font-size: 38px; font-weight: 400;
-            margin-bottom: 10px; color: #ffffff; letter-spacing: 2px;
+            font-size: 48px;          /* увеличено */
+            font-weight: 400;
+            margin-bottom: 10px;
+            color: #ffffff;
+            letter-spacing: 2px;
             text-shadow: 0 2px 6px rgba(0,0,0,0.3);
         }
         .section-subtitle {
-            font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 12px;
-            letter-spacing: 4px; text-transform: uppercase; color: #ffffff; margin-bottom: 30px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            font-size: 16px;         /* увеличено */
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #ffffff;
+            margin-bottom: 30px;
             text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
-        .welcome-text { font-size: 20px; line-height: 1.7; color: #ffffff; max-width: 600px; margin: 0 auto; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
+        .welcome-text {
+            font-size: 24px;          /* увеличено */
+            line-height: 1.7;
+            color: #ffffff;
+            max-width: 700px;
+            margin: 0 auto;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
         .welcome-text strong { font-weight: 500; color: #ffffff; }
 
         .photo-hint {
-            font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 13px;
+            font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 16px;   /* увеличено */
             letter-spacing: 3px; opacity: 0.9; margin-bottom: 8px; color: #ffffff;
             animation: hintFloat 1.8s infinite;
         }
@@ -211,19 +226,31 @@
         }
         .place-card:hover { transform: translateY(-4px); box-shadow: 0 20px 45px rgba(0,0,0,0.25); }
         .place-card img { width: 100%; height: 230px; object-fit: cover; }
-        .place-info { padding: 24px 22px 28px; font-size: 18px; line-height: 1.6; color: #ffffff; }
-        .place-info strong { display: block; font-size: 20px; margin-bottom: 6px; font-weight: 500; color: #ffffff; }
+        .place-info {
+            padding: 24px 22px 28px;
+            font-size: 22px;         /* увеличено */
+            line-height: 1.6;
+            color: #ffffff;
+        }
+        .place-info strong {
+            display: block;
+            font-size: 26px;         /* увеличено */
+            margin-bottom: 6px;
+            font-weight: 500;
+            color: #ffffff;
+        }
         .map-button {
-            display: inline-block; margin-top: 14px; padding: 10px 22px; background: #ffffff;
+            display: inline-block; margin-top: 14px; padding: 12px 28px; background: #ffffff;
             color: #4a3f3f; border-radius: 25px; text-decoration: none;
-            font-family: 'Montserrat', sans-serif; font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
+            font-family: 'Montserrat', sans-serif; font-size: 14px;   /* увеличено */
+            letter-spacing: 2px; text-transform: uppercase;
             transition: all 0.3s ease; font-weight: 500;
         }
         .map-button:hover { background: #f0e6d3; }
 
         .schedule-big {
             font-family: 'French Kiss Script', 'Cormorant Garamond', cursive;
-            font-size: 36px;
+            font-size: 42px;         /* увеличено */
             font-weight: 400;
             color: #ffffff;
             text-shadow: 0 2px 6px rgba(0,0,0,0.3);
@@ -232,16 +259,19 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 5px;
+            gap: 8px;
         }
         .schedule-item-text { margin: 0; }
         .schedule-item-text.hidden { display: none; }
 
         .glass-box {
-            position: relative; max-width: 580px; margin: 25px auto 0; padding: 36px 40px;
+            position: relative; max-width: 640px; margin: 25px auto 0; padding: 40px 45px;
             background: rgba(0,0,0,0.2); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
             border-radius: 28px; box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-            border: 1px solid rgba(255,255,255,0.3); font-size: 19px; line-height: 1.8; color: #ffffff;
+            border: 1px solid rgba(255,255,255,0.3);
+            font-size: 24px;         /* увеличено */
+            line-height: 1.8;
+            color: #ffffff;
             font-family: 'French Kiss Script', 'Cormorant Garamond', cursive;
         }
         .glass-box::before, .glass-box::after {
@@ -258,7 +288,7 @@
         .dresscode-circle:hover { transform: scale(1.12); box-shadow: 0 8px 18px rgba(0,0,0,0.3), 0 0 0 3px rgba(255,255,255,0.7); }
 
         .final-text {
-            font-size: 24px;
+            font-size: 28px;         /* увеличено */
             color: #ffffff;
             letter-spacing: 1px;
             text-shadow: 0 2px 4px rgba(0,0,0,0.3);
@@ -267,7 +297,7 @@
         }
         .final-text .heart {
             margin-top: 16px;
-            font-size: 32px;
+            font-size: 36px;
             animation: heartBeat 1.5s infinite;
             display: inline-block;
         }
@@ -276,13 +306,22 @@
         .fade-in { opacity: 0; transform: translateY(25px); transition: opacity 1s ease, transform 1s ease; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-        /* Мобильная версия */
+        /* Мобильная версия — размеры немного уменьшены, но всё ещё крупнее стандартных */
         @media (max-width: 768px) {
             .section::before {
                 top: -20px; left: -20px; right: -20px; bottom: -20px;
                 background-attachment: scroll;
             }
-            .schedule-big { font-size: 28px; }
+            .section-title { font-size: 32px; }
+            .section-subtitle { font-size: 14px; }
+            .welcome-text { font-size: 18px; }
+            .photo-hint { font-size: 14px; }
+            .schedule-big { font-size: 30px; }
+            .place-info { font-size: 18px; }
+            .place-info strong { font-size: 22px; }
+            .map-button { font-size: 12px; padding: 10px 22px; }
+            .glass-box { font-size: 18px; padding: 30px 25px; }
+            .final-text { font-size: 22px; }
             .photo-collage { width: 320px; height: 440px; }
             .flip-card { width: 230px; height: 320px; transition: transform 0.9s ease, opacity 0.5s; }
             .flip-card.front { transform: translate(75px, 88px) rotate(0deg) scale(1.04); }
@@ -297,13 +336,17 @@
             .date { font-size: 34px; letter-spacing: 4px; }
             .splash { padding: 20px 15px; }
             .place-card { width: 100%; max-width: 380px; }
-            .section-title { font-size: 30px; }
             .coin { display: none !important; }
             .decor-branch-left, .decor-branch-right { font-size: 160px; }
             .dresscode-palette { gap: 16px; }
             .dresscode-circle { width: 44px; height: 44px; }
         }
         @media (max-width: 400px) {
+            .section-title { font-size: 28px; }
+            .welcome-text { font-size: 16px; }
+            .schedule-big { font-size: 26px; }
+            .glass-box { font-size: 16px; }
+            .final-text { font-size: 20px; }
             .initial-line { font-size: 85px; }
             .initial-line.line-amp { font-size: 40px; margin: -5px 0; }
             .initial-line.line-d { transform: translateX(-20px); }
@@ -315,7 +358,6 @@
             .flip-card { width: 190px; height: 270px; }
             .flip-card.front { transform: translate(60px, 72px) rotate(0deg) scale(1.04); }
             .flip-card.back { transform: translate(5px, 5px) rotate(-7deg) scale(0.92); }
-            .schedule-big { font-size: 24px; }
         }
     </style>
 </head>
@@ -343,7 +385,7 @@
         <a href="#invitation" class="scroll-arrow" aria-label="К приглашению">↓</a>
     </div>
 
-    <!-- БЛОКИ 2–8 с фоном на каждой секции и шрифтом French Kiss Script -->
+    <!-- БЛОКИ 2–8 с увеличенным шрифтом French Kiss Script -->
     <div id="invitation">
         <div class="container">
             <!-- БЛОК 2 — ГОСТИ + ФОТО -->
@@ -417,7 +459,7 @@
                 <p class="section-subtitle">пастельная нежность</p>
                 <div class="glass-box">
                     <p>Мы будем очень рады, если вы поддержите<br>цветовую гамму нашего праздника 🤍<br><br>
-                    <span style="font-size:16px;opacity:0.7;">Оттенки пастельных тонов —<br>то, что делает этот день ещё нежнее.</span></p>
+                    <span style="font-size:20px;opacity:0.7;">Оттенки пастельных тонов —<br>то, что делает этот день ещё нежнее.</span></p>
                     <div class="dresscode-palette">
                         <div class="dresscode-circle" style="background:#e8cec4;"></div>
                         <div class="dresscode-circle" style="background:#f0d5c1;"></div>
@@ -449,11 +491,11 @@
                     <p>Говорят, молодым нужно всё и сразу: от блендера до путешествий ✈️</p>
                     <p style="margin-top:10px;">Мы не будем спорить с этой истиной 😄</p>
                     <p style="margin-top:10px;">Если вы решите поддержать наш «молодожённый стартап», конверт будет очень кстати.</p>
-                    <p style="margin-top:18px;font-size:14px;opacity:0.8;font-style:italic;color:#ffffff;">Но самый главный подарок — ваше присутствие и улыбки 🤍</p>
+                    <p style="margin-top:18px;font-size:20px;opacity:0.8;font-style:italic;color:#ffffff;">Но самый главный подарок — ваше присутствие и улыбки 🤍</p>
                 </div>
                 <div class="final-text">
                     <p>С любовью и нетерпением ждём вас 🤍</p>
-                    <p style="font-size:16px;margin-top:8px;opacity:0.7;">Данил & Юлия</p>
+                    <p style="font-size:20px;margin-top:8px;opacity:0.7;">Данил & Юлия</p>
                     <div class="heart">💛</div>
                 </div>
             </div>
