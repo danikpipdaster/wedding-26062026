@@ -52,9 +52,13 @@
         .splash {
             position: relative; z-index: 1;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
-            min-height: 100vh; padding: 40px 20px; text-align: center;
+            min-height: 100vh; padding: 40px 20px 80px;  /* увеличен нижний отступ для перехода */
+            text-align: center;
             background: linear-gradient(rgba(250,247,244,0.75), rgba(250,247,244,0.75)), url('ryki.jpg') center/cover no-repeat;
             background-color: #faf7f4;
+            /* плавный переход в конце заставки */
+            mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
         }
         .initials-block { margin-bottom: 0.3em; }
         .initial-line {
@@ -112,17 +116,22 @@
         @keyframes arrowBounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(10px); } }
         .divider {
             width: 60px; height: 2px;
-            background: linear-gradient(to right, transparent, #4a3f3f, transparent);  /* тёмный разделитель */
+            background: linear-gradient(to right, transparent, #4a3f3f, transparent);
             margin: 20px auto;
             border-radius: 1px;
             opacity: 0.4;
         }
 
+        /* ОБЩИЙ КОНТЕЙНЕР ДЛЯ БЛОКОВ 2–8 – с фоновым цветом для закрытия зазоров */
         #invitation {
             position: relative;
             z-index: 1;
-            background: transparent;
-            padding-top: 30px;
+            background: #faf7f4;  /* цвет-заглушка, если текстура не загрузится */
+            background-image: linear-gradient(to bottom, rgba(250,247,244,0.9), rgba(250,247,244,0.9)), url('belyzadnik.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding-top: 0;       /* убираем отступ, чтобы первая секция была вплотную */
             padding-bottom: 30px;
         }
 
@@ -130,13 +139,25 @@
             position: relative;
             padding: 70px 20px;
             overflow: hidden;
-            color: #4a3f3f;              /* тёмный текст */
+            color: #4a3f3f;
+            background: transparent;  /* фон берётся из #invitation */
         }
+
+        /* Специальный класс для первой секции (блок 2), чтобы убрать верхнюю прозрачность */
+        .section-first {
+            padding-top: 120px;      /* компенсируем верхний отступ, чтобы текст не прилипал */
+            margin-top: -30px;       /* заезжаем немного на заставку, закрывая зазор */
+        }
+        .section-first::before {
+            mask-image: linear-gradient(to bottom, black 0%, black 90%, transparent 100%) !important;
+            -webkit-mask-image: linear-gradient(to bottom, black 0%, black 90%, transparent 100%) !important;
+        }
+
         .section::before {
             content: '';
             position: absolute;
             top: -30px; left: -30px; right: -30px; bottom: -30px;
-            background: url('belyzadnik.jpg') center/cover no-repeat;   /* новый фон */
+            background: url('belyzadnik.jpg') center/cover no-repeat;
             background-color: #faf7f4;
             background-attachment: scroll;
             z-index: -1;
@@ -304,9 +325,8 @@
 
         /* Мобильная версия */
         @media (max-width: 768px) {
-            .section {
-                padding: 50px 0;
-            }
+            .section { padding: 50px 0; }
+            .section-first { padding-top: 80px; margin-top: -20px; }
             .section::before {
                 top: -20px; left: -20px; right: -20px; bottom: -20px;
                 background-attachment: scroll;
@@ -334,7 +354,7 @@
             .handwritten-signature { font-size: 24px; }
             .heart-img { height: 12px; }
             .date { font-size: 34px; letter-spacing: 4px; }
-            .splash { padding: 20px 15px; }
+            .splash { padding: 20px 15px 60px; }
             .place-card { width: 100%; max-width: 380px; }
             .coin { display: none !important; }
             .decor-branch-left, .decor-branch-right { font-size: 160px; }
@@ -386,11 +406,11 @@
         <a href="#invitation" class="scroll-arrow" aria-label="К приглашению">↓</a>
     </div>
 
-    <!-- БЛОКИ 2–8 с новым светлым фоном и тёмным текстом -->
+    <!-- БЛОКИ 2–8 -->
     <div id="invitation">
         <div class="container">
-            <!-- БЛОК 2 — ГОСТИ + ФОТО -->
-            <div class="section fade-in">
+            <!-- БЛОК 2 — ГОСТИ + ФОТО (с классом section-first) -->
+            <div class="section section-first fade-in">
                 <h2 class="section-title" id="guest-greeting">Дорогие гости!</h2>
                 <p class="welcome-text" id="guest-message">
                     С огромной радостью и трепетом в сердце<br>
