@@ -4,17 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Данил & Юлия — Приглашение на свадьбу</title>
+    <!-- Предзагружаем только фото коллажа, чтобы ускорить первый экран -->
     <link rel="preload" as="image" href="photo1.jpg">
     <link rel="preload" as="image" href="photo2.jpg">
     <link rel="preload" as="image" href="photo3.jpg">
     <link rel="preload" as="image" href="photo4.jpg">
-    <link rel="preload" as="image" href="ryki.jpg">
-    <link rel="preload" as="image" href="seryzadnik.jpg">
-    <link rel="preload" as="image" href="monetka.jpg">
-    <link rel="preload" as="image" href="serdecko.jpg">
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* Локальный рукописный шрифт для заголовков блоков */
         @font-face {
             font-family: 'French Kiss Script';
             src: url('FrenchKissscript.ttf') format('truetype');
@@ -98,7 +94,8 @@
         #scratch { position: absolute; top: 0; left: 0; cursor: none; touch-action: none; border-radius: 8px; }
         .coin {
             position: fixed; width: 28px; height: 28px;
-            background: url('monetka.jpg') center/cover no-repeat; border-radius: 50%;
+            background: url('monetka.jpg') center/cover no-repeat;
+            border-radius: 50%;
             pointer-events: none; transform: translate(-50%, -50%); display: none; z-index: 9999;
             box-shadow: 0 2px 8px rgba(0,0,0,0.15);
         }
@@ -141,6 +138,7 @@
             position: absolute;
             top: -30px; left: -30px; right: -30px; bottom: -30px;
             background: url('seryzadnik.jpg') center/cover no-repeat;
+            background-color: #5a5a5a; /* заглушка на время загрузки */
             background-attachment: scroll;
             z-index: -1;
             mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
@@ -211,6 +209,7 @@
             width: 100%; height: 100%; object-fit: cover; border-radius: 22px;
             background: #ffffff; padding: 8px; box-shadow: 0 18px 40px rgba(90,74,74,0.15);
             box-sizing: border-box; backface-visibility: hidden; -webkit-backface-visibility: hidden;
+            loading: lazy; /* ленивая загрузка */
         }
         .flip-card.front img { box-shadow: 0 26px 58px rgba(90,74,74,0.35); }
         .flip-card.back img { filter: brightness(0.96); }
@@ -222,7 +221,7 @@
             color: #ffffff;
         }
         .place-card:hover { transform: translateY(-4px); box-shadow: 0 20px 45px rgba(0,0,0,0.25); }
-        .place-card img { width: 100%; height: 230px; object-fit: cover; }
+        .place-card img { width: 100%; height: 230px; object-fit: cover; loading: lazy; }
         .place-info {
             font-family: 'Cormorant Garamond', serif;
             padding: 24px 22px 28px;
@@ -372,7 +371,8 @@
             <span class="initial-line line-yu">Ю</span>
         </div>
         <p class="handwritten-signature">
-            Данил <img src="serdecko.jpg" alt="♥" class="heart-img"> Юлия
+            Данил <img src="serdecko.jpg" alt="♥" class="heart-img">
+            Юлия
         </p>
         <p class="hero-subtitle">приглашение на свадьбу</p>
         <div class="date-container">
@@ -383,7 +383,7 @@
         <a href="#invitation" class="scroll-arrow" aria-label="К приглашению">↓</a>
     </div>
 
-    <!-- БЛОКИ 2–8 с рукописными заголовками и классическим текстом -->
+    <!-- БЛОКИ 2–8 с ускоренной загрузкой -->
     <div id="invitation">
         <div class="container">
             <!-- БЛОК 2 — ГОСТИ + ФОТО -->
@@ -401,14 +401,14 @@
                 <div class="photo-collage">
                     <div class="flip-card front" id="card1">
                         <div class="flip-inner">
-                            <div class="flip-front"><img src="photo1.jpg" alt="Фото 1"></div>
-                            <div class="flip-back"><img src="photo2.jpg" alt="Фото 2"></div>
+                            <div class="flip-front"><img src="photo1.jpg" alt="Фото 1" loading="lazy"></div>
+                            <div class="flip-back"><img src="photo2.jpg" alt="Фото 2" loading="lazy"></div>
                         </div>
                     </div>
                     <div class="flip-card back" id="card2">
                         <div class="flip-inner">
-                            <div class="flip-front"><img src="photo3.jpg" alt="Фото 3"></div>
-                            <div class="flip-back"><img src="photo4.jpg" alt="Фото 4"></div>
+                            <div class="flip-front"><img src="photo3.jpg" alt="Фото 3" loading="lazy"></div>
+                            <div class="flip-back"><img src="photo4.jpg" alt="Фото 4" loading="lazy"></div>
                         </div>
                     </div>
                 </div>
@@ -421,14 +421,14 @@
                 <p class="section-subtitle">где это случится</p>
                 <div class="places" id="places-container">
                     <div class="place-card" id="place-zags">
-                        <img src="zags.jpg" alt="ЗАГС">
+                        <img src="zags.jpg" alt="ЗАГС" loading="lazy">
                         <div class="place-info">
                             <strong>Церемония</strong> г. Надым<br>Парковый пр., 4<br>
                             <a class="map-button" href="https://maps.google.com/?q=Надым+Парковый+4" target="_blank">Открыть карту</a>
                         </div>
                     </div>
                     <div class="place-card" id="place-nedoma">
-                        <img src="nedoma.jpg" alt="НеДома">
+                        <img src="nedoma.jpg" alt="НеДома" loading="lazy">
                         <div class="place-info">
                             <strong>НеДома</strong> Семейный лофт<br>г. Надым<br>13 проезд, строение 11<br>
                             <a class="map-button" href="https://maps.google.com/?q=НеДома+Семейный+лофт+13+проезд+строение+11+Надым" target="_blank">Открыть карту</a>
