@@ -208,7 +208,6 @@
             width: 100%; height: 100%; object-fit: cover; border-radius: 22px;
             background: #ffffff; padding: 8px; box-shadow: 0 18px 40px rgba(90,74,74,0.15);
             box-sizing: border-box; backface-visibility: hidden; -webkit-backface-visibility: hidden;
-            loading: lazy;
         }
         .flip-card.front img { box-shadow: 0 26px 58px rgba(90,74,74,0.35); }
         .flip-card.back img { filter: brightness(0.96); }
@@ -220,7 +219,7 @@
             color: #ffffff;
         }
         .place-card:hover { transform: translateY(-4px); box-shadow: 0 20px 45px rgba(0,0,0,0.25); }
-        .place-card img { width: 100%; height: 230px; object-fit: cover; loading: lazy; }
+        .place-card img { width: 100%; height: 230px; object-fit: cover; }
         .place-info {
             font-family: 'Cormorant Garamond', serif;
             padding: 24px 22px 28px;
@@ -305,13 +304,15 @@
         /* Мобильная версия */
         @media (max-width: 768px) {
             .section {
-                padding: 50px 0;   /* Убираем боковые отступы, чтобы фон заполнил всё */
+                padding: 50px 0;   /* убираем боковые отступы, чтобы фон касался краёв */
             }
             .section::before {
                 top: -20px; left: -20px; right: -20px; bottom: -20px;
                 background-attachment: scroll;
-                mask-image: none;          /* Убираем маску, чтобы не было прозрачных зазоров */
-                -webkit-mask-image: none;
+                /* маска остаётся для красивых переходов, но без боковых зазоров */
+            }
+            .container {
+                padding: 0 15px;   /* даём контенту немного отступа от краёв */
             }
             .section-title { font-size: 48px; }
             .section-subtitle { font-size: 14px; }
@@ -387,7 +388,7 @@
         <a href="#invitation" class="scroll-arrow" aria-label="К приглашению">↓</a>
     </div>
 
-    <!-- БЛОКИ 2–8 с устранёнными зазорами -->
+    <!-- БЛОКИ 2–8 с восстановленной текстурой фона и фотографиями -->
     <div id="invitation">
         <div class="container">
             <!-- БЛОК 2 — ГОСТИ + ФОТО -->
@@ -405,14 +406,14 @@
                 <div class="photo-collage">
                     <div class="flip-card front" id="card1">
                         <div class="flip-inner">
-                            <div class="flip-front"><img src="photo1.jpg" alt="Фото 1" loading="lazy"></div>
-                            <div class="flip-back"><img src="photo2.jpg" alt="Фото 2" loading="lazy"></div>
+                            <div class="flip-front"><img src="photo1.jpg" alt="Фото 1"></div>
+                            <div class="flip-back"><img src="photo2.jpg" alt="Фото 2"></div>
                         </div>
                     </div>
                     <div class="flip-card back" id="card2">
                         <div class="flip-inner">
-                            <div class="flip-front"><img src="photo3.jpg" alt="Фото 3" loading="lazy"></div>
-                            <div class="flip-back"><img src="photo4.jpg" alt="Фото 4" loading="lazy"></div>
+                            <div class="flip-front"><img src="photo3.jpg" alt="Фото 3"></div>
+                            <div class="flip-back"><img src="photo4.jpg" alt="Фото 4"></div>
                         </div>
                     </div>
                 </div>
@@ -425,14 +426,14 @@
                 <p class="section-subtitle">где это случится</p>
                 <div class="places" id="places-container">
                     <div class="place-card" id="place-zags">
-                        <img src="zags.jpg" alt="ЗАГС" loading="lazy">
+                        <img src="zags.jpg" alt="ЗАГС">
                         <div class="place-info">
                             <strong>Церемония</strong> г. Надым<br>Парковый пр., 4<br>
                             <a class="map-button" href="https://maps.google.com/?q=Надым+Парковый+4" target="_blank">Открыть карту</a>
                         </div>
                     </div>
                     <div class="place-card" id="place-nedoma">
-                        <img src="nedoma.jpg" alt="НеДома" loading="lazy">
+                        <img src="nedoma.jpg" alt="НеДома">
                         <div class="place-info">
                             <strong>НеДома</strong> Семейный лофт<br>г. Надым<br>13 проезд, строение 11<br>
                             <a class="map-button" href="https://maps.google.com/?q=НеДома+Семейный+лофт+13+проезд+строение+11+Надым" target="_blank">Открыть карту</a>
