@@ -210,13 +210,14 @@
         }
         .map-button:hover { background: #f0e6d3; }
 
+        /* Обновлённый блок расписания */
         .schedule-big {
-            font-family: 'Great Vibes', cursive;
-            font-size: 72px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 36px;
             font-weight: 400;
             color: #ffffff;
-            text-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            line-height: 1.2;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.3);
+            line-height: 1.5;
             margin: 30px 0 10px;
             display: flex;
             flex-direction: column;
@@ -269,12 +270,12 @@
                 top: -20px; left: -20px; right: -20px; bottom: -20px;
                 background-attachment: scroll;
             }
+            .schedule-big { font-size: 28px; }
             .photo-collage { width: 320px; height: 440px; }
             .flip-card { width: 230px; height: 320px; transition: transform 0.9s ease, opacity 0.5s; }
             .flip-card.front { transform: translate(75px, 88px) rotate(0deg) scale(1.04); }
             .flip-card.back { transform: translate(5px, 5px) rotate(-7deg) scale(0.92); }
             .flip-card img { border-radius: 18px; }
-            .schedule-big { font-size: 48px; }
             .initial-line { font-size: 110px; }
             .initial-line.line-amp { font-size: 50px; margin: -10px 0; }
             .initial-line.line-d { transform: translateX(-30px); }
@@ -302,7 +303,7 @@
             .flip-card { width: 190px; height: 270px; }
             .flip-card.front { transform: translate(60px, 72px) rotate(0deg) scale(1.04); }
             .flip-card.back { transform: translate(5px, 5px) rotate(-7deg) scale(0.92); }
-            .schedule-big { font-size: 36px; }
+            .schedule-big { font-size: 24px; }
         }
     </style>
 </head>
@@ -385,15 +386,15 @@
                 <div class="divider"></div>
             </div>
 
-            <!-- БЛОК 4 — ПРОГРАММА -->
+            <!-- БЛОК 4 — ПРОГРАММА (обновлённый стиль) -->
             <div class="section fade-in" id="schedule-section">
                 <h2 class="section-title">Программа дня</h2>
                 <p class="section-subtitle">26 июня 2026</p>
                 <div class="schedule-big">
-                    <span class="schedule-item-text" id="item-meet">🌸 Встреча гостей</span>
-                    <span class="schedule-item-text" id="item-ceremony">💍 Церемония</span>
-                    <span class="schedule-item-text" id="item-feast">🍽️ Банкет</span>
-                    <span class="schedule-item-text" id="item-dance">🕺 Танцы</span>
+                    <span class="schedule-item-text" id="item-meet">Встреча гостей</span>
+                    <span class="schedule-item-text" id="item-ceremony">Церемония</span>
+                    <span class="schedule-item-text" id="item-feast">Банкет</span>
+                    <span class="schedule-item-text" id="item-dance">Танцы</span>
                 </div>
                 <div class="divider"></div>
             </div>
@@ -429,7 +430,7 @@
                 <div class="divider"></div>
             </div>
 
-            <!-- БЛОК 7 — Подарки + Финал (обновлённый текст) -->
+            <!-- БЛОК 7 — Подарки + Финал -->
             <div class="section fade-in" id="gifts-section">
                 <h2 class="section-title">Подарки</h2>
                 <div class="glass-box">
