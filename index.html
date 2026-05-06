@@ -26,9 +26,15 @@
             font-display: swap;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-        html { scroll-behavior: smooth; }
+        html {
+            scroll-behavior: smooth;
+        }
 
         body {
             background: #faf7f4;
@@ -149,9 +155,20 @@
         }
 
         @keyframes pulseText {
-            0% { opacity: 0.4; transform: translateY(0); }
-            50% { opacity: 1; transform: translateY(-2px); }
-            100% { opacity: 0.4; transform: translateY(0); }
+            0% {
+                opacity: 0.4;
+                transform: translateY(0);
+            }
+
+            50% {
+                opacity: 1;
+                transform: translateY(-2px);
+            }
+
+            100% {
+                opacity: 0.4;
+                transform: translateY(0);
+            }
         }
 
         .scratch-area {
@@ -221,8 +238,13 @@
         }
 
         @keyframes arrowBounce {
-            0%,100% { transform: translateY(0); }
-            50% { transform: translateY(10px); }
+            0%,100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(10px);
+            }
         }
 
         .divider {
@@ -294,9 +316,17 @@
         }
 
         @keyframes hintFloat {
-            0% { opacity: 0.6; }
-            50% { opacity: 1; }
-            100% { opacity: 0.6; }
+            0% {
+                opacity: 0.6;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0.6;
+            }
         }
 
         .photo-collage {
@@ -469,11 +499,25 @@
         }
 
         @keyframes heartBeat {
-            0% { transform: scale(1); }
-            25% { transform: scale(1.15); }
-            50% { transform: scale(1); }
-            75% { transform: scale(1.1); }
-            100% { transform: scale(1); }
+            0% {
+                transform: scale(1);
+            }
+
+            25% {
+                transform: scale(1.15);
+            }
+
+            50% {
+                transform: scale(1);
+            }
+
+            75% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+            }
         }
 
         .schedule-big {
@@ -577,8 +621,8 @@
         }
 
         .final-para-img {
-            width: 170px;
-            max-width: 30vw;
+            width: 425px;
+            max-width: 45vw;
             height: auto;
             object-fit: contain;
             display: block;
@@ -644,8 +688,8 @@
             }
 
             .final-para-img {
-                width: 140px;
-                max-width: 60vw;
+                width: 350px;
+                max-width: 85vw;
             }
 
             .photo-collage {
@@ -759,7 +803,8 @@
             }
 
             .final-para-img {
-                width: 120px;
+                width: 300px;
+                max-width: 90vw;
             }
 
             .initial-line {
