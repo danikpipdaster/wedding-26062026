@@ -36,7 +36,7 @@
         .decor-branch-left { top: -40px; left: -60px; transform: rotate(-15deg); }
         .decor-branch-right { bottom: -40px; right: -60px; transform: rotate(165deg); }
         
-        /* БЛОК 1 — ЗАСТАВКА (без изменений) */
+        /* БЛОК 1 — ЗАСТАВКА */
         .splash {
             position: relative; z-index: 2;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -107,24 +107,28 @@
             opacity: 0.7;
         }
 
-        /* ========== БЛОКИ 2–8: фон на всю ширину, БЕЗ прозрачности, seryzadnik.jpg ========== */
+        /* ========== ЕДИНЫЙ ФОН ДЛЯ БЛОКОВ 2–8 (ПЛАВНЫЙ ПЕРЕХОД, БЕЗ СТЫКОВ) ========== */
+        .sections-wrapper {
+            position: relative;
+            background: url('seryzadnik.jpg') center/cover no-repeat;
+            background-color: #8a7a6a;
+            width: 100%;
+        }
+        /* Секции прозрачные, фона у них нет */
         .section {
             position: relative;
             width: 100%;
-            /* только изображение, никакого линейного градиента */
-            background: url('seryzadnik.jpg') center/cover no-repeat;
-            background-color: #8a7a6a; /* резервный цвет, если картинка не загрузится */
             padding: 70px 0;
             margin: 0;
+            background: transparent;
         }
-        /* Внутренний контейнер для контента */
         .section-inner {
             max-width: 900px;
             margin: 0 auto;
             padding: 0 20px;
             width: 100%;
         }
-        /* Текст — белый с тенью для контраста */
+        /* Все текстовые стили — белые с тенью для читаемости */
         .section-title {
             font-family: 'French Kiss Script', 'Cormorant Garamond', cursive;
             font-size: 72px;
@@ -340,6 +344,7 @@
     <div class="decor-branch-right">❦</div>
     <div class="coin" id="coin"></div>
 
+    <!-- БЛОК 1 — ЗАСТАВКА -->
     <div class="splash" id="splash">
         <div class="initials-block">
             <span class="initial-line line-d">Д</span>
@@ -359,126 +364,126 @@
         <a href="#invitation-start" class="scroll-arrow" aria-label="К приглашению">↓</a>
     </div>
 
-    <div id="invitation-start"></div>
-
-    <!-- Блоки 2–8: фон без прозрачности, seryzadnik.jpg на всю ширину -->
-    <div class="section fade-in" id="guest-block">
-        <div class="section-inner">
-            <h2 class="section-title" id="guest-greeting">Дорогие гости!</h2>
-            <p class="welcome-text" id="guest-message">
-                С огромной радостью и трепетом в сердце<br>
-                мы приглашаем вас разделить с нами<br>
-                <strong>самый важный день нашей жизни</strong> 🤍
-            </p>
-            <div class="divider"></div>
+    <!-- БЛОКИ 2–8 с единым непрерывным фоном (без стыков) -->
+    <div class="sections-wrapper" id="invitation-start">
+        <div class="section fade-in">
+            <div class="section-inner">
+                <h2 class="section-title" id="guest-greeting">Дорогие гости!</h2>
+                <p class="welcome-text" id="guest-message">
+                    С огромной радостью и трепетом в сердце<br>
+                    мы приглашаем вас разделить с нами<br>
+                    <strong>самый важный день нашей жизни</strong> 🤍
+                </p>
+                <div class="divider"></div>
+            </div>
         </div>
-    </div>
 
-    <div class="section fade-in" id="photo-section">
-        <div class="section-inner">
-            <div class="photo-hint">Нажми на фото, чтобы перевернуть ✨</div>
-            <div class="photo-collage">
-                <div class="flip-card front" id="card1">
-                    <div class="flip-inner">
-                        <div class="flip-front"><img src="photo1.jpg" alt="Фото 1"></div>
-                        <div class="flip-back"><img src="photo2.jpg" alt="Фото 2"></div>
+        <div class="section fade-in">
+            <div class="section-inner">
+                <div class="photo-hint">Нажми на фото, чтобы перевернуть ✨</div>
+                <div class="photo-collage">
+                    <div class="flip-card front" id="card1">
+                        <div class="flip-inner">
+                            <div class="flip-front"><img src="photo1.jpg" alt="Фото 1"></div>
+                            <div class="flip-back"><img src="photo2.jpg" alt="Фото 2"></div>
+                        </div>
+                    </div>
+                    <div class="flip-card back" id="card2">
+                        <div class="flip-inner">
+                            <div class="flip-front"><img src="photo3.jpg" alt="Фото 3"></div>
+                            <div class="flip-back"><img src="photo4.jpg" alt="Фото 4"></div>
+                        </div>
                     </div>
                 </div>
-                <div class="flip-card back" id="card2">
-                    <div class="flip-inner">
-                        <div class="flip-front"><img src="photo3.jpg" alt="Фото 3"></div>
-                        <div class="flip-back"><img src="photo4.jpg" alt="Фото 4"></div>
+                <div class="divider"></div>
+            </div>
+        </div>
+
+        <div class="section fade-in">
+            <div class="section-inner">
+                <h2 class="section-title">Места проведения</h2>
+                <p class="section-subtitle">где это случится</p>
+                <div class="places" id="places-container">
+                    <div class="place-card" id="place-zags">
+                        <img src="zags.jpg" alt="ЗАГС">
+                        <div class="place-info">
+                            <strong>Церемония</strong> г. Надым<br>Парковый пр., 4<br>
+                            <a class="map-button" href="https://maps.google.com/?q=Надым+Парковый+4" target="_blank">Открыть карту</a>
+                        </div>
+                    </div>
+                    <div class="place-card" id="place-nedoma">
+                        <img src="nedoma.jpg" alt="НеДома">
+                        <div class="place-info">
+                            <strong>НеДома</strong> Семейный лофт<br>г. Надым<br>13 проезд, строение 11<br>
+                            <a class="map-button" href="https://maps.google.com/?q=НеДома+Семейный+лофт+13+проезд+строение+11+Надым" target="_blank">Открыть карту</a>
+                        </div>
                     </div>
                 </div>
+                <div class="divider"></div>
             </div>
-            <div class="divider"></div>
         </div>
-    </div>
 
-    <div class="section fade-in" id="places-section">
-        <div class="section-inner">
-            <h2 class="section-title">Места проведения</h2>
-            <p class="section-subtitle">где это случится</p>
-            <div class="places" id="places-container">
-                <div class="place-card" id="place-zags">
-                    <img src="zags.jpg" alt="ЗАГС">
-                    <div class="place-info">
-                        <strong>Церемония</strong> г. Надым<br>Парковый пр., 4<br>
-                        <a class="map-button" href="https://maps.google.com/?q=Надым+Парковый+4" target="_blank">Открыть карту</a>
+        <div class="section fade-in">
+            <div class="section-inner">
+                <h2 class="section-title">Программа дня</h2>
+                <p class="section-subtitle">26 июня 2026</p>
+                <div class="schedule-big">
+                    <span class="schedule-item-text" id="item-meet">Встреча гостей</span>
+                    <span class="schedule-item-text" id="item-ceremony">Церемония</span>
+                    <span class="schedule-item-text" id="item-feast">Банкет</span>
+                    <span class="schedule-item-text" id="item-dance">Танцы</span>
+                </div>
+                <div class="divider"></div>
+            </div>
+        </div>
+
+        <div class="section fade-in">
+            <div class="section-inner">
+                <h2 class="section-title">Дресс-код</h2>
+                <p class="section-subtitle">пастельная нежность</p>
+                <div class="glass-box">
+                    <p>Мы будем очень рады, если вы поддержите<br>цветовую гамму нашего праздника 🤍<br><br>
+                    <span style="font-size:20px;opacity:0.9;">Оттенки пастельных тонов —<br>то, что делает этот день ещё нежнее.</span></p>
+                    <div class="dresscode-palette">
+                        <div class="dresscode-circle" style="background:#e8cec4;"></div>
+                        <div class="dresscode-circle" style="background:#f0d5c1;"></div>
+                        <div class="dresscode-circle" style="background:#c8d5c0;"></div>
+                        <div class="dresscode-circle" style="background:#f5eddf;"></div>
+                        <div class="dresscode-circle" style="background:#dacfe0;"></div>
+                        <div class="dresscode-circle" style="background:#cddfe8;"></div>
                     </div>
                 </div>
-                <div class="place-card" id="place-nedoma">
-                    <img src="nedoma.jpg" alt="НеДома">
-                    <div class="place-info">
-                        <strong>НеДома</strong> Семейный лофт<br>г. Надым<br>13 проезд, строение 11<br>
-                        <a class="map-button" href="https://maps.google.com/?q=НеДома+Семейный+лофт+13+проезд+строение+11+Надым" target="_blank">Открыть карту</a>
-                    </div>
+                <div class="divider"></div>
+            </div>
+        </div>
+
+        <div class="section fade-in">
+            <div class="section-inner">
+                <h2 class="section-title">Важно для гостей</h2>
+                <p class="section-subtitle">вайб нашего дня</p>
+                <div class="glass-box">
+                    <p>📸 Телефоны не прячем —<br>снимаем, ловим моменты и кайфуем ✨</p>
+                    <p style="margin-top:14px;">🎤 Если вдруг появится идея для тоста<br>или перформанса — обязательно воплощайте её в жизнь 😄</p>
+                    <p style="margin-top:14px;">Мы только за любую движуху 💛</p>
                 </div>
+                <div class="divider"></div>
             </div>
-            <div class="divider"></div>
         </div>
-    </div>
 
-    <div class="section fade-in" id="schedule-section">
-        <div class="section-inner">
-            <h2 class="section-title">Программа дня</h2>
-            <p class="section-subtitle">26 июня 2026</p>
-            <div class="schedule-big">
-                <span class="schedule-item-text" id="item-meet">Встреча гостей</span>
-                <span class="schedule-item-text" id="item-ceremony">Церемония</span>
-                <span class="schedule-item-text" id="item-feast">Банкет</span>
-                <span class="schedule-item-text" id="item-dance">Танцы</span>
-            </div>
-            <div class="divider"></div>
-        </div>
-    </div>
-
-    <div class="section fade-in" id="dresscode-section">
-        <div class="section-inner">
-            <h2 class="section-title">Дресс-код</h2>
-            <p class="section-subtitle">пастельная нежность</p>
-            <div class="glass-box">
-                <p>Мы будем очень рады, если вы поддержите<br>цветовую гамму нашего праздника 🤍<br><br>
-                <span style="font-size:20px;opacity:0.9;">Оттенки пастельных тонов —<br>то, что делает этот день ещё нежнее.</span></p>
-                <div class="dresscode-palette">
-                    <div class="dresscode-circle" style="background:#e8cec4;"></div>
-                    <div class="dresscode-circle" style="background:#f0d5c1;"></div>
-                    <div class="dresscode-circle" style="background:#c8d5c0;"></div>
-                    <div class="dresscode-circle" style="background:#f5eddf;"></div>
-                    <div class="dresscode-circle" style="background:#dacfe0;"></div>
-                    <div class="dresscode-circle" style="background:#cddfe8;"></div>
+        <div class="section fade-in">
+            <div class="section-inner">
+                <h2 class="section-title">Подарки</h2>
+                <div class="glass-box">
+                    <p>Говорят, молодым нужно всё и сразу: от блендера до путешествий ✈️</p>
+                    <p style="margin-top:10px;">Мы не будем спорить с этой истиной 😄</p>
+                    <p style="margin-top:10px;">Если вы решите поддержать наш «молодожённый стартап», конверт будет очень кстати.</p>
+                    <p style="margin-top:18px;font-size:20px;opacity:0.9;font-style:italic;">Но самый главный подарок — ваше присутствие и улыбки 🤍</p>
                 </div>
-            </div>
-            <div class="divider"></div>
-        </div>
-    </div>
-
-    <div class="section fade-in" id="important-section">
-        <div class="section-inner">
-            <h2 class="section-title">Важно для гостей</h2>
-            <p class="section-subtitle">вайб нашего дня</p>
-            <div class="glass-box">
-                <p>📸 Телефоны не прячем —<br>снимаем, ловим моменты и кайфуем ✨</p>
-                <p style="margin-top:14px;">🎤 Если вдруг появится идея для тоста<br>или перформанса — обязательно воплощайте её в жизнь 😄</p>
-                <p style="margin-top:14px;">Мы только за любую движуху 💛</p>
-            </div>
-            <div class="divider"></div>
-        </div>
-    </div>
-
-    <div class="section fade-in" id="gifts-section">
-        <div class="section-inner">
-            <h2 class="section-title">Подарки</h2>
-            <div class="glass-box">
-                <p>Говорят, молодым нужно всё и сразу: от блендера до путешествий ✈️</p>
-                <p style="margin-top:10px;">Мы не будем спорить с этой истиной 😄</p>
-                <p style="margin-top:10px;">Если вы решите поддержать наш «молодожённый стартап», конверт будет очень кстати.</p>
-                <p style="margin-top:18px;font-size:20px;opacity:0.9;font-style:italic;">Но самый главный подарок — ваше присутствие и улыбки 🤍</p>
-            </div>
-            <div class="final-text">
-                <p>С любовью и нетерпением ждём вас 🤍</p>
-                <p style="font-size:20px;margin-top:8px;opacity:0.8;">Данил & Юлия</p>
-                <div class="heart">💛</div>
+                <div class="final-text">
+                    <p>С любовью и нетерпением ждём вас 🤍</p>
+                    <p style="font-size:20px;margin-top:8px;opacity:0.8;">Данил & Юлия</p>
+                    <div class="heart">💛</div>
+                </div>
             </div>
         </div>
     </div>
