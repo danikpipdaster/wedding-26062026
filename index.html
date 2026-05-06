@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Данил & Юлия — Приглашение на свадьбу</title>
-    <!-- Предзагрузка всех ключевых изображений -->
     <link rel="preload" as="image" href="photo1.jpg">
     <link rel="preload" as="image" href="photo2.jpg">
     <link rel="preload" as="image" href="photo3.jpg">
@@ -30,7 +29,6 @@
             overflow-x: hidden;
             position: relative;
         }
-        /* декоративные ветки */
         .decor-branch-left, .decor-branch-right {
             position: fixed; pointer-events: none; z-index: 0;
             opacity: 0.06; font-size: 280px; color: #8a9a7b; font-family: serif; line-height: 1;
@@ -38,12 +36,12 @@
         .decor-branch-left { top: -40px; left: -60px; transform: rotate(-15deg); }
         .decor-branch-right { bottom: -40px; right: -60px; transform: rotate(165deg); }
         
-        /* БЛОК 1 — ЗАСТАВКА (без изменений, фон на всю ширину и высоту) */
+        /* БЛОК 1 — ЗАСТАВКА (эталон) */
         .splash {
             position: relative; z-index: 2;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
             min-height: 100vh; padding: 40px 20px; text-align: center;
-            background: linear-gradient(rgba(250,247,244,0.82), rgba(250,247,244,0.82)), url('ryki.jpg') center/cover no-repeat;
+            background: linear-gradient(rgba(250,247,244,0.75), rgba(250,247,244,0.75)), url('ryki.jpg') center/cover no-repeat;
             background-color: #faf7f4;
         }
         .initials-block { margin-bottom: 0.3em; }
@@ -109,26 +107,24 @@
             opacity: 0.5;
         }
 
-        /* ========== БЛОКИ 2–8 с полноэкранным фоном (аналогично .splash) ========== */
+        /* ========== БЛОКИ 2–8 с фоном, ПОЛНОСТЬЮ аналогичным первому блоку ========== */
         .section {
             position: relative;
             width: 100%;
-            /* Фон как в первом блоке: полупрозрачный слой (93%) + изображение, растянутое cover */
-            background: linear-gradient(rgba(250,247,244,0.93), rgba(250,247,244,0.93)), url('seryzadnik.jpg') center/cover no-repeat;
-            /* Резервный цвет на случай отсутствия изображения */
-            background-color: #f5ede6;
-            background-attachment: scroll;
+            /* Копируем стиль .splash: такой же linear-gradient с 0.75, такое же cover */
+            background: linear-gradient(rgba(250,247,244,0.75), rgba(250,247,244,0.75)), url('seryzadnik.jpg') center/cover no-repeat;
+            background-color: #faf7f4; /* fallback, если картинка не загрузится */
             padding: 70px 0;
             margin: 0;
         }
-        /* Внутренний контейнер для контента (ограничение по ширине, центрирование) */
+        /* Внутренний контейнер для контента (центрирование, ограничение ширины) */
         .section-inner {
             max-width: 900px;
             margin: 0 auto;
             padding: 0 20px;
             width: 100%;
         }
-        /* цвета текста — тёмные, как в первом блоке (контрастные на светлом полупрозрачном фоне) */
+        /* Цвета текста — тёмные, как в первом блоке */
         .section-title {
             font-family: 'French Kiss Script', 'Cormorant Garamond', cursive;
             font-size: 72px;
@@ -290,7 +286,6 @@
         .fade-in { opacity: 0; transform: translateY(25px); transition: opacity 1s ease, transform 1s ease; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-        /* Мобильная адаптация */
         @media (max-width: 768px) {
             .section { padding: 50px 0; }
             .section-inner { padding: 0 15px; }
@@ -305,7 +300,7 @@
             .glass-box { font-size: 18px; padding: 30px 25px; }
             .final-text { font-size: 22px; }
             .photo-collage { width: 320px; height: 440px; }
-            .flip-card { width: 230px; height: 320px; transition: transform 0.9s ease; }
+            .flip-card { width: 230px; height: 320px; }
             .flip-card.front { transform: translate(75px, 88px) rotate(0deg) scale(1.04); }
             .flip-card.back { transform: translate(5px, 5px) rotate(-7deg) scale(0.92); }
             .initial-line { font-size: 110px; }
@@ -338,7 +333,6 @@
     <div class="decor-branch-right">❦</div>
     <div class="coin" id="coin"></div>
 
-    <!-- БЛОК 1 — ЗАСТАВКА -->
     <div class="splash" id="splash">
         <div class="initials-block">
             <span class="initial-line line-d">Д</span>
@@ -358,9 +352,9 @@
         <a href="#invitation-start" class="scroll-arrow" aria-label="К приглашению">↓</a>
     </div>
 
-    <!-- БЛОКИ 2–8 с растянутым фоном (аналогично первому блоку) -->
     <div id="invitation-start"></div>
 
+    <!-- Блоки 2–8: каждый имеет точно такой же фон, как у .splash (только другое изображение) -->
     <div class="section fade-in" id="guest-block">
         <div class="section-inner">
             <h2 class="section-title" id="guest-greeting">Дорогие гости!</h2>
@@ -485,7 +479,6 @@
     <script>
         (function() {
             window.addEventListener('DOMContentLoaded', function() {
-                // Таймер
                 const timerEl = document.getElementById("timer");
                 if (timerEl) {
                     const weddingDate = new Date("June 26, 2026 00:00:00").getTime();
@@ -502,7 +495,6 @@
                     setInterval(updateTimer, 1000);
                 }
 
-                // Эффект царапания даты
                 const canvas = document.getElementById("scratch");
                 if (canvas) {
                     const ctx = canvas.getContext("2d");
@@ -529,7 +521,6 @@
                     }
                 }
 
-                // Переворот фото
                 const card1 = document.getElementById("card1");
                 const card2 = document.getElementById("card2");
                 if (card1 && card2) {
@@ -553,7 +544,6 @@
                     card2.addEventListener("click", () => { if (card2 === activeCard) flipCard(card2); else bringToFront(card2); });
                 }
 
-                // Анимация появления
                 document.querySelectorAll('.fade-in').forEach(el => {
                     const observer = new IntersectionObserver((entries) => {
                         entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
@@ -561,7 +551,6 @@
                     observer.observe(el);
                 });
 
-                // Параметры из URL: имена гостей
                 const urlParams = new URLSearchParams(window.location.search);
                 const namesParam = urlParams.get('names');
                 const guestGreeting = document.getElementById('guest-greeting');
@@ -581,7 +570,6 @@
                     }
                 }
 
-                // Параметры мест
                 const placesParam = urlParams.get('places');
                 if (placesParam) {
                     const wantedPlaces = placesParam.split(',').map(p => p.trim().toLowerCase());
