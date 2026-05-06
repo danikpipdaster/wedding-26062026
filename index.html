@@ -29,18 +29,7 @@
             overflow-x: hidden;
             position: relative;
         }
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            pointer-events: none; z-index: 0;
-            background-image:
-                radial-gradient(ellipse at 20% 10%, rgba(200,180,160,0.12) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 30%, rgba(180,160,140,0.08) 0%, transparent 50%),
-                radial-gradient(ellipse at 50% 70%, rgba(190,170,150,0.10) 0%, transparent 50%),
-                radial-gradient(ellipse at 10% 80%, rgba(200,180,160,0.06) 0%, transparent 50%);
-            background-size: 100% 100%;
-        }
+        /* декоративные ветки (как в оригинале) */
         .decor-branch-left, .decor-branch-right {
             position: fixed; pointer-events: none; z-index: 0;
             opacity: 0.06; font-size: 280px; color: #8a9a7b; font-family: serif; line-height: 1;
@@ -48,7 +37,7 @@
         .decor-branch-left { top: -40px; left: -60px; transform: rotate(-15deg); }
         .decor-branch-right { bottom: -40px; right: -60px; transform: rotate(165deg); }
         
-        /* БЛОК 1 — ЗАСТАВКА (без изменений) */
+        /* БЛОК 1 — ЗАСТАВКА (без изменений, фон на всю ширину и высоту) */
         .splash {
             position: relative; z-index: 2;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -110,6 +99,7 @@
         }
         .scroll-arrow:hover { opacity: 1; }
         @keyframes arrowBounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(10px); } }
+        
         .divider {
             width: 60px; height: 2px;
             background: linear-gradient(to right, transparent, #4a3f3f, transparent);
@@ -118,27 +108,24 @@
             opacity: 0.5;
         }
 
-        /* НОВОЕ ОФОРМЛЕНИЕ ДЛЯ БЛОКОВ 2–8 — ПОЛНОСТЬЮ РАСТЯНУТЫЙ ФОН, АНАЛОГИЧНО 1-МУ БЛОКУ */
+        /* ========== БЛОКИ 2–8 с полноэкранным фоном (аналогично .splash) ========== */
         .section {
             position: relative;
-            width: 100vw;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(rgba(250,247,244,0.88), rgba(250,247,244,0.88)), url('seryzadnik.jpg') center/cover no-repeat;
-            background-size: cover;
+            width: 100%;
+            /* фон как в первом блоке: полупрозрачный слой (93%) + изображение, растянутое cover */
+            background: linear-gradient(rgba(250,247,244,0.93), rgba(250,247,244,0.93)), url('seryzadnik.jpg') center/cover no-repeat;
+            background-attachment: scroll;
             padding: 70px 0;
             margin: 0;
-            overflow-x: hidden;
-            z-index: 1;
         }
-        /* Внутренний контейнер для выравнивания контента как было */
+        /* Внутренний контейнер для контента (ограничение по ширине, центрирование) */
         .section-inner {
             max-width: 900px;
             margin: 0 auto;
             padding: 0 20px;
             width: 100%;
         }
-        /* Заголовки и текст теперь тёмные как в первом блоке */
+        /* цвета текста — тёмные, как в первом блоке (контрастные на светлом полупрозрачном фоне) */
         .section-title {
             font-family: 'French Kiss Script', 'Cormorant Garamond', cursive;
             font-size: 72px;
@@ -146,7 +133,6 @@
             margin-bottom: 10px;
             color: #4a3f3f;
             letter-spacing: 2px;
-            text-shadow: none;
         }
         .section-subtitle {
             font-family: 'Montserrat', sans-serif;
@@ -156,7 +142,6 @@
             text-transform: uppercase;
             color: #7a6a5a;
             margin-bottom: 30px;
-            text-shadow: none;
         }
         .welcome-text {
             font-family: 'Cormorant Garamond', serif;
@@ -165,7 +150,6 @@
             color: #4a3f3f;
             max-width: 700px;
             margin: 0 auto;
-            text-shadow: none;
         }
         .photo-hint {
             font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 16px;
@@ -180,7 +164,7 @@
         }
         .flip-card {
             position: absolute; top: 0; left: 0; width: 400px; height: 550px; cursor: pointer;
-            transform-style: preserve-3d; -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
             transition: transform 1.5s cubic-bezier(.22,.61,.36,1), opacity 0.7s ease;
             will-change: transform;
         }
@@ -189,27 +173,26 @@
         .flip-inner {
             position: relative; width: 100%; height: 100%;
             transition: transform 0.95s cubic-bezier(.22,.61,.36,1);
-            transform-style: preserve-3d; -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
         }
         .flip-card.flipped .flip-inner { transform: rotateY(180deg); }
         .flip-front, .flip-back {
             position: absolute; inset: 0;
-            backface-visibility: hidden; -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
             background-color: #ffffff; border-radius: 22px; overflow: hidden;
         }
         .flip-back { transform: rotateY(180deg); }
         .flip-card img {
             width: 100%; height: 100%; object-fit: cover; border-radius: 22px;
             background: #ffffff; padding: 8px; box-shadow: 0 18px 40px rgba(90,74,74,0.15);
-            box-sizing: border-box; backface-visibility: hidden; -webkit-backface-visibility: hidden;
+            box-sizing: border-box;
         }
         .flip-card.front img { box-shadow: 0 26px 58px rgba(90,74,74,0.35); }
-        .flip-card.back img { filter: brightness(0.96); }
-
+        
         .places { display: flex; justify-content: center; gap: 35px; flex-wrap: wrap; }
         .place-card {
             width: 380px;
-            background: rgba(255, 248, 240, 0.9);
+            background: rgba(255, 248, 240, 0.92);
             border-radius: 24px;
             overflow: hidden;
             box-shadow: 0 12px 35px rgba(0,0,0,0.1);
@@ -248,7 +231,6 @@
             font-size: 42px;
             font-weight: 400;
             color: #4a3f3f;
-            text-shadow: none;
             line-height: 1.5;
             margin: 30px 0 10px;
             display: flex;
@@ -256,7 +238,6 @@
             align-items: center;
             gap: 8px;
         }
-        .schedule-item-text { margin: 0; }
         .schedule-item-text.hidden { display: none; }
 
         .glass-box {
@@ -264,9 +245,8 @@
             max-width: 640px;
             margin: 25px auto 0;
             padding: 40px 45px;
-            background: rgba(250, 243, 235, 0.92);
+            background: rgba(250, 243, 235, 0.94);
             backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
             border-radius: 28px;
             box-shadow: 0 8px 24px rgba(0,0,0,0.1);
             border: 1px solid rgba(90, 70, 60, 0.25);
@@ -287,14 +267,13 @@
             border: 1px solid rgba(100,70,60,0.3);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .dresscode-circle:hover { transform: scale(1.12); box-shadow: 0 8px 18px rgba(0,0,0,0.2), 0 0 0 3px rgba(255,245,235,1); }
+        .dresscode-circle:hover { transform: scale(1.12); }
 
         .final-text {
             font-family: 'Cormorant Garamond', serif;
             font-size: 28px;
             color: #4a3f3f;
             letter-spacing: 1px;
-            text-shadow: none;
             margin-top: 50px;
         }
         .final-text .heart {
@@ -323,16 +302,14 @@
             .glass-box { font-size: 18px; padding: 30px 25px; }
             .final-text { font-size: 22px; }
             .photo-collage { width: 320px; height: 440px; }
-            .flip-card { width: 230px; height: 320px; transition: transform 0.9s ease, opacity 0.5s; }
+            .flip-card { width: 230px; height: 320px; transition: transform 0.9s ease; }
             .flip-card.front { transform: translate(75px, 88px) rotate(0deg) scale(1.04); }
             .flip-card.back { transform: translate(5px, 5px) rotate(-7deg) scale(0.92); }
-            .flip-card img { border-radius: 18px; }
             .initial-line { font-size: 110px; }
             .initial-line.line-amp { font-size: 50px; margin: -10px 0; }
             .initial-line.line-d { transform: translateX(-30px); }
             .initial-line.line-yu { transform: translateX(30px); }
             .handwritten-signature { font-size: 24px; }
-            .heart-img { height: 12px; }
             .date { font-size: 34px; letter-spacing: 4px; }
             .splash { padding: 20px 15px; }
             .place-card { width: 100%; max-width: 380px; }
@@ -349,15 +326,7 @@
             .final-text { font-size: 20px; }
             .initial-line { font-size: 85px; }
             .initial-line.line-amp { font-size: 40px; margin: -5px 0; }
-            .initial-line.line-d { transform: translateX(-20px); }
-            .initial-line.line-yu { transform: translateX(20px); }
-            .handwritten-signature { font-size: 20px; }
-            .heart-img { height: 10px; }
             .date { font-size: 28px; letter-spacing: 3px; }
-            .photo-collage { width: 270px; height: 400px; }
-            .flip-card { width: 190px; height: 270px; }
-            .flip-card.front { transform: translate(60px, 72px) rotate(0deg) scale(1.04); }
-            .flip-card.back { transform: translate(5px, 5px) rotate(-7deg) scale(0.92); }
         }
     </style>
 </head>
@@ -386,9 +355,9 @@
         <a href="#invitation-start" class="scroll-arrow" aria-label="К приглашению">↓</a>
     </div>
 
-    <!-- БЛОКИ 2–8 с растянутым фоном на всю ширину (по аналогии с 1 блоком) -->
+    <!-- БЛОКИ 2–8 с растянутым фоном (аналогично первому блоку) -->
     <div id="invitation-start"></div>
-    
+
     <div class="section fade-in" id="guest-block">
         <div class="section-inner">
             <h2 class="section-title" id="guest-greeting">Дорогие гости!</h2>
@@ -513,7 +482,7 @@
     <script>
         (function() {
             window.addEventListener('DOMContentLoaded', function() {
-                // Таймер обратного отсчета
+                // Таймер
                 const timerEl = document.getElementById("timer");
                 if (timerEl) {
                     const weddingDate = new Date("June 26, 2026 00:00:00").getTime();
@@ -589,7 +558,7 @@
                     observer.observe(el);
                 });
 
-                // Параметры из URL: имена гостей + персональное сообщение
+                // Параметры из URL: имена гостей
                 const urlParams = new URLSearchParams(window.location.search);
                 const namesParam = urlParams.get('names');
                 const guestGreeting = document.getElementById('guest-greeting');
@@ -601,23 +570,15 @@
                         const greeting = 'Дорогие ' + (namesArray.length > 0 ? namesArray.join(', ') + ' и ' : '') + last + '!';
                         guestGreeting.textContent = greeting;
                         if (namesParam === 'Ирина,Владислав,Руслан' || namesParam === 'Ирина, Владислав, Руслан') {
-                            guestMessage.innerHTML =
-                                '<p>Мы строим самый важный день в нашей жизни — и поняли, что он просто не сможет быть идеальным без вас. Будет красиво, душевно и немножко громко. Обещаем тёплые объятия, вкусный торт и пару сюрпризов (хороших, честно 😄).</p>' +
-                                '<p style="margin-top:14px;">🌸 <strong>Ирина</strong>, мы помним, что настоящий праздник начинается только тогда, когда звучит «Вдоль ночных дорог». Так что обязательно поставим эту песню — и пусть весь зал вспомнит, что такое душа.</p>' +
-                                '<p style="margin-top:14px;">⚽ <strong>Владислав</strong>, твоё присутствие — наш талисман. Мы официально заявляем: если ты придёшь на свадьбу, «Спартак» в этом сезоне возьмёт чемпионство. Не лишай страну праздника!</p>' +
-                                '<p style="margin-top:14px;">💪 <strong>Руслан</strong>, без тебя этот день был бы слишком спокойным. Будет борьба… возможно. Но мы верим, что ты направишь свою энергию в правильное русло — например, в танцы или в борьбу с тортом. Кто победит — увидим 😉</p>' +
-                                '<p style="margin-top:18px;">Ждём вас с нетерпением, чтобы разделить счастье и создать воспоминания, которые останутся с нами на всю жизнь. Приходите — без вас свадьба не начнётся! 🤍</p>';
+                            guestMessage.innerHTML = '<p>Мы строим самый важный день в нашей жизни — и поняли, что он просто не сможет быть идеальным без вас. Будет красиво, душевно и немножко громко. Обещаем тёплые объятия, вкусный торт и пару сюрпризов.</p><p style="margin-top:14px;">🌸 Ирина, мы помним, что настоящий праздник начинается только тогда, когда звучит «Вдоль ночных дорог». Так что обязательно поставим эту песню!</p><p style="margin-top:14px;">⚽ Владислав, твоё присутствие — наш талисман. Если ты придёшь, «Спартак» возьмёт чемпионство!</p><p style="margin-top:14px;">💪 Руслан, без тебя этот день был бы слишком спокойным. Борьба с тортом — кто победит? :)</p><p style="margin-top:18px;">Ждём вас с нетерпением! 🤍</p>';
                         } else {
                             const namesString = namesArray.length > 0 ? namesArray.join(', ') + ' и ' + last : last;
-                            guestMessage.innerHTML =
-                                'С огромной радостью и трепетом в сердце<br>' +
-                                'мы приглашаем вас, <strong>' + namesString + '</strong>, разделить с нами<br>' +
-                                '<strong>самый важный день нашей жизни</strong> 🤍';
+                            guestMessage.innerHTML = 'С огромной радостью и трепетом в сердце<br>мы приглашаем вас, <strong>' + namesString + '</strong>, разделить с нами<br><strong>самый важный день нашей жизни</strong> 🤍';
                         }
                     }
                 }
 
-                // Параметры мест и отображение пункта церемонии
+                // Параметры мест
                 const placesParam = urlParams.get('places');
                 if (placesParam) {
                     const wantedPlaces = placesParam.split(',').map(p => p.trim().toLowerCase());
