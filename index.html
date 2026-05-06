@@ -122,7 +122,7 @@
             position: relative;
             z-index: 1;
             background: transparent;
-            padding-top: 0;  /* убран отступ, чтобы фон блока 2 начинался сразу */
+            padding-top: 0;
             padding-bottom: 30px;
         }
 
@@ -136,13 +136,22 @@
         .section::before {
             content: '';
             position: absolute;
-            top: -30px; left: -50px; right: -50px; bottom: -30px;  /* растянут по ширине */
+            top: -30px; left: -50px; right: -50px; bottom: -30px;
             background: url('seryzadnik.jpg') center/cover no-repeat;
             background-color: #5a5a5a;
             background-attachment: scroll;
             z-index: -1;
             mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
             -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
+        }
+
+        /* Блок 2 – расширенный фон */
+        #guest-block {
+            padding-top: 0;
+        }
+        #guest-block::before {
+            left: -120px;
+            right: -120px;
         }
 
         .section-title {
@@ -313,6 +322,10 @@
                 top: -20px; left: -30px; right: -30px; bottom: -20px;
                 background-attachment: scroll;
             }
+            #guest-block::before {
+                left: -60px;
+                right: -60px;
+            }
             .container { padding: 0 15px; }
             .section-title { font-size: 48px; }
             .section-subtitle { font-size: 14px; }
@@ -391,9 +404,8 @@
     <!-- БЛОКИ 2–8 с белым текстом и растянутым фоном -->
     <div id="invitation">
         <div class="container">
-            <!-- БЛОК 2 — ГОСТИ + ФОТО (фон растянут вверх) -->
-            <div class="section fade-in" style="padding-top: 0;">
-                <!-- padding-top:0 чтобы прижать к заставке -->
+            <!-- БЛОК 2 — ГОСТИ (фон расширен) -->
+            <div class="section fade-in" id="guest-block">
                 <h2 class="section-title" id="guest-greeting">Дорогие гости!</h2>
                 <p class="welcome-text" id="guest-message">
                     С огромной радостью и трепетом в сердце<br>
