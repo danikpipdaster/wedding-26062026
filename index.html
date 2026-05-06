@@ -36,7 +36,7 @@
         .decor-branch-left { top: -40px; left: -60px; transform: rotate(-15deg); }
         .decor-branch-right { bottom: -40px; right: -60px; transform: rotate(165deg); }
         
-        /* БЛОК 1 — ЗАСТАВКА (без изменений, со своей полупрозрачностью) */
+        /* БЛОК 1 — ЗАСТАВКА (без изменений) */
         .splash {
             position: relative; z-index: 2;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -107,24 +107,24 @@
             opacity: 0.7;
         }
 
-        /* ========== БЛОКИ 2–8: ПРОЗРАЧНОСТЬ УБРАНА, ФОН НА ВСЮ ШИРИНУ ========== */
+        /* ========== БЛОКИ 2–8: фон на всю ширину, БЕЗ прозрачности, seryzadnik.jpg ========== */
         .section {
             position: relative;
             width: 100%;
-            /* Без линейного градиента — только изображение */
+            /* только изображение, никакого линейного градиента */
             background: url('seryzadnik.jpg') center/cover no-repeat;
-            background-color: #8a7a6a; /* резервный цвет, если картинка не загрузилась */
+            background-color: #8a7a6a; /* резервный цвет, если картинка не загрузится */
             padding: 70px 0;
             margin: 0;
         }
-        /* Внутренний контейнер для контента (центрирование, ограничение ширины) */
+        /* Внутренний контейнер для контента */
         .section-inner {
             max-width: 900px;
             margin: 0 auto;
             padding: 0 20px;
             width: 100%;
         }
-        /* Текст блоков — белый, с тенью для читаемости на любом фоне */
+        /* Текст — белый с тенью для контраста */
         .section-title {
             font-family: 'French Kiss Script', 'Cormorant Garamond', cursive;
             font-size: 72px;
@@ -361,7 +361,7 @@
 
     <div id="invitation-start"></div>
 
-    <!-- Блоки 2–8: фон без прозрачности, только картинка на всю ширину -->
+    <!-- Блоки 2–8: фон без прозрачности, seryzadnik.jpg на всю ширину -->
     <div class="section fade-in" id="guest-block">
         <div class="section-inner">
             <h2 class="section-title" id="guest-greeting">Дорогие гости!</h2>
