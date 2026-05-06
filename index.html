@@ -1,49 +1,568 @@
-from pathlib import Path
-import re
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Данил & Юлия — Приглашение на свадьбу</title>
 
-path = Path("/mnt/data/wedding_invitation_ready.html")
-html = path.read_text(encoding="utf-8")
+    <link rel="preload" as="image" href="photo1.jpg">
+    <link rel="preload" as="image" href="photo2.jpg">
+    <link rel="preload" as="image" href="photo3.jpg">
+    <link rel="preload" as="image" href="photo4.jpg">
+    <link rel="preload" as="image" href="belyzadnik.jpg">
+    <link rel="preload" as="image" href="ryki.jpg">
+    <link rel="preload" as="image" href="monetka.jpg">
+    <link rel="preload" as="image" href="serdecko.jpg">
+    <link rel="preload" as="image" href="PARA.png">
+    <link rel="preload" as="image" href="PARA3.png">
+    <link rel="preload" as="image" href="ceremonia.png">
+    <link rel="preload" as="image" href="banket.png">
+    <link rel="preload" as="image" href="tancy.png">
 
-old_styles = """        .dresscode-card {
-            max-width: 760px;
-            margin: 25px auto 0;
-            padding: 36px 30px 40px;
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        @font-face {
+            font-family: 'French Kiss Script';
+            src: url('FrenchKissscript.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
         }
 
-        .dresscode-title {
-            font-size: 64px;
-            margin-bottom: 8px;
-            text-shadow: none;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        .dresscode-subtitle {
-            margin-bottom: 24px;
-            text-shadow: none;
+        html {
+            scroll-behavior: smooth;
         }
 
-        .dresscode-text {
+        body {
+            background: #faf7f4;
+            font-family: 'Cormorant Garamond', serif;
+            color: #4a3f3f;
+            text-align: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .decor-branch-left,
+        .decor-branch-right {
+            position: fixed;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.06;
+            font-size: 280px;
+            color: #8a9a7b;
+            font-family: serif;
+            line-height: 1;
+        }
+
+        .decor-branch-left {
+            top: -40px;
+            left: -60px;
+            transform: rotate(-15deg);
+        }
+
+        .decor-branch-right {
+            bottom: -40px;
+            right: -60px;
+            transform: rotate(165deg);
+        }
+
+        .splash {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 40px 20px;
+            text-align: center;
+            background: linear-gradient(rgba(250,247,244,0.75), rgba(250,247,244,0.75)), url('ryki.jpg') center/cover no-repeat;
+            background-color: #faf7f4;
+        }
+
+        .initials-block {
+            margin-bottom: 0.3em;
+        }
+
+        .initial-line {
+            display: block;
+            font-family: 'Great Vibes', cursive;
+            font-size: 150px;
+            font-weight: 400;
+            color: #4a3f3f;
+            text-shadow: 0 6px 18px rgba(0,0,0,0.1);
+            line-height: 1;
+        }
+
+        .initial-line.line-d {
+            text-align: left;
+            transform: translateX(-45px);
+        }
+
+        .initial-line.line-amp {
+            text-align: center;
+            font-size: 60px;
+            margin: -15px 0;
+        }
+
+        .initial-line.line-yu {
+            text-align: right;
+            transform: translateX(45px);
+        }
+
+        .handwritten-signature {
+            font-family: 'Caveat', cursive;
+            font-size: 30px;
+            color: #4a3f3f;
+            margin-top: 5px;
+            line-height: 1.4;
+        }
+
+        .heart-img {
+            height: 14px;
+            width: auto;
+            vertical-align: middle;
+            margin: 0 4px;
+            display: inline-block;
+        }
+
+        .hero-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            font-size: 14px;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            color: #9a8a7a;
+            margin-top: 15px;
+        }
+
+        .date-container {
+            margin-top: 40px;
+        }
+
+        .scratch-hint {
+            font-size: 15px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            margin-bottom: 12px;
+            opacity: 0.7;
+            color: #9a8a7a;
+            letter-spacing: 2px;
+            animation: pulseText 2s infinite;
+        }
+
+        @keyframes pulseText {
+            0% { opacity: 0.4; transform: translateY(0); }
+            50% { opacity: 1; transform: translateY(-2px); }
+            100% { opacity: 0.4; transform: translateY(0); }
+        }
+
+        .scratch-area {
+            position: relative;
+            display: inline-block;
+        }
+
+        .date {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 44px;
+            font-weight: 400;
+            letter-spacing: 6px;
+            color: #4a3f3f;
+            padding: 8px 20px;
+        }
+
+        #scratch {
+            position: absolute;
+            top: 0;
+            left: 0;
+            cursor: none;
+            touch-action: none;
+            border-radius: 8px;
+        }
+
+        .coin {
+            position: fixed;
+            width: 28px;
+            height: 28px;
+            background: url('monetka.jpg') center/cover no-repeat;
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            display: none;
+            z-index: 9999;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .timer {
+            margin-top: 28px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            font-size: 16px;
+            letter-spacing: 3px;
+            color: #9a8a7a;
+        }
+
+        .timer span {
+            color: #b8977e;
+            font-weight: 400;
+        }
+
+        .scroll-arrow {
+            display: inline-block;
+            margin-top: 40px;
+            font-size: 32px;
+            color: #b8977e;
+            text-decoration: none;
+            animation: arrowBounce 2s infinite;
+            cursor: pointer;
+            transition: opacity 0.3s;
+            opacity: 0.7;
+        }
+
+        .scroll-arrow:hover {
+            opacity: 1;
+        }
+
+        @keyframes arrowBounce {
+            0%,100% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
+        }
+
+        .divider {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #7d6f64, transparent);
+            margin: 20px auto;
+            border-radius: 1px;
+            opacity: 0.9;
+        }
+
+        .content-bg {
+            position: relative;
+            background-color: #faf7f4;
+            background-image: linear-gradient(rgba(250,247,244,0.22), rgba(250,247,244,0.22)), url('belyzadnik.jpg');
+            background-position: center top;
+            background-size: 100% auto;
+            background-repeat: repeat-y;
+        }
+
+        .section {
+            position: relative;
+            width: 100%;
+            background: transparent;
+            padding: 70px 0;
+            margin: 0;
+        }
+
+        .section-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+            width: 100%;
+        }
+
+        .section-title {
+            font-family: 'French Kiss Script', 'Cormorant Garamond', cursive;
+            font-size: 72px;
+            font-weight: 400;
+            margin-bottom: 10px;
+            color: #4a3f3f;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 8px rgba(255,255,255,0.95);
+        }
+
+        .section-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            font-size: 16px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #7a675d;
+            margin-bottom: 30px;
+            text-shadow: 0 1px 5px rgba(255,255,255,0.95);
+        }
+
+        .welcome-text {
             font-family: 'Cormorant Garamond', serif;
             font-size: 24px;
             line-height: 1.7;
             color: #4a3f3f;
-            margin: 0;
+            max-width: 700px;
+            margin: 0 auto;
+            text-shadow: 0 1px 6px rgba(255,255,255,0.95);
         }
 
-        .dresscode-note {
+        .photo-hint {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            font-size: 16px;
+            letter-spacing: 3px;
+            opacity: 0.95;
+            margin-bottom: 8px;
+            color: #6f5f56;
+            text-shadow: 0 1px 5px rgba(255,255,255,0.95);
+            animation: hintFloat 1.8s infinite;
+        }
+
+        @keyframes hintFloat {
+            0% { opacity: 0.65; }
+            50% { opacity: 1; }
+            100% { opacity: 0.65; }
+        }
+
+        .photo-collage {
+            position: relative;
+            width: 600px;
+            height: 670px;
+            margin: 25px auto 10px;
+            perspective: 1400px;
+        }
+
+        .flip-card {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 400px;
+            height: 550px;
+            cursor: pointer;
+            transform-style: preserve-3d;
+            transition: transform 1.5s cubic-bezier(.22,.61,.36,1), opacity 0.7s ease;
+            will-change: transform;
+        }
+
+        .flip-card.front {
+            transform: translate(170px, 100px) rotate(0deg) scale(1.04);
+            z-index: 10;
+        }
+
+        .flip-card.back {
+            transform: translate(0px, -20px) rotate(-7deg) scale(0.92);
+            z-index: 1;
+        }
+
+        .flip-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.95s cubic-bezier(.22,.61,.36,1);
+            transform-style: preserve-3d;
+        }
+
+        .flip-card.flipped .flip-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-front,
+        .flip-back {
+            position: absolute;
+            inset: 0;
+            backface-visibility: hidden;
+            background-color: #ffffff;
+            border-radius: 22px;
+            overflow: hidden;
+        }
+
+        .flip-back {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 22px;
+            background: #ffffff;
+            padding: 8px;
+            box-shadow: 0 18px 40px rgba(0,0,0,0.25);
+            box-sizing: border-box;
+        }
+
+        .flip-card.front img {
+            box-shadow: 0 26px 58px rgba(0,0,0,0.4);
+        }
+
+        .locations-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .location-inner {
+            background: rgba(255,255,255,0.88);
+            border-radius: 24px;
+            padding: 40px 20px;
+            max-width: 500px;
+            width: 100%;
+            margin: 0 auto;
+            color: #333;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.16);
+            border: 1px solid rgba(90,70,60,0.12);
+        }
+
+        .location-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+
+        .location-header .line {
+            flex-grow: 1;
+            height: 1px;
+            background-color: #333;
+            max-width: 80px;
+        }
+
+        .location-title {
+            font-family: 'French Kiss Script', 'Great Vibes', cursive;
+            font-size: 52px;
+            font-weight: normal;
+            margin: 0 15px;
+            color: #333;
+            line-height: 1;
+        }
+
+        .event-block {
+            margin-bottom: 30px;
+        }
+
+        .event-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .event-place,
+        .event-address,
+        .event-time {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            font-size: 16px;
+            line-height: 1.5;
+            color: #111;
+        }
+
+        .event-place {
+            font-weight: 500;
+        }
+
+        .map-wrapper {
+            margin-top: 20px;
+            border: 1px solid #333;
+            padding: 4px;
+            background: #fff;
+            border-radius: 4px;
+        }
+
+        .map-wrapper iframe {
+            width: 100%;
+            height: 220px;
+            border: 1px solid #333;
+            display: block;
+            filter: grayscale(100%) opacity(0.8);
+            transition: filter 0.4s ease;
+        }
+
+        .map-wrapper iframe:hover {
+            filter: grayscale(0%) opacity(1);
+        }
+
+        @keyframes heartBeat {
+            0% { transform: scale(1); }
+            25% { transform: scale(1.15); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .schedule-big {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 20px;
-            line-height: 1.7;
+            font-size: 42px;
+            font-weight: 500;
             color: #4a3f3f;
-            margin-top: 22px;
-            opacity: 0.9;
+            text-shadow: 0 1px 6px rgba(255,255,255,0.95);
+            line-height: 1.5;
+            margin: 30px 0 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
         }
 
-        .dresscode-card .dresscode-palette {
-            margin-top: 26px;
+        .schedule-item-text.hidden,
+        .schedule-row.hidden {
+            display: none;
         }
-"""
 
-new_styles = """        .dresscode-card {
+        .schedule-row {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 18px;
+        }
+
+        .schedule-icon-img {
+            width: 110px;
+            max-width: 22vw;
+            height: auto;
+            object-fit: contain;
+            display: block;
+            filter: none;
+            mix-blend-mode: multiply;
+            opacity: 0.88;
+        }
+
+        .glass-box {
+            position: relative;
+            max-width: 640px;
+            margin: 25px auto 0;
+            padding: 40px 45px;
+            background: rgba(255,255,255,0.82);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 28px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.14);
+            border: 1px solid rgba(90,70,60,0.18);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            line-height: 1.8;
+            color: #4a3f3f;
+            text-shadow: none;
+        }
+
+        .glass-box::before,
+        .glass-box::after {
+            content: '';
+            position: absolute;
+            top: 15%;
+            bottom: 15%;
+            width: 1px;
+            background: linear-gradient(to bottom, transparent, #8b7668, transparent);
+            opacity: 0.35;
+        }
+
+        .glass-box::before {
+            left: 22px;
+        }
+
+        .glass-box::after {
+            right: 22px;
+        }
+
+        .dresscode-card {
             max-width: 760px;
             margin: 25px auto 0;
             padding: 0 30px 40px;
@@ -89,26 +608,120 @@ new_styles = """        .dresscode-card {
         .dresscode-card .dresscode-palette {
             margin-top: 26px;
         }
-"""
 
-html = html.replace(old_styles, new_styles)
+        .dresscode-palette {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+            margin-top: 24px;
+        }
 
-old_media_styles = """            .dresscode-card {
-                padding: 28px 18px 30px;
+        .dresscode-circle {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.18), 0 0 0 2px rgba(255,255,255,0.8);
+            border: 1px solid rgba(90,70,60,0.25);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .dresscode-circle:hover {
+            transform: scale(1.12);
+        }
+
+        .final-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 36px;
+            margin-top: 50px;
+            flex-wrap: nowrap;
+        }
+
+        .final-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            color: #4a3f3f;
+            letter-spacing: 1px;
+            text-shadow: 0 1px 6px rgba(255,255,255,0.95);
+            margin-top: 0;
+            text-align: center;
+        }
+
+        .final-text .heart {
+            margin-top: 16px;
+            font-size: 36px;
+            animation: heartBeat 2s infinite;
+            display: inline-block;
+        }
+
+        .final-para-img {
+            width: 425px;
+            max-width: 45vw;
+            height: auto;
+            object-fit: contain;
+            display: block;
+            filter: none;
+            mix-blend-mode: multiply;
+            opacity: 0.88;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(25px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 50px 0;
             }
 
-            .dresscode-title {
-                font-size: 44px;
-                margin-bottom: 8px;
+            .section-inner {
+                padding: 0 15px;
             }
 
-            .dresscode-subtitle {
-                font-size: 13px;
-                margin-bottom: 18px;
+            .section-title {
+                font-size: 48px;
             }
-"""
 
-new_media_styles = """            .dresscode-card {
+            .section-subtitle {
+                font-size: 14px;
+            }
+
+            .welcome-text {
+                font-size: 18px;
+            }
+
+            .photo-hint {
+                font-size: 14px;
+            }
+
+            .schedule-big {
+                font-size: 30px;
+            }
+
+            .schedule-row {
+                gap: 12px;
+            }
+
+            .schedule-icon-img {
+                width: 85px;
+                max-width: 26vw;
+            }
+
+            .glass-box {
+                font-size: 18px;
+                padding: 30px 25px;
+            }
+
+            .dresscode-card {
                 padding: 0 18px 30px;
             }
 
@@ -126,20 +739,145 @@ new_media_styles = """            .dresscode-card {
                 font-size: 13px;
                 margin-bottom: 0;
             }
-"""
 
-html = html.replace(old_media_styles, new_media_styles)
-
-old_small_styles = """            .dresscode-card {
-                padding: 24px 16px 26px;
+            .dresscode-text {
+                font-size: 18px;
+                line-height: 1.6;
             }
 
-            .dresscode-title {
+            .dresscode-note {
+                font-size: 16px;
+                line-height: 1.6;
+                margin-top: 18px;
+            }
+
+            .final-row {
+                flex-direction: column;
+                gap: 18px;
+                margin-top: 40px;
+            }
+
+            .final-text {
+                font-size: 22px;
+            }
+
+            .final-para-img {
+                width: 350px;
+                max-width: 85vw;
+            }
+
+            .photo-collage {
+                width: 320px;
+                height: 440px;
+            }
+
+            .flip-card {
+                width: 230px;
+                height: 320px;
+            }
+
+            .flip-card.front {
+                transform: translate(75px, 88px) rotate(0deg) scale(1.04);
+            }
+
+            .flip-card.back {
+                transform: translate(5px, 5px) rotate(-7deg) scale(0.92);
+            }
+
+            .initial-line {
+                font-size: 110px;
+            }
+
+            .initial-line.line-amp {
+                font-size: 50px;
+                margin: -10px 0;
+            }
+
+            .initial-line.line-d {
+                transform: translateX(-30px);
+            }
+
+            .initial-line.line-yu {
+                transform: translateX(30px);
+            }
+
+            .handwritten-signature {
+                font-size: 24px;
+            }
+
+            .date {
+                font-size: 34px;
+                letter-spacing: 4px;
+            }
+
+            .splash {
+                padding: 20px 15px;
+            }
+
+            .coin {
+                display: none !important;
+            }
+
+            .decor-branch-left,
+            .decor-branch-right {
+                font-size: 160px;
+            }
+
+            .dresscode-palette {
+                gap: 16px;
+            }
+
+            .dresscode-circle {
+                width: 44px;
+                height: 44px;
+            }
+
+            .location-inner {
+                padding: 30px 15px;
+            }
+
+            .location-title {
+                font-size: 42px;
+            }
+
+            .event-subtitle {
+                font-size: 12px;
+            }
+
+            .event-place,
+            .event-address,
+            .event-time {
+                font-size: 14px;
+            }
+
+            .map-wrapper iframe {
+                height: 180px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .section-title {
                 font-size: 36px;
             }
-"""
 
-new_small_styles = """            .dresscode-card {
+            .welcome-text {
+                font-size: 16px;
+            }
+
+            .schedule-big {
+                font-size: 26px;
+            }
+
+            .schedule-icon-img {
+                width: 70px;
+                max-width: 28vw;
+            }
+
+            .glass-box {
+                font-size: 16px;
+            }
+
+            .dresscode-card {
                 padding: 0 16px 26px;
             }
 
@@ -151,21 +889,211 @@ new_small_styles = """            .dresscode-card {
             .dresscode-title {
                 font-size: 36px;
             }
-"""
 
-html = html.replace(old_small_styles, new_small_styles)
+            .dresscode-text {
+                font-size: 16px;
+            }
 
-old_html = """                <div class="glass-box dresscode-card">
-                    <h2 class="section-title dresscode-title">Дресс-код</h2>
-                    <p class="section-subtitle dresscode-subtitle">пастельная нежность</p>
+            .dresscode-note {
+                font-size: 15px;
+            }
 
-                    <p class="dresscode-text">
-                        Мы будем очень рады, если вы поддержите<br>
-                        цветовую гамму нашего праздника 🤍
-                    </p>
-"""
+            .final-text {
+                font-size: 20px;
+            }
 
-new_html = """                <div class="glass-box dresscode-card">
+            .final-para-img {
+                width: 300px;
+                max-width: 90vw;
+            }
+
+            .initial-line {
+                font-size: 85px;
+            }
+
+            .initial-line.line-amp {
+                font-size: 40px;
+                margin: -5px 0;
+            }
+
+            .date {
+                font-size: 28px;
+                letter-spacing: 3px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="decor-branch-left">❦</div>
+    <div class="decor-branch-right">❦</div>
+    <div class="coin" id="coin"></div>
+
+    <div class="splash" id="splash">
+        <div class="initials-block">
+            <span class="initial-line line-d">Д</span>
+            <span class="initial-line line-amp">&</span>
+            <span class="initial-line line-yu">Ю</span>
+        </div>
+
+        <p class="handwritten-signature">
+            Данил <img src="serdecko.jpg" alt="♥" class="heart-img">
+            Юлия
+        </p>
+
+        <p class="hero-subtitle">приглашение на свадьбу</p>
+
+        <div class="date-container">
+            <div class="scratch-hint">Сотри меня скорей ✨</div>
+            <div class="scratch-area">
+                <div class="date">26.06.2026</div>
+                <canvas id="scratch"></canvas>
+            </div>
+        </div>
+
+        <div class="timer" id="timer"></div>
+
+        <a href="#invitation-start" class="scroll-arrow" aria-label="К приглашению">↓</a>
+    </div>
+
+    <div id="invitation-start"></div>
+
+    <main class="content-bg">
+        <div class="section fade-in">
+            <div class="section-inner">
+                <h2 class="section-title" id="guest-greeting">Дорогие гости!</h2>
+                <p class="welcome-text" id="guest-message">
+                    С огромной радостью и трепетом в сердце<br>
+                    мы приглашаем вас разделить с нами<br>
+                    <strong>самый важный день нашей жизни</strong> 🤍
+                </p>
+                <div class="divider"></div>
+            </div>
+        </div>
+
+        <div class="section fade-in">
+            <div class="section-inner">
+                <div class="photo-hint">Нажми на фото, чтобы перевернуть ✨</div>
+
+                <div class="photo-collage">
+                    <div class="flip-card front" id="card1">
+                        <div class="flip-inner">
+                            <div class="flip-front">
+                                <img src="photo1.jpg" alt="Фото 1">
+                            </div>
+                            <div class="flip-back">
+                                <img src="photo2.jpg" alt="Фото 2">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flip-card back" id="card2">
+                        <div class="flip-inner">
+                            <div class="flip-front">
+                                <img src="photo3.jpg" alt="Фото 3">
+                            </div>
+                            <div class="flip-back">
+                                <img src="photo4.jpg" alt="Фото 4">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="divider"></div>
+            </div>
+        </div>
+
+        <div class="section fade-in">
+            <div class="section-inner">
+                <h2 class="section-title">Места проведения</h2>
+                <p class="section-subtitle">где это случится</p>
+
+                <div class="locations-wrapper" id="places-container">
+                    <div class="location-inner" id="place-zags">
+                        <div class="location-header">
+                            <div class="line"></div>
+                            <div class="location-title">ЗАГС</div>
+                            <div class="line"></div>
+                        </div>
+
+                        <div class="event-block">
+                            <div class="event-subtitle">Церемония регистрации</div>
+                            <div class="event-place">г. Надым, Парковый пр., 4</div>
+                            <div class="event-time">⏰ Начало в 14:00</div>
+                        </div>
+
+                        <div class="map-wrapper">
+                            <iframe
+                                title="Карта ЗАГСа в Надыме"
+                                src="https://maps.google.com/maps?q=Надым+Парковый+4&output=embed"
+                                allowfullscreen
+                                loading="lazy">
+                            </iframe>
+                        </div>
+                    </div>
+
+                    <div class="location-inner" id="place-nedoma">
+                        <div class="location-header">
+                            <div class="line"></div>
+                            <div class="location-title">НеДома</div>
+                            <div class="line"></div>
+                        </div>
+
+                        <div class="event-block">
+                            <div class="event-subtitle">Семейный лофт</div>
+                            <div class="event-place">г. Надым, 13 проезд, строение 11</div>
+                            <div class="event-time">🍾 Банкет с 16:00</div>
+                        </div>
+
+                        <div class="map-wrapper">
+                            <iframe
+                                title="Карта семейного лофта НеДома в Надыме"
+                                src="https://maps.google.com/maps?q=НеДома+Семейный+лофт+13+проезд+строение+11+Надым&output=embed"
+                                allowfullscreen
+                                loading="lazy">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="divider"></div>
+            </div>
+        </div>
+
+        <div class="section fade-in">
+            <div class="section-inner">
+                <h2 class="section-title">Программа дня</h2>
+                <p class="section-subtitle">26 июня 2026</p>
+
+                <div class="schedule-big">
+                    <span class="schedule-row">
+                        <span class="schedule-item-text" id="item-meet">Встреча гостей</span>
+                        <img src="PARA3.png" alt="Гости" class="schedule-icon-img">
+                    </span>
+
+                    <span class="schedule-row" id="item-ceremony">
+                        <span class="schedule-item-text">Церемония</span>
+                        <img src="ceremonia.png" alt="Церемония" class="schedule-icon-img">
+                    </span>
+
+                    <span class="schedule-row">
+                        <span class="schedule-item-text" id="item-feast">Банкет</span>
+                        <img src="banket.png" alt="Банкет" class="schedule-icon-img">
+                    </span>
+
+                    <span class="schedule-row">
+                        <span class="schedule-item-text" id="item-dance">Танцы</span>
+                        <img src="tancy.png" alt="Танцы" class="schedule-icon-img">
+                    </span>
+                </div>
+
+                <div class="divider"></div>
+            </div>
+        </div>
+
+        <div class="section fade-in">
+            <div class="section-inner">
+                <div class="glass-box dresscode-card">
                     <div class="dresscode-header">
                         <h2 class="section-title dresscode-title">Дресс-код</h2>
                         <p class="section-subtitle dresscode-subtitle">пастельная нежность</p>
@@ -175,10 +1103,344 @@ new_html = """                <div class="glass-box dresscode-card">
                         Мы будем очень рады, если вы поддержите<br>
                         цветовую гамму нашего праздника 🤍
                     </p>
-"""
 
-html = html.replace(old_html, new_html)
+                    <p class="dresscode-note">
+                        Оттенки пастельных тонов —<br>
+                        то, что делает этот день ещё нежнее.
+                    </p>
 
-new_path = Path("/mnt/data/wedding_invitation_dresscode_header.html")
-new_path.write_text(html, encoding="utf-8")
-new_path.as_posix()
+                    <div class="dresscode-palette">
+                        <div class="dresscode-circle" style="background:#e8cec4;"></div>
+                        <div class="dresscode-circle" style="background:#f0d5c1;"></div>
+                        <div class="dresscode-circle" style="background:#c8d5c0;"></div>
+                        <div class="dresscode-circle" style="background:#f5eddf;"></div>
+                        <div class="dresscode-circle" style="background:#dacfe0;"></div>
+                        <div class="dresscode-circle" style="background:#cddfe8;"></div>
+                    </div>
+                </div>
+
+                <div class="divider"></div>
+            </div>
+        </div>
+
+        <div class="section fade-in">
+            <div class="section-inner">
+                <h2 class="section-title">Важно для гостей</h2>
+                <p class="section-subtitle">вайб нашего дня</p>
+
+                <div class="glass-box">
+                    <p>📸 Телефоны не прячем —<br>снимаем, ловим моменты и кайфуем ✨</p>
+                    <p style="margin-top:14px;">🎤 Если вдруг появится идея для тоста<br>или перформанса — обязательно воплощайте её в жизнь 😄</p>
+                    <p style="margin-top:14px;">Мы только за любую движуху 💛</p>
+                </div>
+
+                <div class="divider"></div>
+            </div>
+        </div>
+
+        <div class="section fade-in">
+            <div class="section-inner">
+                <h2 class="section-title">Подарки</h2>
+
+                <div class="glass-box">
+                    <p>Говорят, молодым нужно всё и сразу: от блендера до путешествий ✈️</p>
+                    <p style="margin-top:10px;">Мы не будем спорить с этой истиной 😄</p>
+                    <p style="margin-top:10px;">Если вы решите поддержать наш «молодожённый стартап», конверт будет очень кстати.</p>
+                    <p style="margin-top:18px;font-size:20px;opacity:0.9;font-style:italic;">Но самый главный подарок — ваше присутствие и улыбки 🤍</p>
+                </div>
+
+                <div class="final-row">
+                    <div class="final-text">
+                        <p>С любовью и нетерпением ждём вас 🤍</p>
+                        <p style="font-size:20px;margin-top:8px;opacity:0.8;">Данил & Юлия</p>
+                        <div class="heart">💛</div>
+                    </div>
+
+                    <img src="PARA.png" alt="Данил и Юлия" class="final-para-img">
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        (function() {
+            window.addEventListener('DOMContentLoaded', function() {
+                const timerEl = document.getElementById("timer");
+
+                if (timerEl) {
+                    const weddingDate = new Date("2026-06-26T00:00:00+05:00").getTime();
+
+                    function updateTimer() {
+                        const now = new Date().getTime();
+                        const distance = weddingDate - now;
+
+                        if (distance < 0) {
+                            timerEl.innerHTML = '<span>💛 Этот день настал!</span>';
+                            return;
+                        }
+
+                        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                        const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+                        const minutes = Math.floor((distance / (1000 * 60)) % 60);
+
+                        timerEl.innerHTML =
+                            '<span>' + days + '</span> дней &nbsp;' +
+                            '<span>' + hours + '</span> часов &nbsp;' +
+                            '<span>' + minutes + '</span> минут';
+                    }
+
+                    updateTimer();
+                    setInterval(updateTimer, 1000);
+                }
+
+                const canvas = document.getElementById("scratch");
+
+                if (canvas) {
+                    const ctx = canvas.getContext("2d");
+                    const dateEl = document.querySelector(".date");
+                    const hint = document.querySelector(".scratch-hint");
+                    const coin = document.getElementById("coin");
+
+                    if (dateEl && hint && coin) {
+                        let drawing = false;
+
+                        function resizeScratchCanvas() {
+                            canvas.width = dateEl.offsetWidth;
+                            canvas.height = dateEl.offsetHeight;
+
+                            ctx.globalCompositeOperation = "source-over";
+                            ctx.fillStyle = "#c9a7a0";
+                            ctx.fillRect(0, 0, canvas.width, canvas.height);
+                            ctx.globalCompositeOperation = "destination-out";
+                        }
+
+                        function moveCoin(e) {
+                            coin.style.display = "block";
+                            coin.style.left = e.clientX + "px";
+                            coin.style.top = e.clientY + "px";
+                        }
+
+                        function hideCoin() {
+                            coin.style.display = "none";
+                        }
+
+                        function scratch(x, y) {
+                            hint.style.opacity = "0";
+                            ctx.beginPath();
+                            ctx.arc(x, y, 14, 0, Math.PI * 2);
+                            ctx.fill();
+                        }
+
+                        resizeScratchCanvas();
+
+                        window.addEventListener("resize", resizeScratchCanvas);
+
+                        if (document.fonts && document.fonts.ready) {
+                            document.fonts.ready.then(resizeScratchCanvas);
+                        }
+
+                        canvas.addEventListener("mouseenter", moveCoin);
+
+                        canvas.addEventListener("mousemove", function(e) {
+                            moveCoin(e);
+                            if (!drawing) return;
+
+                            const rect = canvas.getBoundingClientRect();
+                            scratch(e.clientX - rect.left, e.clientY - rect.top);
+                        });
+
+                        canvas.addEventListener("mouseleave", function() {
+                            drawing = false;
+                            hideCoin();
+                        });
+
+                        canvas.addEventListener("mousedown", function(e) {
+                            drawing = true;
+                            const rect = canvas.getBoundingClientRect();
+                            scratch(e.clientX - rect.left, e.clientY - rect.top);
+                        });
+
+                        window.addEventListener("mouseup", function() {
+                            drawing = false;
+                        });
+
+                        canvas.addEventListener("touchstart", function(e) {
+                            e.preventDefault();
+                            const rect = canvas.getBoundingClientRect();
+                            scratch(e.touches[0].clientX - rect.left, e.touches[0].clientY - rect.top);
+                        }, { passive: false });
+
+                        canvas.addEventListener("touchmove", function(e) {
+                            e.preventDefault();
+                            const rect = canvas.getBoundingClientRect();
+                            scratch(e.touches[0].clientX - rect.left, e.touches[0].clientY - rect.top);
+                        }, { passive: false });
+                    }
+                }
+
+                const card1 = document.getElementById("card1");
+                const card2 = document.getElementById("card2");
+
+                if (card1 && card2) {
+                    let activeCard = card1;
+                    let locked = false;
+
+                    function bringToFront(card) {
+                        if (locked || card === activeCard) return;
+
+                        locked = true;
+
+                        const oldFront = activeCard;
+
+                        oldFront.classList.remove("front");
+                        oldFront.classList.add("back");
+
+                        card.classList.remove("back");
+                        card.classList.add("front");
+
+                        activeCard = card;
+
+                        setTimeout(function() {
+                            locked = false;
+                        }, 1600);
+                    }
+
+                    function flipCard(card) {
+                        if (locked || card !== activeCard) return;
+
+                        locked = true;
+                        card.classList.toggle("flipped");
+
+                        setTimeout(function() {
+                            locked = false;
+                        }, 950);
+                    }
+
+                    card1.addEventListener("click", function() {
+                        if (card1 === activeCard) {
+                            flipCard(card1);
+                        } else {
+                            bringToFront(card1);
+                        }
+                    });
+
+                    card2.addEventListener("click", function() {
+                        if (card2 === activeCard) {
+                            flipCard(card2);
+                        } else {
+                            bringToFront(card2);
+                        }
+                    });
+                }
+
+                document.querySelectorAll('.fade-in').forEach(function(el) {
+                    const observer = new IntersectionObserver(function(entries) {
+                        entries.forEach(function(entry) {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add('visible');
+                            }
+                        });
+                    }, { threshold: 0.15 });
+
+                    observer.observe(el);
+                });
+
+                function escapeHtml(str) {
+                    return str.replace(/[&<>"']/g, function(char) {
+                        return {
+                            '&': '&amp;',
+                            '<': '&lt;',
+                            '>': '&gt;',
+                            '"': '&quot;',
+                            "'": '&#039;'
+                        }[char];
+                    });
+                }
+
+                const urlParams = new URLSearchParams(window.location.search);
+                const namesParam = urlParams.get('names');
+                const guestGreeting = document.getElementById('guest-greeting');
+                const guestMessage = document.getElementById('guest-message');
+
+                if (guestGreeting && guestMessage && namesParam) {
+                    const originalNamesArray = namesParam
+                        .split(',')
+                        .map(function(n) { return n.trim(); })
+                        .filter(function(n) { return n.length > 0; });
+
+                    if (originalNamesArray.length > 0) {
+                        const namesArray = originalNamesArray.slice();
+                        const last = namesArray.pop();
+
+                        const greeting =
+                            'Дорогие ' +
+                            (namesArray.length > 0 ? namesArray.join(', ') + ' и ' : '') +
+                            last +
+                            '!';
+
+                        guestGreeting.textContent = greeting;
+
+                        const normalizedNamesKey = originalNamesArray.join(',');
+
+                        if (normalizedNamesKey === 'Ирина,Владислав,Руслан') {
+                            guestMessage.innerHTML =
+                                '<p>Мы строим самый важный день в нашей жизни — и поняли, что он просто не сможет быть идеальным без вас. Будет красиво, душевно и немножко громко. Обещаем тёплые объятия, вкусный торт и пару сюрпризов.</p>' +
+                                '<p style="margin-top:14px;">🌸 Ирина, мы помним, что настоящий праздник начинается только тогда, когда звучит «Вдоль ночных дорог». Так что обязательно поставим эту песню!</p>' +
+                                '<p style="margin-top:14px;">⚽ Владислав, твоё присутствие — наш талисман. Если ты придёшь, «Спартак» возьмёт чемпионство!</p>' +
+                                '<p style="margin-top:14px;">💪 Руслан, без тебя этот день был бы слишком спокойным. Борьба с тортом — кто победит? :)</p>' +
+                                '<p style="margin-top:18px;">Ждём вас с нетерпением! 🤍</p>';
+                        } else {
+                            const namesString =
+                                namesArray.length > 0
+                                    ? namesArray.join(', ') + ' и ' + last
+                                    : last;
+
+                            const safeNamesString = escapeHtml(namesString);
+
+                            guestMessage.innerHTML =
+                                'С огромной радостью и трепетом в сердце<br>' +
+                                'мы приглашаем вас, <strong>' + safeNamesString + '</strong>, разделить с нами<br>' +
+                                '<strong>самый важный день нашей жизни</strong> 🤍';
+                        }
+                    }
+                }
+
+                const placesParam = urlParams.get('places');
+                const zagsBlock = document.getElementById('place-zags');
+                const nedomaBlock = document.getElementById('place-nedoma');
+                const wrapper = document.getElementById('places-container');
+                const ceremonyItem = document.getElementById('item-ceremony');
+
+                if (placesParam && zagsBlock && nedomaBlock) {
+                    const wantedPlaces = placesParam
+                        .split(',')
+                        .map(function(p) { return p.trim().toLowerCase(); });
+
+                    let showZags = wantedPlaces.includes('zags');
+                    let showNedoma = wantedPlaces.includes('nedoma');
+
+                    if (!showZags && !showNedoma) {
+                        showZags = true;
+                        showNedoma = true;
+                    }
+
+                    zagsBlock.style.display = showZags ? '' : 'none';
+                    nedomaBlock.style.display = showNedoma ? '' : 'none';
+
+                    if (wrapper) {
+                        const visibleCount = [showZags, showNedoma].filter(Boolean).length;
+
+                        if (visibleCount === 1) {
+                            wrapper.style.alignItems = 'center';
+                        }
+                    }
+
+                    if (ceremonyItem) {
+                        ceremonyItem.classList.toggle('hidden', !showZags);
+                    }
+                }
+            });
+        })();
+    </script>
+</body>
+</html>
