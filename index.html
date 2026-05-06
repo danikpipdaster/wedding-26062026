@@ -244,7 +244,7 @@
         .section {
             position: relative;
             width: 100%;
-            background: linear-gradient(rgba(250,247,244,0.28), rgba(250,247,244,0.28)), url('belyzadnik.jpg') center/cover fixed no-repeat;
+            background: linear-gradient(rgba(250,247,244,0.22), rgba(250,247,244,0.22)), url('belyzadnik.jpg') center/cover fixed no-repeat;
             background-color: #faf7f4;
             padding: 70px 0;
             margin: 0;
@@ -264,7 +264,7 @@
             margin-bottom: 10px;
             color: #4a3f3f;
             letter-spacing: 2px;
-            text-shadow: 0 2px 8px rgba(255,255,255,0.9);
+            text-shadow: 0 2px 8px rgba(255,255,255,0.95);
         }
 
         .section-subtitle {
@@ -273,9 +273,9 @@
             font-size: 16px;
             letter-spacing: 4px;
             text-transform: uppercase;
-            color: #8b7668;
+            color: #7a675d;
             margin-bottom: 30px;
-            text-shadow: 0 1px 5px rgba(255,255,255,0.9);
+            text-shadow: 0 1px 5px rgba(255,255,255,0.95);
         }
 
         .welcome-text {
@@ -296,7 +296,7 @@
             opacity: 0.95;
             margin-bottom: 8px;
             color: #6f5f56;
-            text-shadow: 0 1px 5px rgba(255,255,255,0.9);
+            text-shadow: 0 1px 5px rgba(255,255,255,0.95);
             animation: hintFloat 1.8s infinite;
         }
 
@@ -386,14 +386,15 @@
         }
 
         .location-inner {
-            background: #ffffff;
+            background: rgba(255,255,255,0.88);
             border-radius: 24px;
             padding: 40px 20px;
             max-width: 500px;
             width: 100%;
             margin: 0 auto;
             color: #333;
-            box-shadow: 0 12px 35px rgba(0,0,0,0.18);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.16);
+            border: 1px solid rgba(90,70,60,0.12);
         }
 
         .location-header {
@@ -507,8 +508,9 @@
             height: auto;
             object-fit: contain;
             display: block;
-            filter: brightness(0) saturate(100%) invert(23%) sepia(13%) saturate(506%) hue-rotate(314deg) brightness(91%) contrast(87%);
-            opacity: 0.96;
+            filter: none;
+            mix-blend-mode: multiply;
+            opacity: 0.88;
         }
 
         .glass-box {
@@ -516,10 +518,10 @@
             max-width: 640px;
             margin: 25px auto 0;
             padding: 40px 45px;
-            background: rgba(255,255,255,0.78);
+            background: rgba(255,255,255,0.82);
             backdrop-filter: blur(12px);
             border-radius: 28px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.16);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.14);
             border: 1px solid rgba(90,70,60,0.18);
             font-family: 'Cormorant Garamond', serif;
             font-size: 24px;
@@ -600,8 +602,9 @@
             height: auto;
             object-fit: contain;
             display: block;
-            filter: brightness(0) saturate(100%) invert(23%) sepia(13%) saturate(506%) hue-rotate(314deg) brightness(91%) contrast(87%);
-            opacity: 0.96;
+            filter: none;
+            mix-blend-mode: multiply;
+            opacity: 0.88;
         }
 
         .fade-in {
