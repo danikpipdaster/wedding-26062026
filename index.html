@@ -126,7 +126,7 @@
             padding-bottom: 30px;
         }
 
-        /* Все секции (блоки 2–8) с растянутым по бокам фоном seryzadnik.jpg */
+        /* Базовый псевдоэлемент для обычных секций */
         .section {
             position: relative;
             padding: 70px 20px;
@@ -137,8 +137,27 @@
             content: '';
             position: absolute;
             top: -30px;
-            left: -150px;   /* расширено для покрытия всей ширины */
-            right: -150px;
+            left: -50px;
+            right: -50px;
+            bottom: -30px;
+            background: url('seryzadnik.jpg') center/cover no-repeat;
+            background-color: #5a5a5a;
+            background-attachment: scroll;
+            z-index: -1;
+            mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
+        }
+
+        /* Блок 2 — на всю ширину страницы */
+        #guest-section {
+            padding: 70px 20px;
+        }
+        #guest-section::before {
+            content: '';
+            position: absolute;
+            top: -30px;
+            left: calc(50% - 50vw);
+            width: 100vw;
             bottom: -30px;
             background: url('seryzadnik.jpg') center/cover no-repeat;
             background-color: #5a5a5a;
@@ -309,12 +328,12 @@
 
         /* Мобильная версия */
         @media (max-width: 768px) {
-            .section {
+            .section, #guest-section {
                 padding: 50px 0;
             }
-            .section::before {
-                top: -20px; left: -30px; right: -30px; bottom: -20px;
-                background-attachment: scroll;
+            .section::before, #guest-section::before {
+                top: -20px;
+                bottom: -20px;
             }
             .container { padding: 0 15px; }
             .section-title { font-size: 48px; }
@@ -391,11 +410,11 @@
         <a href="#invitation" class="scroll-arrow" aria-label="К приглашению">↓</a>
     </div>
 
-    <!-- БЛОКИ 2–8 с растянутым по бокам фоном -->
+    <!-- БЛОКИ 2–8 -->
     <div id="invitation">
         <div class="container">
-            <!-- БЛОК 2 — ГОСТИ + ФОТО -->
-            <div class="section fade-in" style="padding-top: 0;">
+            <!-- БЛОК 2 — ГОСТИ + ФОТО (фон на всю ширину) -->
+            <div class="section fade-in" id="guest-section" style="padding-top: 0;">
                 <h2 class="section-title" id="guest-greeting">Дорогие гости!</h2>
                 <p class="welcome-text" id="guest-message">
                     С огромной радостью и трепетом в сердце<br>
