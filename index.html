@@ -24,7 +24,7 @@
         body {
             background: #faf7f4;
             font-family: 'Cormorant Garamond', serif;
-            color: #4a3f3f;
+            color: #ffffff;
             text-align: center;
             overflow-x: hidden;
             position: relative;
@@ -36,7 +36,7 @@
         .decor-branch-left { top: -40px; left: -60px; transform: rotate(-15deg); }
         .decor-branch-right { bottom: -40px; right: -60px; transform: rotate(165deg); }
         
-        /* БЛОК 1 — ЗАСТАВКА (эталон) */
+        /* БЛОК 1 — ЗАСТАВКА (без изменений, со своей полупрозрачностью) */
         .splash {
             position: relative; z-index: 2;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -101,19 +101,19 @@
         
         .divider {
             width: 60px; height: 2px;
-            background: linear-gradient(to right, transparent, #4a3f3f, transparent);
+            background: linear-gradient(to right, transparent, #ffffff, transparent);
             margin: 20px auto;
             border-radius: 1px;
-            opacity: 0.5;
+            opacity: 0.7;
         }
 
-        /* ========== БЛОКИ 2–8 с фоном, ПОЛНОСТЬЮ аналогичным первому блоку ========== */
+        /* ========== БЛОКИ 2–8: ПРОЗРАЧНОСТЬ УБРАНА, ФОН НА ВСЮ ШИРИНУ ========== */
         .section {
             position: relative;
             width: 100%;
-            /* Копируем стиль .splash: такой же linear-gradient с 0.75, такое же cover */
-            background: linear-gradient(rgba(250,247,244,0.75), rgba(250,247,244,0.75)), url('seryzadnik.jpg') center/cover no-repeat;
-            background-color: #faf7f4; /* fallback, если картинка не загрузится */
+            /* Без линейного градиента — только изображение */
+            background: url('seryzadnik.jpg') center/cover no-repeat;
+            background-color: #8a7a6a; /* резервный цвет, если картинка не загрузилась */
             padding: 70px 0;
             margin: 0;
         }
@@ -124,14 +124,15 @@
             padding: 0 20px;
             width: 100%;
         }
-        /* Цвета текста — тёмные, как в первом блоке */
+        /* Текст блоков — белый, с тенью для читаемости на любом фоне */
         .section-title {
             font-family: 'French Kiss Script', 'Cormorant Garamond', cursive;
             font-size: 72px;
             font-weight: 400;
             margin-bottom: 10px;
-            color: #4a3f3f;
+            color: #ffffff;
             letter-spacing: 2px;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.4);
         }
         .section-subtitle {
             font-family: 'Montserrat', sans-serif;
@@ -139,23 +140,26 @@
             font-size: 16px;
             letter-spacing: 4px;
             text-transform: uppercase;
-            color: #7a6a5a;
+            color: #f5e6d9;
             margin-bottom: 30px;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
         }
         .welcome-text {
             font-family: 'Cormorant Garamond', serif;
             font-size: 24px;
             line-height: 1.7;
-            color: #4a3f3f;
+            color: #ffffff;
             max-width: 700px;
             margin: 0 auto;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.3);
         }
         .photo-hint {
             font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 16px;
-            letter-spacing: 3px; opacity: 0.8; margin-bottom: 8px; color: #4a3f3f;
+            letter-spacing: 3px; opacity: 0.9; margin-bottom: 8px; color: #ffffff;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
             animation: hintFloat 1.8s infinite;
         }
-        @keyframes hintFloat { 0% { opacity: 0.5; } 50% { opacity: 1; } 100% { opacity: 0.5; } }
+        @keyframes hintFloat { 0% { opacity: 0.6; } 50% { opacity: 1; } 100% { opacity: 0.6; } }
         .photo-collage {
             position: relative; width: 600px; height: 670px;
             margin: 25px auto 10px;
@@ -183,53 +187,55 @@
         .flip-back { transform: rotateY(180deg); }
         .flip-card img {
             width: 100%; height: 100%; object-fit: cover; border-radius: 22px;
-            background: #ffffff; padding: 8px; box-shadow: 0 18px 40px rgba(90,74,74,0.15);
+            background: #ffffff; padding: 8px; box-shadow: 0 18px 40px rgba(0,0,0,0.25);
             box-sizing: border-box;
         }
-        .flip-card.front img { box-shadow: 0 26px 58px rgba(90,74,74,0.35); }
+        .flip-card.front img { box-shadow: 0 26px 58px rgba(0,0,0,0.4); }
         
         .places { display: flex; justify-content: center; gap: 35px; flex-wrap: wrap; }
         .place-card {
             width: 380px;
-            background: rgba(255, 248, 240, 0.92);
+            background: rgba(30, 25, 20, 0.75);
+            backdrop-filter: blur(6px);
             border-radius: 24px;
             overflow: hidden;
-            box-shadow: 0 12px 35px rgba(0,0,0,0.1);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.3);
             transition: transform 0.4s ease, box-shadow 0.4s ease;
-            color: #4a3f3f;
-            backdrop-filter: blur(2px);
+            color: #ffffff;
+            border: 1px solid rgba(255,255,200,0.2);
         }
-        .place-card:hover { transform: translateY(-4px); box-shadow: 0 20px 45px rgba(0,0,0,0.2); }
+        .place-card:hover { transform: translateY(-4px); box-shadow: 0 20px 45px rgba(0,0,0,0.4); }
         .place-card img { width: 100%; height: 230px; object-fit: cover; }
         .place-info {
             font-family: 'Cormorant Garamond', serif;
             padding: 24px 22px 28px;
             font-size: 22px;
             line-height: 1.6;
-            color: #4a3f3f;
+            color: #ffffff;
         }
         .place-info strong {
             display: block;
             font-size: 26px;
             margin-bottom: 6px;
             font-weight: 500;
-            color: #4a3f3f;
+            color: #ffefdf;
         }
         .map-button {
-            display: inline-block; margin-top: 14px; padding: 12px 28px; background: #4a3f3f;
-            color: #fef7f0; border-radius: 25px; text-decoration: none;
+            display: inline-block; margin-top: 14px; padding: 12px 28px; background: #ffffff;
+            color: #3a2e28; border-radius: 25px; text-decoration: none;
             font-family: 'Montserrat', sans-serif; font-size: 14px;
             letter-spacing: 2px; text-transform: uppercase;
             transition: all 0.3s ease; font-weight: 500;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
-        .map-button:hover { background: #695a4a; }
+        .map-button:hover { background: #f0e0d0; }
 
         .schedule-big {
             font-family: 'Cormorant Garamond', serif;
             font-size: 42px;
             font-weight: 400;
-            color: #4a3f3f;
+            color: #ffffff;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.5);
             line-height: 1.5;
             margin: 30px 0 10px;
             display: flex;
@@ -244,26 +250,26 @@
             max-width: 640px;
             margin: 25px auto 0;
             padding: 40px 45px;
-            background: rgba(250, 243, 235, 0.94);
-            backdrop-filter: blur(8px);
+            background: rgba(0,0,0,0.55);
+            backdrop-filter: blur(12px);
             border-radius: 28px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-            border: 1px solid rgba(90, 70, 60, 0.25);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.3);
             font-family: 'Cormorant Garamond', serif;
             font-size: 24px;
             line-height: 1.8;
-            color: #4a3f3f;
+            color: #ffffff;
         }
         .glass-box::before, .glass-box::after {
             content: ''; position: absolute; top: 15%; bottom: 15%; width: 1px;
-            background: linear-gradient(to bottom, transparent, #b19b8a, transparent); opacity: 0.5;
+            background: linear-gradient(to bottom, transparent, #ffffff, transparent); opacity: 0.4;
         }
         .glass-box::before { left: 22px; } .glass-box::after { right: 22px; }
         .dresscode-palette { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-top: 24px; }
         .dresscode-circle {
             width: 56px; height: 56px; border-radius: 50%;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1), 0 0 0 2px rgba(255,255,240,0.8);
-            border: 1px solid rgba(100,70,60,0.3);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2), 0 0 0 2px rgba(255,255,200,0.6);
+            border: 1px solid rgba(255,255,255,0.5);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         .dresscode-circle:hover { transform: scale(1.12); }
@@ -271,8 +277,9 @@
         .final-text {
             font-family: 'Cormorant Garamond', serif;
             font-size: 28px;
-            color: #4a3f3f;
+            color: #ffffff;
             letter-spacing: 1px;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.5);
             margin-top: 50px;
         }
         .final-text .heart {
@@ -354,7 +361,7 @@
 
     <div id="invitation-start"></div>
 
-    <!-- Блоки 2–8: каждый имеет точно такой же фон, как у .splash (только другое изображение) -->
+    <!-- Блоки 2–8: фон без прозрачности, только картинка на всю ширину -->
     <div class="section fade-in" id="guest-block">
         <div class="section-inner">
             <h2 class="section-title" id="guest-greeting">Дорогие гости!</h2>
@@ -432,7 +439,7 @@
             <p class="section-subtitle">пастельная нежность</p>
             <div class="glass-box">
                 <p>Мы будем очень рады, если вы поддержите<br>цветовую гамму нашего праздника 🤍<br><br>
-                <span style="font-size:20px;opacity:0.8;">Оттенки пастельных тонов —<br>то, что делает этот день ещё нежнее.</span></p>
+                <span style="font-size:20px;opacity:0.9;">Оттенки пастельных тонов —<br>то, что делает этот день ещё нежнее.</span></p>
                 <div class="dresscode-palette">
                     <div class="dresscode-circle" style="background:#e8cec4;"></div>
                     <div class="dresscode-circle" style="background:#f0d5c1;"></div>
@@ -466,11 +473,11 @@
                 <p>Говорят, молодым нужно всё и сразу: от блендера до путешествий ✈️</p>
                 <p style="margin-top:10px;">Мы не будем спорить с этой истиной 😄</p>
                 <p style="margin-top:10px;">Если вы решите поддержать наш «молодожённый стартап», конверт будет очень кстати.</p>
-                <p style="margin-top:18px;font-size:20px;opacity:0.8;font-style:italic;color:#4a3f3f;">Но самый главный подарок — ваше присутствие и улыбки 🤍</p>
+                <p style="margin-top:18px;font-size:20px;opacity:0.9;font-style:italic;">Но самый главный подарок — ваше присутствие и улыбки 🤍</p>
             </div>
             <div class="final-text">
                 <p>С любовью и нетерпением ждём вас 🤍</p>
-                <p style="font-size:20px;margin-top:8px;opacity:0.7;">Данил & Юлия</p>
+                <p style="font-size:20px;margin-top:8px;opacity:0.8;">Данил & Юлия</p>
                 <div class="heart">💛</div>
             </div>
         </div>
