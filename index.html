@@ -21,7 +21,6 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body {
-            /* Только цвет, без фоновых картинок или градиентов */
             background: #faf7f4;
             font-family: 'Cormorant Garamond', serif;
             color: #ffffff;
@@ -107,34 +106,32 @@
             opacity: 0.6;
         }
 
+        /* ОБЩИЙ ФОН ДЛЯ БЛОКОВ 2–8 */
         #invitation {
             position: relative;
             z-index: 1;
-            background: transparent;
+            background: url('seryzadnik.jpg') center/cover no-repeat;
+            background-color: #5a5a5a;   /* запасной цвет */
+            background-attachment: scroll;
             padding-top: 0;
             padding-bottom: 30px;
+            width: 100vw;                /* растягиваем на всю ширину экрана */
+            left: 50%;
+            transform: translateX(-50%);
+            box-sizing: border-box;
         }
 
-        /* Общие стили для секций (блоки 2–8) */
+        /* Все секции внутри – прозрачные, без собственного фона */
         .section {
             position: relative;
             padding: 70px 20px;
-            overflow: hidden;
             color: #ffffff;
+            background: transparent;     /* никакого фона */
         }
-        /* Фон на всю ширину экрана, без масок */
-        .section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100vw;
-            height: 100%;
-            background: url('seryzadnik.jpg') center/cover no-repeat;
-            background-color: #5a5a5a;
-            background-attachment: scroll;
-            z-index: -1;
+        /* Убираем любые возможные псевдоэлементы */
+        .section::before,
+        .section::after {
+            display: none;
         }
 
         /* Первый блок вплотную к заставке */
@@ -303,6 +300,11 @@
 
         /* Мобильная версия */
         @media (max-width: 768px) {
+            #invitation {
+                width: 100vw;
+                left: 50%;
+                transform: translateX(-50%);
+            }
             .section {
                 padding: 50px 0;
             }
@@ -381,7 +383,7 @@
         <a href="#invitation" class="scroll-arrow" aria-label="К приглашению">↓</a>
     </div>
 
-    <!-- БЛОКИ 2–8 -->
+    <!-- БЛОКИ 2–8 с общим фоном через #invitation -->
     <div id="invitation">
         <div class="container">
             <!-- БЛОК 2 — ГОСТИ + ФОТО (прижат к заставке) -->
