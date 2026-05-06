@@ -2,12 +2,13 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Данил & Юлия — Приглашение на свадьбу</title>
     <link rel="preload" as="image" href="photo1.jpg">
     <link rel="preload" as="image" href="photo2.jpg">
     <link rel="preload" as="image" href="photo3.jpg">
     <link rel="preload" as="image" href="photo4.jpg">
+    <link rel="preload" as="image" href="seryzadnik.jpg">
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
     <style>
         @font-face {
@@ -23,7 +24,7 @@
         body {
             background: #faf7f4;
             font-family: 'Cormorant Garamond', serif;
-            color: #ffffff;
+            color: #4a3f3f;
             text-align: center;
             overflow-x: hidden;
             position: relative;
@@ -46,14 +47,13 @@
         }
         .decor-branch-left { top: -40px; left: -60px; transform: rotate(-15deg); }
         .decor-branch-right { bottom: -40px; right: -60px; transform: rotate(165deg); }
-        .container { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; padding: 0 20px; }
-
-        /* БЛОК 1 — ЗАСТАВКА (ryki.jpg) */
+        
+        /* БЛОК 1 — ЗАСТАВКА (без изменений) */
         .splash {
-            position: relative; z-index: 1;
+            position: relative; z-index: 2;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
             min-height: 100vh; padding: 40px 20px; text-align: center;
-            background: linear-gradient(rgba(250,247,244,0.75), rgba(250,247,244,0.75)), url('ryki.jpg') center/cover no-repeat;
+            background: linear-gradient(rgba(250,247,244,0.82), rgba(250,247,244,0.82)), url('ryki.jpg') center/cover no-repeat;
             background-color: #faf7f4;
         }
         .initials-block { margin-bottom: 0.3em; }
@@ -112,50 +112,41 @@
         @keyframes arrowBounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(10px); } }
         .divider {
             width: 60px; height: 2px;
-            background: linear-gradient(to right, transparent, #ffffff, transparent);
+            background: linear-gradient(to right, transparent, #4a3f3f, transparent);
             margin: 20px auto;
             border-radius: 1px;
-            opacity: 0.6;
+            opacity: 0.5;
         }
 
-        #invitation {
-            position: relative;
-            z-index: 1;
-            background: transparent;
-            padding-top: 0;
-            padding-bottom: 30px;
-        }
-
-        /* Все секции (блоки 2–8) с растянутым по бокам фоном seryzadnik.jpg */
+        /* НОВОЕ ОФОРМЛЕНИЕ ДЛЯ БЛОКОВ 2–8 — ПОЛНОСТЬЮ РАСТЯНУТЫЙ ФОН, АНАЛОГИЧНО 1-МУ БЛОКУ */
         .section {
             position: relative;
-            padding: 70px 20px;
-            overflow: hidden;
-            color: #ffffff;
+            width: 100vw;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(rgba(250,247,244,0.88), rgba(250,247,244,0.88)), url('seryzadnik.jpg') center/cover no-repeat;
+            background-size: cover;
+            padding: 70px 0;
+            margin: 0;
+            overflow-x: hidden;
+            z-index: 1;
         }
-        .section::before {
-            content: '';
-            position: absolute;
-            top: -30px;
-            left: -150px;   /* расширено для покрытия всей ширины */
-            right: -150px;
-            bottom: -30px;
-            background: url('seryzadnik.jpg') center/cover no-repeat;
-            background-color: #5a5a5a;
-            background-attachment: scroll;
-            z-index: -1;
-            mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
-            -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
+        /* Внутренний контейнер для выравнивания контента как было */
+        .section-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+            width: 100%;
         }
-
+        /* Заголовки и текст теперь тёмные как в первом блоке */
         .section-title {
             font-family: 'French Kiss Script', 'Cormorant Garamond', cursive;
             font-size: 72px;
             font-weight: 400;
             margin-bottom: 10px;
-            color: #ffffff;
+            color: #4a3f3f;
             letter-spacing: 2px;
-            text-shadow: 0 2px 6px rgba(0,0,0,0.3);
+            text-shadow: none;
         }
         .section-subtitle {
             font-family: 'Montserrat', sans-serif;
@@ -163,27 +154,25 @@
             font-size: 16px;
             letter-spacing: 4px;
             text-transform: uppercase;
-            color: #ffffff;
+            color: #7a6a5a;
             margin-bottom: 30px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            text-shadow: none;
         }
         .welcome-text {
             font-family: 'Cormorant Garamond', serif;
             font-size: 24px;
             line-height: 1.7;
-            color: #ffffff;
+            color: #4a3f3f;
             max-width: 700px;
             margin: 0 auto;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            text-shadow: none;
         }
-        .welcome-text strong { font-weight: 500; color: #ffffff; }
-
         .photo-hint {
             font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 16px;
-            letter-spacing: 3px; opacity: 0.9; margin-bottom: 8px; color: #ffffff;
+            letter-spacing: 3px; opacity: 0.8; margin-bottom: 8px; color: #4a3f3f;
             animation: hintFloat 1.8s infinite;
         }
-        @keyframes hintFloat { 0% { opacity: 0.6; } 50% { opacity: 1; } 100% { opacity: 0.6; } }
+        @keyframes hintFloat { 0% { opacity: 0.5; } 50% { opacity: 1; } 100% { opacity: 0.5; } }
         .photo-collage {
             position: relative; width: 600px; height: 670px;
             margin: 25px auto 10px;
@@ -219,42 +208,47 @@
 
         .places { display: flex; justify-content: center; gap: 35px; flex-wrap: wrap; }
         .place-card {
-            width: 380px; background: rgba(255,255,255,0.25); border-radius: 24px; overflow: hidden;
-            box-shadow: 0 12px 35px rgba(0,0,0,0.15); transition: transform 0.4s ease, box-shadow 0.4s ease;
-            color: #ffffff;
+            width: 380px;
+            background: rgba(255, 248, 240, 0.9);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.1);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            color: #4a3f3f;
+            backdrop-filter: blur(2px);
         }
-        .place-card:hover { transform: translateY(-4px); box-shadow: 0 20px 45px rgba(0,0,0,0.25); }
+        .place-card:hover { transform: translateY(-4px); box-shadow: 0 20px 45px rgba(0,0,0,0.2); }
         .place-card img { width: 100%; height: 230px; object-fit: cover; }
         .place-info {
             font-family: 'Cormorant Garamond', serif;
             padding: 24px 22px 28px;
             font-size: 22px;
             line-height: 1.6;
-            color: #ffffff;
+            color: #4a3f3f;
         }
         .place-info strong {
             display: block;
             font-size: 26px;
             margin-bottom: 6px;
             font-weight: 500;
-            color: #ffffff;
+            color: #4a3f3f;
         }
         .map-button {
-            display: inline-block; margin-top: 14px; padding: 12px 28px; background: #ffffff;
-            color: #4a3f3f; border-radius: 25px; text-decoration: none;
+            display: inline-block; margin-top: 14px; padding: 12px 28px; background: #4a3f3f;
+            color: #fef7f0; border-radius: 25px; text-decoration: none;
             font-family: 'Montserrat', sans-serif; font-size: 14px;
             letter-spacing: 2px; text-transform: uppercase;
             transition: all 0.3s ease; font-weight: 500;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
-        .map-button:hover { background: #f0e6d3; }
+        .map-button:hover { background: #695a4a; }
 
         .schedule-big {
             font-family: 'Cormorant Garamond', serif;
             font-size: 42px;
             font-weight: 400;
-            color: #ffffff;
-            text-shadow: 0 2px 6px rgba(0,0,0,0.3);
+            color: #4a3f3f;
+            text-shadow: none;
             line-height: 1.5;
             margin: 30px 0 10px;
             display: flex;
@@ -266,34 +260,41 @@
         .schedule-item-text.hidden { display: none; }
 
         .glass-box {
-            position: relative; max-width: 640px; margin: 25px auto 0; padding: 40px 45px;
-            background: rgba(0,0,0,0.2); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-            border-radius: 28px; box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-            border: 1px solid rgba(255,255,255,0.3);
+            position: relative;
+            max-width: 640px;
+            margin: 25px auto 0;
+            padding: 40px 45px;
+            background: rgba(250, 243, 235, 0.92);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 28px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+            border: 1px solid rgba(90, 70, 60, 0.25);
             font-family: 'Cormorant Garamond', serif;
             font-size: 24px;
             line-height: 1.8;
-            color: #ffffff;
+            color: #4a3f3f;
         }
         .glass-box::before, .glass-box::after {
             content: ''; position: absolute; top: 15%; bottom: 15%; width: 1px;
-            background: linear-gradient(to bottom, transparent, #ffffff, transparent); opacity: 0.5;
+            background: linear-gradient(to bottom, transparent, #b19b8a, transparent); opacity: 0.5;
         }
         .glass-box::before { left: 22px; } .glass-box::after { right: 22px; }
         .dresscode-palette { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-top: 24px; }
         .dresscode-circle {
             width: 56px; height: 56px; border-radius: 50%;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2), 0 0 0 2px rgba(255,255,255,0.5);
-            border: 1px solid rgba(255,255,255,0.6); transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1), 0 0 0 2px rgba(255,255,240,0.8);
+            border: 1px solid rgba(100,70,60,0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .dresscode-circle:hover { transform: scale(1.12); box-shadow: 0 8px 18px rgba(0,0,0,0.3), 0 0 0 3px rgba(255,255,255,0.7); }
+        .dresscode-circle:hover { transform: scale(1.12); box-shadow: 0 8px 18px rgba(0,0,0,0.2), 0 0 0 3px rgba(255,245,235,1); }
 
         .final-text {
             font-family: 'Cormorant Garamond', serif;
             font-size: 28px;
-            color: #ffffff;
+            color: #4a3f3f;
             letter-spacing: 1px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            text-shadow: none;
             margin-top: 50px;
         }
         .final-text .heart {
@@ -307,16 +308,10 @@
         .fade-in { opacity: 0; transform: translateY(25px); transition: opacity 1s ease, transform 1s ease; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-        /* Мобильная версия */
+        /* Мобильная адаптация */
         @media (max-width: 768px) {
-            .section {
-                padding: 50px 0;
-            }
-            .section::before {
-                top: -20px; left: -30px; right: -30px; bottom: -20px;
-                background-attachment: scroll;
-            }
-            .container { padding: 0 15px; }
+            .section { padding: 50px 0; }
+            .section-inner { padding: 0 15px; }
             .section-title { font-size: 48px; }
             .section-subtitle { font-size: 14px; }
             .welcome-text { font-size: 18px; }
@@ -388,122 +383,129 @@
             <div class="scratch-area"><div class="date">26.06.2026</div><canvas id="scratch"></canvas></div>
         </div>
         <div class="timer" id="timer"></div>
-        <a href="#invitation" class="scroll-arrow" aria-label="К приглашению">↓</a>
+        <a href="#invitation-start" class="scroll-arrow" aria-label="К приглашению">↓</a>
     </div>
 
-    <!-- БЛОКИ 2–8 с растянутым по бокам фоном -->
-    <div id="invitation">
-        <div class="container">
-            <!-- БЛОК 2 — ГОСТИ + ФОТО -->
-            <div class="section fade-in" style="padding-top: 0;">
-                <h2 class="section-title" id="guest-greeting">Дорогие гости!</h2>
-                <p class="welcome-text" id="guest-message">
-                    С огромной радостью и трепетом в сердце<br>
-                    мы приглашаем вас разделить с нами<br>
-                    <strong>самый важный день нашей жизни</strong> 🤍
-                </p>
-                <div class="divider"></div>
-            </div>
-            <div class="section fade-in" id="photo-section">
-                <div class="photo-hint">Нажми на фото, чтобы перевернуть ✨</div>
-                <div class="photo-collage">
-                    <div class="flip-card front" id="card1">
-                        <div class="flip-inner">
-                            <div class="flip-front"><img src="photo1.jpg" alt="Фото 1"></div>
-                            <div class="flip-back"><img src="photo2.jpg" alt="Фото 2"></div>
-                        </div>
-                    </div>
-                    <div class="flip-card back" id="card2">
-                        <div class="flip-inner">
-                            <div class="flip-front"><img src="photo3.jpg" alt="Фото 3"></div>
-                            <div class="flip-back"><img src="photo4.jpg" alt="Фото 4"></div>
-                        </div>
+    <!-- БЛОКИ 2–8 с растянутым фоном на всю ширину (по аналогии с 1 блоком) -->
+    <div id="invitation-start"></div>
+    
+    <div class="section fade-in" id="guest-block">
+        <div class="section-inner">
+            <h2 class="section-title" id="guest-greeting">Дорогие гости!</h2>
+            <p class="welcome-text" id="guest-message">
+                С огромной радостью и трепетом в сердце<br>
+                мы приглашаем вас разделить с нами<br>
+                <strong>самый важный день нашей жизни</strong> 🤍
+            </p>
+            <div class="divider"></div>
+        </div>
+    </div>
+
+    <div class="section fade-in" id="photo-section">
+        <div class="section-inner">
+            <div class="photo-hint">Нажми на фото, чтобы перевернуть ✨</div>
+            <div class="photo-collage">
+                <div class="flip-card front" id="card1">
+                    <div class="flip-inner">
+                        <div class="flip-front"><img src="photo1.jpg" alt="Фото 1"></div>
+                        <div class="flip-back"><img src="photo2.jpg" alt="Фото 2"></div>
                     </div>
                 </div>
-                <div class="divider"></div>
-            </div>
-
-            <!-- БЛОК 3 — Места -->
-            <div class="section fade-in" id="places-section">
-                <h2 class="section-title">Места проведения</h2>
-                <p class="section-subtitle">где это случится</p>
-                <div class="places" id="places-container">
-                    <div class="place-card" id="place-zags">
-                        <img src="zags.jpg" alt="ЗАГС">
-                        <div class="place-info">
-                            <strong>Церемония</strong> г. Надым<br>Парковый пр., 4<br>
-                            <a class="map-button" href="https://maps.google.com/?q=Надым+Парковый+4" target="_blank">Открыть карту</a>
-                        </div>
-                    </div>
-                    <div class="place-card" id="place-nedoma">
-                        <img src="nedoma.jpg" alt="НеДома">
-                        <div class="place-info">
-                            <strong>НеДома</strong> Семейный лофт<br>г. Надым<br>13 проезд, строение 11<br>
-                            <a class="map-button" href="https://maps.google.com/?q=НеДома+Семейный+лофт+13+проезд+строение+11+Надым" target="_blank">Открыть карту</a>
-                        </div>
+                <div class="flip-card back" id="card2">
+                    <div class="flip-inner">
+                        <div class="flip-front"><img src="photo3.jpg" alt="Фото 3"></div>
+                        <div class="flip-back"><img src="photo4.jpg" alt="Фото 4"></div>
                     </div>
                 </div>
-                <div class="divider"></div>
             </div>
+            <div class="divider"></div>
+        </div>
+    </div>
 
-            <!-- БЛОК 4 — ПРОГРАММА -->
-            <div class="section fade-in" id="schedule-section">
-                <h2 class="section-title">Программа дня</h2>
-                <p class="section-subtitle">26 июня 2026</p>
-                <div class="schedule-big">
-                    <span class="schedule-item-text" id="item-meet">Встреча гостей</span>
-                    <span class="schedule-item-text" id="item-ceremony">Церемония</span>
-                    <span class="schedule-item-text" id="item-feast">Банкет</span>
-                    <span class="schedule-item-text" id="item-dance">Танцы</span>
-                </div>
-                <div class="divider"></div>
-            </div>
-
-            <!-- БЛОК 5 — Дресс-код -->
-            <div class="section fade-in" id="dresscode-section">
-                <h2 class="section-title">Дресс-код</h2>
-                <p class="section-subtitle">пастельная нежность</p>
-                <div class="glass-box">
-                    <p>Мы будем очень рады, если вы поддержите<br>цветовую гамму нашего праздника 🤍<br><br>
-                    <span style="font-size:20px;opacity:0.8;">Оттенки пастельных тонов —<br>то, что делает этот день ещё нежнее.</span></p>
-                    <div class="dresscode-palette">
-                        <div class="dresscode-circle" style="background:#e8cec4;"></div>
-                        <div class="dresscode-circle" style="background:#f0d5c1;"></div>
-                        <div class="dresscode-circle" style="background:#c8d5c0;"></div>
-                        <div class="dresscode-circle" style="background:#f5eddf;"></div>
-                        <div class="dresscode-circle" style="background:#dacfe0;"></div>
-                        <div class="dresscode-circle" style="background:#cddfe8;"></div>
+    <div class="section fade-in" id="places-section">
+        <div class="section-inner">
+            <h2 class="section-title">Места проведения</h2>
+            <p class="section-subtitle">где это случится</p>
+            <div class="places" id="places-container">
+                <div class="place-card" id="place-zags">
+                    <img src="zags.jpg" alt="ЗАГС">
+                    <div class="place-info">
+                        <strong>Церемония</strong> г. Надым<br>Парковый пр., 4<br>
+                        <a class="map-button" href="https://maps.google.com/?q=Надым+Парковый+4" target="_blank">Открыть карту</a>
                     </div>
                 </div>
-                <div class="divider"></div>
+                <div class="place-card" id="place-nedoma">
+                    <img src="nedoma.jpg" alt="НеДома">
+                    <div class="place-info">
+                        <strong>НеДома</strong> Семейный лофт<br>г. Надым<br>13 проезд, строение 11<br>
+                        <a class="map-button" href="https://maps.google.com/?q=НеДома+Семейный+лофт+13+проезд+строение+11+Надым" target="_blank">Открыть карту</a>
+                    </div>
+                </div>
             </div>
+            <div class="divider"></div>
+        </div>
+    </div>
 
-            <!-- БЛОК 6 — Важно -->
-            <div class="section fade-in" id="important-section">
-                <h2 class="section-title">Важно для гостей</h2>
-                <p class="section-subtitle">вайб нашего дня</p>
-                <div class="glass-box">
-                    <p>📸 Телефоны не прячем —<br>снимаем, ловим моменты и кайфуем ✨</p>
-                    <p style="margin-top:14px;">🎤 Если вдруг появится идея для тоста<br>или перформанса — обязательно воплощайте её в жизнь 😄</p>
-                    <p style="margin-top:14px;">Мы только за любую движуху 💛</p>
-                </div>
-                <div class="divider"></div>
+    <div class="section fade-in" id="schedule-section">
+        <div class="section-inner">
+            <h2 class="section-title">Программа дня</h2>
+            <p class="section-subtitle">26 июня 2026</p>
+            <div class="schedule-big">
+                <span class="schedule-item-text" id="item-meet">Встреча гостей</span>
+                <span class="schedule-item-text" id="item-ceremony">Церемония</span>
+                <span class="schedule-item-text" id="item-feast">Банкет</span>
+                <span class="schedule-item-text" id="item-dance">Танцы</span>
             </div>
+            <div class="divider"></div>
+        </div>
+    </div>
 
-            <!-- БЛОК 7 — Подарки + Финал -->
-            <div class="section fade-in" id="gifts-section">
-                <h2 class="section-title">Подарки</h2>
-                <div class="glass-box">
-                    <p>Говорят, молодым нужно всё и сразу: от блендера до путешествий ✈️</p>
-                    <p style="margin-top:10px;">Мы не будем спорить с этой истиной 😄</p>
-                    <p style="margin-top:10px;">Если вы решите поддержать наш «молодожённый стартап», конверт будет очень кстати.</p>
-                    <p style="margin-top:18px;font-size:20px;opacity:0.8;font-style:italic;color:#ffffff;">Но самый главный подарок — ваше присутствие и улыбки 🤍</p>
+    <div class="section fade-in" id="dresscode-section">
+        <div class="section-inner">
+            <h2 class="section-title">Дресс-код</h2>
+            <p class="section-subtitle">пастельная нежность</p>
+            <div class="glass-box">
+                <p>Мы будем очень рады, если вы поддержите<br>цветовую гамму нашего праздника 🤍<br><br>
+                <span style="font-size:20px;opacity:0.8;">Оттенки пастельных тонов —<br>то, что делает этот день ещё нежнее.</span></p>
+                <div class="dresscode-palette">
+                    <div class="dresscode-circle" style="background:#e8cec4;"></div>
+                    <div class="dresscode-circle" style="background:#f0d5c1;"></div>
+                    <div class="dresscode-circle" style="background:#c8d5c0;"></div>
+                    <div class="dresscode-circle" style="background:#f5eddf;"></div>
+                    <div class="dresscode-circle" style="background:#dacfe0;"></div>
+                    <div class="dresscode-circle" style="background:#cddfe8;"></div>
                 </div>
-                <div class="final-text">
-                    <p>С любовью и нетерпением ждём вас 🤍</p>
-                    <p style="font-size:20px;margin-top:8px;opacity:0.7;">Данил & Юлия</p>
-                    <div class="heart">💛</div>
-                </div>
+            </div>
+            <div class="divider"></div>
+        </div>
+    </div>
+
+    <div class="section fade-in" id="important-section">
+        <div class="section-inner">
+            <h2 class="section-title">Важно для гостей</h2>
+            <p class="section-subtitle">вайб нашего дня</p>
+            <div class="glass-box">
+                <p>📸 Телефоны не прячем —<br>снимаем, ловим моменты и кайфуем ✨</p>
+                <p style="margin-top:14px;">🎤 Если вдруг появится идея для тоста<br>или перформанса — обязательно воплощайте её в жизнь 😄</p>
+                <p style="margin-top:14px;">Мы только за любую движуху 💛</p>
+            </div>
+            <div class="divider"></div>
+        </div>
+    </div>
+
+    <div class="section fade-in" id="gifts-section">
+        <div class="section-inner">
+            <h2 class="section-title">Подарки</h2>
+            <div class="glass-box">
+                <p>Говорят, молодым нужно всё и сразу: от блендера до путешествий ✈️</p>
+                <p style="margin-top:10px;">Мы не будем спорить с этой истиной 😄</p>
+                <p style="margin-top:10px;">Если вы решите поддержать наш «молодожённый стартап», конверт будет очень кстати.</p>
+                <p style="margin-top:18px;font-size:20px;opacity:0.8;font-style:italic;color:#4a3f3f;">Но самый главный подарок — ваше присутствие и улыбки 🤍</p>
+            </div>
+            <div class="final-text">
+                <p>С любовью и нетерпением ждём вас 🤍</p>
+                <p style="font-size:20px;margin-top:8px;opacity:0.7;">Данил & Юлия</p>
+                <div class="heart">💛</div>
             </div>
         </div>
     </div>
@@ -511,6 +513,7 @@
     <script>
         (function() {
             window.addEventListener('DOMContentLoaded', function() {
+                // Таймер обратного отсчета
                 const timerEl = document.getElementById("timer");
                 if (timerEl) {
                     const weddingDate = new Date("June 26, 2026 00:00:00").getTime();
@@ -527,6 +530,7 @@
                     setInterval(updateTimer, 1000);
                 }
 
+                // Эффект царапания даты
                 const canvas = document.getElementById("scratch");
                 if (canvas) {
                     const ctx = canvas.getContext("2d");
@@ -553,6 +557,7 @@
                     }
                 }
 
+                // Переворот фото
                 const card1 = document.getElementById("card1");
                 const card2 = document.getElementById("card2");
                 if (card1 && card2) {
@@ -576,6 +581,7 @@
                     card2.addEventListener("click", () => { if (card2 === activeCard) flipCard(card2); else bringToFront(card2); });
                 }
 
+                // Анимация появления
                 document.querySelectorAll('.fade-in').forEach(el => {
                     const observer = new IntersectionObserver((entries) => {
                         entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
@@ -583,6 +589,7 @@
                     observer.observe(el);
                 });
 
+                // Параметры из URL: имена гостей + персональное сообщение
                 const urlParams = new URLSearchParams(window.location.search);
                 const namesParam = urlParams.get('names');
                 const guestGreeting = document.getElementById('guest-greeting');
@@ -610,6 +617,7 @@
                     }
                 }
 
+                // Параметры мест и отображение пункта церемонии
                 const placesParam = urlParams.get('places');
                 if (placesParam) {
                     const wantedPlaces = placesParam.split(',').map(p => p.trim().toLowerCase());
@@ -619,11 +627,10 @@
                     if (nedomaCard) nedomaCard.style.display = wantedPlaces.includes('nedoma') ? '' : 'none';
                     const container = document.getElementById('places-container');
                     if (container) {
-                        const visibleCards = container.querySelectorAll('.place-card[style*="display:""], .place-card:not([style*="display: none"])');
+                        const visibleCards = Array.from(container.children).filter(card => card.style.display !== 'none');
                         container.style.justifyContent = visibleCards.length === 1 ? 'center' : '';
                     }
                 }
-
                 const ceremonyItem = document.getElementById('item-ceremony');
                 if (ceremonyItem && placesParam) {
                     const wantedPlaces = placesParam.split(',').map(p => p.trim().toLowerCase());
