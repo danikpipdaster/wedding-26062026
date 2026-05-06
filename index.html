@@ -1,29 +1,184 @@
-<div class="section fade-in">
-    <div class="section-inner">
-        <div class="glass-box dresscode-card">
-            <h2 class="section-title dresscode-title">Дресс-код</h2>
-            <p class="section-subtitle dresscode-subtitle">пастельная нежность</p>
+from pathlib import Path
+import re
 
-            <p class="dresscode-text">
-                Мы будем очень рады, если вы поддержите<br>
-                цветовую гамму нашего праздника 🤍
-            </p>
+path = Path("/mnt/data/wedding_invitation_ready.html")
+html = path.read_text(encoding="utf-8")
 
-            <p class="dresscode-note">
-                Оттенки пастельных тонов —<br>
-                то, что делает этот день ещё нежнее.
-            </p>
+old_styles = """        .dresscode-card {
+            max-width: 760px;
+            margin: 25px auto 0;
+            padding: 36px 30px 40px;
+        }
 
-            <div class="dresscode-palette">
-                <div class="dresscode-circle" style="background:#e8cec4;"></div>
-                <div class="dresscode-circle" style="background:#f0d5c1;"></div>
-                <div class="dresscode-circle" style="background:#c8d5c0;"></div>
-                <div class="dresscode-circle" style="background:#f5eddf;"></div>
-                <div class="dresscode-circle" style="background:#dacfe0;"></div>
-                <div class="dresscode-circle" style="background:#cddfe8;"></div>
-            </div>
-        </div>
+        .dresscode-title {
+            font-size: 64px;
+            margin-bottom: 8px;
+            text-shadow: none;
+        }
 
-        <div class="divider"></div>
-    </div>
-</div>
+        .dresscode-subtitle {
+            margin-bottom: 24px;
+            text-shadow: none;
+        }
+
+        .dresscode-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            line-height: 1.7;
+            color: #4a3f3f;
+            margin: 0;
+        }
+
+        .dresscode-note {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20px;
+            line-height: 1.7;
+            color: #4a3f3f;
+            margin-top: 22px;
+            opacity: 0.9;
+        }
+
+        .dresscode-card .dresscode-palette {
+            margin-top: 26px;
+        }
+"""
+
+new_styles = """        .dresscode-card {
+            max-width: 760px;
+            margin: 25px auto 0;
+            padding: 0 30px 40px;
+            overflow: hidden;
+        }
+
+        .dresscode-header {
+            margin: 0 -30px 30px;
+            padding: 30px 24px 24px;
+            border-bottom: 1px solid rgba(90,70,60,0.16);
+            background: rgba(255,255,255,0.34);
+        }
+
+        .dresscode-title {
+            font-size: 64px;
+            margin-bottom: 8px;
+            text-shadow: none;
+            line-height: 1;
+        }
+
+        .dresscode-subtitle {
+            margin-bottom: 0;
+            text-shadow: none;
+        }
+
+        .dresscode-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            line-height: 1.7;
+            color: #4a3f3f;
+            margin: 0;
+        }
+
+        .dresscode-note {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20px;
+            line-height: 1.7;
+            color: #4a3f3f;
+            margin-top: 22px;
+            opacity: 0.9;
+        }
+
+        .dresscode-card .dresscode-palette {
+            margin-top: 26px;
+        }
+"""
+
+html = html.replace(old_styles, new_styles)
+
+old_media_styles = """            .dresscode-card {
+                padding: 28px 18px 30px;
+            }
+
+            .dresscode-title {
+                font-size: 44px;
+                margin-bottom: 8px;
+            }
+
+            .dresscode-subtitle {
+                font-size: 13px;
+                margin-bottom: 18px;
+            }
+"""
+
+new_media_styles = """            .dresscode-card {
+                padding: 0 18px 30px;
+            }
+
+            .dresscode-header {
+                margin: 0 -18px 24px;
+                padding: 26px 18px 20px;
+            }
+
+            .dresscode-title {
+                font-size: 44px;
+                margin-bottom: 8px;
+            }
+
+            .dresscode-subtitle {
+                font-size: 13px;
+                margin-bottom: 0;
+            }
+"""
+
+html = html.replace(old_media_styles, new_media_styles)
+
+old_small_styles = """            .dresscode-card {
+                padding: 24px 16px 26px;
+            }
+
+            .dresscode-title {
+                font-size: 36px;
+            }
+"""
+
+new_small_styles = """            .dresscode-card {
+                padding: 0 16px 26px;
+            }
+
+            .dresscode-header {
+                margin: 0 -16px 22px;
+                padding: 24px 16px 18px;
+            }
+
+            .dresscode-title {
+                font-size: 36px;
+            }
+"""
+
+html = html.replace(old_small_styles, new_small_styles)
+
+old_html = """                <div class="glass-box dresscode-card">
+                    <h2 class="section-title dresscode-title">Дресс-код</h2>
+                    <p class="section-subtitle dresscode-subtitle">пастельная нежность</p>
+
+                    <p class="dresscode-text">
+                        Мы будем очень рады, если вы поддержите<br>
+                        цветовую гамму нашего праздника 🤍
+                    </p>
+"""
+
+new_html = """                <div class="glass-box dresscode-card">
+                    <div class="dresscode-header">
+                        <h2 class="section-title dresscode-title">Дресс-код</h2>
+                        <p class="section-subtitle dresscode-subtitle">пастельная нежность</p>
+                    </div>
+
+                    <p class="dresscode-text">
+                        Мы будем очень рады, если вы поддержите<br>
+                        цветовую гамму нашего праздника 🤍
+                    </p>
+"""
+
+html = html.replace(old_html, new_html)
+
+new_path = Path("/mnt/data/wedding_invitation_dresscode_header.html")
+new_path.write_text(html, encoding="utf-8")
+new_path.as_posix()
