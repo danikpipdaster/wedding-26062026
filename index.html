@@ -40,7 +40,7 @@
         body {
             background: #faf7f4;
             font-family: 'Cormorant Garamond', serif;
-            color: #ffffff;
+            color: #4a3f3f;
             text-align: center;
             overflow-x: hidden;
             position: relative;
@@ -235,16 +235,16 @@
         .divider {
             width: 60px;
             height: 2px;
-            background: linear-gradient(to right, transparent, #ffffff, transparent);
+            background: linear-gradient(to right, transparent, #7d6f64, transparent);
             margin: 20px auto;
             border-radius: 1px;
-            opacity: 0.7;
+            opacity: 0.9;
         }
 
         .section {
             position: relative;
             width: 100%;
-            background: url('belyzadnik.jpg') center/cover fixed no-repeat;
+            background: linear-gradient(rgba(250,247,244,0.28), rgba(250,247,244,0.28)), url('belyzadnik.jpg') center/cover fixed no-repeat;
             background-color: #faf7f4;
             padding: 70px 0;
             margin: 0;
@@ -262,48 +262,48 @@
             font-size: 72px;
             font-weight: 400;
             margin-bottom: 10px;
-            color: #ffffff;
+            color: #4a3f3f;
             letter-spacing: 2px;
-            text-shadow: 0 2px 6px rgba(0,0,0,0.4);
+            text-shadow: 0 2px 8px rgba(255,255,255,0.9);
         }
 
         .section-subtitle {
             font-family: 'Montserrat', sans-serif;
-            font-weight: 300;
+            font-weight: 400;
             font-size: 16px;
             letter-spacing: 4px;
             text-transform: uppercase;
-            color: #f5e6d9;
+            color: #8b7668;
             margin-bottom: 30px;
-            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+            text-shadow: 0 1px 5px rgba(255,255,255,0.9);
         }
 
         .welcome-text {
             font-family: 'Cormorant Garamond', serif;
             font-size: 24px;
             line-height: 1.7;
-            color: #ffffff;
+            color: #4a3f3f;
             max-width: 700px;
             margin: 0 auto;
-            text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+            text-shadow: 0 1px 6px rgba(255,255,255,0.95);
         }
 
         .photo-hint {
             font-family: 'Montserrat', sans-serif;
-            font-weight: 300;
+            font-weight: 400;
             font-size: 16px;
             letter-spacing: 3px;
-            opacity: 0.9;
+            opacity: 0.95;
             margin-bottom: 8px;
-            color: #ffffff;
-            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+            color: #6f5f56;
+            text-shadow: 0 1px 5px rgba(255,255,255,0.9);
             animation: hintFloat 1.8s infinite;
         }
 
         @keyframes hintFloat {
-            0% { opacity: 0.6; }
+            0% { opacity: 0.65; }
             50% { opacity: 1; }
-            100% { opacity: 0.6; }
+            100% { opacity: 0.65; }
         }
 
         .photo-collage {
@@ -393,7 +393,7 @@
             width: 100%;
             margin: 0 auto;
             color: #333;
-            box-shadow: 0 12px 35px rgba(0,0,0,0.2);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.18);
         }
 
         .location-header {
@@ -468,13 +468,6 @@
             filter: grayscale(0%) opacity(1);
         }
 
-        .heart-divider {
-            font-size: 20px;
-            color: #333;
-            margin: 30px 0;
-            animation: heartBeat 2s infinite;
-        }
-
         @keyframes heartBeat {
             0% { transform: scale(1); }
             25% { transform: scale(1.15); }
@@ -486,9 +479,9 @@
         .schedule-big {
             font-family: 'Cormorant Garamond', serif;
             font-size: 42px;
-            font-weight: 400;
-            color: #ffffff;
-            text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+            font-weight: 500;
+            color: #4a3f3f;
+            text-shadow: 0 1px 6px rgba(255,255,255,0.95);
             line-height: 1.5;
             margin: 30px 0 10px;
             display: flex;
@@ -514,9 +507,8 @@
             height: auto;
             object-fit: contain;
             display: block;
-            filter: invert(1);
-            mix-blend-mode: screen;
-            opacity: 0.95;
+            filter: brightness(0) saturate(100%) invert(23%) sepia(13%) saturate(506%) hue-rotate(314deg) brightness(91%) contrast(87%);
+            opacity: 0.96;
         }
 
         .glass-box {
@@ -524,15 +516,16 @@
             max-width: 640px;
             margin: 25px auto 0;
             padding: 40px 45px;
-            background: rgba(0,0,0,0.55);
+            background: rgba(255,255,255,0.78);
             backdrop-filter: blur(12px);
             border-radius: 28px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-            border: 1px solid rgba(255,255,255,0.3);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.16);
+            border: 1px solid rgba(90,70,60,0.18);
             font-family: 'Cormorant Garamond', serif;
             font-size: 24px;
             line-height: 1.8;
-            color: #ffffff;
+            color: #4a3f3f;
+            text-shadow: none;
         }
 
         .glass-box::before,
@@ -542,8 +535,8 @@
             top: 15%;
             bottom: 15%;
             width: 1px;
-            background: linear-gradient(to bottom, transparent, #ffffff, transparent);
-            opacity: 0.4;
+            background: linear-gradient(to bottom, transparent, #8b7668, transparent);
+            opacity: 0.35;
         }
 
         .glass-box::before {
@@ -566,8 +559,8 @@
             width: 56px;
             height: 56px;
             border-radius: 50%;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2), 0 0 0 2px rgba(255,255,200,0.6);
-            border: 1px solid rgba(255,255,255,0.5);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.18), 0 0 0 2px rgba(255,255,255,0.8);
+            border: 1px solid rgba(90,70,60,0.25);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
@@ -587,9 +580,9 @@
         .final-text {
             font-family: 'Cormorant Garamond', serif;
             font-size: 28px;
-            color: #ffffff;
+            color: #4a3f3f;
             letter-spacing: 1px;
-            text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+            text-shadow: 0 1px 6px rgba(255,255,255,0.95);
             margin-top: 0;
             text-align: center;
         }
@@ -607,9 +600,8 @@
             height: auto;
             object-fit: contain;
             display: block;
-            filter: invert(1);
-            mix-blend-mode: screen;
-            opacity: 0.95;
+            filter: brightness(0) saturate(100%) invert(23%) sepia(13%) saturate(506%) hue-rotate(314deg) brightness(91%) contrast(87%);
+            opacity: 0.96;
         }
 
         .fade-in {
@@ -925,8 +917,6 @@
                         </iframe>
                     </div>
                 </div>
-
-                <div class="heart-divider" id="places-divider">❦ ❦ ❦</div>
 
                 <div class="location-inner" id="place-nedoma">
                     <div class="location-header">
@@ -1288,7 +1278,6 @@
                 const placesParam = urlParams.get('places');
                 const zagsBlock = document.getElementById('place-zags');
                 const nedomaBlock = document.getElementById('place-nedoma');
-                const placesDivider = document.getElementById('places-divider');
                 const wrapper = document.getElementById('places-container');
                 const ceremonyItem = document.getElementById('item-ceremony');
 
@@ -1307,10 +1296,6 @@
 
                     zagsBlock.style.display = showZags ? '' : 'none';
                     nedomaBlock.style.display = showNedoma ? '' : 'none';
-
-                    if (placesDivider) {
-                        placesDivider.style.display = (showZags && showNedoma) ? '' : 'none';
-                    }
 
                     if (wrapper) {
                         const visibleCount = [showZags, showNedoma].filter(Boolean).length;
