@@ -15,6 +15,7 @@
     <link rel="preload" as="image" href="serdecko.jpg">
     <link rel="preload" as="image" href="PARA.png">
     <link rel="preload" as="image" href="PARA3.png">
+    <link rel="preload" as="image" href="ceremonia.png">
 
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
 
@@ -491,18 +492,19 @@
             gap: 8px;
         }
 
-        .schedule-item-text.hidden {
+        .schedule-item-text.hidden,
+        .schedule-row.hidden {
             display: none;
         }
 
-        .schedule-meet-row {
+        .schedule-row {
             display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 18px;
         }
 
-        .schedule-para-img {
+        .schedule-icon-img {
             width: 110px;
             max-width: 22vw;
             height: auto;
@@ -648,11 +650,11 @@
                 font-size: 30px;
             }
 
-            .schedule-meet-row {
+            .schedule-row {
                 gap: 12px;
             }
 
-            .schedule-para-img {
+            .schedule-icon-img {
                 width: 85px;
                 max-width: 26vw;
             }
@@ -779,7 +781,7 @@
                 font-size: 26px;
             }
 
-            .schedule-para-img {
+            .schedule-icon-img {
                 width: 70px;
                 max-width: 28vw;
             }
@@ -955,11 +957,16 @@
             <p class="section-subtitle">26 июня 2026</p>
 
             <div class="schedule-big">
-                <span class="schedule-meet-row">
+                <span class="schedule-row">
                     <span class="schedule-item-text" id="item-meet">Встреча гостей</span>
-                    <img src="PARA3.png" alt="Гости" class="schedule-para-img">
+                    <img src="PARA3.png" alt="Гости" class="schedule-icon-img">
                 </span>
-                <span class="schedule-item-text" id="item-ceremony">Церемония</span>
+
+                <span class="schedule-row" id="item-ceremony">
+                    <span class="schedule-item-text">Церемония</span>
+                    <img src="ceremonia.png" alt="Церемония" class="schedule-icon-img">
+                </span>
+
                 <span class="schedule-item-text" id="item-feast">Банкет</span>
                 <span class="schedule-item-text" id="item-dance">Танцы</span>
             </div>
