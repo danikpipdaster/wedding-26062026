@@ -26,8 +26,20 @@
             color: #ffffff;
             text-align: center;
             overflow-x: hidden;
+            position: relative;
         }
-
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 0;
+            background-image:
+                radial-gradient(ellipse at 20% 10%, rgba(200,180,160,0.12) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 30%, rgba(180,160,140,0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 70%, rgba(190,170,150,0.10) 0%, transparent 50%),
+                radial-gradient(ellipse at 10% 80%, rgba(200,180,160,0.06) 0%, transparent 50%);
+            background-size: 100% 100%;
+        }
         .decor-branch-left, .decor-branch-right {
             position: fixed; pointer-events: none; z-index: 0;
             opacity: 0.06; font-size: 280px; color: #8a9a7b; font-family: serif; line-height: 1;
@@ -106,37 +118,34 @@
             opacity: 0.6;
         }
 
-        /* ОБЩИЙ ФОН ДЛЯ БЛОКОВ 2–8 */
         #invitation {
             position: relative;
             z-index: 1;
-            background: url('seryzadnik.jpg') center/cover no-repeat;
-            background-color: #5a5a5a;   /* запасной цвет */
-            background-attachment: scroll;
+            background: transparent;
             padding-top: 0;
             padding-bottom: 30px;
-            width: 100vw;                /* растягиваем на всю ширину экрана */
-            left: 50%;
-            transform: translateX(-50%);
-            box-sizing: border-box;
         }
 
-        /* Все секции внутри – прозрачные, без собственного фона */
+        /* Все секции (блоки 2–8) с растянутым по бокам фоном seryzadnik.jpg */
         .section {
             position: relative;
             padding: 70px 20px;
+            overflow: hidden;
             color: #ffffff;
-            background: transparent;     /* никакого фона */
         }
-        /* Убираем любые возможные псевдоэлементы */
-        .section::before,
-        .section::after {
-            display: none;
-        }
-
-        /* Первый блок вплотную к заставке */
-        #guest-section {
-            padding-top: 0;
+        .section::before {
+            content: '';
+            position: absolute;
+            top: -30px;
+            left: -150px;   /* расширено для покрытия всей ширины */
+            right: -150px;
+            bottom: -30px;
+            background: url('seryzadnik.jpg') center/cover no-repeat;
+            background-color: #5a5a5a;
+            background-attachment: scroll;
+            z-index: -1;
+            mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
         }
 
         .section-title {
@@ -300,13 +309,12 @@
 
         /* Мобильная версия */
         @media (max-width: 768px) {
-            #invitation {
-                width: 100vw;
-                left: 50%;
-                transform: translateX(-50%);
-            }
             .section {
                 padding: 50px 0;
+            }
+            .section::before {
+                top: -20px; left: -30px; right: -30px; bottom: -20px;
+                background-attachment: scroll;
             }
             .container { padding: 0 15px; }
             .section-title { font-size: 48px; }
@@ -383,11 +391,11 @@
         <a href="#invitation" class="scroll-arrow" aria-label="К приглашению">↓</a>
     </div>
 
-    <!-- БЛОКИ 2–8 с общим фоном через #invitation -->
+    <!-- БЛОКИ 2–8 с растянутым по бокам фоном -->
     <div id="invitation">
         <div class="container">
-            <!-- БЛОК 2 — ГОСТИ + ФОТО (прижат к заставке) -->
-            <div class="section fade-in" id="guest-section">
+            <!-- БЛОК 2 — ГОСТИ + ФОТО -->
+            <div class="section fade-in" style="padding-top: 0;">
                 <h2 class="section-title" id="guest-greeting">Дорогие гости!</h2>
                 <p class="welcome-text" id="guest-message">
                     С огромной радостью и трепетом в сердце<br>
