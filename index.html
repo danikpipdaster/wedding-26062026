@@ -246,12 +246,11 @@
 
         .content-bg {
             position: relative;
+            background-color: #faf7f4;
             background-image: linear-gradient(rgba(250,247,244,0.22), rgba(250,247,244,0.22)), url('belyzadnik.jpg');
             background-position: center top;
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-color: #faf7f4;
+            background-size: 100% auto;
+            background-repeat: repeat-y;
         }
 
         .section {
@@ -637,10 +636,6 @@
         }
 
         @media (max-width: 768px) {
-            .content-bg {
-                background-attachment: scroll;
-            }
-
             .section {
                 padding: 50px 0;
             }
@@ -867,7 +862,10 @@
         <a href="#invitation-start" class="scroll-arrow" aria-label="К приглашению">↓</a>
     </div>
 
-    <div id="invitation-start"></div
+    <div id="invitation-start"></div>
+
+    <main class="content-bg">
+        <div class="section fade-in">
         <div class="section-inner">
             <h2 class="section-title" id="guest-greeting">Дорогие гости!</h2>
             <p class="welcome-text" id="guest-message">
@@ -1065,6 +1063,8 @@
             </div>
         </div>
     </div>
+
+    </main>
 
     <script>
         (function() {
