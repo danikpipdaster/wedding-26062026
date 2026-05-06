@@ -9,7 +9,7 @@
     <link rel="preload" as="image" href="photo3.jpg">
     <link rel="preload" as="image" href="photo4.jpg">
     <link rel="preload" as="image" href="seryzadnik.jpg">
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
     <style>
         @font-face {
             font-family: 'French Kiss Script';
@@ -107,13 +107,12 @@
             opacity: 0.7;
         }
 
-        /* ========== БЛОКИ 2–8: раздельные фоны, но с fixed, чтобы не было видно стыков ========== */
+        /* ========== БЛОКИ 2–8: раздельные фоны с fixed (стыков не видно) ========== */
         .section {
             position: relative;
             width: 100%;
-            /* ФИКСИРОВАННЫЙ фон: изображение не двигается при прокрутке, стыки исчезают */
             background: url('seryzadnik.jpg') center/cover fixed no-repeat;
-            background-color: #8a7a6a; /* резерв */
+            background-color: #8a7a6a;
             padding: 70px 0;
             margin: 0;
         }
@@ -190,43 +189,101 @@
         }
         .flip-card.front img { box-shadow: 0 26px 58px rgba(0,0,0,0.4); }
         
-        .places { display: flex; justify-content: center; gap: 35px; flex-wrap: wrap; }
-        .place-card {
-            width: 380px;
-            background: rgba(30, 25, 20, 0.75);
-            backdrop-filter: blur(6px);
+        /* НОВЫЙ ДИЗАЙН ДЛЯ ЛОКАЦИЙ (вставлен по вашему коду) */
+        .locations-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            align-items: center;
+            justify-content: center;
+        }
+        .location-inner {
+            background: #ffffff;
             border-radius: 24px;
-            overflow: hidden;
-            box-shadow: 0 12px 35px rgba(0,0,0,0.3);
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-            color: #ffffff;
-            border: 1px solid rgba(255,255,200,0.2);
+            padding: 40px 20px;
+            max-width: 500px;
+            width: 100%;
+            margin: 0 auto;
+            color: #333;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.2);
         }
-        .place-card:hover { transform: translateY(-4px); box-shadow: 0 20px 45px rgba(0,0,0,0.4); }
-        .place-card img { width: 100%; height: 230px; object-fit: cover; }
-        .place-info {
-            font-family: 'Cormorant Garamond', serif;
-            padding: 24px 22px 28px;
-            font-size: 22px;
-            line-height: 1.6;
-            color: #ffffff;
+        .location-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 40px;
         }
-        .place-info strong {
-            display: block;
-            font-size: 26px;
-            margin-bottom: 6px;
+        .location-header .line {
+            flex-grow: 1;
+            height: 1px;
+            background-color: #333;
+            max-width: 80px;
+        }
+        .location-title {
+            font-family: 'French Kiss Script', 'Great Vibes', cursive;
+            font-size: 52px;
+            font-weight: normal;
+            margin: 0 15px;
+            color: #333;
+            line-height: 1;
+        }
+        .event-block {
+            margin-bottom: 30px;
+        }
+        .event-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        .event-place,
+        .event-address,
+        .event-time {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            font-size: 16px;
+            line-height: 1.5;
+            color: #111;
+        }
+        .event-place {
             font-weight: 500;
-            color: #ffefdf;
         }
-        .map-button {
-            display: inline-block; margin-top: 14px; padding: 12px 28px; background: #ffffff;
-            color: #3a2e28; border-radius: 25px; text-decoration: none;
-            font-family: 'Montserrat', sans-serif; font-size: 14px;
-            letter-spacing: 2px; text-transform: uppercase;
-            transition: all 0.3s ease; font-weight: 500;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        .map-wrapper {
+            margin-top: 20px;
+            border: 1px solid #333;
+            padding: 4px;
+            background: #fff;
+            border-radius: 4px;
         }
-        .map-button:hover { background: #f0e0d0; }
+        .map-wrapper iframe {
+            width: 100%;
+            height: 220px;
+            border: 1px solid #333;
+            display: block;
+            filter: grayscale(100%) opacity(0.8);
+            transition: filter 0.4s ease;
+        }
+        .map-wrapper iframe:hover {
+            filter: grayscale(0%) opacity(1);
+        }
+        .heart-divider {
+            font-size: 20px;
+            color: #333;
+            margin: 30px 0;
+            animation: heartBeat 2s infinite;
+        }
+        @keyframes heartBeat { 0% { transform: scale(1); } 25% { transform: scale(1.15); } 50% { transform: scale(1); } 75% { transform: scale(1.1); } 100% { transform: scale(1); } }
+
+        @media (max-width: 768px) {
+            .location-inner { padding: 30px 15px; }
+            .location-title { font-size: 42px; }
+            .event-subtitle { font-size: 12px; }
+            .event-place, .event-address, .event-time { font-size: 14px; }
+            .map-wrapper iframe { height: 180px; }
+        }
 
         .schedule-big {
             font-family: 'Cormorant Garamond', serif;
@@ -283,10 +340,9 @@
         .final-text .heart {
             margin-top: 16px;
             font-size: 36px;
-            animation: heartBeat 1.5s infinite;
+            animation: heartBeat 2s infinite;
             display: inline-block;
         }
-        @keyframes heartBeat { 0% { transform: scale(1); } 25% { transform: scale(1.15); } 50% { transform: scale(1); } 75% { transform: scale(1.1); } 100% { transform: scale(1); } }
 
         .fade-in { opacity: 0; transform: translateY(25px); transition: opacity 1s ease, transform 1s ease; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
@@ -299,9 +355,6 @@
             .welcome-text { font-size: 18px; }
             .photo-hint { font-size: 14px; }
             .schedule-big { font-size: 30px; }
-            .place-info { font-size: 18px; }
-            .place-info strong { font-size: 22px; }
-            .map-button { font-size: 12px; padding: 10px 22px; }
             .glass-box { font-size: 18px; padding: 30px 25px; }
             .final-text { font-size: 22px; }
             .photo-collage { width: 320px; height: 440px; }
@@ -315,7 +368,6 @@
             .handwritten-signature { font-size: 24px; }
             .date { font-size: 34px; letter-spacing: 4px; }
             .splash { padding: 20px 15px; }
-            .place-card { width: 100%; max-width: 380px; }
             .coin { display: none !important; }
             .decor-branch-left, .decor-branch-right { font-size: 160px; }
             .dresscode-palette { gap: 16px; }
@@ -359,7 +411,7 @@
 
     <div id="invitation-start"></div>
 
-    <!-- Блоки 2–8 с раздельным фоном, но fixed убирает стыки -->
+    <!-- БЛОК 2: Приветствие -->
     <div class="section fade-in">
         <div class="section-inner">
             <h2 class="section-title" id="guest-greeting">Дорогие гости!</h2>
@@ -372,6 +424,7 @@
         </div>
     </div>
 
+    <!-- БЛОК 3: Фото-коллаж -->
     <div class="section fade-in">
         <div class="section-inner">
             <div class="photo-hint">Нажми на фото, чтобы перевернуть ✨</div>
@@ -393,23 +446,54 @@
         </div>
     </div>
 
+    <!-- БЛОК 4: МЕСТА ПРОВЕДЕНИЯ (НОВЫЙ ДИЗАЙН) -->
     <div class="section fade-in">
         <div class="section-inner">
             <h2 class="section-title">Места проведения</h2>
             <p class="section-subtitle">где это случится</p>
-            <div class="places" id="places-container">
-                <div class="place-card" id="place-zags">
-                    <img src="zags.jpg" alt="ЗАГС">
-                    <div class="place-info">
-                        <strong>Церемония</strong> г. Надым<br>Парковый пр., 4<br>
-                        <a class="map-button" href="https://maps.google.com/?q=Надым+Парковый+4" target="_blank">Открыть карту</a>
+            <div class="locations-wrapper" id="places-container">
+                <!-- Локация 1: ЗАГС -->
+                <div class="location-inner" id="place-zags">
+                    <div class="location-header">
+                        <div class="line"></div>
+                        <div class="location-title">ЗАГС</div>
+                        <div class="line"></div>
+                    </div>
+                    <div class="event-block">
+                        <div class="event-subtitle">Церемония регистрации</div>
+                        <div class="event-place">г. Надым, Парковый пр., 4</div>
+                        <div class="event-time">⏰ Начало в 14:00</div>
+                    </div>
+                    <div class="map-wrapper">
+                        <iframe 
+                            src="https://maps.google.com/maps?q=Надым+Парковый+4&output=embed"
+                            allowfullscreen="" 
+                            loading="lazy">
+                        </iframe>
                     </div>
                 </div>
-                <div class="place-card" id="place-nedoma">
-                    <img src="nedoma.jpg" alt="НеДома">
-                    <div class="place-info">
-                        <strong>НеДома</strong> Семейный лофт<br>г. Надым<br>13 проезд, строение 11<br>
-                        <a class="map-button" href="https://maps.google.com/?q=НеДома+Семейный+лофт+13+проезд+строение+11+Надым" target="_blank">Открыть карту</a>
+
+                <!-- Разделитель-сердечко, виден только если видны обе локации -->
+                <div class="heart-divider" id="places-divider">❦ ❦ ❦</div>
+
+                <!-- Локация 2: НеДома -->
+                <div class="location-inner" id="place-nedoma">
+                    <div class="location-header">
+                        <div class="line"></div>
+                        <div class="location-title">НеДома</div>
+                        <div class="line"></div>
+                    </div>
+                    <div class="event-block">
+                        <div class="event-subtitle">Семейный лофт</div>
+                        <div class="event-place">г. Надым, 13 проезд, строение 11</div>
+                        <div class="event-time">🍾 Банкет с 16:00</div>
+                    </div>
+                    <div class="map-wrapper">
+                        <iframe 
+                            src="https://maps.google.com/maps?q=НеДома+Семейный+лофт+13+проезд+строение+11+Надым&output=embed"
+                            allowfullscreen="" 
+                            loading="lazy">
+                        </iframe>
                     </div>
                 </div>
             </div>
@@ -417,6 +501,7 @@
         </div>
     </div>
 
+    <!-- БЛОК 5: Программа дня -->
     <div class="section fade-in">
         <div class="section-inner">
             <h2 class="section-title">Программа дня</h2>
@@ -431,6 +516,7 @@
         </div>
     </div>
 
+    <!-- БЛОК 6: Дресс-код -->
     <div class="section fade-in">
         <div class="section-inner">
             <h2 class="section-title">Дресс-код</h2>
@@ -451,6 +537,7 @@
         </div>
     </div>
 
+    <!-- БЛОК 7: Важно -->
     <div class="section fade-in">
         <div class="section-inner">
             <h2 class="section-title">Важно для гостей</h2>
@@ -464,6 +551,7 @@
         </div>
     </div>
 
+    <!-- БЛОК 8: Подарки + финал -->
     <div class="section fade-in">
         <div class="section-inner">
             <h2 class="section-title">Подарки</h2>
@@ -484,6 +572,7 @@
     <script>
         (function() {
             window.addEventListener('DOMContentLoaded', function() {
+                // Таймер
                 const timerEl = document.getElementById("timer");
                 if (timerEl) {
                     const weddingDate = new Date("June 26, 2026 00:00:00").getTime();
@@ -500,6 +589,7 @@
                     setInterval(updateTimer, 1000);
                 }
 
+                // царапание даты
                 const canvas = document.getElementById("scratch");
                 if (canvas) {
                     const ctx = canvas.getContext("2d");
@@ -526,6 +616,7 @@
                     }
                 }
 
+                // переворот фото
                 const card1 = document.getElementById("card1");
                 const card2 = document.getElementById("card2");
                 if (card1 && card2) {
@@ -549,6 +640,7 @@
                     card2.addEventListener("click", () => { if (card2 === activeCard) flipCard(card2); else bringToFront(card2); });
                 }
 
+                // появление при скролле
                 document.querySelectorAll('.fade-in').forEach(el => {
                     const observer = new IntersectionObserver((entries) => {
                         entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
@@ -556,6 +648,7 @@
                     observer.observe(el);
                 });
 
+                // параметры из URL: имена гостей
                 const urlParams = new URLSearchParams(window.location.search);
                 const namesParam = urlParams.get('names');
                 const guestGreeting = document.getElementById('guest-greeting');
@@ -575,19 +668,31 @@
                     }
                 }
 
+                // Параметры мест: скрытие ненужной локации и разделителя
                 const placesParam = urlParams.get('places');
-                if (placesParam) {
+                const zagsBlock = document.getElementById('place-zags');
+                const nedomaBlock = document.getElementById('place-nedoma');
+                const divider = document.getElementById('places-divider');
+                if (placesParam && zagsBlock && nedomaBlock) {
                     const wantedPlaces = placesParam.split(',').map(p => p.trim().toLowerCase());
-                    const zagsCard = document.getElementById('place-zags');
-                    const nedomaCard = document.getElementById('place-nedoma');
-                    if (zagsCard) zagsCard.style.display = wantedPlaces.includes('zags') ? '' : 'none';
-                    if (nedomaCard) nedomaCard.style.display = wantedPlaces.includes('nedoma') ? '' : 'none';
-                    const container = document.getElementById('places-container');
-                    if (container) {
-                        const visibleCards = Array.from(container.children).filter(card => card.style.display !== 'none');
-                        container.style.justifyContent = visibleCards.length === 1 ? 'center' : '';
+                    const showZags = wantedPlaces.includes('zags');
+                    const showNedoma = wantedPlaces.includes('nedoma');
+                    zagsBlock.style.display = showZags ? '' : 'none';
+                    nedomaBlock.style.display = showNedoma ? '' : 'none';
+                    if (divider) {
+                        divider.style.display = (showZags && showNedoma) ? '' : 'none';
+                    }
+                    // Центрирование, если осталась одна локация
+                    const wrapper = document.getElementById('places-container');
+                    if (wrapper) {
+                        const visibleCount = [showZags, showNedoma].filter(v => v).length;
+                        if (visibleCount === 1) {
+                            wrapper.style.alignItems = 'center';
+                        }
                     }
                 }
+
+                // Скрытие пункта "Церемония" в программе, если ЗАГС не выбран
                 const ceremonyItem = document.getElementById('item-ceremony');
                 if (ceremonyItem && placesParam) {
                     const wantedPlaces = placesParam.split(',').map(p => p.trim().toLowerCase());
