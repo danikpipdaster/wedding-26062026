@@ -13,11 +13,11 @@
     <link rel="preload" as="image" href="monetka.jpg">
     <link rel="preload" as="image" href="serdecko.jpg">
 
-    <link rel="preload" as="image" href="PARA.png?v=14">
-    <link rel="preload" as="image" href="PARA3.png?v=14">
-    <link rel="preload" as="image" href="ceremonia.png?v=14">
-    <link rel="preload" as="image" href="banket.png?v=14">
-    <link rel="preload" as="image" href="tancy.png?v=14">
+    <link rel="preload" as="image" href="PARA.png?v=15">
+    <link rel="preload" as="image" href="PARA3.png?v=15">
+    <link rel="preload" as="image" href="ceremonia.png?v=15">
+    <link rel="preload" as="image" href="banket.png?v=15">
+    <link rel="preload" as="image" href="tancy.png?v=15">
 
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
 
@@ -558,11 +558,11 @@
             color: var(--text-main);
             text-shadow: 0 1px 6px rgba(255,255,255,0.95);
             line-height: 1.5;
-            margin: 30px 0 10px;
+            margin: 36px 0 10px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: clamp(14px, 2.4vw, 20px);
+            gap: clamp(28px, 4vw, 42px);
         }
 
         .schedule-item-text.hidden,
@@ -574,26 +574,55 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: clamp(14px, 3vw, 22px);
-            min-height: 96px;
+            gap: clamp(16px, 3vw, 24px);
+            min-height: 120px;
         }
 
         .schedule-image-frame,
         .final-image-frame {
+            position: relative;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            background: var(--card-bg);
-            border-radius: 24px;
-            box-shadow: var(--shadow-soft);
-            border: 1px solid var(--card-border);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            background: #f8f4ef;
+            border: 10px solid #111111;
+            border-bottom-width: 16px;
+            border-radius: 6px;
+            box-shadow:
+                0 14px 26px rgba(0,0,0,0.24),
+                0 4px 10px rgba(0,0,0,0.16),
+                inset 0 0 0 1px rgba(255,255,255,0.35);
+        }
+
+        .schedule-image-frame::before,
+        .final-image-frame::before {
+            content: "";
+            position: absolute;
+            top: -18px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 18px;
+            background: rgba(70, 60, 55, 0.65);
+        }
+
+        .schedule-image-frame::after,
+        .final-image-frame::after {
+            content: "";
+            position: absolute;
+            top: -27px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            background: #2b2422;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.4);
         }
 
         .schedule-image-frame {
-            width: clamp(110px, 22vw, 145px);
-            min-height: clamp(95px, 20vw, 130px);
+            width: clamp(118px, 22vw, 152px);
+            min-height: clamp(104px, 20vw, 138px);
             padding: 12px;
         }
 
@@ -715,7 +744,7 @@
             align-items: center;
             justify-content: center;
             gap: clamp(22px, 5vw, 38px);
-            margin-top: 50px;
+            margin-top: 62px;
             flex-wrap: nowrap;
         }
 
@@ -745,10 +774,10 @@
         }
 
         .final-image-frame {
-            width: clamp(300px, 40vw, 455px);
+            width: clamp(310px, 40vw, 470px);
             max-width: 45vw;
-            padding: clamp(14px, 2vw, 22px);
-            border-radius: 28px;
+            padding: clamp(16px, 2vw, 24px);
+            border-radius: 8px;
         }
 
         .final-para-img {
@@ -796,18 +825,20 @@
 
             .final-row {
                 flex-direction: column;
-                gap: 18px;
-                margin-top: 40px;
+                gap: 32px;
+                margin-top: 50px;
             }
 
             .final-image-frame {
                 width: min(360px, 88vw);
                 max-width: 88vw;
+                padding: 14px;
             }
 
             .schedule-image-frame {
                 width: 112px;
-                min-height: 96px;
+                min-height: 98px;
+                padding: 10px;
             }
 
             .coin {
@@ -859,15 +890,31 @@
                 max-width: 310px;
             }
 
+            .schedule-big {
+                gap: 34px;
+            }
+
+            .schedule-row {
+                min-height: 112px;
+                gap: 12px;
+            }
+
             .schedule-image-frame {
                 width: 104px;
-                min-height: 90px;
-                padding: 10px;
+                min-height: 92px;
+                padding: 9px;
+                border-width: 8px;
+                border-bottom-width: 13px;
             }
 
             .schedule-icon-img {
                 width: 74px;
                 max-width: 100%;
+            }
+
+            .final-image-frame {
+                border-width: 9px;
+                border-bottom-width: 15px;
             }
 
             .final-text p:last-of-type {
@@ -1036,28 +1083,28 @@
                     <span class="schedule-row">
                         <span class="schedule-item-text" id="item-meet">Встреча гостей</span>
                         <span class="schedule-image-frame">
-                            <img src="PARA3.png?v=14" alt="Гости" class="schedule-icon-img">
+                            <img src="PARA3.png?v=15" alt="Гости" class="schedule-icon-img">
                         </span>
                     </span>
 
                     <span class="schedule-row" id="item-ceremony">
                         <span class="schedule-item-text">Церемония</span>
                         <span class="schedule-image-frame">
-                            <img src="ceremonia.png?v=14" alt="Церемония" class="schedule-icon-img">
+                            <img src="ceremonia.png?v=15" alt="Церемония" class="schedule-icon-img">
                         </span>
                     </span>
 
                     <span class="schedule-row">
                         <span class="schedule-item-text" id="item-feast">Банкет</span>
                         <span class="schedule-image-frame">
-                            <img src="banket.png?v=14" alt="Банкет" class="schedule-icon-img">
+                            <img src="banket.png?v=15" alt="Банкет" class="schedule-icon-img">
                         </span>
                     </span>
 
                     <span class="schedule-row">
                         <span class="schedule-item-text" id="item-dance">Танцы</span>
                         <span class="schedule-image-frame">
-                            <img src="tancy.png?v=14" alt="Танцы" class="schedule-icon-img">
+                            <img src="tancy.png?v=15" alt="Танцы" class="schedule-icon-img">
                         </span>
                     </span>
                 </div>
@@ -1134,7 +1181,7 @@
                     </div>
 
                     <div class="final-image-frame">
-                        <img src="PARA.png?v=14" alt="Данил и Юлия" class="final-para-img">
+                        <img src="PARA.png?v=15" alt="Данил и Юлия" class="final-para-img">
                     </div>
                 </div>
             </div>
