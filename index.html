@@ -520,9 +520,18 @@
             height: auto;
             object-fit: contain;
             display: block;
-            filter: none;
+            opacity: 0.92;
+            background: transparent !important;
+        }
+
+        .transparent-img {
+            background: transparent !important;
             mix-blend-mode: multiply;
-            opacity: 0.88;
+            image-rendering: auto;
+        }
+
+        .transparent-img.fixed-transparent {
+            mix-blend-mode: normal;
         }
 
         .glass-box {
@@ -658,9 +667,8 @@
             height: auto;
             object-fit: contain;
             display: block;
-            filter: none;
-            mix-blend-mode: multiply;
-            opacity: 0.88;
+            opacity: 0.92;
+            background: transparent !important;
         }
 
         .fade-in {
@@ -1060,22 +1068,22 @@
                 <div class="schedule-big">
                     <span class="schedule-row">
                         <span class="schedule-item-text" id="item-meet">Встреча гостей</span>
-                        <img src="PARA3.png" alt="Гости" class="schedule-icon-img">
+                        <img src="PARA3.png" alt="Гости" class="schedule-icon-img transparent-img">
                     </span>
 
                     <span class="schedule-row" id="item-ceremony">
                         <span class="schedule-item-text">Церемония</span>
-                        <img src="ceremonia.png" alt="Церемония" class="schedule-icon-img">
+                        <img src="ceremonia.png" alt="Церемония" class="schedule-icon-img transparent-img">
                     </span>
 
                     <span class="schedule-row">
                         <span class="schedule-item-text" id="item-feast">Банкет</span>
-                        <img src="banket.png" alt="Банкет" class="schedule-icon-img">
+                        <img src="banket.png" alt="Банкет" class="schedule-icon-img transparent-img">
                     </span>
 
                     <span class="schedule-row">
                         <span class="schedule-item-text" id="item-dance">Танцы</span>
-                        <img src="tancy.png" alt="Танцы" class="schedule-icon-img">
+                        <img src="tancy.png" alt="Танцы" class="schedule-icon-img transparent-img">
                     </span>
                 </div>
 
@@ -1150,7 +1158,7 @@
                         <div class="heart">💛</div>
                     </div>
 
-                    <img src="PARA.png" alt="Данил и Юлия" class="final-para-img">
+                    <img src="PARA.png" alt="Данил и Юлия" class="final-para-img transparent-img">
                 </div>
             </div>
         </div>
@@ -1159,6 +1167,67 @@
     <script>
         (function() {
             window.addEventListener('DOMContentLoaded', function() {
+
+                function removeWhiteBackgroundFromImages() {
+                    const images = document.querySelectorAll('img.transparent-img');
+
+                    images.forEach(function(img) {
+                        const originalSrc = img.getAttribute('src');
+
+                        if (!originalSrc || img.dataset.transparentDone === 'true') {
+                            return;
+                        }
+
+                        const tempImg = new Image();
+
+                        tempImg.onload = function() {
+                            const canvas = document.createElement('canvas');
+                            const width = tempImg.naturalWidth || tempImg.width;
+                            const height = tempImg.naturalHeight || tempImg.height;
+
+                            canvas.width = width;
+                            canvas.height = height;
+
+                            const ctx = canvas.getContext('2d', { willReadFrequently: true });
+                            ctx.drawImage(tempImg, 0, 0, width, height);
+
+                            try {
+                                const imageData = ctx.getImageData(0, 0, width, height);
+                                const data = imageData.data;
+
+                                for (let i = 0; i < data.length; i += 4) {
+                                    const r = data[i];
+                                    const g = data[i + 1];
+                                    const b = data[i + 2];
+                                    const a = data[i + 3];
+
+                                    const max = Math.max(r, g, b);
+                                    const min = Math.min(r, g, b);
+
+                                    if (r > 245 && g > 245 && b > 245) {
+                                        data[i + 3] = 0;
+                                    } else if (min > 225 && max - min < 18) {
+                                        const fade = Math.max(0, Math.min(1, (245 - min) / 20));
+                                        data[i + 3] = Math.round(a * fade);
+                                    }
+                                }
+
+                                ctx.putImageData(imageData, 0, 0);
+
+                                img.src = canvas.toDataURL('image/png');
+                                img.classList.add('fixed-transparent');
+                                img.dataset.transparentDone = 'true';
+                            } catch (error) {
+                                img.style.mixBlendMode = 'multiply';
+                            }
+                        };
+
+                        tempImg.src = originalSrc;
+                    });
+                }
+
+                removeWhiteBackgroundFromImages();
+
                 const timerEl = document.getElementById("timer");
 
                 if (timerEl) {
