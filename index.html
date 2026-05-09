@@ -13,11 +13,11 @@
     <link rel="preload" as="image" href="monetka.jpg">
     <link rel="preload" as="image" href="serdecko.jpg">
 
-    <link rel="preload" as="image" href="PARA.png?v=12">
-    <link rel="preload" as="image" href="PARA3.png?v=12">
-    <link rel="preload" as="image" href="ceremonia.png?v=12">
-    <link rel="preload" as="image" href="banket.png?v=12">
-    <link rel="preload" as="image" href="tancy.png?v=12">
+    <link rel="preload" as="image" href="PARA.png?v=13">
+    <link rel="preload" as="image" href="PARA3.png?v=13">
+    <link rel="preload" as="image" href="ceremonia.png?v=13">
+    <link rel="preload" as="image" href="banket.png?v=13">
+    <link rel="preload" as="image" href="tancy.png?v=13">
 
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
 
@@ -31,17 +31,17 @@
         }
 
         :root {
-            --bg-main: #faf7f4;
-            --bg-light: #fffaf6;
-            --bg-warm: #f3ebe4;
+            --bg-main: #f1e2d8;
+            --bg-light: #f7ebe3;
+            --bg-warm: #ead7cb;
             --text-main: #4a3f3f;
             --text-soft: #7a675d;
             --accent: #b8977e;
             --accent-soft: #e8cec4;
             --green-soft: #c8d5c0;
-            --card-bg: rgba(255, 255, 255, 0.78);
-            --card-border: rgba(90, 70, 60, 0.14);
-            --shadow-soft: 0 12px 35px rgba(90, 70, 60, 0.12);
+            --card-bg: rgba(255, 255, 255, 0.72);
+            --card-border: rgba(90, 70, 60, 0.16);
+            --shadow-soft: 0 12px 35px rgba(90, 70, 60, 0.14);
             --shadow-photo: 0 24px 55px rgba(0, 0, 0, 0.28);
         }
 
@@ -59,9 +59,10 @@
         body {
             min-height: 100vh;
             background:
-                radial-gradient(circle at top left, rgba(232, 206, 196, 0.28), transparent 34%),
-                radial-gradient(circle at bottom right, rgba(200, 213, 192, 0.22), transparent 36%),
-                linear-gradient(180deg, var(--bg-light) 0%, var(--bg-main) 45%, var(--bg-warm) 100%);
+                radial-gradient(circle at 12% 10%, rgba(232, 206, 196, 0.75), transparent 32%),
+                radial-gradient(circle at 88% 18%, rgba(200, 213, 192, 0.55), transparent 30%),
+                radial-gradient(circle at 18% 82%, rgba(218, 207, 224, 0.45), transparent 34%),
+                linear-gradient(180deg, #f4e8df 0%, #efe1d7 45%, #ead8cc 100%);
             font-family: 'Cormorant Garamond', serif;
             color: var(--text-main);
             text-align: center;
@@ -75,11 +76,18 @@
             inset: 0;
             pointer-events: none;
             z-index: 0;
-            opacity: 0.24;
-            background-image:
-                radial-gradient(circle at 15% 20%, rgba(255,255,255,0.7) 0 1px, transparent 1px),
-                radial-gradient(circle at 78% 35%, rgba(255,255,255,0.55) 0 1px, transparent 1px);
-            background-size: 42px 42px, 58px 58px;
+            opacity: 0.42;
+            background:
+                repeating-linear-gradient(
+                    45deg,
+                    rgba(255,255,255,0.16) 0px,
+                    rgba(255,255,255,0.16) 1px,
+                    transparent 1px,
+                    transparent 8px
+                ),
+                radial-gradient(circle at 20% 30%, rgba(255,255,255,0.35) 0 2px, transparent 2px),
+                radial-gradient(circle at 80% 70%, rgba(255,255,255,0.25) 0 2px, transparent 2px);
+            background-size: auto, 46px 46px, 62px 62px;
         }
 
         .decor-branch-left,
@@ -128,7 +136,7 @@
             inset: auto 0 0;
             height: 130px;
             pointer-events: none;
-            background: linear-gradient(to bottom, transparent, var(--bg-light));
+            background: linear-gradient(to bottom, transparent, #f7ebe3);
         }
 
         .initials-block {
@@ -297,10 +305,11 @@
             position: relative;
             z-index: 2;
             background:
-                radial-gradient(circle at 10% 5%, rgba(232, 206, 196, 0.30), transparent 30%),
-                radial-gradient(circle at 88% 24%, rgba(200, 213, 192, 0.24), transparent 30%),
-                radial-gradient(circle at 20% 80%, rgba(218, 207, 224, 0.18), transparent 32%),
-                linear-gradient(180deg, #fffaf6 0%, #faf7f4 48%, #f4ece5 100%);
+                radial-gradient(circle at 8% 8%, rgba(232, 206, 196, 0.65), transparent 32%),
+                radial-gradient(circle at 92% 22%, rgba(200, 213, 192, 0.50), transparent 30%),
+                radial-gradient(circle at 16% 76%, rgba(218, 207, 224, 0.40), transparent 34%),
+                radial-gradient(circle at 85% 88%, rgba(205, 223, 232, 0.38), transparent 30%),
+                linear-gradient(180deg, #f7ebe3 0%, #f1e2d8 45%, #ead7cb 100%);
         }
 
         .section {
@@ -990,22 +999,22 @@
                 <div class="schedule-big">
                     <span class="schedule-row">
                         <span class="schedule-item-text" id="item-meet">Встреча гостей</span>
-                        <img src="PARA3.png?v=12" alt="Гости" class="schedule-icon-img">
+                        <img src="PARA3.png?v=13" alt="Гости" class="schedule-icon-img">
                     </span>
 
                     <span class="schedule-row" id="item-ceremony">
                         <span class="schedule-item-text">Церемония</span>
-                        <img src="ceremonia.png?v=12" alt="Церемония" class="schedule-icon-img">
+                        <img src="ceremonia.png?v=13" alt="Церемония" class="schedule-icon-img">
                     </span>
 
                     <span class="schedule-row">
                         <span class="schedule-item-text" id="item-feast">Банкет</span>
-                        <img src="banket.png?v=12" alt="Банкет" class="schedule-icon-img">
+                        <img src="banket.png?v=13" alt="Банкет" class="schedule-icon-img">
                     </span>
 
                     <span class="schedule-row">
                         <span class="schedule-item-text" id="item-dance">Танцы</span>
-                        <img src="tancy.png?v=12" alt="Танцы" class="schedule-icon-img">
+                        <img src="tancy.png?v=13" alt="Танцы" class="schedule-icon-img">
                     </span>
                 </div>
 
@@ -1076,15 +1085,11 @@
                 <div class="final-row">
                     <div class="final-text">
                         <p>С любовью и нетерпением ждём вас 🤍</p>
-
-                <div class="final-row">
-                    <div class="final-text">
-                       >
                         <p style="font-size:20px;margin-top:8px;opacity:0.8;">Данил & Юлия</p>
                         <div class="heart">💛</div>
                     </div>
 
-                    <img src="PARA.png?v=12" alt="Данил и Юлия" class="final-para-img">
+                    <img src="PARA.png?v=13" alt="Данил и Юлия" class="final-para-img">
                 </div>
             </div>
         </div>
