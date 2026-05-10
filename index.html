@@ -70,6 +70,26 @@
             position: relative;
         }
 
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.42;
+            background:
+                repeating-linear-gradient(
+                    45deg,
+                    rgba(255,255,255,0.16) 0px,
+                    rgba(255,255,255,0.16) 1px,
+                    transparent 1px,
+                    transparent 8px
+                ),
+                radial-gradient(circle at 20% 30%, rgba(255,255,255,0.35) 0 2px, transparent 2px),
+                radial-gradient(circle at 80% 70%, rgba(255,255,255,0.25) 0 2px, transparent 2px);
+            background-size: auto, 46px 46px, 62px 62px;
+        }
+
         .splash {
             position: relative;
             z-index: 2;
@@ -106,7 +126,7 @@
         }
 
         .heart-img {
-            height: 14px; /* Размер уменьшен */
+            height: 14px; /* Уменьшили размер сердечка */
             width: auto;
             vertical-align: middle;
             margin: 0 4px;
@@ -202,14 +222,14 @@
             align-items: center;
             justify-content: center;
             background: #f8f4ef;
-            border: 4px solid #aaa; /* Сделаем рамку тоньше и светлее */
+            border: 4px solid #aaa; /* Сделали рамки тоньше */
             border-radius: 6px;
             box-shadow:
                 0 6px 12px rgba(0,0,0,0.12), /* Легкая тень */
                 inset 0 0 0 1px rgba(255,255,255,0.25); /* Мягкая внутренняя тень */
         }
 
-        /* Убираем веревки и гвозди */
+        /* Убрали веревки и гвозди */
         .schedule-image-frame::before,
         .final-image-frame::before,
         .schedule-image-frame::after,
@@ -224,10 +244,6 @@
             margin: 24px auto 0;
             border-radius: 1px;
             opacity: 0.78;
-        }
-
-        .section {
-            padding: 20px 0;
         }
     </style>
 </head>
@@ -305,64 +321,7 @@
             </div>
         </div>
 
-        <div class="section">
-            <div class="section-inner">
-                <h2 class="section-title">Места проведения</h2>
-                <p class="section-subtitle">где это случится</p>
-
-                <div class="locations-wrapper" id="places-container">
-                    <div class="location-inner" id="place-zags">
-                        <div class="location-header">
-                            <div class="line"></div>
-                            <div class="location-title">ЗАГС</div>
-                            <div class="line"></div>
-                        </div>
-
-                        <div class="event-block">
-                            <div class="event-subtitle">Церемония регистрации</div>
-                            <div class="event-place">г. Надым, Парковый пр., 4</div>
-                            <div class="event-time">⏰ Начало в 14:00</div>
-                        </div>
-
-                        <div class="map-wrapper">
-                            <iframe
-                                title="Карта ЗАГСа в Надыме"
-                                src="https://maps.google.com/maps?q=Надым+Парковый+4&output=embed"
-                                allowfullscreen
-                                loading="lazy">
-                            </iframe>
-                        </div>
-                    </div>
-
-                    <div class="location-inner" id="place-nedoma">
-                        <div class="location-header">
-                            <div class="line"></div>
-                            <div class="location-title">НеДома</div>
-                            <div class="line"></div>
-                        </div>
-
-                        <div class="event-block">
-                            <div class="event-subtitle">Семейный лофт</div>
-                            <div class="event-place">г. Надым, 13 проезд, строение 11</div>
-                            <div class="event-time">🍾 Банкет с 16:00</div>
-                        </div>
-
-                        <div class="map-wrapper">
-                            <iframe
-                                title="Карта семейного лофта НеДома в Надыме"
-                                src="https://maps.google.com/maps?q=НеДома+Семейный+лофт+13+проезд+строение+11+Надым&output=embed"
-                                allowfullscreen
-                                loading="lazy">
-                            </iframe>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="divider"></div>
-            </div>
-        </div>
-
-        <!-- Программа дня, Дресс-код и Подарки будут здесь -->
+        <!-- Здесь будут другие блоки (места проведения, программа дня и др.) -->
     </main>
 </body>
 </html>
