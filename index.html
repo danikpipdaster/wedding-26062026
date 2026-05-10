@@ -222,14 +222,14 @@
             align-items: center;
             justify-content: center;
             background: #f8f4ef;
-            border: 4px solid #aaa; /* Сделали рамки тоньше */
+            border: 4px solid #aaa; /* Сделаем рамку тоньше и светлее */
             border-radius: 6px;
             box-shadow:
                 0 6px 12px rgba(0,0,0,0.12), /* Легкая тень */
                 inset 0 0 0 1px rgba(255,255,255,0.25); /* Мягкая внутренняя тень */
         }
 
-        /* Убрали веревки и гвозди */
+        /* Убираем веревки и гвозди */
         .schedule-image-frame::before,
         .final-image-frame::before,
         .schedule-image-frame::after,
@@ -321,7 +321,103 @@
             </div>
         </div>
 
-        <!-- Здесь будут другие блоки (места проведения, программа дня и др.) -->
+        <div class="section">
+            <div class="section-inner">
+                <h2 class="section-title">Места проведения</h2>
+                <p class="section-subtitle">где это случится</p>
+
+                <div class="locations-wrapper" id="places-container">
+                    <div class="location-inner" id="place-zags">
+                        <div class="location-header">
+                            <div class="line"></div>
+                            <div class="location-title">ЗАГС</div>
+                            <div class="line"></div>
+                        </div>
+
+                        <div class="event-block">
+                            <div class="event-subtitle">Церемония регистрации</div>
+                            <div class="event-place">г. Надым, Парковый пр., 4</div>
+                            <div class="event-time">⏰ Начало в 14:00</div>
+                        </div>
+
+                        <div class="map-wrapper">
+                            <iframe
+                                title="Карта ЗАГСа в Надыме"
+                                src="https://maps.google.com/maps?q=Надым+Парковый+4&output=embed"
+                                allowfullscreen
+                                loading="lazy">
+                            </iframe>
+                        </div>
+                    </div>
+
+                    <div class="location-inner" id="place-nedoma">
+                        <div class="location-header">
+                            <div class="line"></div>
+                            <div class="location-title">НеДома</div>
+                            <div class="line"></div>
+                        </div>
+
+                        <div class="event-block">
+                            <div class="event-subtitle">Семейный лофт</div>
+                            <div class="event-place">г. Надым, 13 проезд, строение 11</div>
+                            <div class="event-time">🍾 Банкет с 16:00</div>
+                        </div>
+
+                        <div class="map-wrapper">
+                            <iframe
+                                title="Карта семейного лофта НеДома в Надыме"
+                                src="https://maps.google.com/maps?q=НеДома+Семейный+лофт+13+проезд+строение+11+Надым&output=embed"
+                                allowfullscreen
+                                loading="lazy">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="divider"></div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-inner">
+                <h2 class="section-title">Программа дня</h2>
+                <p class="section-subtitle">26 июня 2026</p>
+
+                <div class="schedule-big">
+                    <span class="schedule-row">
+                        <span class="schedule-item-text" id="item-meet">Встреча гостей</span>
+                        <span class="schedule-image-frame">
+                            <img src="PARA3.png?v=15" alt="Гости" class="schedule-icon-img">
+                        </span>
+                    </span>
+
+                    <span class="schedule-row" id="item-ceremony">
+                        <span class="schedule-item-text">Церемония</span>
+                        <span class="schedule-image-frame">
+                            <img src="ceremonia.png?v=15" alt="Церемония" class="schedule-icon-img">
+                        </span>
+                    </span>
+
+                    <span class="schedule-row">
+                        <span class="schedule-item-text" id="item-feast">Банкет</span>
+                        <span class="schedule-image-frame">
+                            <img src="banket.png?v=15" alt="Банкет" class="schedule-icon-img">
+                        </span>
+                    </span>
+
+                    <span class="schedule-row">
+                        <span class="schedule-item-text" id="item-dance">Танцы</span>
+                        <span class="schedule-image-frame">
+                            <img src="tancy.png?v=15" alt="Танцы" class="schedule-icon-img">
+                        </span>
+                    </span>
+                </div>
+
+                <div class="divider"></div>
+            </div>
+        </div>
+
+        <!-- Другие блоки будут добавлены ниже -->
     </main>
 </body>
 </html>
