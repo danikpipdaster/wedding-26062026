@@ -225,6 +225,10 @@
             border-radius: 1px;
             opacity: 0.78;
         }
+
+        .section {
+            padding: 20px 0;
+        }
     </style>
 </head>
 
@@ -300,6 +304,65 @@
                 <div class="divider"></div>
             </div>
         </div>
+
+        <div class="section">
+            <div class="section-inner">
+                <h2 class="section-title">Места проведения</h2>
+                <p class="section-subtitle">где это случится</p>
+
+                <div class="locations-wrapper" id="places-container">
+                    <div class="location-inner" id="place-zags">
+                        <div class="location-header">
+                            <div class="line"></div>
+                            <div class="location-title">ЗАГС</div>
+                            <div class="line"></div>
+                        </div>
+
+                        <div class="event-block">
+                            <div class="event-subtitle">Церемония регистрации</div>
+                            <div class="event-place">г. Надым, Парковый пр., 4</div>
+                            <div class="event-time">⏰ Начало в 14:00</div>
+                        </div>
+
+                        <div class="map-wrapper">
+                            <iframe
+                                title="Карта ЗАГСа в Надыме"
+                                src="https://maps.google.com/maps?q=Надым+Парковый+4&output=embed"
+                                allowfullscreen
+                                loading="lazy">
+                            </iframe>
+                        </div>
+                    </div>
+
+                    <div class="location-inner" id="place-nedoma">
+                        <div class="location-header">
+                            <div class="line"></div>
+                            <div class="location-title">НеДома</div>
+                            <div class="line"></div>
+                        </div>
+
+                        <div class="event-block">
+                            <div class="event-subtitle">Семейный лофт</div>
+                            <div class="event-place">г. Надым, 13 проезд, строение 11</div>
+                            <div class="event-time">🍾 Банкет с 16:00</div>
+                        </div>
+
+                        <div class="map-wrapper">
+                            <iframe
+                                title="Карта семейного лофта НеДома в Надыме"
+                                src="https://maps.google.com/maps?q=НеДома+Семейный+лофт+13+проезд+строение+11+Надым&output=embed"
+                                allowfullscreen
+                                loading="lazy">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="divider"></div>
+            </div>
+        </div>
+
+        <!-- Программа дня, Дресс-код и Подарки будут здесь -->
     </main>
 </body>
 </html>
