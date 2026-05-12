@@ -586,14 +586,13 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            background: transparent;
-            border: 2px solid #111111;
-            border-bottom-width: 3px;
-            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.18);
+            border: 1px solid rgba(74, 63, 63, 0.28);
+            border-radius: 16px;
             box-shadow:
-                0 14px 26px rgba(0,0,0,0.24),
-                0 4px 10px rgba(0,0,0,0.16),
-                inset 0 0 0 1px rgba(255,255,255,0.35);
+                0 10px 22px rgba(90, 70, 60, 0.12),
+                inset 0 0 0 1px rgba(255,255,255,0.38);
+            overflow: hidden;
         }
 
         .schedule-image-frame::before,
@@ -607,7 +606,7 @@
         .schedule-image-frame {
             width: clamp(118px, 22vw, 152px);
             min-height: clamp(104px, 20vw, 138px);
-            padding: 12px;
+            padding: 8px;
         }
 
         .schedule-icon-img {
@@ -760,8 +759,8 @@
         .final-image-frame {
             width: clamp(310px, 40vw, 470px);
             max-width: 45vw;
-            padding: clamp(16px, 2vw, 24px);
-            border-radius: 8px;
+            padding: clamp(8px, 1.4vw, 14px);
+            border-radius: 18px;
         }
 
         .final-para-img {
@@ -816,13 +815,13 @@
             .final-image-frame {
                 width: min(360px, 88vw);
                 max-width: 88vw;
-                padding: 14px;
+                padding: 8px;
             }
 
             .schedule-image-frame {
                 width: 112px;
                 min-height: 98px;
-                padding: 10px;
+                padding: 7px;
             }
 
             .coin {
@@ -886,9 +885,7 @@
             .schedule-image-frame {
                 width: 104px;
                 min-height: 92px;
-                padding: 9px;
-                border-width: 2px;
-                border-bottom-width: 3px;
+                padding: 6px;
             }
 
             .schedule-icon-img {
@@ -897,8 +894,7 @@
             }
 
             .final-image-frame {
-                border-width: 2px;
-                border-bottom-width: 3px;
+                padding: 7px;
             }
 
             .final-text p:last-of-type {
