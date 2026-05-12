@@ -586,7 +586,7 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            background: #f8f4ef;
+            background: transparent;
             border: 2px solid #111111;
             border-bottom-width: 3px;
             border-radius: 6px;
@@ -616,8 +616,8 @@
             height: auto;
             object-fit: contain;
             display: block;
-            filter: none;
-            mix-blend-mode: normal;
+            filter: contrast(1.03) saturate(1.02);
+            mix-blend-mode: multiply;
             opacity: 1;
             background: transparent;
         }
@@ -769,8 +769,8 @@
             height: auto;
             object-fit: contain;
             display: block;
-            filter: none;
-            mix-blend-mode: normal;
+            filter: contrast(1.03) saturate(1.02);
+            mix-blend-mode: multiply;
             opacity: 1;
             background: transparent;
         }
