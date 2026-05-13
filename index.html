@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 <html lang="ru"> 
@@ -1375,6 +1374,11 @@
                 const guestMessage = document.getElementById('guest-message');
 
                 const guestPresets = {
+                    'andrey': {
+                        names: ['Андрей'],
+                        gender: 'male'
+                    },
+
                     'irina-vladislav-ruslan': {
                         names: ['Ирина', 'Владислав', 'Руслан'],
                         messageHtml:
@@ -1470,6 +1474,67 @@
                     return names.length > 0 ? names.join(', ') + ' и ' + last : last;
                 }
 
+                function normalizeGender(gender) {
+                    gender = (gender || '').toLowerCase();
+
+                    if (['f', 'female', 'ж', 'женский'].includes(gender)) {
+                        return 'female';
+                    }
+
+                    if (['m', 'male', 'м', 'мужской'].includes(gender)) {
+                        return 'male';
+                    }
+
+                    return '';
+                }
+
+                function guessGenderByName(name) {
+                    const lowerName = (name || '').toLowerCase();
+
+                    const maleExceptions = ['никита', 'илья', 'данила', 'саша', 'женя', 'паша'];
+
+                    if (maleExceptions.includes(lowerName)) {
+                        return 'male';
+                    }
+
+                    if (lowerName.endsWith('а') || lowerName.endsWith('я')) {
+                        return 'female';
+                    }
+
+                    return 'male';
+                }
+
+                function getSingleGreeting(name, gender) {
+                    const finalGender = normalizeGender(gender) || normalizeGender(urlParams.get('gender')) || guessGenderByName(name);
+                    return finalGender === 'female' ? 'Дорогая' : 'Дорогой';
+                }
+
+                function buildSingleGuestMessage(name) {
+                    const safeName = escapeHtml(name);
+
+                    return (
+                        'Мы очень хотим, чтобы этот день<br>' +
+                        'был не просто красивым,<br>' +
+                        'а по-настоящему тёплым и живым.<br>' +
+                        'Поэтому приглашаем тебя, <strong>' + safeName + '</strong>, быть рядом —<br>' +
+                        'радоваться, смеяться, обниматься<br>' +
+                        'и праздновать вместе с нами ❤️'
+                    );
+                }
+
+                function buildMultipleGuestMessage(namesString) {
+                    const safeNamesString = escapeHtml(namesString);
+
+                    return (
+                        'Мы очень хотим, чтобы этот день<br>' +
+                        'был не просто красивым,<br>' +
+                        'а по-настоящему тёплым и живым.<br>' +
+                        'Поэтому приглашаем вас, <strong>' + safeNamesString + '</strong>, быть рядом —<br>' +
+                        'радоваться, смеяться, обниматься<br>' +
+                        'и праздновать вместе с нами ❤️'
+                    );
+                }
+
                 function setDefaultGuestText() {
                     if (!guestGreeting || !guestMessage) return;
 
@@ -1489,8 +1554,14 @@
                     const preset = guestPresets[presetKey];
                     const namesString = makeNamesString(preset.names);
 
+                    if (preset.names.length === 1) {
+                        guestGreeting.textContent = getSingleGreeting(preset.names[0], preset.gender) + ' ' + namesString + '!';
+                        guestMessage.innerHTML = preset.messageHtml || buildSingleGuestMessage(preset.names[0]);
+                        return true;
+                    }
+
                     guestGreeting.textContent = 'Дорогие ' + namesString + '!';
-                    guestMessage.innerHTML = preset.messageHtml;
+                    guestMessage.innerHTML = preset.messageHtml || buildMultipleGuestMessage(namesString);
 
                     return true;
                 }
@@ -1511,16 +1582,16 @@
                         return applyGuestPreset(guestPresetByNamesKey[normalizedNamesKey]);
                     }
 
+                    if (namesArray.length === 1) {
+                        guestGreeting.textContent = getSingleGreeting(namesArray[0]) + ' ' + namesString + '!';
+                        guestMessage.innerHTML = buildSingleGuestMessage(namesArray[0]);
+                        return true;
+                    }
+
                     const safeNamesString = escapeHtml(namesString);
 
                     guestGreeting.textContent = 'Дорогие ' + safeNamesString + '!';
-                    guestMessage.innerHTML =
-                        'Мы очень хотим, чтобы этот день<br>' +
-                        'был не просто красивым,<br>' +
-                        'а по-настоящему тёплым и живым.<br>' +
-                        'Поэтому приглашаем вас, <strong>' + safeNamesString + '</strong>, быть рядом —<br>' +
-                        'радоваться, смеяться, обниматься<br>' +
-                        'и праздновать вместе с нами ❤️';
+                    guestMessage.innerHTML = buildMultipleGuestMessage(namesString);
 
                     return true;
                 }
