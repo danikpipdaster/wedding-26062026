@@ -1480,6 +1480,18 @@
                             '<p style="margin-top:14px;">Поэтому приглашаем тебя быть рядом —<br>' +
                             'радоваться, смеяться, обниматься<br>' +
                             'и праздновать вместе с нами ❤️</p>'
+                    },
+
+                    'polina': {
+                        names: ['Полина'],
+                        gender: 'female',
+                        messageHtml:
+                            '<p>Мы очень хотим, чтобы этот день<br>' +
+                            'был не просто красивым,<br>' +
+                            'а по-настоящему тёплым и живым.</p>' +
+                            '<p style="margin-top:14px;">Поэтому приглашаем тебя быть рядом —<br>' +
+                            'радоваться, смеяться, обниматься<br>' +
+                            'и праздновать вместе с нами ❤️</p>'
                     }
                 };
 
@@ -1523,7 +1535,12 @@
                     const namesString = makeNamesString(preset.names);
 
                     if (preset.names.length === 1) {
-                        guestGreeting.textContent = 'Дорогой ' + namesString + '!';
+                        // Определяем обращение по полу, если указан
+                        if (preset.gender === 'female') {
+                            guestGreeting.textContent = 'Дорогая ' + namesString + '!';
+                        } else {
+                            guestGreeting.textContent = 'Дорогой ' + namesString + '!';
+                        }
                     } else {
                         guestGreeting.textContent = 'Дорогие ' + namesString + '!';
                     }
@@ -1552,6 +1569,7 @@
                     const safeNamesString = escapeHtml(namesString);
 
                     if (namesArray.length === 1) {
+                        // По умолчанию для одиночных имён без пресета используем "Дорогой"
                         guestGreeting.textContent = 'Дорогой ' + safeNamesString + '!';
                     } else {
                         guestGreeting.textContent = 'Дорогие ' + safeNamesString + '!';
