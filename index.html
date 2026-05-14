@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+=<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -1444,7 +1444,7 @@
                             '<p>Мы очень хотим, чтобы этот день<br>' +
                             'был не просто красивым,<br>' +
                             'а по-настоящему тёплым и живым.</p>' +
-                            '<p style="margin-top:14px;">Поэтому приглашаем тебя, Андрей, быть рядом —<br>' +
+                            '<p style="margin-top:14px;">Поэтому приглашаем тебя быть рядом —<br>' +
                             'радоваться, смеяться, обниматься<br>' +
                             'и праздновать вместе с нами ❤️</p>'
                     }
@@ -1489,7 +1489,13 @@
                     const preset = guestPresets[presetKey];
                     const namesString = makeNamesString(preset.names);
 
-                    guestGreeting.textContent = 'Дорогие ' + namesString + '!';
+                    // Для одного гостя используем единственное число "Дорогой/Дорогая"
+                    if (preset.names.length === 1) {
+                        guestGreeting.textContent = 'Дорогой ' + namesString + '!';
+                    } else {
+                        guestGreeting.textContent = 'Дорогие ' + namesString + '!';
+                    }
+
                     guestMessage.innerHTML = preset.messageHtml;
 
                     return true;
@@ -1513,7 +1519,12 @@
 
                     const safeNamesString = escapeHtml(namesString);
 
-                    guestGreeting.textContent = 'Дорогие ' + safeNamesString + '!';
+                    if (namesArray.length === 1) {
+                        guestGreeting.textContent = 'Дорогой ' + safeNamesString + '!';
+                    } else {
+                        guestGreeting.textContent = 'Дорогие ' + safeNamesString + '!';
+                    }
+
                     guestMessage.innerHTML =
                         'Мы очень хотим, чтобы этот день<br>' +
                         'был не просто красивым,<br>' +
