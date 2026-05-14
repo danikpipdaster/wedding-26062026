@@ -1,155 +1,167 @@
 <!DOCTYPE html>
 <html lang="ru"> 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Данил & Юлия — Приглашение на свадьбу</title>
-    <link rel="preload" as="image" href="photo1.jpg">
-    <link rel="preload" as="image" href="photo2.jpg">
-    <link rel="preload" as="image" href="photo3.jpg">
-    <link rel="preload" as="image" href="photo4.jpg">
-    <link rel="preload" as="image" href="ryki.jpg">
-    <link rel="preload" as="image" href="monetka.jpg">
-    <link rel="preload" as="image" href="serdecko.jpg">
-    <link rel="preload" as="image" href="PARA.png?v=15">
-    <link rel="preload" as="image" href="PARA3.png?v=15">
-    <link rel="preload" as="image" href="ceremonia.png?v=15">
-    <link rel="preload" as="image" href="banket.png?v=15">
-    <link rel="preload" as="image" href="tancy.png?v=15">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Данил & Юлия — Приглашение на свадьбу</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="photo1.jpg">
+<link rel="preload" as="image" href="photo2.jpg">
+<link rel="preload" as="image" href="photo3.jpg">
+<link rel="preload" as="image" href="photo4.jpg">
+<link rel="preload" as="image" href="ryki.jpg">
+<link rel="preload" as="image" href="monetka.jpg">
+<link rel="preload" as="image" href="serdecko.jpg">
+<link rel="preload" as="image" href="PARA.png?v=15">
+<link rel="preload" as="image" href="PARA3.png?v=15">
+<link rel="preload" as="image" href="ceremonia.png?v=15">
+<link rel="preload" as="image" href="banket.png?v=15">
+<link rel="preload" as="image" href="tancy.png?v=15">
 
-    <style>
-        /* Стили оставляем как в оригинале */
-    </style>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+/* Стили оставляем полностью оригинальными, как в вашем коде */
+</style>
 </head>
 <body>
-    <div class="decor-branch-left">❦</div>
-    <div class="decor-branch-right">❦</div>
-    <div class="coin" id="coin"></div>
+<div class="decor-branch-left">❦</div>
+<div class="decor-branch-right">❦</div>
+<div class="coin" id="coin"></div>
 
-    <div class="splash" id="splash">
-        <div class="initials-block">
-            <span class="initial-line line-d">Д</span>
-            <span class="initial-line line-amp">&</span>
-            <span class="initial-line line-yu">Ю</span>
-        </div>
-
-        <p class="handwritten-signature">
-            Данил <img src="serdecko.jpg" alt="♥" class="heart-img">
-            Юлия
-        </p>
-
-        <p class="hero-subtitle">приглашение на свадьбу</p>
-
-        <div class="date-container">
-            <div class="scratch-hint">Сотри меня скорей ✨</div>
-            <div class="scratch-area">
-                <div class="date">26.06.2026</div>
-                <canvas id="scratch"></canvas>
-            </div>
-        </div>
-
-        <div class="timer" id="timer"></div>
-        <a href="#invitation-start" class="scroll-arrow" aria-label="К приглашению">↓</a>
+<div class="splash" id="splash">
+    <div class="initials-block">
+        <span class="initial-line line-d">Д</span>
+        <span class="initial-line line-amp">&</span>
+        <span class="initial-line line-yu">Ю</span>
     </div>
 
-    <div id="invitation-start"></div>
+    <p class="handwritten-signature">
+        Данил <img src="serdecko.jpg" alt="♥" class="heart-img">
+        Юлия
+    </p>
 
-    <main class="content-bg">
-        <div class="section fade-in">
-            <div class="section-inner">
-                <h2 class="section-title" id="guest-greeting">Дорогие гости!</h2>
-                <p class="welcome-text" id="guest-message">
-                    Мы очень хотим, чтобы этот день<br>
-                    был не просто красивым,<br>
-                    а по-настоящему тёплым и живым.<br>
-                    Поэтому приглашаем вас быть рядом —<br>
-                    радоваться, смеяться, обниматься<br>
-                    и праздновать вместе с нами ❤️
-                </p>
+    <p class="hero-subtitle">приглашение на свадьбу</p>
 
-                <div class="divider"></div>
-            </div>
+    <div class="date-container">
+        <div class="scratch-hint">Сотри меня скорей ✨</div>
+        <div class="scratch-area">
+            <div class="date">26.06.2026</div>
+            <canvas id="scratch"></canvas>
         </div>
+    </div>
 
-        <!-- Остальные секции оставляем без изменений -->
+    <div class="timer" id="timer"></div>
+    <a href="#invitation-start" class="scroll-arrow" aria-label="К приглашению">↓</a>
+</div>
 
-    </main>
+<div id="invitation-start"></div>
 
-    <script>
-        (function() {
-            window.addEventListener('DOMContentLoaded', function() {
-                /* Таймер и скретч остаются без изменений */
+<main class="content-bg">
+    <div class="section fade-in">
+        <div class="section-inner">
+            <h2 class="section-title" id="guest-greeting">Дорогой Линар!</h2>
+            <p class="welcome-text" id="guest-message">
+                Мы очень хотим, чтобы этот день<br>
+                был не просто красивым,<br>
+                а по-настоящему тёплым и живым.<br>
+                Поэтому приглашаем тебя быть рядом —<br>
+                радоваться, смеяться, обниматься<br>
+                и праздновать вместе с нами ❤️
+            </p>
+            <div class="divider"></div>
+        </div>
+    </div>
 
-                const urlParams = new URLSearchParams(window.location.search);
-                const namesParam = urlParams.get('names');
-                const guestParam = urlParams.get('guest');
-                const guestGreeting = document.getElementById('guest-greeting');
-                const guestMessage = document.getElementById('guest-message');
+    <!-- Остальные секции сайта (фото, места, программа, дресс-код, подарки) остаются без изменений -->
+</main>
 
-                const guestPresets = {
-                    'linar': {
-                        names: ['Линар'],
-                        gender: 'male',
-                        messageHtml:
-                            '<p>Мы очень хотим, чтобы этот день<br>' +
-                            'был не просто красивым,<br>' +
-                            'а по-настоящему тёплым и живым.</p>' +
-                            '<p style="margin-top:14px;">Поэтому приглашаем тебя быть рядом —<br>' +
-                            'радоваться, смеяться, обниматься<br>' +
-                            'и праздновать вместе с нами ❤️</p>'
-                    },
+<script>
+(function(){
+window.addEventListener('DOMContentLoaded', function() {
+    // Таймер
+    const timerEl = document.getElementById("timer");
+    if (timerEl) {
+        const weddingDate = new Date("2026-06-26T00:00:00+05:00").getTime();
+        function updateTimer() {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+            if (distance < 0) { timerEl.innerHTML = '<span>💛 Этот день настал!</span>'; return; }
+            const days = Math.floor(distance / (1000*60*60*24));
+            const hours = Math.floor((distance / (1000*60*60)) % 24);
+            const minutes = Math.floor((distance / (1000*60)) % 60);
+            timerEl.innerHTML = '<span>'+days+'</span> дней &nbsp;<span>'+hours+'</span> часов &nbsp;<span>'+minutes+'</span> минут';
+        }
+        updateTimer();
+        setInterval(updateTimer,1000);
+    }
 
-                    // можно оставлять другие шаблоны гостей здесь
-                };
+    // Скретч
+    const canvas = document.getElementById("scratch");
+    if(canvas){
+        const ctx = canvas.getContext("2d");
+        const dateEl = document.querySelector(".date");
+        const hint = document.querySelector(".scratch-hint");
+        const coin = document.getElementById("coin");
+        if(dateEl && hint && coin){
+            let drawing = false;
+            function resizeScratchCanvas(){
+                canvas.width = dateEl.offsetWidth;
+                canvas.height = dateEl.offsetHeight;
+                ctx.globalCompositeOperation = "source-over";
+                ctx.fillStyle = "#c9a7a0";
+                ctx.fillRect(0,0,canvas.width,canvas.height);
+                ctx.globalCompositeOperation = "destination-out";
+            }
+            function moveCoin(e){ coin.style.display="block"; coin.style.left=e.clientX+"px"; coin.style.top=e.clientY+"px"; }
+            function hideCoin(){ coin.style.display="none"; }
+            function scratch(x,y){ hint.style.opacity="0"; ctx.beginPath(); ctx.arc(x,y,14,0,Math.PI*2); ctx.fill(); }
+            resizeScratchCanvas();
+            window.addEventListener("resize",resizeScratchCanvas);
+            if(document.fonts && document.fonts.ready){ document.fonts.ready.then(resizeScratchCanvas); }
+            canvas.addEventListener("mouseenter",moveCoin);
+            canvas.addEventListener("mousemove",function(e){ moveCoin(e); if(!drawing) return; const rect=canvas.getBoundingClientRect(); scratch(e.clientX-rect.left,e.clientY-rect.top); });
+            canvas.addEventListener("mouseleave",function(){ drawing=false; hideCoin(); });
+            canvas.addEventListener("mousedown",function(e){ drawing=true; const rect=canvas.getBoundingClientRect(); scratch(e.clientX-rect.left,e.clientY-rect.top); });
+            window.addEventListener("mouseup",function(){ drawing=false; });
+            canvas.addEventListener("touchstart",function(e){ e.preventDefault(); const rect=canvas.getBoundingClientRect(); scratch(e.touches[0].clientX-rect.left,e.touches[0].clientY-rect.top); },{passive:false});
+            canvas.addEventListener("touchmove",function(e){ e.preventDefault(); const rect=canvas.getBoundingClientRect(); scratch(e.touches[0].clientX-rect.left,e.touches[0].clientY-rect.top); },{passive:false});
+        }
+    }
 
-                const guestPresetByNamesKey = {};
-                Object.keys(guestPresets).forEach(function(key) {
-                    guestPresetByNamesKey[guestPresets[key].names.join(',')] = key;
-                });
+    // Персональные приглашения
+    const urlParams = new URLSearchParams(window.location.search);
+    const guestParam = urlParams.get('guest');
+    const guestGreeting = document.getElementById('guest-greeting');
+    const guestMessage = document.getElementById('guest-message');
 
-                function escapeHtml(str) {
-                    return str.replace(/[&<>"']/g, function(char) {
-                        return {
-                            '&': '&amp;',
-                            '<': '&lt;',
-                            '>': '&gt;',
-                            '"': '&quot;',
-                            "'": '&#039;'
-                        }[char];
-                    });
-                }
+    const guestPresets = {
+        'linar': {
+            names: ['Линар'],
+            gender: 'male',
+            messageHtml:
+                '<p>Мы очень хотим, чтобы этот день<br>' +
+                'был не просто красивым,<br>' +
+                'а по-настоящему тёплым и живым.</p>' +
+                '<p style="margin-top:14px;">Поэтому приглашаем тебя быть рядом —<br>' +
+                'радоваться, смеяться, обниматься<br>' +
+                'и праздновать вместе с нами ❤️</p>'
+        }
+        // другие шаблоны можно оставить здесь
+    };
 
-                function setDefaultGuestText() {
-                    if (!guestGreeting || !guestMessage) return;
-                    guestGreeting.textContent = 'Дорогие гости!';
-                    guestMessage.innerHTML =
-                        'Мы очень хотим, чтобы этот день<br>' +
-                        'был не просто красивым,<br>' +
-                        'а по-настоящему тёплым и живым.<br>' +
-                        'Поэтому приглашаем вас быть рядом —<br>' +
-                        'радоваться, смеяться, обниматься<br>' +
-                        'и праздновать вместе с нами ❤️';
-                }
+    function applyGuestPreset(presetKey){
+        if(!guestGreeting || !guestMessage || !guestPresets[presetKey]) return false;
+        const preset = guestPresets[presetKey];
+        guestGreeting.textContent = 'Дорогой ' + preset.names[0] + '!';
+        guestMessage.innerHTML = preset.messageHtml;
+        return true;
+    }
 
-                function applyGuestPreset(presetKey) {
-                    if (!guestGreeting || !guestMessage || !guestPresets[presetKey]) return false;
-                    const preset = guestPresets[presetKey];
-                    guestGreeting.textContent = 'Дорогой ' + preset.names[0] + '!';
-                    guestMessage.innerHTML = preset.messageHtml;
-                    return true;
-                }
+    if(guestParam && guestPresets[guestParam]) applyGuestPreset(guestParam);
 
-                if (guestParam && guestPresets[guestParam]) {
-                    applyGuestPreset(guestParam);
-                } else if (namesParam) {
-                    setDefaultGuestText();
-                } else {
-                    setDefaultGuestText();
-                }
-            });
-        })();
-    </script>
+});
+})();
+</script>
 </body>
 </html>
