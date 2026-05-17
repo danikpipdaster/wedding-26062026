@@ -358,7 +358,6 @@
             text-shadow: 0 1px 6px rgba(255,255,255,0.95);
         }
 
-        /* Для персонализированных сообщений с левым выравниванием */
         .personal-message {
             text-align: left;
             max-width: 720px;
@@ -743,21 +742,6 @@
             text-shadow: 0 1px 6px rgba(255,255,255,0.95);
             margin-top: 0;
             text-align: center;
-        }
-
-        .final-text .heart {
-            margin-top: 16px;
-            font-size: 36px;
-            animation: heartBeat 2s infinite;
-            display: inline-block;
-        }
-
-        @keyframes heartBeat {
-            0% { transform: scale(1); }
-            25% { transform: scale(1.15); }
-            50% { transform: scale(1); }
-            75% { transform: scale(1.1); }
-            100% { transform: scale(1); }
         }
 
         .final-image-frame {
@@ -1158,14 +1142,13 @@
                     <p>Говорят, молодым нужно всё и сразу: от блендера до путешествий ✈️</p>
                     <p style="margin-top:10px;">Мы не будем спорить с этой истиной 😄</p>
                     <p style="margin-top:10px;">Если вы решите поддержать наш «молодожённый стартап», конверт будет очень кстати.</p>
-                    <p style="margin-top:18px;font-size:20px;opacity:0.9;font-style:italic;">Но самый главный подарок — ваше присутствие и улыбки ❤️</p>
+                    <p style="margin-top:18px;font-size:20px;opacity:0.9;font-style:italic;">Но самый главный подарок — ваше присутствие и улыбки 🌸</p>
                 </div>
 
                 <div class="final-row">
                     <div class="final-text">
                         <p>С любовью и нетерпением ждём вас ❤️</p>
                         <p style="font-size:20px;margin-top:8px;opacity:0.8;">Данил & Юлия</p>
-                        <div class="heart">❤️</div>
                     </div>
 
                     <div class="final-image-frame">
@@ -1528,7 +1511,6 @@
                             '<p style="margin-top:14px;">Для нас особенно важно, чтобы в этот особенный день рядом была ты.</p>' +
                             '<p style="margin-top:14px;">Мы будем счастливы видеть тебя среди самых близких людей в этот знаменательный день. Твоё присутствие сделает нашу свадьбу по-настоящему полной и значимой. ❤️</p>'
                     },
-                    // ПЕРСОНАЛЬНЫЙ ПРЕСЕТ ДЛЯ МАРИНЫ, МАТВЕЯ, АЛЕКСАНДРА (с левым выравниванием)
                     'marina-matvey-aleksandr': {
                         names: ['Марина', 'Матвей', 'Александр'],
                         messageHtml:
@@ -1597,7 +1579,6 @@
                     }
 
                     guestMessage.innerHTML = preset.messageHtml;
-                    // Для пресета с тремя гостями добавляем класс левого выравнивания
                     if (presetKey === 'marina-matvey-aleksandr') {
                         guestMessage.classList.add('personal-message');
                     } else {
