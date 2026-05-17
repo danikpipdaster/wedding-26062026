@@ -22,7 +22,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
-        /* Стили полностью сохранены (как в предыдущей версии) */
+        /* Стили полностью сохранены, как в предыдущей версии (для краткости не дублирую, но они есть в работающем коде) */
         @font-face {
             font-family: 'French Kiss Script';
             src: url('FrenchKissscript.ttf') format('truetype');
@@ -779,7 +779,6 @@
                 grid-template-columns: repeat(2, minmax(0, 1fr));
                 gap: 32px;
             }
-
             .location-inner {
                 height: 100%;
             }
@@ -789,37 +788,30 @@
             .section {
                 padding: 52px 0;
             }
-
             .section-inner {
                 padding: 0 16px;
             }
-
             .final-row {
                 flex-direction: column;
                 gap: 32px;
                 margin-top: 50px;
             }
-
             .final-image-frame {
                 width: min(360px, 88vw);
                 max-width: 88vw;
                 padding: 0;
             }
-
             .schedule-image-frame {
                 width: 112px;
                 aspect-ratio: 1 / 1;
                 padding: 0;
             }
-
             .coin {
                 display: none !important;
             }
-
             .map-wrapper iframe {
                 height: 185px;
             }
-
             .schedule-row {
                 width: 100%;
             }
@@ -829,63 +821,50 @@
             .splash {
                 padding: 22px 14px;
             }
-
             .photo-collage {
                 width: 320px;
                 max-width: 94vw;
                 height: 440px;
             }
-
             .flip-card {
                 width: 230px;
                 height: 320px;
             }
-
             .flip-card.front {
                 transform: translate(75px, 88px) rotate(0deg) scale(1.04);
             }
-
             .flip-card.back {
                 transform: translate(5px, 5px) rotate(-7deg) scale(0.92);
             }
-
             .glass-box::before {
                 left: 15px;
             }
-
             .glass-box::after {
                 right: 15px;
             }
-
             .timer {
                 max-width: 310px;
             }
-
             .schedule-big {
                 gap: 34px;
             }
-
             .schedule-row {
                 min-height: 112px;
                 gap: 12px;
             }
-
             .schedule-image-frame {
                 width: 104px;
                 aspect-ratio: 1 / 1;
                 padding: 0;
             }
-
             .schedule-icon-img {
                 width: 100%;
                 max-width: 100%;
                 padding: 8px;
             }
-
             .final-image-frame {
                 padding: 0;
             }
-
             .final-text p:last-of-type {
                 font-size: 18px !important;
             }
@@ -895,7 +874,6 @@
             html {
                 scroll-behavior: auto;
             }
-
             *,
             *::before,
             *::after {
@@ -953,7 +931,6 @@
                     радоваться, смеяться, обниматься<br>
                     и праздновать вместе с нами ❤️
                 </div>
-
                 <div class="divider"></div>
             </div>
         </div>
@@ -961,31 +938,20 @@
         <div class="section fade-in">
             <div class="section-inner">
                 <div class="photo-hint">Нажми на фото, чтобы перевернуть ✨</div>
-
                 <div class="photo-collage">
                     <div class="flip-card front" id="card1">
                         <div class="flip-inner">
-                            <div class="flip-front">
-                                <img src="photo1.jpg" alt="Фото 1">
-                            </div>
-                            <div class="flip-back">
-                                <img src="photo2.jpg" alt="Фото 2">
-                            </div>
+                            <div class="flip-front"><img src="photo1.jpg" alt="Фото 1"></div>
+                            <div class="flip-back"><img src="photo2.jpg" alt="Фото 2"></div>
                         </div>
                     </div>
-
                     <div class="flip-card back" id="card2">
                         <div class="flip-inner">
-                            <div class="flip-front">
-                                <img src="photo3.jpg" alt="Фото 3">
-                            </div>
-                            <div class="flip-back">
-                                <img src="photo4.jpg" alt="Фото 4">
-                            </div>
+                            <div class="flip-front"><img src="photo3.jpg" alt="Фото 3"></div>
+                            <div class="flip-back"><img src="photo4.jpg" alt="Фото 4"></div>
                         </div>
                     </div>
                 </div>
-
                 <div class="divider"></div>
             </div>
         </div>
@@ -994,55 +960,30 @@
             <div class="section-inner">
                 <h2 class="section-title" id="places-title">Места проведения</h2>
                 <p class="section-subtitle" id="places-subtitle">где это случится</p>
-
                 <div class="locations-wrapper" id="places-container">
                     <div class="location-inner" id="place-zags">
-                        <div class="location-header">
-                            <div class="line"></div>
-                            <div class="location-title">ЗАГС</div>
-                            <div class="line"></div>
-                        </div>
-
+                        <div class="location-header"><div class="line"></div><div class="location-title">ЗАГС</div><div class="line"></div></div>
                         <div class="event-block">
                             <div class="event-subtitle">Церемония регистрации</div>
                             <div class="event-place">г. Надым, Парковый пр., 4</div>
                             <div class="event-time">⏰ Начало в 16:20</div>
                         </div>
-
                         <div class="map-wrapper">
-                            <iframe
-                                title="Карта ЗАГСа в Надыме"
-                                src="https://maps.google.com/maps?q=Надым+Парковый+4&output=embed"
-                                allowfullscreen
-                                loading="lazy">
-                            </iframe>
+                            <iframe title="Карта ЗАГСа в Надыме" src="https://maps.google.com/maps?q=Надым+Парковый+4&output=embed" allowfullscreen loading="lazy"></iframe>
                         </div>
                     </div>
-
                     <div class="location-inner" id="place-nedoma">
-                        <div class="location-header">
-                            <div class="line"></div>
-                            <div class="location-title">НеДома</div>
-                            <div class="line"></div>
-                        </div>
-
+                        <div class="location-header"><div class="line"></div><div class="location-title">НеДома</div><div class="line"></div></div>
                         <div class="event-block">
                             <div class="event-subtitle">Семейный лофт</div>
                             <div class="event-place">г. Надым, 13 проезд, строение 11</div>
                             <div class="event-time">🍾 Банкет с 18:00</div>
                         </div>
-
                         <div class="map-wrapper">
-                            <iframe
-                                title="Карта семейного лофта НеДома в Надыме"
-                                src="https://maps.google.com/maps?q=НеДома+Семейный+лофт+13+проезд+строение+11+Надым&output=embed"
-                                allowfullscreen
-                                loading="lazy">
-                            </iframe>
+                            <iframe title="Карта семейного лофта НеДома в Надыме" src="https://maps.google.com/maps?q=НеДома+Семейный+лофт+13+проезд+строение+11+Надым&output=embed" allowfullscreen loading="lazy"></iframe>
                         </div>
                     </div>
                 </div>
-
                 <div class="divider"></div>
             </div>
         </div>
@@ -1051,37 +992,12 @@
             <div class="section-inner">
                 <h2 class="section-title">Программа дня</h2>
                 <p class="section-subtitle">26 июня 2026</p>
-
                 <div class="schedule-big">
-                    <span class="schedule-row">
-                        <span class="schedule-item-text" id="item-meet">Встреча гостей</span>
-                        <span class="schedule-image-frame">
-                            <img src="PARA3.png?v=15" alt="Гости" class="schedule-icon-img">
-                        </span>
-                    </span>
-
-                    <span class="schedule-row" id="item-ceremony">
-                        <span class="schedule-item-text">Церемония</span>
-                        <span class="schedule-image-frame">
-                            <img src="ceremonia.png?v=15" alt="Церемония" class="schedule-icon-img">
-                        </span>
-                    </span>
-
-                    <span class="schedule-row">
-                        <span class="schedule-item-text" id="item-feast">Банкет</span>
-                        <span class="schedule-image-frame">
-                            <img src="banket.png?v=15" alt="Банкет" class="schedule-icon-img">
-                        </span>
-                    </span>
-
-                    <span class="schedule-row">
-                        <span class="schedule-item-text" id="item-dance">Танцы</span>
-                        <span class="schedule-image-frame">
-                            <img src="tancy.png?v=15" alt="Танцы" class="schedule-icon-img">
-                        </span>
-                    </span>
+                    <span class="schedule-row"><span class="schedule-item-text" id="item-meet">Встреча гостей</span><span class="schedule-image-frame"><img src="PARA3.png?v=15" alt="Гости" class="schedule-icon-img"></span></span>
+                    <span class="schedule-row" id="item-ceremony"><span class="schedule-item-text">Церемония</span><span class="schedule-image-frame"><img src="ceremonia.png?v=15" alt="Церемония" class="schedule-icon-img"></span></span>
+                    <span class="schedule-row"><span class="schedule-item-text" id="item-feast">Банкет</span><span class="schedule-image-frame"><img src="banket.png?v=15" alt="Банкет" class="schedule-icon-img"></span></span>
+                    <span class="schedule-row"><span class="schedule-item-text" id="item-dance">Танцы</span><span class="schedule-image-frame"><img src="tancy.png?v=15" alt="Танцы" class="schedule-icon-img"></span></span>
                 </div>
-
                 <div class="divider"></div>
             </div>
         </div>
@@ -1089,22 +1005,10 @@
         <div class="section fade-in">
             <div class="section-inner">
                 <div class="dresscode-group">
-                    <div class="dresscode-heading">
-                        <h2 class="section-title">Дресс-код</h2>
-                        <p class="section-subtitle">пастельная нежность</p>
-                    </div>
-
+                    <div class="dresscode-heading"><h2 class="section-title">Дресс-код</h2><p class="section-subtitle">пастельная нежность</p></div>
                     <div class="glass-box dresscode-card">
-                        <p class="dresscode-text">
-                            Мы будем очень рады, если вы поддержите<br>
-                            цветовую гамму нашего праздника ❤️
-                        </p>
-
-                        <p class="dresscode-note">
-                            Оттенки пастельных тонов —<br>
-                            то, что делает этот день ещё нежнее.
-                        </p>
-
+                        <p class="dresscode-text">Мы будем очень рады, если вы поддержите<br>цветовую гамму нашего праздника ❤️</p>
+                        <p class="dresscode-note">Оттенки пастельных тонов —<br>то, что делает этот день ещё нежнее.</p>
                         <div class="dresscode-palette">
                             <div class="dresscode-circle" style="background:#e8cec4;"></div>
                             <div class="dresscode-circle" style="background:#f0d5c1;"></div>
@@ -1115,7 +1019,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="divider"></div>
             </div>
         </div>
@@ -1124,13 +1027,11 @@
             <div class="section-inner">
                 <h2 class="section-title">Важно для гостей</h2>
                 <p class="section-subtitle">вайб нашего дня</p>
-
                 <div class="glass-box">
                     <p>📸 Телефоны не прячем —<br>снимаем, ловим моменты и кайфуем ✨</p>
                     <p style="margin-top:14px;">🎤 Если вдруг появится идея для тоста<br>или перформанса — обязательно воплощайте её в жизнь 😄</p>
                     <p style="margin-top:14px;">Мы только за любую движуху 💛</p>
                 </div>
-
                 <div class="divider"></div>
             </div>
         </div>
@@ -1138,23 +1039,15 @@
         <div class="section fade-in">
             <div class="section-inner">
                 <h2 class="section-title">Подарки</h2>
-
                 <div class="glass-box">
                     <p>Говорят, молодым нужно всё и сразу: от блендера до путешествий ✈️</p>
                     <p style="margin-top:10px;">Мы не будем спорить с этой истиной 😄</p>
                     <p style="margin-top:10px;">Если вы решите поддержать наш «молодожённый стартап», конверт будет очень кстати.</p>
                     <p style="margin-top:18px;font-size:20px;opacity:0.9;font-style:italic;">Но самый главный подарок — ваше присутствие и улыбки 🌸</p>
                 </div>
-
                 <div class="final-row">
-                    <div class="final-text">
-                        <p>С любовью и нетерпением ждём вас ❤️</p>
-                        <p style="font-size:20px;margin-top:8px;opacity:0.8;">Данил & Юлия</p>
-                    </div>
-
-                    <div class="final-image-frame">
-                        <img src="PARA.png?v=15" alt="Данил и Юлия" class="final-para-img">
-                    </div>
+                    <div class="final-text"><p>С любовью и нетерпением ждём вас ❤️</p><p style="font-size:20px;margin-top:8px;opacity:0.8;">Данил & Юлия</p></div>
+                    <div class="final-image-frame"><img src="PARA.png?v=15" alt="Данил и Юлия" class="final-para-img"></div>
                 </div>
             </div>
         </div>
@@ -1164,110 +1057,74 @@
         (function() {
             window.addEventListener('DOMContentLoaded', function() {
                 const timerEl = document.getElementById("timer");
-
                 if (timerEl) {
                     const weddingDateTime = new Date("2026-06-26T16:20:00+05:00").getTime();
-
                     function updateTimer() {
                         const now = new Date().getTime();
                         const distance = weddingDateTime - now;
-
                         if (distance < 0) {
                             timerEl.innerHTML = '<span>💛 Этот день настал!</span>';
                             return;
                         }
-
                         const days = Math.floor(distance / (1000 * 60 * 60 * 24));
                         const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
                         const minutes = Math.floor((distance / (1000 * 60)) % 60);
-
-                        timerEl.innerHTML =
-                            '<span>' + days + '</span> дней &nbsp;' +
-                            '<span>' + hours + '</span> часов &nbsp;' +
-                            '<span>' + minutes + '</span> минут';
+                        timerEl.innerHTML = '<span>' + days + '</span> дней &nbsp;<span>' + hours + '</span> часов &nbsp;<span>' + minutes + '</span> минут';
                     }
-
                     updateTimer();
                     setInterval(updateTimer, 1000);
                 }
 
                 const canvas = document.getElementById("scratch");
-
                 if (canvas) {
                     const ctx = canvas.getContext("2d");
                     const dateEl = document.querySelector(".date");
                     const hint = document.querySelector(".scratch-hint");
                     const coin = document.getElementById("coin");
-
                     if (dateEl && hint && coin) {
                         let drawing = false;
-
                         function resizeScratchCanvas() {
                             canvas.width = dateEl.offsetWidth;
                             canvas.height = dateEl.offsetHeight;
-
                             ctx.globalCompositeOperation = "source-over";
                             ctx.fillStyle = "#c9a7a0";
                             ctx.fillRect(0, 0, canvas.width, canvas.height);
                             ctx.globalCompositeOperation = "destination-out";
                         }
-
                         function moveCoin(e) {
                             coin.style.display = "block";
                             coin.style.left = e.clientX + "px";
                             coin.style.top = e.clientY + "px";
                         }
-
-                        function hideCoin() {
-                            coin.style.display = "none";
-                        }
-
+                        function hideCoin() { coin.style.display = "none"; }
                         function scratch(x, y) {
                             hint.style.opacity = "0";
                             ctx.beginPath();
                             ctx.arc(x, y, 14, 0, Math.PI * 2);
                             ctx.fill();
                         }
-
                         resizeScratchCanvas();
-
                         window.addEventListener("resize", resizeScratchCanvas);
-
-                        if (document.fonts && document.fonts.ready) {
-                            document.fonts.ready.then(resizeScratchCanvas);
-                        }
-
+                        if (document.fonts && document.fonts.ready) document.fonts.ready.then(resizeScratchCanvas);
                         canvas.addEventListener("mouseenter", moveCoin);
-
                         canvas.addEventListener("mousemove", function(e) {
                             moveCoin(e);
                             if (!drawing) return;
-
                             const rect = canvas.getBoundingClientRect();
                             scratch(e.clientX - rect.left, e.clientY - rect.top);
                         });
-
-                        canvas.addEventListener("mouseleave", function() {
-                            drawing = false;
-                            hideCoin();
-                        });
-
+                        canvas.addEventListener("mouseleave", function() { drawing = false; hideCoin(); });
                         canvas.addEventListener("mousedown", function(e) {
                             drawing = true;
                             const rect = canvas.getBoundingClientRect();
                             scratch(e.clientX - rect.left, e.clientY - rect.top);
                         });
-
-                        window.addEventListener("mouseup", function() {
-                            drawing = false;
-                        });
-
+                        window.addEventListener("mouseup", function() { drawing = false; });
                         canvas.addEventListener("touchstart", function(e) {
                             e.preventDefault();
                             const rect = canvas.getBoundingClientRect();
                             scratch(e.touches[0].clientX - rect.left, e.touches[0].clientY - rect.top);
                         }, { passive: false });
-
                         canvas.addEventListener("touchmove", function(e) {
                             e.preventDefault();
                             const rect = canvas.getBoundingClientRect();
@@ -1278,80 +1135,48 @@
 
                 const card1 = document.getElementById("card1");
                 const card2 = document.getElementById("card2");
-
                 if (card1 && card2) {
                     let activeCard = card1;
                     let locked = false;
-
                     function bringToFront(card) {
                         if (locked || card === activeCard) return;
-
                         locked = true;
-
                         const oldFront = activeCard;
-
                         oldFront.classList.remove("front");
                         oldFront.classList.add("back");
-
                         card.classList.remove("back");
                         card.classList.add("front");
-
                         activeCard = card;
-
-                        setTimeout(function() {
-                            locked = false;
-                        }, 1600);
+                        setTimeout(function() { locked = false; }, 1600);
                     }
-
                     function flipCard(card) {
                         if (locked || card !== activeCard) return;
-
                         locked = true;
                         card.classList.toggle("flipped");
-
-                        setTimeout(function() {
-                            locked = false;
-                        }, 950);
+                        setTimeout(function() { locked = false; }, 950);
                     }
-
                     card1.addEventListener("click", function() {
-                        if (card1 === activeCard) {
-                            flipCard(card1);
-                        } else {
-                            bringToFront(card1);
-                        }
+                        if (card1 === activeCard) flipCard(card1);
+                        else bringToFront(card1);
                     });
-
                     card2.addEventListener("click", function() {
-                        if (card2 === activeCard) {
-                            flipCard(card2);
-                        } else {
-                            bringToFront(card2);
-                        }
+                        if (card2 === activeCard) flipCard(card2);
+                        else bringToFront(card2);
                     });
                 }
 
                 document.querySelectorAll('.fade-in').forEach(function(el) {
                     const observer = new IntersectionObserver(function(entries) {
                         entries.forEach(function(entry) {
-                            if (entry.isIntersecting) {
-                                entry.target.classList.add('visible');
-                            }
+                            if (entry.isIntersecting) entry.target.classList.add('visible');
                         });
                     }, { threshold: 0.15 });
-
                     observer.observe(el);
                 });
 
                 function escapeHtml(str) {
                     return str.replace(/[&<>"']/g, function(char) {
-                        return {
-                            '&': '&amp;',
-                            '<': '&lt;',
-                            '>': '&gt;',
-                            '"': '&quot;',
-                            "'": '&#039;'
-                        }[char];
+                        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[char];
                     });
                 }
 
@@ -1364,7 +1189,7 @@
                 const guestPresets = {
                     'irina-vladislav-ruslan': {
                         names: ['Ирина', 'Владислав', 'Руслан'],
-                        messageHtml: '<p>Мы строим самый важный день в нашей жизни — и поняли, что он просто не сможет быть идеальным без вас. Будет красиво, душевно и немножко громко. Обещаем тёплые объятия, вкусный торт и пару сюрпризов.</p><p style="margin-top:14px;">🌸 Ирина, мы помним, что настоящий праздник начинается только тогда, когда звучит «Вдоль ночных дорог». Так что обязательно поставим эту песню!</p><p style="margin-top:14px;">⚽ Владислав, твоё присутствие — наш талисман. Если ты придёшь, «Спартак» возьмёт чемпионство в следующем сезоне!</p><p style="margin-top:14px;">💪 Руслан, без тебя этот день был бы слишком спокойным. Борьба с тортом — кто победит? :)</p><p style="margin-top:18px;">Ждём вас с нетерпением! ❤️</p>'
+                        messageHtml: '<p>Мы строим самый важный день в нашей жизни — и поняли, что он просто не сможет быть идеальным без вас. Будет красиво, душевно и немножко громко. Обещаем тёплые объятия, вкусный торт и пару сюрпризов.</p><p style="margin-top:14px;">🌸 Ирина, мы помним, что настоящий праздник начинается только тогда, когда звучит «Вдоль ночных дорог». Так что обязательно поставим эту песню!</p><p style="margin-top:14px;">⚽ Владислав, твоё присутствие — наш талисман. Если ты придёшь, «Спартак» возьмёт чемпионство в следующем сезоне!</p><p style="margin-top:14px;">💪 Руслан, без тебя этот день был бы слишком спокойным. Будет борьба... возможно. Но мы надеемся, что ты потратишь энергию в другое русло — будь то танцпол или борьба с тортом. 😉 Ждём тебя!</p><p style="margin-top:18px;">Ждём вас с нетерпением! ❤️</p>'
                     },
                     'sergey-rufina-artem': { names: ['Сергей', 'Руфина', 'Артем'], messageHtml: '<p>Мы очень хотим, чтобы этот день<br>был не просто красивым,<br>а по-настоящему тёплым и живым.</p><p style="margin-top:14px;">Поэтому приглашаем вас быть рядом —<br>радоваться, смеяться, обниматься<br>и праздновать вместе с нами ❤️</p>' },
                     'pavel-evgenia': { names: ['Павел', 'Евгения'], messageHtml: '<p>Мы очень хотим, чтобы этот день<br>был не просто красивым,<br>а по-настоящему тёплым и живым.</p><p style="margin-top:14px;">Поэтому приглашаем вас быть рядом —<br>радоваться, смеяться, обниматься<br>и праздновать вместе с нами ❤️</p>' },
@@ -1396,31 +1221,24 @@
                 });
 
                 function normalizeGuestNames(rawNames) {
-                    return (rawNames || '')
-                        .split(',')
-                        .map(function(name) { return name.trim().replace(/\s+/g, ' '); })
-                        .filter(function(name) { return name.length > 0; });
+                    return (rawNames || '').split(',').map(function(name) { return name.trim().replace(/\s+/g, ' '); }).filter(function(name) { return name.length > 0; });
                 }
-
                 function makeNamesString(namesArray) {
                     const names = namesArray.slice();
                     const last = names.pop();
                     if (!last) return '';
                     return names.length > 0 ? names.join(', ') + ' и ' + last : last;
                 }
-
                 function setDefaultGuestText() {
                     if (!guestGreeting || !guestMessage) return;
                     guestGreeting.textContent = 'Дорогие гости!';
                     guestMessage.innerHTML = 'Мы очень хотим, чтобы этот день<br>был не просто красивым,<br>а по-настоящему тёплым и живым.<br>Поэтому приглашаем вас быть рядом —<br>радоваться, смеяться, обниматься<br>и праздновать вместе с нами ❤️';
                     guestMessage.classList.remove('personal-message');
                 }
-
                 function applyGuestPreset(presetKey) {
                     if (!guestGreeting || !guestMessage || !guestPresets[presetKey]) return false;
                     const preset = guestPresets[presetKey];
                     const namesString = makeNamesString(preset.names);
-                    
                     if (preset.customTitle) {
                         guestGreeting.textContent = preset.customTitle;
                     } else {
@@ -1430,13 +1248,9 @@
                             guestGreeting.textContent = 'Дорогие ' + namesString + '!';
                         }
                     }
-                    
                     guestMessage.innerHTML = preset.messageHtml;
-                    if (presetKey === 'marina-matvey-aleksandr') {
-                        guestMessage.classList.add('personal-message');
-                    } else {
-                        guestMessage.classList.remove('personal-message');
-                    }
+                    if (presetKey === 'marina-matvey-aleksandr') guestMessage.classList.add('personal-message');
+                    else guestMessage.classList.remove('personal-message');
 
                     const zagsBlock = document.getElementById('place-zags');
                     const nedomaBlock = document.getElementById('place-nedoma');
@@ -1449,46 +1263,29 @@
                         if (zagsBlock) zagsBlock.style.display = 'none';
                         if (nedomaBlock) nedomaBlock.style.display = '';
                         if (ceremonyItem) ceremonyItem.classList.add('hidden');
-                        if (wrapper) {
-                            wrapper.style.alignItems = 'center';
-                            wrapper.style.maxWidth = '560px';
-                            wrapper.style.gridTemplateColumns = '1fr';
-                        }
+                        if (wrapper) { wrapper.style.alignItems = 'center'; wrapper.style.maxWidth = '560px'; wrapper.style.gridTemplateColumns = '1fr'; }
                         if (placesTitle) placesTitle.textContent = 'Место проведения';
                         if (placesSubtitle) placesSubtitle.textContent = 'где это случится';
                     } else {
                         if (zagsBlock) zagsBlock.style.display = '';
                         if (nedomaBlock) nedomaBlock.style.display = '';
                         if (ceremonyItem) ceremonyItem.classList.remove('hidden');
-                        if (wrapper) {
-                            wrapper.style.alignItems = '';
-                            wrapper.style.maxWidth = '';
-                            wrapper.style.gridTemplateColumns = '';
-                        }
+                        if (wrapper) { wrapper.style.alignItems = ''; wrapper.style.maxWidth = ''; wrapper.style.gridTemplateColumns = ''; }
                         if (placesTitle) placesTitle.textContent = 'Места проведения';
                         if (placesSubtitle) placesSubtitle.textContent = 'где это случится';
                     }
                     return true;
                 }
-
                 function applyGuestNames(rawNames) {
                     if (!guestGreeting || !guestMessage) return false;
                     const namesArray = normalizeGuestNames(rawNames);
                     const namesString = makeNamesString(namesArray);
                     const normalizedNamesKey = namesArray.join(',');
-                    if (!namesString) {
-                        setDefaultGuestText();
-                        return false;
-                    }
-                    if (guestPresetByNamesKey[normalizedNamesKey]) {
-                        return applyGuestPreset(guestPresetByNamesKey[normalizedNamesKey]);
-                    }
+                    if (!namesString) { setDefaultGuestText(); return false; }
+                    if (guestPresetByNamesKey[normalizedNamesKey]) return applyGuestPreset(guestPresetByNamesKey[normalizedNamesKey]);
                     const safeNamesString = escapeHtml(namesString);
-                    if (namesArray.length === 1) {
-                        guestGreeting.textContent = 'Дорогой ' + safeNamesString + '!';
-                    } else {
-                        guestGreeting.textContent = 'Дорогие ' + safeNamesString + '!';
-                    }
+                    if (namesArray.length === 1) guestGreeting.textContent = 'Дорогой ' + safeNamesString + '!';
+                    else guestGreeting.textContent = 'Дорогие ' + safeNamesString + '!';
                     guestMessage.innerHTML = 'Мы очень хотим, чтобы этот день<br>был не просто красивым,<br>а по-настоящему тёплым и живым.<br>Поэтому приглашаем вас, <strong>' + safeNamesString + '</strong>, быть рядом —<br>радоваться, смеяться, обниматься<br>и праздновать вместе с нами ❤️';
                     guestMessage.classList.remove('personal-message');
 
@@ -1501,39 +1298,15 @@
                     if (zagsBlock) zagsBlock.style.display = '';
                     if (nedomaBlock) nedomaBlock.style.display = '';
                     if (ceremonyItem) ceremonyItem.classList.remove('hidden');
-                    if (wrapper) {
-                        wrapper.style.alignItems = '';
-                        wrapper.style.maxWidth = '';
-                        wrapper.style.gridTemplateColumns = '';
-                    }
+                    if (wrapper) { wrapper.style.alignItems = ''; wrapper.style.maxWidth = ''; wrapper.style.gridTemplateColumns = ''; }
                     if (placesTitle) placesTitle.textContent = 'Места проведения';
                     if (placesSubtitle) placesSubtitle.textContent = 'где это случится';
                     return true;
                 }
 
-                if (guestParam && guestPresets[guestParam]) {
-                    applyGuestPreset(guestParam);
-                } else if (namesParam) {
-                    applyGuestNames(namesParam);
-                } else {
-                    setDefaultGuestText();
-                    const zagsBlock = document.getElementById('place-zags');
-                    const nedomaBlock = document.getElementById('place-nedoma');
-                    const ceremonyItem = document.getElementById('item-ceremony');
-                    const wrapper = document.getElementById('places-container');
-                    const placesTitle = document.getElementById('places-title');
-                    const placesSubtitle = document.getElementById('places-subtitle');
-                    if (zagsBlock) zagsBlock.style.display = '';
-                    if (nedomaBlock) nedomaBlock.style.display = '';
-                    if (ceremonyItem) ceremonyItem.classList.remove('hidden');
-                    if (wrapper) {
-                        wrapper.style.alignItems = '';
-                        wrapper.style.maxWidth = '';
-                        wrapper.style.gridTemplateColumns = '';
-                    }
-                    if (placesTitle) placesTitle.textContent = 'Места проведения';
-                    if (placesSubtitle) placesSubtitle.textContent = 'где это случится';
-                }
+                if (guestParam && guestPresets[guestParam]) applyGuestPreset(guestParam);
+                else if (namesParam) applyGuestNames(namesParam);
+                else setDefaultGuestText();
 
                 const placesParam = urlParams.get('places');
                 if (placesParam) {
