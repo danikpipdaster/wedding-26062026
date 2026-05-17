@@ -22,7 +22,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
-        /* Стили полностью сохранены из предыдущей версии, включая динамический заголовок «Место проведения» */
+        /* Стили полностью сохранены (как в предыдущей версии) */
         @font-face {
             font-family: 'French Kiss Script';
             src: url('FrenchKissscript.ttf') format('truetype');
@@ -1361,11 +1361,10 @@
                 const guestGreeting = document.getElementById('guest-greeting');
                 const guestMessage = document.getElementById('guest-message');
 
-                // Пресеты гостей (кратко, но с сохранением всех текстов)
                 const guestPresets = {
                     'irina-vladislav-ruslan': {
                         names: ['Ирина', 'Владислав', 'Руслан'],
-                        messageHtml: '<p>Мы строим самый важный день в нашей жизни — и поняли, что он просто не сможет быть идеальным без вас. Будет красиво, душевно и немножко громко. Обещаем тёплые объятия, вкусный торт и пару сюрпризов.</p><p style="margin-top:14px;">🌸 Ирина, мы помним, что настоящий праздник начинается только тогда, когда звучит «Вдоль ночных дорог». Так что обязательно поставим эту песню!</p><p style="margin-top:14px;">⚽ Владислав, твоё присутствие — наш талисман. Если ты придёшь, «Спартак» возьмёт чемпионство!</p><p style="margin-top:14px;">💪 Руслан, без тебя этот день был бы слишком спокойным. Борьба с тортом — кто победит? :)</p><p style="margin-top:18px;">Ждём вас с нетерпением! ❤️</p>'
+                        messageHtml: '<p>Мы строим самый важный день в нашей жизни — и поняли, что он просто не сможет быть идеальным без вас. Будет красиво, душевно и немножко громко. Обещаем тёплые объятия, вкусный торт и пару сюрпризов.</p><p style="margin-top:14px;">🌸 Ирина, мы помним, что настоящий праздник начинается только тогда, когда звучит «Вдоль ночных дорог». Так что обязательно поставим эту песню!</p><p style="margin-top:14px;">⚽ Владислав, твоё присутствие — наш талисман. Если ты придёшь, «Спартак» возьмёт чемпионство в следующем сезоне!</p><p style="margin-top:14px;">💪 Руслан, без тебя этот день был бы слишком спокойным. Борьба с тортом — кто победит? :)</p><p style="margin-top:18px;">Ждём вас с нетерпением! ❤️</p>'
                     },
                     'sergey-rufina-artem': { names: ['Сергей', 'Руфина', 'Артем'], messageHtml: '<p>Мы очень хотим, чтобы этот день<br>был не просто красивым,<br>а по-настоящему тёплым и живым.</p><p style="margin-top:14px;">Поэтому приглашаем вас быть рядом —<br>радоваться, смеяться, обниматься<br>и праздновать вместе с нами ❤️</p>' },
                     'pavel-evgenia': { names: ['Павел', 'Евгения'], messageHtml: '<p>Мы очень хотим, чтобы этот день<br>был не просто красивым,<br>а по-настоящему тёплым и живым.</p><p style="margin-top:14px;">Поэтому приглашаем вас быть рядом —<br>радоваться, смеяться, обниматься<br>и праздновать вместе с нами ❤️</p>' },
@@ -1380,7 +1379,6 @@
                     'regina': { names: ['Регина'], gender: 'female', messageHtml: '<p>Мы очень хотим, чтобы этот день<br>был не просто красивым,<br>а по-настоящему тёплым и живым.</p><p style="margin-top:14px;">Поэтому приглашаем тебя быть рядом —<br>радоваться, смеяться, обниматься<br>и праздновать вместе с нами ❤️</p>' },
                     'konstantin-kristina': { names: ['Константин', 'Кристина'], messageHtml: '<p>Мы очень хотим, чтобы этот день<br>был не просто красивым,<br>а по-настоящему тёплым и живым.</p><p style="margin-top:14px;">Поэтому приглашаем вас быть рядом —<br>радоваться, смеяться, обниматься<br>и праздновать вместе с нами ❤️</p>' },
                     'konstantin-natalya-matvey': { names: ['Константин', 'Наталья', 'Матвей'], messageHtml: '<p>Мы очень хотим, чтобы этот день<br>был не просто красивым,<br>а по-настоящему тёплым и живым.</p><p style="margin-top:14px;">Поэтому приглашаем вас быть рядом —<br>радоваться, смеяться, обниматься<br>и праздновать вместе с нами ❤️</p>' },
-                    // Пресет для Нины: обращение будет "Дорогая мама!" без изменения ссылки
                     'nina': { 
                         names: ['Нина'], 
                         gender: 'female', 
@@ -1423,7 +1421,6 @@
                     const preset = guestPresets[presetKey];
                     const namesString = makeNamesString(preset.names);
                     
-                    // Обработка особого заголовка для Нины
                     if (preset.customTitle) {
                         guestGreeting.textContent = preset.customTitle;
                     } else {
@@ -1441,7 +1438,6 @@
                         guestMessage.classList.remove('personal-message');
                     }
 
-                    // Логика скрытия мест и смены заголовка для только банкет
                     const zagsBlock = document.getElementById('place-zags');
                     const nedomaBlock = document.getElementById('place-nedoma');
                     const ceremonyItem = document.getElementById('item-ceremony');
@@ -1496,7 +1492,6 @@
                     guestMessage.innerHTML = 'Мы очень хотим, чтобы этот день<br>был не просто красивым,<br>а по-настоящему тёплым и живым.<br>Поэтому приглашаем вас, <strong>' + safeNamesString + '</strong>, быть рядом —<br>радоваться, смеяться, обниматься<br>и праздновать вместе с нами ❤️';
                     guestMessage.classList.remove('personal-message');
 
-                    // Сброс на два места для не-пресетов
                     const zagsBlock = document.getElementById('place-zags');
                     const nedomaBlock = document.getElementById('place-nedoma');
                     const ceremonyItem = document.getElementById('item-ceremony');
@@ -1540,7 +1535,6 @@
                     if (placesSubtitle) placesSubtitle.textContent = 'где это случится';
                 }
 
-                // Если есть параметр places, он имеет приоритет
                 const placesParam = urlParams.get('places');
                 if (placesParam) {
                     const zagsBlock = document.getElementById('place-zags');
