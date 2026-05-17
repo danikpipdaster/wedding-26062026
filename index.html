@@ -22,6 +22,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
+        /* Стили без изменений — они уже были в предыдущем ответе, повторю их кратко для целостности */
         @font-face {
             font-family: 'French Kiss Script';
             src: url('FrenchKissscript.ttf') format('truetype');
@@ -991,8 +992,9 @@
 
         <div class="section fade-in">
             <div class="section-inner">
-                <h2 class="section-title">Места проведения</h2>
-                <p class="section-subtitle">где это случится</p>
+                <!-- Заголовок "Места проведения" будет динамически изменяться через JS -->
+                <h2 class="section-title" id="places-title">Места проведения</h2>
+                <p class="section-subtitle" id="places-subtitle">где это случится</p>
 
                 <div class="locations-wrapper" id="places-container">
                     <div class="location-inner" id="place-zags">
@@ -1360,176 +1362,29 @@
                 const guestGreeting = document.getElementById('guest-greeting');
                 const guestMessage = document.getElementById('guest-message');
 
-                // Пресеты гостей
+                // Пресеты гостей (кратко, так как они уже были)
                 const guestPresets = {
                     'irina-vladislav-ruslan': {
                         names: ['Ирина', 'Владислав', 'Руслан'],
-                        messageHtml:
-                            '<p>Мы строим самый важный день в нашей жизни — и поняли, что он просто не сможет быть идеальным без вас. Будет красиво, душевно и немножко громко. Обещаем тёплые объятия, вкусный торт и пару сюрпризов.</p>' +
-                            '<p style="margin-top:14px;">🌸 Ирина, мы помним, что настоящий праздник начинается только тогда, когда звучит «Вдоль ночных дорог». Так что обязательно поставим эту песню!</p>' +
-                            '<p style="margin-top:14px;">⚽ Владислав, твоё присутствие — наш талисман. Если ты придёшь, «Спартак» возьмёт чемпионство!</p>' +
-                            '<p style="margin-top:14px;">💪 Руслан, без тебя этот день был бы слишком спокойным. Борьба с тортом — кто победит? :)</p>' +
-                            '<p style="margin-top:18px;">Ждём вас с нетерпением! ❤️</p>'
+                        messageHtml: '<p>Мы строим самый важный день в нашей жизни — и поняли, что он просто не сможет быть идеальным без вас. Будет красиво, душевно и немножко громко. Обещаем тёплые объятия, вкусный торт и пару сюрпризов.</p><p style="margin-top:14px;">🌸 Ирина, мы помним, что настоящий праздник начинается только тогда, когда звучит «Вдоль ночных дорог». Так что обязательно поставим эту песню!</p><p style="margin-top:14px;">⚽ Владислав, твоё присутствие — наш талисман. Если ты придёшь, «Спартак» возьмёт чемпионство!</p><p style="margin-top:14px;">💪 Руслан, без тебя этот день был бы слишком спокойным. Борьба с тортом — кто победит? :)</p><p style="margin-top:18px;">Ждём вас с нетерпением! ❤️</p>'
                     },
-                    'sergey-rufina-artem': {
-                        names: ['Сергей', 'Руфина', 'Артем'],
-                        messageHtml:
-                            '<p>Мы очень хотим, чтобы этот день<br>' +
-                            'был не просто красивым,<br>' +
-                            'а по-настоящему тёплым и живым.</p>' +
-                            '<p style="margin-top:14px;">Поэтому приглашаем вас быть рядом —<br>' +
-                            'радоваться, смеяться, обниматься<br>' +
-                            'и праздновать вместе с нами ❤️</p>'
-                    },
-                    'pavel-evgenia': {
-                        names: ['Павел', 'Евгения'],
-                        messageHtml:
-                            '<p>Мы очень хотим, чтобы этот день<br>' +
-                            'был не просто красивым,<br>' +
-                            'а по-настоящему тёплым и живым.</p>' +
-                            '<p style="margin-top:14px;">Поэтому приглашаем вас быть рядом —<br>' +
-                            'радоваться, смеяться, обниматься<br>' +
-                            'и праздновать вместе с нами ❤️</p>'
-                    },
-                    'nikita-evangelina': {
-                        names: ['Никита', 'Евангелина'],
-                        messageHtml:
-                            '<p>Мы очень хотим, чтобы этот день<br>' +
-                            'был не просто красивым,<br>' +
-                            'а по-настоящему тёплым и живым.</p>' +
-                            '<p style="margin-top:14px;">Поэтому приглашаем вас быть рядом —<br>' +
-                            'радоваться, смеяться, обниматься<br>' +
-                            'и праздновать вместе с нами ❤️</p>'
-                    },
-                    'alena-andrey': {
-                        names: ['Алена', 'Андрей'],
-                        messageHtml:
-                            '<p>Мы очень хотим, чтобы этот день<br>' +
-                            'был не просто красивым,<br>' +
-                            'а по-настоящему тёплым и живым.</p>' +
-                            '<p style="margin-top:14px;">Поэтому приглашаем вас быть рядом —<br>' +
-                            'радоваться, смеяться, обниматься<br>' +
-                            'и праздновать вместе с нами ❤️</p>'
-                    },
-                    'andrey': {
-                        names: ['Андрей'],
-                        messageHtml:
-                            '<p>Мы очень хотим, чтобы этот день<br>' +
-                            'был не просто красивым,<br>' +
-                            'а по-настоящему тёплым и живым.</p>' +
-                            '<p style="margin-top:14px;">Поэтому приглашаем тебя быть рядом —<br>' +
-                            'радоваться, смеяться, обниматься<br>' +
-                            'и праздновать вместе с нами ❤️</p>'
-                    },
-                    'sergey': {
-                        names: ['Сергей'],
-                        messageHtml:
-                            '<p>Мы очень хотим, чтобы этот день<br>' +
-                            'был не просто красивым,<br>' +
-                            'а по-настоящему тёплым и живым.</p>' +
-                            '<p style="margin-top:14px;">Поэтому приглашаем тебя быть рядом —<br>' +
-                            'радоваться, смеяться, обниматься<br>' +
-                            'и праздновать вместе с нами ❤️</p>'
-                    },
-                    'vladimir': {
-                        names: ['Владимир'],
-                        messageHtml:
-                            '<p>Мы очень хотим, чтобы этот день<br>' +
-                            'был не просто красивым,<br>' +
-                            'а по-настоящему тёплым и живым.</p>' +
-                            '<p style="margin-top:14px;">Поэтому приглашаем тебя быть рядом —<br>' +
-                            'радоваться, смеяться, обниматься<br>' +
-                            'и праздновать вместе с нами ❤️</p>'
-                    },
-                    'linar': {
-                        names: ['Линар'],
-                        messageHtml:
-                            '<p>Мы очень хотим, чтобы этот день<br>' +
-                            'был не просто красивым,<br>' +
-                            'а по-настоящему тёплым и живым.</p>' +
-                            '<p style="margin-top:14px;">Поэтому приглашаем тебя быть рядом —<br>' +
-                            'радоваться, смеяться, обниматься<br>' +
-                            'и праздновать вместе с нами ❤️</p>'
-                    },
-                    'polina': {
-                        names: ['Полина'],
-                        gender: 'female',
-                        messageHtml:
-                            '<p>Мы очень хотим, чтобы этот день<br>' +
-                            'был не просто красивым,<br>' +
-                            'а по-настоящему тёплым и живым.</p>' +
-                            '<p style="margin-top:14px;">Поэтому приглашаем тебя быть рядом —<br>' +
-                            'радоваться, смеяться, обниматься<br>' +
-                            'и праздновать вместе с нами ❤️</p>'
-                    },
-                    'snezhana': {
-                        names: ['Снежана'],
-                        gender: 'female',
-                        messageHtml:
-                            '<p>Мы очень хотим, чтобы этот день<br>' +
-                            'был не просто красивым,<br>' +
-                            'а по-настоящему тёплым и живым.</p>' +
-                            '<p style="margin-top:14px;">Поэтому приглашаем тебя быть рядом —<br>' +
-                            'радоваться, смеяться, обниматься<br>' +
-                            'и праздновать вместе с нами ❤️</p>'
-                    },
-                    'regina': {
-                        names: ['Регина'],
-                        gender: 'female',
-                        messageHtml:
-                            '<p>Мы очень хотим, чтобы этот день<br>' +
-                            'был не просто красивым,<br>' +
-                            'а по-настоящему тёплым и живым.</p>' +
-                            '<p style="margin-top:14px;">Поэтому приглашаем тебя быть рядом —<br>' +
-                            'радоваться, смеяться, обниматься<br>' +
-                            'и праздновать вместе с нами ❤️</p>'
-                    },
-                    'konstantin-kristina': {
-                        names: ['Константин', 'Кристина'],
-                        messageHtml:
-                            '<p>Мы очень хотим, чтобы этот день<br>' +
-                            'был не просто красивым,<br>' +
-                            'а по-настоящему тёплым и живым.</p>' +
-                            '<p style="margin-top:14px;">Поэтому приглашаем вас быть рядом —<br>' +
-                            'радоваться, смеяться, обниматься<br>' +
-                            'и праздновать вместе с нами ❤️</p>'
-                    },
-                    'konstantin-natalya-matvey': {
-                        names: ['Константин', 'Наталья', 'Матвей'],
-                        messageHtml:
-                            '<p>Мы очень хотим, чтобы этот день<br>' +
-                            'был не просто красивым,<br>' +
-                            'а по-настоящему тёплым и живым.</p>' +
-                            '<p style="margin-top:14px;">Поэтому приглашаем вас быть рядом —<br>' +
-                            'радоваться, смеяться, обниматься<br>' +
-                            'и праздновать вместе с нами ❤️</p>'
-                    },
-                    'nina': {
-                        names: ['Нина'],
-                        gender: 'female',
-                        messageHtml:
-                            '<p>От всего сердца приглашаем тебя разделить с нами один из самых счастливых дней в нашей жизни — день нашей свадьбы!</p>' +
-                            '<p style="margin-top:14px;">Для нас особенно важно, чтобы в этот особенный день рядом была ты.</p>' +
-                            '<p style="margin-top:14px;">Мы будем счастливы видеть тебя среди самых близких людей в этот знаменательный день. Твоё присутствие сделает нашу свадьбу по-настоящему полной и значимой. ❤️</p>'
-                    },
-                    'marina-matvey-aleksandr': {
-                        names: ['Марина', 'Матвей', 'Александр'],
-                        messageHtml:
-                            '<p>Марина, ты тот человек, который делает любой день уютнее.<br>' +
-                            'Мы знаем, что на свадьбе ты будешь переживать, всё ли в порядке, но обещаем: у нас всё под контролем (ну, почти).<br>' +
-                            'Если вдруг что-то пойдёт не так — просто сделаем вид, что так и было задумано 😄<br>' +
-                            'Спасибо за поддержку и за то, что всегда верила в нас.<br>' +
-                            'Ждём тебя с радостью и объятиями 🤍</p>' +
-                            '<p style="margin-top:24px;">Матвей, чекай: без тебя этот ивент — минус вайб. Мы женимся, и это будет топчик.<br>' +
-                            'Приходи, погрузимся в атмосферу, заценим движ и просто круто проведём время.<br>' +
-                            'Обещаем, кринжа не будет, только хайп и чилл. Ждём тебя, брат 🤙</p>' +
-                            '<p style="margin-top:24px;">Александр, ты всегда рядом, когда нужна помощь, и за это мы тебе бесконечно благодарны.<br>' +
-                            'Нам очень хочется разделить с тобой наш праздник — чтобы ты тоже отдохнул, порадовался и знал, как мы тебя ценим.<br>' +
-                            'Приходи, будем очень рады! 🥂</p>'
-                    }
+                    'sergey-rufina-artem': { names: ['Сергей', 'Руфина', 'Артем'], messageHtml: '<p>Мы очень хотим, чтобы этот день<br>был не просто красивым,<br>а по-настоящему тёплым и живым.</p><p style="margin-top:14px;">Поэтому приглашаем вас быть рядом —<br>радоваться, смеяться, обниматься<br>и праздновать вместе с нами ❤️</p>' },
+                    'pavel-evgenia': { names: ['Павел', 'Евгения'], messageHtml: '<p>Мы очень хотим, чтобы этот день<br>был не просто красивым,<br>а по-настоящему тёплым и живым.</p><p style="margin-top:14px;">Поэтому приглашаем вас быть рядом —<br>радоваться, смеяться, обниматься<br>и праздновать вместе с нами ❤️</p>' },
+                    'nikita-evangelina': { names: ['Никита', 'Евангелина'], messageHtml: '<p>Мы очень хотим, чтобы этот день<br>был не просто красивым,<br>а по-настоящему тёплым и живым.</p><p style="margin-top:14px;">Поэтому приглашаем вас быть рядом —<br>радоваться, смеяться, обниматься<br>и праздновать вместе с нами ❤️</p>' },
+                    'alena-andrey': { names: ['Алена', 'Андрей'], messageHtml: '<p>Мы очень хотим, чтобы этот день<br>был не просто красивым,<br>а по-настоящему тёплым и живым.</p><p style="margin-top:14px;">Поэтому приглашаем вас быть рядом —<br>радоваться, смеяться, обниматься<br>и праздновать вместе с нами ❤️</p>' },
+                    'andrey': { names: ['Андрей'], messageHtml: '<p>Мы очень хотим, чтобы этот день<br>был не просто красивым,<br>а по-настоящему тёплым и живым.</p><p style="margin-top:14px;">Поэтому приглашаем тебя быть рядом —<br>радоваться, смеяться, обниматься<br>и праздновать вместе с нами ❤️</p>' },
+                    'sergey': { names: ['Сергей'], messageHtml: '<p>Мы очень хотим, чтобы этот день<br>был не просто красивым,<br>а по-настоящему тёплым и живым.</p><p style="margin-top:14px;">Поэтому приглашаем тебя быть рядом —<br>радоваться, смеяться, обниматься<br>и праздновать вместе с нами ❤️</p>' },
+                    'vladimir': { names: ['Владимир'], messageHtml: '<p>Мы очень хотим, чтобы этот день<br>был не просто красивым,<br>а по-настоящему тёплым и живым.</p><p style="margin-top:14px;">Поэтому приглашаем тебя быть рядом —<br>радоваться, смеяться, обниматься<br>и праздновать вместе с нами ❤️</p>' },
+                    'linar': { names: ['Линар'], messageHtml: '<p>Мы очень хотим, чтобы этот день<br>был не просто красивым,<br>а по-настоящему тёплым и живым.</p><p style="margin-top:14px;">Поэтому приглашаем тебя быть рядом —<br>радоваться, смеяться, обниматься<br>и праздновать вместе с нами ❤️</p>' },
+                    'polina': { names: ['Полина'], gender: 'female', messageHtml: '<p>Мы очень хотим, чтобы этот день<br>был не просто красивым,<br>а по-настоящему тёплым и живым.</p><p style="margin-top:14px;">Поэтому приглашаем тебя быть рядом —<br>радоваться, смеяться, обниматься<br>и праздновать вместе с нами ❤️</p>' },
+                    'snezhana': { names: ['Снежана'], gender: 'female', messageHtml: '<p>Мы очень хотим, чтобы этот день<br>был не просто красивым,<br>а по-настоящему тёплым и живым.</p><p style="margin-top:14px;">Поэтому приглашаем тебя быть рядом —<br>радоваться, смеяться, обниматься<br>и праздновать вместе с нами ❤️</p>' },
+                    'regina': { names: ['Регина'], gender: 'female', messageHtml: '<p>Мы очень хотим, чтобы этот день<br>был не просто красивым,<br>а по-настоящему тёплым и живым.</p><p style="margin-top:14px;">Поэтому приглашаем тебя быть рядом —<br>радоваться, смеяться, обниматься<br>и праздновать вместе с нами ❤️</p>' },
+                    'konstantin-kristina': { names: ['Константин', 'Кристина'], messageHtml: '<p>Мы очень хотим, чтобы этот день<br>был не просто красивым,<br>а по-настоящему тёплым и живым.</p><p style="margin-top:14px;">Поэтому приглашаем вас быть рядом —<br>радоваться, смеяться, обниматься<br>и праздновать вместе с нами ❤️</p>' },
+                    'konstantin-natalya-matvey': { names: ['Константин', 'Наталья', 'Матвей'], messageHtml: '<p>Мы очень хотим, чтобы этот день<br>был не просто красивым,<br>а по-настоящему тёплым и живым.</p><p style="margin-top:14px;">Поэтому приглашаем вас быть рядом —<br>радоваться, смеяться, обниматься<br>и праздновать вместе с нами ❤️</p>' },
+                    'nina': { names: ['Нина'], gender: 'female', messageHtml: '<p>От всего сердца приглашаем тебя разделить с нами один из самых счастливых дней в нашей жизни — день нашей свадьбы!</p><p style="margin-top:14px;">Для нас особенно важно, чтобы в этот особенный день рядом была ты.</p><p style="margin-top:14px;">Мы будем счастливы видеть тебя среди самых близких людей в этот знаменательный день. Твоё присутствие сделает нашу свадьбу по-настоящему полной и значимой. ❤️</p>' },
+                    'marina-matvey-aleksandr': { names: ['Марина', 'Матвей', 'Александр'], messageHtml: '<p>Марина, ты тот человек, который делает любой день уютнее.<br>Мы знаем, что на свадьбе ты будешь переживать, всё ли в порядке, но обещаем: у нас всё под контролем (ну, почти).<br>Если вдруг что-то пойдёт не так — просто сделаем вид, что так и было задумано 😄<br>Спасибо за поддержку и за то, что всегда верила в нас.<br>Ждём тебя с радостью и объятиями 🤍</p><p style="margin-top:24px;">Матвей, чекай: без тебя этот ивент — минус вайб. Мы женимся, и это будет топчик.<br>Приходи, погрузимся в атмосферу, заценим движ и просто круто проведём время.<br>Обещаем, кринжа не будет, только хайп и чилл. Ждём тебя, брат 🤙</p><p style="margin-top:24px;">Александр, ты всегда рядом, когда нужна помощь, и за это мы тебе бесконечно благодарны.<br>Нам очень хочется разделить с тобой наш праздник — чтобы ты тоже отдохнул, порадовался и знал, как мы тебя ценим.<br>Приходи, будем очень рады! 🥂</p>' }
                 };
 
-                // Список пресетов, для которых нужно показывать только НеДома (банкет) и скрыть церемонию
                 const onlyBanquetPresets = ['regina', 'linar', 'andrey', 'alena-andrey', 'konstantin-kristina'];
 
                 const guestPresetByNamesKey = {};
@@ -1547,41 +1402,26 @@
                 function makeNamesString(namesArray) {
                     const names = namesArray.slice();
                     const last = names.pop();
-
                     if (!last) return '';
                     return names.length > 0 ? names.join(', ') + ' и ' + last : last;
                 }
 
                 function setDefaultGuestText() {
                     if (!guestGreeting || !guestMessage) return;
-
                     guestGreeting.textContent = 'Дорогие гости!';
-                    guestMessage.innerHTML =
-                        'Мы очень хотим, чтобы этот день<br>' +
-                        'был не просто красивым,<br>' +
-                        'а по-настоящему тёплым и живым.<br>' +
-                        'Поэтому приглашаем вас быть рядом —<br>' +
-                        'радоваться, смеяться, обниматься<br>' +
-                        'и праздновать вместе с нами ❤️';
+                    guestMessage.innerHTML = 'Мы очень хотим, чтобы этот день<br>был не просто красивым,<br>а по-настоящему тёплым и живым.<br>Поэтому приглашаем вас быть рядом —<br>радоваться, смеяться, обниматься<br>и праздновать вместе с нами ❤️';
                     guestMessage.classList.remove('personal-message');
                 }
 
                 function applyGuestPreset(presetKey) {
                     if (!guestGreeting || !guestMessage || !guestPresets[presetKey]) return false;
-
                     const preset = guestPresets[presetKey];
                     const namesString = makeNamesString(preset.names);
-
                     if (preset.names.length === 1) {
-                        if (preset.gender === 'female') {
-                            guestGreeting.textContent = 'Дорогая ' + namesString + '!';
-                        } else {
-                            guestGreeting.textContent = 'Дорогой ' + namesString + '!';
-                        }
+                        guestGreeting.textContent = (preset.gender === 'female' ? 'Дорогая ' : 'Дорогой ') + namesString + '!';
                     } else {
                         guestGreeting.textContent = 'Дорогие ' + namesString + '!';
                     }
-
                     guestMessage.innerHTML = preset.messageHtml;
                     if (presetKey === 'marina-matvey-aleksandr') {
                         guestMessage.classList.add('personal-message');
@@ -1589,26 +1429,26 @@
                         guestMessage.classList.remove('personal-message');
                     }
 
-                    // Логика скрытия мест и церемонии для пресетов "только банкет"
+                    // Логика скрытия мест и смены заголовка
                     const zagsBlock = document.getElementById('place-zags');
                     const nedomaBlock = document.getElementById('place-nedoma');
                     const ceremonyItem = document.getElementById('item-ceremony');
                     const wrapper = document.getElementById('places-container');
+                    const placesTitle = document.getElementById('places-title');
+                    const placesSubtitle = document.getElementById('places-subtitle');
 
                     if (onlyBanquetPresets.includes(presetKey)) {
-                        // Скрываем ЗАГС, оставляем только НеДома
                         if (zagsBlock) zagsBlock.style.display = 'none';
                         if (nedomaBlock) nedomaBlock.style.display = '';
-                        // Скрываем строку "Церемония" в программе дня
                         if (ceremonyItem) ceremonyItem.classList.add('hidden');
-                        // Настраиваем сетку под одно место
                         if (wrapper) {
                             wrapper.style.alignItems = 'center';
                             wrapper.style.maxWidth = '560px';
                             wrapper.style.gridTemplateColumns = '1fr';
                         }
+                        if (placesTitle) placesTitle.textContent = 'Место проведения';
+                        if (placesSubtitle) placesSubtitle.textContent = 'где это случится';
                     } else {
-                        // Для остальных гостей всё как обычно (оба места)
                         if (zagsBlock) zagsBlock.style.display = '';
                         if (nedomaBlock) nedomaBlock.style.display = '';
                         if (ceremonyItem) ceremonyItem.classList.remove('hidden');
@@ -1617,49 +1457,40 @@
                             wrapper.style.maxWidth = '';
                             wrapper.style.gridTemplateColumns = '';
                         }
+                        if (placesTitle) placesTitle.textContent = 'Места проведения';
+                        if (placesSubtitle) placesSubtitle.textContent = 'где это случится';
                     }
-
                     return true;
                 }
 
                 function applyGuestNames(rawNames) {
                     if (!guestGreeting || !guestMessage) return false;
-
                     const namesArray = normalizeGuestNames(rawNames);
                     const namesString = makeNamesString(namesArray);
                     const normalizedNamesKey = namesArray.join(',');
-
                     if (!namesString) {
                         setDefaultGuestText();
                         return false;
                     }
-
                     if (guestPresetByNamesKey[normalizedNamesKey]) {
                         return applyGuestPreset(guestPresetByNamesKey[normalizedNamesKey]);
                     }
-
                     const safeNamesString = escapeHtml(namesString);
-
                     if (namesArray.length === 1) {
                         guestGreeting.textContent = 'Дорогой ' + safeNamesString + '!';
                     } else {
                         guestGreeting.textContent = 'Дорогие ' + safeNamesString + '!';
                     }
-
-                    guestMessage.innerHTML =
-                        'Мы очень хотим, чтобы этот день<br>' +
-                        'был не просто красивым,<br>' +
-                        'а по-настоящему тёплым и живым.<br>' +
-                        'Поэтому приглашаем вас, <strong>' + safeNamesString + '</strong>, быть рядом —<br>' +
-                        'радоваться, смеяться, обниматься<br>' +
-                        'и праздновать вместе с нами ❤️';
+                    guestMessage.innerHTML = 'Мы очень хотим, чтобы этот день<br>был не просто красивым,<br>а по-настоящему тёплым и живым.<br>Поэтому приглашаем вас, <strong>' + safeNamesString + '</strong>, быть рядом —<br>радоваться, смеяться, обниматься<br>и праздновать вместе с нами ❤️';
                     guestMessage.classList.remove('personal-message');
 
-                    // Для не-пресетов оставляем оба места по умолчанию
+                    // Сброс на два места для не-пресетов
                     const zagsBlock = document.getElementById('place-zags');
                     const nedomaBlock = document.getElementById('place-nedoma');
                     const ceremonyItem = document.getElementById('item-ceremony');
                     const wrapper = document.getElementById('places-container');
+                    const placesTitle = document.getElementById('places-title');
+                    const placesSubtitle = document.getElementById('places-subtitle');
                     if (zagsBlock) zagsBlock.style.display = '';
                     if (nedomaBlock) nedomaBlock.style.display = '';
                     if (ceremonyItem) ceremonyItem.classList.remove('hidden');
@@ -1668,7 +1499,8 @@
                         wrapper.style.maxWidth = '';
                         wrapper.style.gridTemplateColumns = '';
                     }
-
+                    if (placesTitle) placesTitle.textContent = 'Места проведения';
+                    if (placesSubtitle) placesSubtitle.textContent = 'где это случится';
                     return true;
                 }
 
@@ -1678,11 +1510,12 @@
                     applyGuestNames(namesParam);
                 } else {
                     setDefaultGuestText();
-                    // Сброс скрытия для обычного режима
                     const zagsBlock = document.getElementById('place-zags');
                     const nedomaBlock = document.getElementById('place-nedoma');
                     const ceremonyItem = document.getElementById('item-ceremony');
                     const wrapper = document.getElementById('places-container');
+                    const placesTitle = document.getElementById('places-title');
+                    const placesSubtitle = document.getElementById('places-subtitle');
                     if (zagsBlock) zagsBlock.style.display = '';
                     if (nedomaBlock) nedomaBlock.style.display = '';
                     if (ceremonyItem) ceremonyItem.classList.remove('hidden');
@@ -1691,44 +1524,41 @@
                         wrapper.style.maxWidth = '';
                         wrapper.style.gridTemplateColumns = '';
                     }
+                    if (placesTitle) placesTitle.textContent = 'Места проведения';
+                    if (placesSubtitle) placesSubtitle.textContent = 'где это случится';
                 }
 
-                // Если в URL есть параметр places, он всё равно переопределяет (на случай прямой ссылки), но мы его не трогаем.
+                // Если есть параметр places, он имеет приоритет (на случай прямых ссылок)
                 const placesParam = urlParams.get('places');
                 if (placesParam) {
                     const zagsBlock = document.getElementById('place-zags');
                     const nedomaBlock = document.getElementById('place-nedoma');
                     const wrapper = document.getElementById('places-container');
                     const ceremonyItem = document.getElementById('item-ceremony');
+                    const placesTitle = document.getElementById('places-title');
+                    const placesSubtitle = document.getElementById('places-subtitle');
                     const wantedPlaces = placesParam.split(',').map(p => p.trim().toLowerCase());
-
                     let showZags = wantedPlaces.includes('zags');
                     let showNedoma = wantedPlaces.includes('nedoma');
-
-                    if (!showZags && !showNedoma) {
-                        showZags = true;
-                        showNedoma = true;
-                    }
-
+                    if (!showZags && !showNedoma) { showZags = true; showNedoma = true; }
                     if (zagsBlock) zagsBlock.style.display = showZags ? '' : 'none';
                     if (nedomaBlock) nedomaBlock.style.display = showNedoma ? '' : 'none';
-
                     if (wrapper) {
                         const visibleCount = [showZags, showNedoma].filter(Boolean).length;
                         if (visibleCount === 1) {
                             wrapper.style.alignItems = 'center';
                             wrapper.style.maxWidth = '560px';
                             wrapper.style.gridTemplateColumns = '1fr';
+                            if (placesTitle) placesTitle.textContent = 'Место проведения';
                         } else {
                             wrapper.style.alignItems = '';
                             wrapper.style.maxWidth = '';
                             wrapper.style.gridTemplateColumns = '';
+                            if (placesTitle) placesTitle.textContent = 'Места проведения';
                         }
                     }
-
-                    if (ceremonyItem) {
-                        ceremonyItem.classList.toggle('hidden', !showZags);
-                    }
+                    if (ceremonyItem) ceremonyItem.classList.toggle('hidden', !showZags);
+                    if (placesSubtitle) placesSubtitle.textContent = 'где это случится';
                 }
             });
         })();
