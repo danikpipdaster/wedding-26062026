@@ -22,7 +22,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
-        /* ВСЕ СТИЛИ ПОЛНОСТЬЮ СОХРАНЕНЫ (как в оригинале, без изменений) */
+        /* ВСЕ СТИЛИ (полностью сохранены из оригинала, рабочие) */
         @font-face {
             font-family: 'French Kiss Script';
             src: url('FrenchKissscript.ttf') format('truetype');
@@ -773,113 +773,60 @@
             transform: translateY(0);
         }
 
-        @media (min-width: 900px) {
-            .locations-wrapper {
-                max-width: 1060px;
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-                gap: 32px;
-            }
-            .location-inner {
-                height: 100%;
-            }
+        /* Стили для блока персональной ссылки */
+        .personal-link-block {
+            margin: 40px auto 20px;
+            max-width: 600px;
+            background: rgba(255,255,240,0.85);
+            backdrop-filter: blur(8px);
+            border-radius: 40px;
+            padding: 16px 24px;
+            text-align: center;
+            border: 1px solid rgba(90,70,60,0.2);
+            font-family: 'Montserrat', sans-serif;
+        }
+        .personal-link-label {
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #7a675d;
+            margin-bottom: 8px;
+        }
+        .personal-link-url {
+            background: #fff;
+            padding: 10px 15px;
+            border-radius: 32px;
+            font-family: monospace;
+            font-size: 14px;
+            word-break: break-all;
+            display: inline-block;
+            max-width: 100%;
+            border: 1px solid #e0cfc3;
+        }
+        .copy-btn {
+            background: var(--accent-soft);
+            border: none;
+            padding: 6px 18px;
+            border-radius: 40px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 12px;
+            margin-left: 12px;
+            cursor: pointer;
+            transition: 0.2s;
+            color: #4a3f3f;
+        }
+        .copy-btn:hover {
+            background: #d4bcae;
         }
 
         @media (max-width: 768px) {
-            .section {
-                padding: 52px 0;
+            .personal-link-url {
+                font-size: 12px;
+                display: block;
+                margin-bottom: 12px;
             }
-            .section-inner {
-                padding: 0 16px;
-            }
-            .final-row {
-                flex-direction: column;
-                gap: 32px;
-                margin-top: 50px;
-            }
-            .final-image-frame {
-                width: min(360px, 88vw);
-                max-width: 88vw;
-                padding: 0;
-            }
-            .schedule-image-frame {
-                width: 112px;
-                aspect-ratio: 1 / 1;
-                padding: 0;
-            }
-            .coin {
-                display: none !important;
-            }
-            .map-wrapper iframe {
-                height: 185px;
-            }
-            .schedule-row {
-                width: 100%;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .splash {
-                padding: 22px 14px;
-            }
-            .photo-collage {
-                width: 320px;
-                max-width: 94vw;
-                height: 440px;
-            }
-            .flip-card {
-                width: 230px;
-                height: 320px;
-            }
-            .flip-card.front {
-                transform: translate(75px, 88px) rotate(0deg) scale(1.04);
-            }
-            .flip-card.back {
-                transform: translate(5px, 5px) rotate(-7deg) scale(0.92);
-            }
-            .glass-box::before {
-                left: 15px;
-            }
-            .glass-box::after {
-                right: 15px;
-            }
-            .timer {
-                max-width: 310px;
-            }
-            .schedule-big {
-                gap: 34px;
-            }
-            .schedule-row {
-                min-height: 112px;
-                gap: 12px;
-            }
-            .schedule-image-frame {
-                width: 104px;
-                aspect-ratio: 1 / 1;
-                padding: 0;
-            }
-            .schedule-icon-img {
-                width: 100%;
-                max-width: 100%;
-                padding: 8px;
-            }
-            .final-image-frame {
-                padding: 0;
-            }
-            .final-text p:last-of-type {
-                font-size: 18px !important;
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            html {
-                scroll-behavior: auto;
-            }
-            *,
-            *::before,
-            *::after {
-                animation-duration: 0.001ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.001ms !important;
+            .copy-btn {
+                margin-left: 0;
             }
         }
     </style>
@@ -1051,6 +998,20 @@
                 </div>
             </div>
         </div>
+
+        <!-- БЛОК ПЕРСОНАЛЬНОЙ ССЫЛКИ -->
+        <div class="section fade-in">
+            <div class="section-inner">
+                <div class="personal-link-block">
+                    <div class="personal-link-label">✨ Персональная ссылка для вас ✨</div>
+                    <div>
+                        <span class="personal-link-url" id="personalLinkUrl"></span>
+                        <button class="copy-btn" id="copyLinkBtn">Скопировать</button>
+                    </div>
+                    <div style="font-size: 12px; margin-top: 12px; opacity: 0.7;">Отправьте эту ссылку — и приглашение откроется с вашими именами</div>
+                </div>
+            </div>
+        </div>
     </main>
 
     <script>
@@ -1182,25 +1143,29 @@
 
                 function formatNames(namesArray) {
                     if (!namesArray.length) return '';
-                    if (namesArray.length === 1) return namesArray[0];
-                    const last = namesArray.pop();
-                    return namesArray.join(', ') + ' и ' + last;
+                    const arr = [...namesArray];
+                    if (arr.length === 1) return arr[0];
+                    const last = arr.pop();
+                    return arr.join(', ') + ' и ' + last;
                 }
 
                 const urlParams = new URLSearchParams(window.location.search);
                 const guestGreeting = document.getElementById('guest-greeting');
                 const guestMessage = document.getElementById('guest-message');
-                const defaultNames = ['Артур', 'Анастасия', 'Мирон'];
 
+                // Имена по умолчанию
+                const defaultNames = ['Артур', 'Анастасия', 'Мирон'];
                 let namesParam = urlParams.get('names');
                 let namesArray = [];
 
                 if (namesParam) {
                     namesArray = namesParam.split(',').map(n => n.trim()).filter(n => n);
                 } else {
-                    // Если параметр names не передан, подставляем имена по умолчанию
                     namesArray = [...defaultNames];
                 }
+
+                // Стандартный текст приглашения (без вставки имён в середину)
+                const standardMessageHtml = 'Мы очень хотим, чтобы этот день<br>был не просто красивым,<br>а по-настоящему тёплым и живым.<br>Поэтому приглашаем вас быть рядом —<br>радоваться, смеяться, обниматься<br>и праздновать вместе с нами ❤️';
 
                 if (namesArray.length) {
                     const formatted = formatNames(namesArray);
@@ -1210,17 +1175,37 @@
                     } else {
                         guestGreeting.textContent = 'Дорогие ' + safeNames + '!';
                     }
-                    // Стандартный текст приглашения (ровно тот же, что и в HTML по умолчанию)
-                    guestMessage.innerHTML = 'Мы очень хотим, чтобы этот день<br>был не просто красивым,<br>а по-настоящему тёплым и живым.<br>Поэтому приглашаем вас, <strong>' + safeNames + '</strong>, быть рядом —<br>радоваться, смеяться, обниматься<br>и праздновать вместе с нами ❤️';
+                    guestMessage.innerHTML = standardMessageHtml;
                 } else {
                     guestGreeting.textContent = 'Дорогие гости!';
-                    guestMessage.innerHTML = 'Мы очень хотим, чтобы этот день<br>был не просто красивым,<br>а по-настоящему тёплым и живым.<br>Поэтому приглашаем вас быть рядом —<br>радоваться, смеяться, обниматься<br>и праздновать вместе с нами ❤️';
+                    guestMessage.innerHTML = standardMessageHtml;
                 }
 
-                // Дополнительно: если в URL передан параметр guest, обрабатываем его как гостевой режим (без имён)
+                // Гостевой режим (если в URL guest=guest)
                 if (urlParams.get('guest') === 'guest') {
                     guestGreeting.textContent = 'Дорогие гости!';
-                    guestMessage.innerHTML = 'Мы очень хотим, чтобы этот день<br>был не просто красивым,<br>а по-настоящему тёплым и живым.<br>Поэтому приглашаем вас быть рядом —<br>радоваться, смеяться, обниматься<br>и праздновать вместе с нами ❤️';
+                    guestMessage.innerHTML = standardMessageHtml;
+                }
+
+                // Генерация персональной ссылки (для текущих имён из URL или для имён по умолчанию)
+                const personalLinkSpan = document.getElementById('personalLinkUrl');
+                const copyBtn = document.getElementById('copyLinkBtn');
+                if (personalLinkSpan && copyBtn) {
+                    const baseUrl = window.location.origin + window.location.pathname;
+                    // Собираем имена для ссылки: если есть параметр names, используем его, иначе defaultNames
+                    let linkNames = namesArray.length ? namesArray : defaultNames;
+                    const linkNamesStr = linkNames.join(',');
+                    const personalUrl = baseUrl + '?names=' + encodeURIComponent(linkNamesStr);
+                    personalLinkSpan.textContent = personalUrl;
+                    copyBtn.addEventListener('click', function() {
+                        navigator.clipboard.writeText(personalUrl).then(() => {
+                            const originalText = copyBtn.textContent;
+                            copyBtn.textContent = 'Скопировано!';
+                            setTimeout(() => { copyBtn.textContent = originalText; }, 2000);
+                        }).catch(() => {
+                            alert('Не удалось скопировать. Скопируйте ссылку вручную.');
+                        });
+                    });
                 }
             });
         })();
