@@ -22,7 +22,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
-        /* ВСЕ СТИЛИ (полностью сохранены из оригинала, рабочие) */
+        /* ВСЕ СТИЛИ (полностью сохранены, без изменений) */
         @font-face {
             font-family: 'French Kiss Script';
             src: url('FrenchKissscript.ttf') format('truetype');
@@ -773,7 +773,6 @@
             transform: translateY(0);
         }
 
-        /* Стили для блока персональной ссылки */
         .personal-link-block {
             margin: 40px auto 20px;
             max-width: 600px;
@@ -1152,50 +1151,56 @@
                 const urlParams = new URLSearchParams(window.location.search);
                 const guestGreeting = document.getElementById('guest-greeting');
                 const guestMessage = document.getElementById('guest-message');
-
-                // Имена по умолчанию
-                const defaultNames = ['Артур', 'Анастасия', 'Мирон'];
-                let namesParam = urlParams.get('names');
-                let namesArray = [];
-
-                if (namesParam) {
-                    namesArray = namesParam.split(',').map(n => n.trim()).filter(n => n);
-                } else {
-                    namesArray = [...defaultNames];
-                }
-
-                // Стандартный текст приглашения (без вставки имён в середину)
+                
+                // Стандартный текст приглашения (без вставки имён)
                 const standardMessageHtml = 'Мы очень хотим, чтобы этот день<br>был не просто красивым,<br>а по-настоящему тёплым и живым.<br>Поэтому приглашаем вас быть рядом —<br>радоваться, смеяться, обниматься<br>и праздновать вместе с нами ❤️';
 
-                if (namesArray.length) {
-                    const formatted = formatNames(namesArray);
-                    const safeNames = escapeHtml(formatted);
-                    if (namesArray.length === 1) {
-                        guestGreeting.textContent = 'Дорогой ' + safeNames + '!';
-                    } else {
-                        guestGreeting.textContent = 'Дорогие ' + safeNames + '!';
-                    }
-                    guestMessage.innerHTML = standardMessageHtml;
-                } else {
-                    guestGreeting.textContent = 'Дорогие гости!';
-                    guestMessage.innerHTML = standardMessageHtml;
-                }
-
-                // Гостевой режим (если в URL guest=guest)
+                // Проверяем параметр guest (гостевой режим)
                 if (urlParams.get('guest') === 'guest') {
                     guestGreeting.textContent = 'Дорогие гости!';
                     guestMessage.innerHTML = standardMessageHtml;
+                } else {
+                    // Проверяем параметр names
+                    let namesParam = urlParams.get('names');
+                    if (namesParam) {
+                        let namesArray = namesParam.split(',').map(n => n.trim()).filter(n => n);
+                        if (namesArray.length) {
+                            const formatted = formatNames(namesArray);
+                            const safeNames = escapeHtml(formatted);
+                            if (namesArray.length === 1) {
+                                guestGreeting.textContent = 'Дорогой ' + safeNames + '!';
+                            } else {
+                                guestGreeting.textContent = 'Дорогие ' + safeNames + '!';
+                            }
+                            guestMessage.innerHTML = standardMessageHtml;
+                        } else {
+                            // Пустой параметр names - показываем общее обращение
+                            guestGreeting.textContent = 'Дорогие гости!';
+                            guestMessage.innerHTML = standardMessageHtml;
+                        }
+                    } else {
+                        // Нет параметров - общее обращение
+                        guestGreeting.textContent = 'Дорогие гости!';
+                        guestMessage.innerHTML = standardMessageHtml;
+                    }
                 }
 
-                // Генерация персональной ссылки (для текущих имён из URL или для имён по умолчанию)
+                // Генерация персональной ссылки для текущего просмотра
                 const personalLinkSpan = document.getElementById('personalLinkUrl');
                 const copyBtn = document.getElementById('copyLinkBtn');
                 if (personalLinkSpan && copyBtn) {
                     const baseUrl = window.location.origin + window.location.pathname;
-                    // Собираем имена для ссылки: если есть параметр names, используем его, иначе defaultNames
-                    let linkNames = namesArray.length ? namesArray : defaultNames;
-                    const linkNamesStr = linkNames.join(',');
-                    const personalUrl = baseUrl + '?names=' + encodeURIComponent(linkNamesStr);
+                    // Если в URL уже есть names, показываем ссылку с этими именами
+                    let currentNames = urlParams.get('names');
+                    let personalUrl = baseUrl;
+                    if (currentNames) {
+                        personalUrl = baseUrl + '?names=' + encodeURIComponent(currentNames);
+                    } else if (urlParams.get('guest') === 'guest') {
+                        personalUrl = baseUrl + '?guest=guest';
+                    } else {
+                        // Если нет параметров, показываем ссылку без параметров (общее приглашение)
+                        personalUrl = baseUrl;
+                    }
                     personalLinkSpan.textContent = personalUrl;
                     copyBtn.addEventListener('click', function() {
                         navigator.clipboard.writeText(personalUrl).then(() => {
