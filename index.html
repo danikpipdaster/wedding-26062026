@@ -1196,7 +1196,6 @@
                     guestGreeting.textContent = 'Дорогие гости!';
                     guestMessage.innerHTML = standardMessage;
                 } else if (namesParam) {
-                    // Есть параметр names: подставляем имена
                     const namesArray = namesParam.split(',').map(n => n.trim()).filter(n => n);
                     if (namesArray.length) {
                         const formatted = formatNames(namesArray);
@@ -1208,14 +1207,22 @@
                         }
                         guestMessage.innerHTML = standardMessage;
                     } else {
-                        // Пустой параметр — общее обращение
                         guestGreeting.textContent = 'Дорогие гости!';
                         guestMessage.innerHTML = standardMessage;
                     }
                 } else {
-                    // Нет параметра — общее обращение (никаких имён по умолчанию!)
                     guestGreeting.textContent = 'Дорогие гости!';
                     guestMessage.innerHTML = standardMessage;
+                }
+
+                // НОВАЯ ЛОГИКА: скрыть ЗАГС и церемонию для гостей Иван и Эльвира
+                // Проверяем параметр nozags (можно добавить вручную в ссылку)
+                const hideZags = urlParams.get('nozags') === '1' || urlParams.get('hideZags') === '1';
+                if (hideZags) {
+                    const zagsBlock = document.getElementById('place-zags');
+                    if (zagsBlock) zagsBlock.style.display = 'none';
+                    const ceremonyRow = document.getElementById('item-ceremony');
+                    if (ceremonyRow) ceremonyRow.style.display = 'none';
                 }
             });
         })();
