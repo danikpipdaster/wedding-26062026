@@ -467,6 +467,13 @@
             margin: 0 auto;
         }
 
+        /* Для режима с одним местом (центровка уже есть, но оставим как есть) */
+        .locations-wrapper.single-location {
+            grid-template-columns: 1fr;
+            max-width: 560px;
+            margin: 0 auto;
+        }
+
         .location-inner {
             background: var(--card-bg);
             border-radius: 26px;
@@ -772,6 +779,10 @@
                 max-width: 1060px;
                 grid-template-columns: repeat(2, minmax(0, 1fr));
                 gap: 32px;
+            }
+            .locations-wrapper.single-location {
+                grid-template-columns: 1fr;
+                max-width: 560px;
             }
             .location-inner {
                 height: 100%;
@@ -1188,11 +1199,10 @@
                 const namesParam = urlParams.get('names');
                 const isGuest = urlParams.get('guest') === 'guest';
 
-                // Стандартный текст без вставки имён в середину
+                // Стандартный текст
                 const standardMessage = 'Мы очень хотим, чтобы этот день<br>был не просто красивым,<br>а по-настоящему тёплым и живым.<br>Поэтому приглашаем вас быть рядом —<br>радоваться, смеяться, обниматься<br>и праздновать вместе с нами ❤️';
 
                 if (isGuest) {
-                    // Гостевой режим: без имён
                     guestGreeting.textContent = 'Дорогие гости!';
                     guestMessage.innerHTML = standardMessage;
                 } else if (namesParam) {
@@ -1215,14 +1225,30 @@
                     guestMessage.innerHTML = standardMessage;
                 }
 
-                // НОВАЯ ЛОГИКА: скрыть ЗАГС и церемонию для гостей Иван и Эльвира
-                // Проверяем параметр nozags (можно добавить вручную в ссылку)
-                const hideZags = urlParams.get('nozags') === '1' || urlParams.get('hideZags') === '1';
+                // ЛОГИКА ДЛЯ СКРЫТИЯ ЗАГСА И ЕДИНСТВЕННОГО МЕСТА
+                const hideZags = urlParams.get('nozags') === '1';
                 if (hideZags) {
+                    // Скрыть блок ЗАГСа
                     const zagsBlock = document.getElementById('place-zags');
                     if (zagsBlock) zagsBlock.style.display = 'none';
+                    
+                    // Скрыть строку "Церемония" в программе
                     const ceremonyRow = document.getElementById('item-ceremony');
                     if (ceremonyRow) ceremonyRow.style.display = 'none';
+                    
+                    // Поменять заголовок на единственное число
+                    const placesTitle = document.getElementById('places-title');
+                    if (placesTitle) placesTitle.textContent = 'Место проведения';
+                    
+                    // Поменять подзаголовок (можно найти через селектор)
+                    const placesSubtitle = document.getElementById('places-subtitle');
+                    if (placesSubtitle) placesSubtitle.textContent = 'где это будет';
+                    
+                    // Добавить класс для центрирования одной карточки
+                    const placesContainer = document.getElementById('places-container');
+                    if (placesContainer) {
+                        placesContainer.classList.add('single-location');
+                    }
                 }
             });
         })();
